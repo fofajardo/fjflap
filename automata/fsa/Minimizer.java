@@ -216,7 +216,7 @@ public class Minimizer {
      * @param group the set of states that state might have a transition
      * to.
      * @param terminal the terminal
-     * @param the automaton.
+     * @param automaton the automaton.
      * @return true if <CODE>state</CODE> in <CODE>automaton</CODE> has
      * a transition to one of the states in <CODE>group</CODE> on
      * <CODE>terminal</CODE>.
@@ -436,16 +436,14 @@ public class Minimizer {
     }
     
     /**
-     * Returns a minimizeable automaton obtained from 
-     * <CODE>automaton</CODE> by removing all 
-     * unreachable states and multiple character labels
-     * on transitions.  This does not alter 
+     * Returns a minimizeable automaton obtained from
+     * <CODE>automaton</CODE> by removing all unreachable states and
+     * multiple character labels on transitions.  This does not alter
      * <CODE>automaton</CODE>.
-     * @param automaton the automaton
-     * @return a a minimizeable automaton obtained from 
-     * <CODE>automaton</CODE> by removing all 
-     * unreachable states and multiple character labels
-     * on transitions.  
+     * @param a the automaton
+     * @return a minimizeable automaton obtained from
+     * <CODE>automaton</CODE> by removing all unreachable states and
+     * multiple character labels on transitions.
      */
     public Automaton getMinimizeableAutomaton(Automaton a) {
 	//Automaton a = (Automaton) automaton.clone();

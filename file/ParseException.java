@@ -30,7 +30,8 @@ package file;
  * This error indicates elements in a file are arranged in such a
  * fashion as to prevent the interpreter from working correctly.  This
  * should be thrown by {@link file.Decoder} implementing objects to
- * indicate a problem processing the file.
+ * indicate a problem processing the file that could indicate that it
+ * is not the target type of file at all.
  * 
  * @author Thomas Finley
  */

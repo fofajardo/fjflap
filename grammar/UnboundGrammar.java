@@ -51,9 +51,9 @@ public class UnboundGrammar extends Grammar {
      * the left hand side
      */
     public void checkProduction(Production production) {
-	if (production.getLHS().length() == 0) {
+	/*if (production.getLHS().length() == 0) {
 	    throw new IllegalArgumentException
 		("The left hand side cannot be empty.");
-	}
+	}*/
     }
 }
