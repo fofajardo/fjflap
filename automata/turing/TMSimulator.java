@@ -298,7 +298,17 @@ outer:  while (true){
         }
         
 
-        if (success){
+        if (success){ //if variables are used then they will be common to all tapes...
+            if (configuration.getTapes().length > 1){
+                for (int k = 0; k < configuration.getTapes().length; k++){
+                    configuration.getTapes()[k].writeChar(tmt.getWrite(k).charAt(0) == '~' ?
+                    configuration.getTapes()[k].readChar():
+                    tmt.getWrite(k).charAt(0));
+                    configuration.getTapes()[k].moveHead(tmt.getDirection(k));
+                    list.add(new TMConfiguration(tmt.getToState(), null, configuration.getTapes(), myFilters));
+                } 
+            }
+            else{ //only do variable assignments for the one-tape Turing machine...
 
             //do necessary variable assignments
             String st = tmt.getRead(0);
@@ -319,6 +329,7 @@ outer:  while (true){
             configuration.getTapes()[0].moveHead(tmt.getDirection(0));
             list.add(new TMConfiguration(tmt.getToState(), null, configuration.getTapes(), myFilters)); //no going back - we are in a deterministic world. If you freeze, then you will not go forward either.
 
+            }
         }
         else{
 
