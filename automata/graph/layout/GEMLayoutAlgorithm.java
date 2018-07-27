@@ -31,6 +31,7 @@ import java.util.Set;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
+import automata.graph.layout.GEMLayoutAlgorithm.Record;
 
 /**
  * Implements the GEM algorithm, by Arne Frick, Andreas Ludwig, and Heiko
@@ -67,7 +68,7 @@ public class GEMLayoutAlgorithm extends LayoutAlgorithm {
 	}
 
 	
-	public void layout(Graph graph, Set isovertices) {
+	public void layout(Graph graph, Set<Object> isovertices) {
 		if (isovertices == null)
 			isovertices = EMPTY_SET;
 		Object[] vArray = graph.vertices();
@@ -98,7 +99,7 @@ public class GEMLayoutAlgorithm extends LayoutAlgorithm {
 		double[] c = new double[] { 0.0, 0.0 };
 
 		// Initialize the record for each vertex.
-		records = new HashMap();
+		records = new HashMap<Object, Record>();
 		for (int i = 0; i < vArray.length; i++) {
 			Record r = new Record();
 			r.point = graph.pointForVertex(vArray[i]);
@@ -109,7 +110,7 @@ public class GEMLayoutAlgorithm extends LayoutAlgorithm {
 		}
 
 		// Iterate until done.
-		ArrayList vertices = new ArrayList();
+		ArrayList<Object> vertices = new ArrayList<>();
 		for (int i = 0; i < Rmax && Tglobal > Tmin; i++) {
 			if (vertices.isEmpty()) {
 				vertices = getMovableVertices(graph, isovertices);
@@ -188,11 +189,11 @@ public class GEMLayoutAlgorithm extends LayoutAlgorithm {
 
 	private static final Random RANDOM = new Random();
 
-	private Map records;
+	private Map<Object, Record> records;
 
-	private static final Set EMPTY_SET = new HashSet();
+	private static final Set<Object> EMPTY_SET = new HashSet<>();
 
-	private static class Record {
+	public static class Record {
 		Point2D point = new Point2D.Double();
 
 		double[] lastImpulse = { 0.0, 0.0 };

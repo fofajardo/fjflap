@@ -25,6 +25,8 @@ import java.awt.event.*;
 import java.lang.ref.*;
 import javax.swing.*;
 import javax.swing.event.*;
+
+import gui.TextFieldSizeSlider;
 import regular.*;
 
 /**
@@ -35,6 +37,11 @@ import regular.*;
  */
 
 public class EditorPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new editor pane for a given regular expression.
 	 * 
@@ -71,6 +78,8 @@ public class EditorPane extends JPanel {
 
 		add(new JLabel("Edit the regular expression below:"), c);
 		add(field, c);
+		add(new TextFieldSizeSlider(field, JSlider.HORIZONTAL, "Input Field Text Size (For optimiztion, adjust the size of "
+				+ "this window after resizing the text field)"), c);
 	}
 
 	/**
@@ -98,8 +107,8 @@ public class EditorPane extends JPanel {
 	};
 
 	/** The reference object. */
-	private Reference ref = new WeakReference(null) {
-		public Object get() {
+	private Reference<String> ref = new WeakReference<String>(null) {
+		public String get() {
 			return field.getText();
 		}
 	};

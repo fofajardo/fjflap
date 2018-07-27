@@ -46,6 +46,11 @@ import automata.turing.TuringMachine;
 
 public class InputTableModel extends GrowableTableModel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * This instantiates an <CODE>InputTableModel</CODE>.
 	 * 
 	 * @param automaton
@@ -257,7 +262,7 @@ public class InputTableModel extends GrowableTableModel {
 	 *            the associated configuration, or <CODE>null</CODE> if you
 	 *            wish to not have a configuration associated with a row
 	 */
-	public void setResult(int row, String result, Configuration config, ArrayList comparison, int index) {
+	public void setResult(int row, String result, Configuration config, ArrayList<String> comparison, int index) {
 		int halfway = getInputCount();
         if(isMultiple) halfway++;
         int outNum = 1;
@@ -367,11 +372,11 @@ public class InputTableModel extends GrowableTableModel {
 	/**
 	 * The map of number of inputs (stored as integers) to input table models.
 	 */
-	protected final static Map INPUTS_TO_MODELS = new HashMap();
+	protected final static Map<Integer, InputTableModel> INPUTS_TO_MODELS = new HashMap<>();
 
 	/**
 	 * The map of row to the associated configuration. If this row does not have
 	 * an associated configuration, this map should not hold an entry.
 	 */
-	private final Map rowToAssociatedConfiguration = new HashMap();
+	private final Map<Integer, Configuration> rowToAssociatedConfiguration = new HashMap<>();
 }

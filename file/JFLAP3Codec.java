@@ -51,7 +51,7 @@ public class JFLAP3Codec extends Codec {
 	 * @throws ParseException
 	 *             if there was a problem reading the file
 	 */
-	public Serializable decode(File file, Map parameters) {
+	public Serializable decode(File file, Map<?, ?> parameters) {
 		if (file.getName().endsWith(GRAMMAR_SUFFIX))
 			return readGrammar(file);
 		if (file.getName().endsWith(REGULAR_EXPRESSION_SUFFIX))
@@ -79,6 +79,7 @@ public class JFLAP3Codec extends Codec {
 					continue;
 				rstring = line;
 			}
+			reader.close();
 		} catch (FileNotFoundException e) {
 			throw new ParseException("Could not find file " + file.getName()
 					+ "!");
@@ -144,6 +145,7 @@ public class JFLAP3Codec extends Codec {
 				return readPDA(reader);
 			if (line.equals(TURING_MACHINE_CODE))
 				return readTM(reader);
+			reader.close();
 			throw new ParseException("Unknown machine type " + line + "!");
 		} catch (NullPointerException e) {
 			throw new ParseException("Unexpected end of file!");
@@ -425,7 +427,7 @@ public class JFLAP3Codec extends Codec {
 	 * @throws EncodeException
 	 *             if there was a problem writing the file
 	 */
-	public File encode(Serializable structure, File file, Map parameters) {
+	public File encode(Serializable structure, File file, Map<?, ?> parameters) {
 		return file;
 	}
 

@@ -48,6 +48,11 @@ import javax.swing.JOptionPane;
 
 public class ConvertRegularGrammarToFSA extends GrammarAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>GrammarOutputAction</CODE>.
 	 * 
 	 * @param environment
@@ -80,7 +85,7 @@ public class ConvertRegularGrammarToFSA extends GrammarAction {
 		convert.createStatesForConversion(grammar, fsa);
 		AutomatonGraph graph = new AutomatonGraph(fsa);
 		// Create the map of productions to transitions.
-		HashMap ptot = new HashMap();
+		HashMap<Production, Transition> ptot = new HashMap<>();
 		Production[] prods = grammar.getProductions();
 		for (int i = 0; i < prods.length; i++) {
 			Transition t = convert.getTransitionForProduction(prods[i]);

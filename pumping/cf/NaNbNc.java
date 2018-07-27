@@ -34,7 +34,12 @@ import pumping.*;
  */
 public class NaNbNc extends ContextFreePumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "w element_of {a, b, c}* : na(w) < nb(w) < nc(w)";
     }

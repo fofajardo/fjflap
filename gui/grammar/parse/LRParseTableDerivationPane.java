@@ -24,6 +24,7 @@ import automata.fsa.FiniteStateAutomaton;
 import grammar.Grammar;
 import grammar.parse.*;
 import gui.SplitPaneFactory;
+import gui.TableTextSizeSlider;
 import gui.editor.*;
 import gui.environment.GrammarEnvironment;
 import gui.grammar.GrammarTable;
@@ -32,6 +33,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
+import java.util.*;
 
 /**
  * This is the view for the derivation of a LR parse table from a grammar.
@@ -40,6 +42,11 @@ import javax.swing.*;
  */
 
 public class LRParseTableDerivationPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new derivation pane for a grammar environment.
 	 * 
@@ -51,7 +58,7 @@ public class LRParseTableDerivationPane extends JPanel {
 		Grammar g = environment.getGrammar();
 		augmentedGrammar = Operations.getAugmentedGrammar(g);
         if(augmentedGrammar == null) return;
-		JPanel right = new JPanel(new BorderLayout());
+		right = new JPanel(new BorderLayout());
 
 		// right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
 
@@ -62,6 +69,7 @@ public class LRParseTableDerivationPane extends JPanel {
 		FirstFollowTable fftable = new FirstFollowTable(g);
 		fftable.getColumnModel().getColumn(0).setPreferredWidth(30);
 		right.add(new JScrollPane(fftable));
+		right.add(new TableTextSizeSlider(fftable, JSlider.VERTICAL), BorderLayout.EAST);
 		fftable.getFFModel().setCanEditFirst(true);
 		fftable.getFFModel().setCanEditFollow(true);
 
@@ -81,10 +89,20 @@ public class LRParseTableDerivationPane extends JPanel {
 
 		GrammarTable table = new GrammarTable(
 				new gui.grammar.GrammarTableModel(augmentedGrammar) {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 					public boolean isCellEditable(int r, int c) {
 						return false;
 					}
 				}) {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public String getToolTipText(MouseEvent event) {
 				try {
 					int row = rowAtPoint(event.getPoint());
@@ -95,8 +113,12 @@ public class LRParseTableDerivationPane extends JPanel {
 				}
 			}
 		};
+		JPanel grammarHolder = new JPanel();
+		grammarHolder.setLayout(new BorderLayout());
+		grammarHolder.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		grammarHolder.add(table, BorderLayout.CENTER);
 		JSplitPane big = SplitPaneFactory.createSplit(environment, true, 0.3,
-				table, right);
+				grammarHolder, right);
 		this.add(big, BorderLayout.CENTER);
 
 		// Make the tool bar.
@@ -121,9 +143,9 @@ public class LRParseTableDerivationPane extends JPanel {
 	private EditorPane createEditor(final Component panel) {
 		final SelectionDrawer drawer = new SelectionDrawer(dfa);
 		EditorPane editor = new EditorPane(drawer, new ToolBox() {
-			public java.util.List tools(AutomatonPane view,
+			public List<Tool> tools(AutomatonPane view,
 					AutomatonDrawer drawer) {
-				java.util.List tools = new java.util.LinkedList();
+				List<Tool> tools = new LinkedList<>();
 				tools.add(new ArrowNontransitionTool(view, drawer) {
 					public boolean shouldAllowOnlyFinalStateChange() {
 						return true;
@@ -158,9 +180,16 @@ public class LRParseTableDerivationPane extends JPanel {
 	 */
 	void setParseTable(LRParseTable table) {
 		if (tableView == null) {
+			/*tableView = new LRParseTableChooserPane(table);
+			JPanel tableHolder = new JPanel();
+			tableHolder.setLayout(new BorderLayout());
+			tableHolder.add(tableView, BorderLayout.CENTER);
+			tableHolder.add(new TableTextSizeSlider(tableView, JSlider.HORIZONTAL), BorderLayout.SOUTH);
+			split2.setRightComponent(new JScrollPane(tableHolder));
+			// add(new JScrollPane(tableView), BorderLayout.SOUTH);*/
 			tableView = new LRParseTableChooserPane(table);
 			split2.setRightComponent(new JScrollPane(tableView));
-			// add(new JScrollPane(tableView), BorderLayout.SOUTH);
+			right.add(new TableTextSizeSlider(tableView, JSlider.HORIZONTAL), BorderLayout.SOUTH);
 		} else
 			tableView.setModel(table);
 	}
@@ -196,4 +225,6 @@ public class LRParseTableDerivationPane extends JPanel {
 
 	/** The parse table view. */
 	private LRParseTableChooserPane tableView;
+	
+	private JPanel right;
 }

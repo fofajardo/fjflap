@@ -41,11 +41,11 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 	/**
 	 * A list of all movable vertices.
 	 */
-	private ArrayList vertices;
+	private ArrayList<Object> vertices;
 	/**
 	 * A list of all randomly generated points.
 	 */
-	private ArrayList points;
+	private ArrayList<Object> points;
 	/**
 	 * The <code>VertexChain</code> used to minimize edge collision.
 	 */
@@ -74,7 +74,7 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 		super(pSize, vDim, vBuffer);
 	}	
 	
-	public void layout(Graph graph, Set notMoving) {
+	public void layout(Graph graph, Set<Object> notMoving) {
 		//First, check to see that movable vertices exist
 		vertices = getMovableVertices(graph, notMoving);
 		if (graph==null || vertices.size() == 0)
@@ -104,7 +104,7 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 	private void assignPointsAndVertices() {
 		double x, y;		
 		Random random = new Random();				
-		points = new ArrayList();		
+		points = new ArrayList<>();		
 		for (int i=0; i<vertices.size(); i++) {			
 			x = random.nextDouble() * (size.getWidth() - vertexBuffer * 2);
 			y = random.nextDouble() * (size.getHeight() - vertexBuffer * 2);
@@ -119,10 +119,10 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 	 */
 	private void lessenVertexOverlap() {				
 		//First, sort the vertices by their x and y values
-		ArrayList xOrder, yOrder;				
-		xOrder = new ArrayList();   yOrder = new ArrayList();
+		ArrayList<Object> xOrder, yOrder;				
+		xOrder = new ArrayList<>();   yOrder = new ArrayList<>();
 		xOrder.addAll(points);      yOrder.addAll(points);
-		Collections.sort(xOrder, new Comparator() {			
+		Collections.sort(xOrder, new Comparator<Object>() {			
 			public int compare(Object o1, Object o2) {				
 				if (((Point2D) o1).getX() == ((Point2D) o2).getX())
 					return 0;
@@ -131,7 +131,7 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 				else
 					return -1;
 		}});
-		Collections.sort(yOrder, new Comparator() {			
+		Collections.sort(yOrder, new Comparator<Object>() {			
 			public int compare(Object o1, Object o2) {				
 				if (((Point2D) o1).getY() == ((Point2D) o2).getY())
 					return 0;
@@ -169,14 +169,14 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 	 * that the vertices assigned to them will spiral toward the center as one progresses through the chain.
 	 */
 	private void findCorrectPointOrder() {		
-		ArrayList notProcessedPoints, newPointOrder;
+		ArrayList<Object> notProcessedPoints, newPointOrder;
 		Point2D current, anchor, minPoint;
 		double currentTheta, minTheta, anchorTheta;
 		
 		anchor = new Point2D.Double(0,0);
 		anchorTheta = 0;		
-		newPointOrder = new ArrayList();
-		notProcessedPoints = new ArrayList();		
+		newPointOrder = new ArrayList<>();
+		notProcessedPoints = new ArrayList<>();		
 		notProcessedPoints.addAll(points);
 		
 		//Find the angle of all points relative to the last point placed and "anchorTheta".  Then place

@@ -74,7 +74,11 @@ public class MealyTransitionCreator extends TableTransitionCreator
         final MealyTransition t = (MealyTransition) transition;
         return new AbstractTableModel()
             {
-                String s[] = new String[] {t.getLabel(), t.getOutput()};
+                /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				String s[] = new String[] {t.getLabel(), t.getOutput()};
                 public Object getValueAt(int r, int c)          {return s[c];}
                 public void setValueAt(Object o, int r, int c)  {s[c] = (String) o;}
                 public boolean isCellEditable(int r, int c)     {return true;}

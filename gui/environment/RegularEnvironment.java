@@ -32,6 +32,11 @@ import regular.ExpressionChangeEvent;
 
 public class RegularEnvironment extends Environment {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates an <CODE>RegularEnvironment</CODE> for the given regular
 	 * expression.
 	 * 

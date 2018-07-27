@@ -30,6 +30,11 @@ import pumping.RegularPumpingLemma;
  */
 public class BBABAnAn extends RegularPumpingLemma {		
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getHTMLTitle() 
     {
         return "<i>bba(ba)<sup>n</sup>a<sup>n-1</sup></i>";

@@ -76,9 +76,9 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 		hierarchical = hier;
 	}
 	
-	public void layout(Graph g, Set notMoving) {
+	public void layout(Graph g, Set<Object> notMoving) {
 		graph = g;
-		ArrayList vertices = getMovableVertices(graph, notMoving);
+		ArrayList<Object> vertices = getMovableVertices(graph, notMoving);
 		if (graph==null || vertices.size() == 0)
 			return;
 		
@@ -94,7 +94,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 			if (!(graph instanceof AutomatonDirectedGraph))
 				return;
 			final AutomatonDirectedGraph adg = (AutomatonDirectedGraph) graph;			
-			Collections.sort(vertices, new Comparator()	{			
+			Collections.sort(vertices, new Comparator<Object>()	{			
 				public int compare(Object o1, Object o2) {					 
 					if (adg.toDegree(o1, true) == adg.toDegree(o2, true))
 						return 0;
@@ -105,7 +105,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 			}});
 		}
 		else
-			Collections.sort(vertices, new Comparator() {
+			Collections.sort(vertices, new Comparator<Object>() {
 				public int compare(Object o1, Object o2) {				
 					if (graph.degree(o1) == graph.degree(o2))
 						return 0;
@@ -116,7 +116,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 			}});					
 		
 		// Finally, add the vertices to levels and adjust them so all vertices are on the screen
-		ArrayList notPlaced = new ArrayList();		
+		ArrayList<Object> notPlaced = new ArrayList<>();		
 		notPlaced.addAll(vertices);
 		Level firstLevel, counter;
 		firstLevel = new Level();		
@@ -143,7 +143,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 		/**
 		 * The list of vertices in this level.
 		 */
-		public ArrayList vertices;
+		public ArrayList<Object> vertices;
 		/**
 		 * The next level in the hierarchy.
 		 */
@@ -153,7 +153,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 		 * The constructor.
 		 */
 		public Level() {
-			vertices = new ArrayList();
+			vertices = new ArrayList<>();
 			nextLevel = null;
 		}
 		
@@ -164,7 +164,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 		 * 
 		 * @param notPlaced
 		 */
-		public void processChildren(ArrayList notPlaced) {
+		public void processChildren(ArrayList<Object> notPlaced) {
 			VertexChain chain, lastChain;
 			lastChain = null;
 						

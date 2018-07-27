@@ -23,7 +23,7 @@ package gui.editor;
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * This is a special <code>ToolBox</code> for Mealy machines
@@ -49,9 +49,9 @@ public class MealyToolBox implements ToolBox
      * view
      * @return a list of <CODE>Tool</CODE> objects.
      */
-    public List tools(AutomatonPane view, AutomatonDrawer drawer) 
+    public List<Tool> tools(AutomatonPane view, AutomatonDrawer drawer) 
     {
-        List list = new java.util.ArrayList();
+        List<Tool> list = new ArrayList<>();
         list.add(new MealyArrowTool(view, drawer));
         list.add(new StateTool(view, drawer));
         list.add(new TransitionTool(view, drawer));

@@ -22,6 +22,7 @@ package automata.fsa;
 
 import automata.Automaton;
 
+
 /**
  * This subclass of <CODE>Automaton</CODE> is specifically for a definition of
  * a regular Finite State Automaton.
@@ -30,6 +31,11 @@ import automata.Automaton;
  */
 
 public class FiniteStateAutomaton extends Automaton {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Creates a finite state automaton with no states and no transitions.
 	 */

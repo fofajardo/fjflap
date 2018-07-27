@@ -35,6 +35,11 @@ import automata.Automaton;
 
 public abstract class AutomatonAction extends RestrictedAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>AutomatonAction</CODE>.
 	 * 
 	 * @param string

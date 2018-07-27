@@ -23,6 +23,7 @@ package gui.grammar.parse;
 import grammar.Grammar;
 import grammar.Production;
 import grammar.parse.*;
+import gui.TextFieldSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.sim.multiple.InputTableModel;
 import gui.tree.*;
@@ -41,6 +42,10 @@ import javax.swing.tree.*;
 
 public class TMBruteParsePane extends BruteParsePane {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Grammar myTrimmedGrammar;
 	/**
 	 * Instantiates a new brute force parse pane.
@@ -93,10 +98,10 @@ public class TMBruteParsePane extends BruteParsePane {
 		// panel.add(startButton, c);
 
 		panel.add(progress, c);
+		panel.add(new TextFieldSizeSlider(inputField, JSlider.HORIZONTAL, "Input Field Text Size"), c);
 
 		bigger.add(panel, BorderLayout.CENTER);
 		bigger.add(initInputToolbar(), BorderLayout.NORTH);
-
 		return bigger;
 	}
 

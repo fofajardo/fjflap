@@ -27,6 +27,7 @@ import gui.SplitPaneFactory;
 import gui.action.GrammarTransformAction;
 import gui.editor.ArrowNontransitionTool;
 import gui.editor.EditorPane;
+import gui.editor.Tool;
 import gui.editor.ToolBox;
 import gui.editor.TransitionTool;
 import gui.environment.FrameFactory;
@@ -43,8 +44,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
@@ -65,6 +65,11 @@ import javax.swing.event.ListSelectionListener;
  */
 
 public class UselessPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new useless production removing pane.
 	 * 
@@ -112,9 +117,9 @@ public class UselessPane extends JPanel {
 		// Sets up the editor pane.
 		vdgDrawer = new SelectionDrawer(controller.vdg);
 		vdgEditor = new EditorPane(vdgDrawer, new ToolBox() {
-			public java.util.List tools(AutomatonPane view,
+			public List<Tool> tools(AutomatonPane view,
 					AutomatonDrawer drawer) {
-				java.util.List t = new LinkedList();
+				List<Tool> t = new LinkedList<>();
 				t.add(new ArrowNontransitionTool(view, drawer));
 				t.add(new TransitionTool(view, drawer));
 				return t;
@@ -154,6 +159,11 @@ public class UselessPane extends JPanel {
 	 */
 	private GrammarTable initGrammarTable() {
 		grammarTable = new GrammarTable(new GrammarTableModel(grammar) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int r, int c) {
 				return false;
 			}
@@ -293,18 +303,33 @@ public class UselessPane extends JPanel {
 
 	// These are general controls.
 	AbstractAction doStepAction = new AbstractAction("Do Step") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doStep();
 		}
 	};
 
 	AbstractAction doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doAll();
 		}
 	};
 
 	AbstractAction proceedAction = new AbstractAction("Proceed") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			Grammar g = getGrammar();
 			if (g == null) {
@@ -319,6 +344,11 @@ public class UselessPane extends JPanel {
 	};
 
 	AbstractAction exportAction = new AbstractAction("Export") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			Grammar g = getGrammar();
 			if (g == null) {
@@ -345,6 +375,11 @@ public class UselessPane extends JPanel {
 
 	/** The editing grammar table mode. */
 	GrammarTableModel editingGrammarModel = new GrammarTableModel() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public boolean isCellEditable(int r, int c) {
 			return false;
 		}
@@ -355,6 +390,11 @@ public class UselessPane extends JPanel {
 
 	/** The delete action for deleting rows. */
 	AbstractAction deleteAction = new AbstractAction("Delete") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			deleteActivated();
 		}

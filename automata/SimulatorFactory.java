@@ -42,8 +42,16 @@ public class SimulatorFactory {
 			return new automata.fsa.FSAStepWithClosureSimulator(automaton);
 		else if (automaton instanceof automata.pda.PushdownAutomaton)
 			return new automata.pda.PDAStepWithClosureSimulator(automaton);
-		else if (automaton instanceof automata.turing.TuringMachine)
-			return new automata.turing.TMSimulator(automaton);
+		else if (automaton instanceof automata.turing.TuringMachine) {
+			NondeterminismDetector d = NondeterminismDetectorFactory.getDetector(automaton);
+            State[] nd = d.getNondeterministicStates(automaton);
+            if(nd.length > 0) {
+            		return new automata.turing.NDTMSimulator(automaton);
+            } else {
+            		return new automata.turing.TMSimulator(automaton);
+            }
+		}
+			
         /*
          * Check for Moore must take place before check for Mealy because Moore
          * is a subclass of Mealy.

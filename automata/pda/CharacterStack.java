@@ -30,6 +30,11 @@ import java.io.Serializable;
 
 public class CharacterStack implements Serializable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates an empty character stack.
 	 */
 	public CharacterStack() {

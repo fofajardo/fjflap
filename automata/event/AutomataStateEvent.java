@@ -40,6 +40,11 @@ import automata.State;
 
 public class AutomataStateEvent extends EventObject {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>AutomataStateEvent</CODE>.
 	 * 
 	 * @param auto

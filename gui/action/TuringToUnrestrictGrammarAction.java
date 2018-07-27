@@ -27,6 +27,7 @@ import gui.grammar.automata.TuringConvertController;
 import gui.viewer.SelectionDrawer;
 import automata.Automaton;
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * Class for converting Turing Machine to Unrestricted Grammar
@@ -34,6 +35,11 @@ import automata.turing.TuringMachine;
  *
  */
 public class TuringToUnrestrictGrammarAction extends ConvertAutomatonToGrammarAction{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public TuringToUnrestrictGrammarAction(AutomatonEnvironment automatonEnvironment) {
 		super("Convert to Unrestricted Grammar", automatonEnvironment);
@@ -58,7 +64,17 @@ public class TuringToUnrestrictGrammarAction extends ConvertAutomatonToGrammarAc
 	}
 
 	public static boolean isApplicable(Object object) {
-		return object instanceof TuringMachine;
-	}
+		if (object instanceof TuringMachineBuildingBlocks) {
+			return false;   //buildingblocks TM
+		}
+		if (object instanceof TuringMachine) {
+			if (((TuringMachine) object).tapes() == 1) {
+				return true;
+			} else {
+				return false;   //multi-tape TM
+			}
+		}
+		return false;   //not a TM
+	} 
 
 }

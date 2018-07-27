@@ -40,6 +40,11 @@ import javax.swing.JPanel;
  */
 
 public class LambdaHighlightAction extends AutomatonAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public LambdaHighlightAction(Automaton automaton, Environment environment) {
 		super("Highlight "+Universe.curProfile.getEmptyString()+"-Transitions", null);
 		this.automaton = automaton;
@@ -51,7 +56,7 @@ public class LambdaHighlightAction extends AutomatonAction {
 	 */
 	public void actionPerformed(ActionEvent event) {
 		Transition[] t = automaton.getTransitions();
-		Set lambdas = new HashSet();
+		Set<Transition> lambdas = new HashSet<>();
 		LambdaTransitionChecker checker = LambdaCheckerFactory
 				.getLambdaChecker(automaton);
 		for (int i = 0; i < t.length; i++)
@@ -60,7 +65,7 @@ public class LambdaHighlightAction extends AutomatonAction {
 
 		// Create the selection drawer thingie.
 		SelectionDrawer as = new SelectionDrawer(automaton);
-		Iterator it = lambdas.iterator();
+		Iterator<Transition> it = lambdas.iterator();
 		while (it.hasNext()) {
 			Transition lt = (Transition) it.next();
 			as.addSelected(lt);
@@ -77,6 +82,11 @@ public class LambdaHighlightAction extends AutomatonAction {
 	 * A class that exists to make integration with the help system feasible.
 	 */
 	private class LambdaPane extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public LambdaPane(AutomatonPane ap) {
 			super(new BorderLayout());
 			add(ap, BorderLayout.CENTER);

@@ -24,6 +24,11 @@ import javax.swing.tree.*;
 
 class UnrestrictedTreeNode extends DefaultMutableTreeNode {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a new unrestricted tree node.
 	 * 
 	 * @param text

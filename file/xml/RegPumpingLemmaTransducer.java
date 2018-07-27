@@ -24,6 +24,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import pumping.*;
 
@@ -90,7 +92,7 @@ public class RegPumpingLemmaTransducer extends PumpingLemmaTransducer
         elem.appendChild(createElement(doc, Y_NAME, null, "" + pl.getY().length()));
         
         //Encode the list of attempts.
-        ArrayList attempts = pl.getAttempts();
+        ArrayList<String> attempts = pl.getAttempts();
         if(attempts != null && attempts.size() > 0)        
             for(int i = 0; i < attempts.size(); i++)
                 elem.appendChild(createElement(doc, ATTEMPT, null, (String)attempts.get(i)));

@@ -40,6 +40,11 @@ import javax.swing.table.TableModel;
  */
 
 public class HighlightTable extends JTable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public HighlightTable() {
 	}
 
@@ -99,7 +104,7 @@ public class HighlightTable extends JTable {
 	 */
 	public void highlight(int[][] rc,
 			TableHighlighterRendererGenerator generator) {
-		highlightRenderers = new HashMap();
+		highlightRenderers = new HashMap<Integer, TableCellRenderer>();
 		for (int i = 0; i < rc.length; i++)
 			highlight(rc[i][0], rc[i][1], generator);
 	}
@@ -121,7 +126,7 @@ public class HighlightTable extends JTable {
 	public void highlight(int row, int column,
 			TableHighlighterRendererGenerator generator) {
 		if (highlightRenderers == null)
-			highlightRenderers = new HashMap();
+			highlightRenderers = new HashMap<>();
 		Integer in = new Integer(singleIndex(row, column));
 		highlightRenderers.put(in, generator.getRenderer(row, column));
 		repaint();
@@ -181,5 +186,5 @@ public class HighlightTable extends JTable {
 	};
 
 	/** The mapping of single indices to their respective renderers. */
-	private Map highlightRenderers = new HashMap();
+	private Map<Integer, TableCellRenderer> highlightRenderers = new HashMap<>();
 }

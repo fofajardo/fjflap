@@ -152,7 +152,11 @@ public class TMConfiguration extends Configuration implements Cloneable {
     private AcceptanceFilter[] myFilters; //constructed outside and passed in in the constructor. //Constructed once and passed to multiple people.
 
     //MERLIN MERLIN MERLIN MERLIN MERLIN//
-    private boolean isHalted = false; //this is a special flag which is checked by the accept by halt. The first time that step-configuration method of TMSimulator cannot go forth, it will set this flag, and return the thing that it was handed. The second time, it will see this flag, and return an empty list to indicate failure, if the configuration was not previously accepted by the filter (that is, if the filter was not activated)
+    private boolean isHalted = false; 
+//    this is a special flag which is checked by the accept by halt. The first time 
+//    that step-configuration method of TMSimulator cannot go forth, it will set this flag, and return the thing that it was handed. 
+//    	The second time, it will see this flag, and return an empty list to indicate failure, if the configuration was not previously 
+//    	accepted by the filter (that is, if the filter was not activated)
 
     public boolean isHalted(){
         return isHalted;

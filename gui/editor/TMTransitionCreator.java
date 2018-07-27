@@ -41,6 +41,7 @@ import automata.State;
 import automata.Transition;
 import automata.turing.TMTransition;
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 import debug.EDebug;
 
 /**
@@ -136,6 +137,11 @@ public class TMTransitionCreator extends TableTransitionCreator {
 	protected TableModel createModel(Transition transition) {
 		final TMTransition t = (TMTransition) transition;
 		return new AbstractTableModel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Object getValueAt(int row, int column) {
 				return s[row][column];
 			}
@@ -183,9 +189,14 @@ public class TMTransitionCreator extends TableTransitionCreator {
 		if (!blockTransition) {
 			TableColumn directionColumn = table.getColumnModel().getColumn(2);
 			directionColumn.setCellEditor(new DefaultCellEditor(BOX) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public Component getTableCellEditorComponent(JTable table,
 						Object value, boolean isSelected, int row, int column) {
-					final JComboBox c = (JComboBox) super
+					final JComboBox<?> c = (JComboBox<?>) super
 							.getTableCellEditorComponent(table, value,
 									isSelected, row, column);
 					InputMap imap = c.getInputMap();
@@ -262,15 +273,20 @@ public class TMTransitionCreator extends TableTransitionCreator {
 	private static String[] DIRS = new String[] { "R", "S", "L" }; //made this non-static to allow for switching option
 
 	/** The direction field combo box. */
-	private static JComboBox BOX = new JComboBox(DIRS);
+	private static JComboBox<String> BOX = new JComboBox<>(DIRS);
 
 	/** The array of keystrokes for the direction field. */
 	private static KeyStroke[] STROKES;
 
 	/** The action for the strokes for the direction field. */
 	private static final Action CHANGE_ACTION = new AbstractAction() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
-			JComboBox box = (JComboBox) e.getSource();
+			JComboBox<?> box = (JComboBox<?>) e.getSource();
 			box.setSelectedItem(e.getActionCommand().toUpperCase());
 		}
 	};

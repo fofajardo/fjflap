@@ -54,6 +54,7 @@ import automata.event.AutomataNoteEvent;
 import automata.event.AutomataNoteListener;
 import automata.mealy.MooreMachine;
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 
 import gui.viewer.AutomatonPane;
 
@@ -73,13 +74,18 @@ import gui.viewer.AutomatonPane;
 
 public class Automaton implements Serializable, Cloneable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates an instance of <CODE>Automaton</CODE>. The created instance
 	 * has no states and no transitions.
 	 */
 	public Automaton() {
-		states = new HashSet();
-		transitions = new HashSet();
-		finalStates = new HashSet();
+		states = new HashSet<State>();
+		transitions = new HashSet<>();
+		finalStates = new HashSet<State>();
 		initialState = null;
 	}
 
@@ -97,7 +103,8 @@ public class Automaton implements Serializable, Cloneable {
 //			if (this instanceof TuringMachine)
 //				a = new TuringMachine(((TuringMachine) this).tapes());
 //			else
-				a = (Automaton) getClass().newInstance();
+				//a = (Automaton) getClass().newInstance();
+				a = (Automaton)  getClass().getDeclaredConstructor().newInstance();
 		} catch (Throwable e) {
 			// Well golly, we're sure screwed now!
 			System.err.println("Warning: clone of automaton failed!");
@@ -107,8 +114,8 @@ public class Automaton implements Serializable, Cloneable {
 		
 		
 		// Copy over the states.
-		HashMap map = new HashMap(); // Old states to new states.
-		Iterator it = states.iterator();
+		HashMap<State, State> map = new HashMap<>(); // Old states to new states.
+		Iterator<State> it = states.iterator();
 		while (it.hasNext()) {
 			State state = (State) it.next();
 			State nstate = new State(state.getID(),
@@ -174,8 +181,8 @@ public class Automaton implements Serializable, Cloneable {
 		
 		dest.clear();
 		// Copy over the states.
-		HashMap map = new HashMap(); // Old states to new states.
-		Iterator it = src.states.iterator();
+		HashMap<State, State> map = new HashMap<>(); // Old states to new states.
+		Iterator<State> it = src.states.iterator();
 		while (it.hasNext()) {
 			State state = (State) it.next();
 			State nstate = new State(state.getID(),
@@ -238,7 +245,7 @@ public class Automaton implements Serializable, Cloneable {
 		Transition[] toReturn = (Transition[]) transitionArrayFromStateMap
 				.get(from);
 		if (toReturn == null) {
-			List list = (List) transitionFromStateMap.get(from);
+			List<Transition> list = (List<Transition>) transitionFromStateMap.get(from);
 			toReturn = (Transition[]) list.toArray(new Transition[0]);
 			transitionArrayFromStateMap.put(from, toReturn);
 		}
@@ -258,7 +265,7 @@ public class Automaton implements Serializable, Cloneable {
 		Transition[] toReturn = (Transition[]) transitionArrayToStateMap
 				.get(to);
 		if (toReturn == null) {
-			List list = (List) transitionToStateMap.get(to);
+			List<Transition> list = (List<Transition>) transitionToStateMap.get(to);
 			toReturn = (Transition[]) list.toArray(new Transition[0]);
 			transitionArrayToStateMap.put(to, toReturn);
 		}
@@ -278,7 +285,7 @@ public class Automaton implements Serializable, Cloneable {
 	 */
 	public Transition[] getTransitionsFromStateToState(State from, State to) {
 		Transition[] t = getTransitionsFromState(from);
-		ArrayList list = new ArrayList();
+		ArrayList<Transition> list = new ArrayList<Transition>();
 		for (int i = 0; i < t.length; i++)
 			if (t[i].getToState() == to)
 				list.add(t[i]);
@@ -312,11 +319,11 @@ public class Automaton implements Serializable, Cloneable {
 			return;
         if(trans.getToState() == null || trans.getFromState() == null) return;
 		transitions.add(trans);
-        if(transitionFromStateMap == null) transitionFromStateMap = new HashMap();
-		List list = (List) transitionFromStateMap.get(trans.getFromState());
+        if(transitionFromStateMap == null) transitionFromStateMap = new HashMap<>();
+		List<Transition> list = (List<Transition>) transitionFromStateMap.get(trans.getFromState());
 		list.add(trans);
-        if(transitionToStateMap == null) transitionToStateMap = new HashMap();
-		list = (List)transitionToStateMap.get(trans.getToState()) ;
+        if(transitionToStateMap == null) transitionToStateMap = new HashMap<>();
+		list = (List<Transition>)transitionToStateMap.get(trans.getToState()) ;
 		list.add(trans);
 		transitionArrayFromStateMap.remove(trans.getFromState());
 		transitionArrayToStateMap.remove(trans.getToState());
@@ -352,9 +359,9 @@ public class Automaton implements Serializable, Cloneable {
 					"Replacing transition that not already in the automaton!");
 		}
 		transitions.add(newTrans);
-		List list = (List) transitionFromStateMap.get(oldTrans.getFromState());
+		List<Transition> list = (List<Transition>) transitionFromStateMap.get(oldTrans.getFromState());
 		list.set(list.indexOf(oldTrans), newTrans);
-		list = (List) transitionToStateMap.get(oldTrans.getToState());
+		list = (List<Transition>) transitionToStateMap.get(oldTrans.getToState());
 		list.set(list.indexOf(oldTrans), newTrans);
 		transitionArrayFromStateMap.remove(oldTrans.getFromState());
 		transitionArrayToStateMap.remove(oldTrans.getToState());
@@ -371,9 +378,9 @@ public class Automaton implements Serializable, Cloneable {
 	 */
 	public void removeTransition(Transition trans) {
 		transitions.remove(trans);
-		List l = (List) transitionFromStateMap.get(trans.getFromState());
+		List<Transition> l = (List<Transition>) transitionFromStateMap.get(trans.getFromState());
 		l.remove(trans);
-		l = (List) transitionToStateMap.get(trans.getToState());
+		l = (List<Transition>) transitionToStateMap.get(trans.getToState());
 		l.remove(trans);
 		// Remove cached arrays.
 		transitionArrayFromStateMap.remove(trans.getFromState());
@@ -395,8 +402,8 @@ public class Automaton implements Serializable, Cloneable {
 	 * @param point
 	 * @return
 	 */
-	public static List makeListFromArray(Object[] array) {
-		List list = new ArrayList();
+	public static List<Object> makeListFromArray(Object[] array) {
+		List<Object> list = new ArrayList<>();
 		for (int k = 0; k < array.length; k++) {
 			list.add(array[k]);
 		}
@@ -439,10 +446,10 @@ public class Automaton implements Serializable, Cloneable {
 	 * @param state
 	 *            the state to add
 	 */
-	protected final void addState(State state) {
+	public final void addState(State state) {
 		states.add(state);
-		transitionFromStateMap.put(state, new LinkedList());
-		transitionToStateMap.put(state, new LinkedList());
+		transitionFromStateMap.put(state, new LinkedList<Transition>());
+		transitionToStateMap.put(state, new LinkedList<Transition>());
 		cachedStates = null;
 		distributeStateEvent(new AutomataStateEvent(this, state, true, false,
 				false));
@@ -523,7 +530,7 @@ public class Automaton implements Serializable, Cloneable {
 	public State[] getStates() {
 		if (cachedStates == null) {
 			cachedStates = (State[]) states.toArray(new State[0]);
-			Arrays.sort(cachedStates, new Comparator() {
+			Arrays.sort(cachedStates, new Comparator<Object>() {
 				public int compare(Object o1, Object o2) {
 					return ((State) o1).getID() - ((State) o2).getID();
 				}
@@ -546,7 +553,7 @@ public class Automaton implements Serializable, Cloneable {
 		}
 	}
 	
-	public ArrayList getNotes() {
+	public ArrayList<Note> getNotes() {
 		return myNotes;
 	}
 	
@@ -639,7 +646,7 @@ public class Automaton implements Serializable, Cloneable {
 	 *         ID, or <CODE>null</CODE> if no such state exists
 	 */
 	public State getStateWithID(int id) {
-		Iterator it = states.iterator();
+		Iterator<State> it = states.iterator();
 		while (it.hasNext()) {
 			State state = (State) it.next();
 			if (state.getID() == id)
@@ -670,7 +677,7 @@ public class Automaton implements Serializable, Cloneable {
 	 * @return the <CODE>Class</CODE> object that all added transitions should
 	 *         derive from
 	 */
-	protected Class getTransitionClass() {
+	protected Class<Transition> getTransitionClass() {
 		return automata.Transition.class;
 	}
 
@@ -737,7 +744,7 @@ public class Automaton implements Serializable, Cloneable {
 	 *            the event to distribute
 	 */
 	void distributeStateEvent(AutomataStateEvent event) {
-		Iterator it = stateListeners.iterator();
+		Iterator<AutomataStateListener> it = stateListeners.iterator();
 		while (it.hasNext()) {
 			AutomataStateListener listener = (AutomataStateListener) it.next();
 			listener.automataStateChange(event);
@@ -783,7 +790,7 @@ public class Automaton implements Serializable, Cloneable {
 	 *            the event to distribute
 	 */
 	void distributeTransitionEvent(AutomataTransitionEvent event) {
-		Iterator it = transitionListeners.iterator();
+		Iterator<AutomataTransitionListener> it = transitionListeners.iterator();
 		while (it.hasNext()) {
 			AutomataTransitionListener listener = (AutomataTransitionListener) it
 					.next();
@@ -798,7 +805,7 @@ public class Automaton implements Serializable, Cloneable {
 	 *            the event to distribute
 	 */
 	void distributeNoteEvent(AutomataNoteEvent event) {
-		Iterator it = noteListeners.iterator();
+		Iterator<AutomataNoteListener> it = noteListeners.iterator();
 		while (it.hasNext()) {
 			AutomataNoteListener listener = (AutomataNoteListener) it.next();
 			listener.automataNoteChange(event);
@@ -930,7 +937,7 @@ public class Automaton implements Serializable, Cloneable {
 	private EnvironmentFrame myEnvFrame = null;
 
 	/** The collection of states in this automaton. */
-	protected Set states;
+	public Set<State> states;
 
 	/** The cached array of states. */
 	private State[] cachedStates = null;
@@ -945,35 +952,35 @@ public class Automaton implements Serializable, Cloneable {
 	 * The collection of final states in this automaton. This is a subset of the
 	 * "states" collection.
 	 */
-	protected Set finalStates;
+	public Set<State> finalStates;
 
 	/** The initial state. */
 	protected State initialState = null;
 
 	/** The list of transitions in this automaton. */
-	protected Set transitions;
+	protected Set<Object> transitions;
 
 	/**
 	 * A mapping from states to a list holding transitions from those states.
 	 */
-	private HashMap transitionFromStateMap = new HashMap();
+	private HashMap<State, LinkedList<Transition>> transitionFromStateMap = new HashMap<State, LinkedList<Transition>>();
 
 	/**
 	 * A mapping from state to a list holding transitions to those states.
 	 */
-	private HashMap transitionToStateMap = new HashMap();
+	private HashMap<State, LinkedList<Transition>> transitionToStateMap = new HashMap<State, LinkedList<Transition>>();
 
 	/**
 	 * A mapping from states to an array holding transitions from a state. This
 	 * is a sort of cashing.
 	 */
-	private HashMap transitionArrayFromStateMap = new HashMap();
+	private HashMap<State, Transition[]> transitionArrayFromStateMap = new HashMap<State, Transition[]>();
 
 	/**
 	 * A mapping from states to an array holding transitions from a state. This
 	 * is a sort of cashing.
 	 */
-	private HashMap transitionArrayToStateMap = new HashMap();
+	private HashMap<State, Transition[]> transitionArrayToStateMap = new HashMap<State, Transition[]>();
 
 //	/**
 //	 * A mapping from the name of an automaton to the automaton. Used for
@@ -982,7 +989,7 @@ public class Automaton implements Serializable, Cloneable {
 //	private HashMap blockMap = new HashMap();
 	
 
-	private ArrayList myNotes = new ArrayList();
+	private ArrayList<Note> myNotes = new ArrayList<Note>();
 	
 	public Color myColor = new Color(255, 255, 150);
 
@@ -990,34 +997,34 @@ public class Automaton implements Serializable, Cloneable {
 	// Structures related to this object as something that generates
 	// events, in particular as it pertains to the removal and
 	// addition of states and transtions.
-	private transient HashSet transitionListeners = new HashSet();
+	private transient HashSet<AutomataTransitionListener> transitionListeners = new HashSet<AutomataTransitionListener>();
 
-	private transient HashSet stateListeners = new HashSet();
+	private transient HashSet<AutomataStateListener> stateListeners = new HashSet<AutomataStateListener>();
 
-	private transient HashSet noteListeners = new HashSet();
+	private transient HashSet<AutomataNoteListener> noteListeners = new HashSet<AutomataNoteListener>();
 	
 	/**
 	 * Reset all non-transient data structures.
 	 */
-    protected void clear(){
+    public void clear(){
     	
     	
     	
 		
 		
-    	HashSet t = new HashSet(transitions);
+    	HashSet<Object> t = new HashSet<Object>(transitions);
 		for (Object o:t)
 			removeTransition((Transition)o);
-		transitions = new HashSet();
+		transitions = new HashSet<Object>();
 		
 		
-		t = new HashSet(states);
+		t = new HashSet<Object>(states);
 		for (Object o:t)
 			removeState((State)o);
-		states = new HashSet();
+		states = new HashSet<State>();
 		
 		
-		finalStates = new HashSet();
+		finalStates = new HashSet<State>();
 		
 		
 		initialState = null;
@@ -1029,12 +1036,12 @@ public class Automaton implements Serializable, Cloneable {
     
     	 cachedFinalStates = null;
     
-    	transitionFromStateMap = new HashMap();
-    	transitionToStateMap = new HashMap();
+    	transitionFromStateMap = new HashMap<State, LinkedList<Transition>>();
+    	transitionToStateMap = new HashMap<State, LinkedList<Transition>>();
     
-    	transitionArrayFromStateMap = new HashMap();
+    	transitionArrayFromStateMap = new HashMap<State, Transition[]>();
     
-    	transitionArrayToStateMap = new HashMap();
+    	transitionArrayToStateMap = new HashMap<State, Transition[]>();
     
     	
     

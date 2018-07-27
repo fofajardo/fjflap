@@ -27,6 +27,10 @@ package grammar;
 public class ConvertedUnrestrictedGrammar extends Grammar {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean myTuringBool=false;
 	/**
 	 * Every production is all right except those with lambda in the left hand
@@ -54,10 +58,10 @@ public class ConvertedUnrestrictedGrammar extends Grammar {
 	 *             hand side
 	 */
 	public void addProduction(Production production) {
-		if (myProductions.size() == 0
+		/*if (myProductions.size() == 0
 				&& !ProductionChecker.isRestrictedOnLHS(production))
 			throw new IllegalArgumentException(
-					"The first production must be restricted.");
+					"The first production must be restricted.");*/
 		super.addProduction(production);
 	}
 

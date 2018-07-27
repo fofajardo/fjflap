@@ -53,6 +53,11 @@ import automata.pda.PushdownAutomaton;
 
 public class ConvertPDAToGrammarAction extends ConvertAutomatonToGrammarAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>ConvertFSAToGrammarAction</CODE>.
 	 * 
 	 * @param environment
@@ -88,7 +93,7 @@ public class ConvertPDAToGrammarAction extends ConvertAutomatonToGrammarAction {
 		// Are all transitions to the final state okay?
 		Transition[] toFinal = getAutomaton().getTransitionsToState(
 				finalStates[0]);
-		HashSet bad = new HashSet();
+		HashSet<PDATransition> bad = new HashSet<>();
 		for (int i = 0; i < toFinal.length; i++) {
 			PDATransition t = (PDATransition) toFinal[i];
 			if (!t.getStringToPop().equals("Z"))
@@ -96,7 +101,7 @@ public class ConvertPDAToGrammarAction extends ConvertAutomatonToGrammarAction {
 		}
 		if (bad.size() != 0) {
 			drawer.clearSelected();
-			Iterator it = bad.iterator();
+			Iterator<PDATransition> it = bad.iterator();
 			while (it.hasNext())
 				drawer.addSelected((Transition) it.next());
 			messageLabel.setText("Transitions to final must pop only 'Z'.");
@@ -117,7 +122,7 @@ public class ConvertPDAToGrammarAction extends ConvertAutomatonToGrammarAction {
 		}
 		if (bad.size() != 0) {
 			drawer.clearSelected();
-			Iterator it = bad.iterator();
+			Iterator<PDATransition> it = bad.iterator();
 			while (it.hasNext())
 				drawer.addSelected((Transition) it.next());
 			messageLabel.setText("Transitions must pop 1 and push 0 or 2.");

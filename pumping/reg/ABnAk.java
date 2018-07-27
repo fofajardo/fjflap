@@ -32,7 +32,12 @@ import pumping.*;
  */
 public class ABnAk extends RegularPumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "(ab)^n a^k : n > k, k >= 0";
     }

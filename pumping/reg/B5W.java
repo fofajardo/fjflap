@@ -31,6 +31,11 @@ import pumping.RegularPumpingLemma;
  */
 public class B5W extends RegularPumpingLemma {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getTitle() 
 	{
 		return "b^5w: w element_of {ab}* : 2na(w) = 3nb(w)";

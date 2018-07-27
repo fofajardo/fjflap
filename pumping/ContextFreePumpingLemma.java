@@ -34,6 +34,10 @@ import gui.environment.Universe;
 public abstract class ContextFreePumpingLemma extends PumpingLemma implements Serializable, Cloneable
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * The <i>u</i> segment of the <i>w</i>.
      */
     protected String u;

@@ -67,7 +67,7 @@ public class UnreachableStatesDetector {
 	 *         state.
 	 */
 	public State[] getUnreachableStates() {
-		ArrayList list = new ArrayList();
+		ArrayList<State> list = new ArrayList<>();
 		State[] states = myAutomaton.getStates();
 		/** Create nodes for DFS. */
 		initializeNodes(states);

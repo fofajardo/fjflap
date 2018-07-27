@@ -33,6 +33,10 @@ import automata.State;
 
 public class EditBlockPane extends EditorPane {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Instantiates a new editor pane for the given automaton.
 	 * 
 	 * @param automaton

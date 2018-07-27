@@ -82,11 +82,11 @@ public class ConversionController {
 	}
 
 	private void initializeGraph() {
-		Map stateToSet = new HashMap(); // Different...
+		Map<State, Set<State>> stateToSet = new HashMap<>(); // Different...
 		State[] s = answer.getStates();
 		Transition[] t = answer.getTransitions();
 		for (int i = 0; i < s.length; i++) {
-			Set fromNfa = new HashSet(Arrays.asList(getStatesForString(s[i]
+			Set<State> fromNfa = new HashSet<>(Arrays.asList(getStatesForString(s[i]
 					.getLabel(), nfa)));
 			stateToSet.put(s[i], fromNfa);
 			// setToState.put(s[i], fromNfa);
@@ -100,8 +100,8 @@ public class ConversionController {
 
 	public void performFirstLayout() {
 		view.validate();
-		Set isonodes = new HashSet();
-		Set initialSet = (Set) stateToSet.get(dfa.getInitialState());
+		Set<Object> isonodes = new HashSet<>();
+		Set<State> initialSet = (Set<State>) stateToSet.get(dfa.getInitialState());
 		isonodes.add(initialSet);
 		graph.addVertex(initialSet, new Point(0, 0));
 		layout.layout(graph, isonodes);
@@ -116,7 +116,7 @@ public class ConversionController {
 
 	private State[] getStatesForString(String label, Automaton automaton) {
 		StringTokenizer tokenizer = new StringTokenizer(label, " \t\n\r\f,q");
-		ArrayList states = new ArrayList();
+		ArrayList<State> states = new ArrayList<>();
 		while (tokenizer.hasMoreTokens())
 			states.add(automaton.getStateWithID(Integer.parseInt(tokenizer
 					.nextToken())));
@@ -133,7 +133,7 @@ public class ConversionController {
 	 *             if the state registered conflicts with any existing
 	 */
 	private void registerState(State state) {
-		Set set = new HashSet(Arrays.asList(getStatesForString(
+		Set<State> set = new HashSet<>(Arrays.asList(getStatesForString(
 				state.getLabel(), nfa)));
 		State inMap = (State) setToState.get(set);
         EDebug.print(set);
@@ -159,11 +159,11 @@ public class ConversionController {
 	 *            the state to expand
 	 */
 	public void expandState(State state) {
-		List createdStates = converter.expandState(state, nfa, dfa);
+		List<State> createdStates = converter.expandState(state, nfa, dfa);
 		// We want to lay out those states.
 		// First, get the sets of states the new states represent.
-		Set iso = new HashSet(setToState.keySet()), added = new HashSet();
-		Iterator it = createdStates.iterator();
+		Set<Object> iso = new HashSet<>(setToState.keySet()), added = new HashSet<>();
+		Iterator<State> it = createdStates.iterator();
 		while (it.hasNext()) {
 			State dfaState = (State) it.next();
 			registerState(dfaState);
@@ -271,7 +271,7 @@ public class ConversionController {
 	 * This method will expand all states in an automaton.
 	 */
 	public void complete() {
-		final LinkedList stateQueue = new LinkedList();
+		final LinkedList<State> stateQueue = new LinkedList<>();
 		// Add all states to the state queue.
 		stateQueue.addAll(Arrays.asList(dfa.getStates()));
 		// When a state is added to the DFA, make sure we know about it.
@@ -356,8 +356,8 @@ public class ConversionController {
 	 * Maps a set of NFA states to a DFA state. This structure is maintained in
 	 * part through the <CODE>registerState</CODE> method.
 	 */
-	private Map setToState = new HashMap();
+	private Map<Set<State>, State> setToState = new HashMap<>();
 
 	/** Maps a state to a set of NFA states. */
-	private Map stateToSet = new HashMap();
+	private Map<State, Set<State>> stateToSet = new HashMap<>();
 }

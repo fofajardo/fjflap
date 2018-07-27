@@ -31,6 +31,11 @@ package file;
 
 public class ParseException extends RuntimeException {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a generic parse exception.
 	 */
 	public ParseException() {

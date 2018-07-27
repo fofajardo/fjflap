@@ -55,10 +55,10 @@ public class Graph {
 	}
 
 	/** Returns the set of vertices a vertex is adjacent to. */
-	public Set adjacent(Object vertex) {
+	public Set<Object> adjacent(Object vertex) {
 		if (!verticesToNeighbors.containsKey(vertex))
-			verticesToNeighbors.put(vertex, new HashSet());
-		return (Set) verticesToNeighbors.get(vertex);
+			verticesToNeighbors.put(vertex, new HashSet<>());
+		return (Set<Object>) verticesToNeighbors.get(vertex);
 	}
 
 	/** Adds an edge between two vertices. */
@@ -85,8 +85,8 @@ public class Graph {
 
 	/** Removes a vertex. */
 	public void removeVertex(Object vertex) {
-		Set others = adjacent(vertex);
-		Iterator it = others.iterator();
+		Set<Object> others = adjacent(vertex);
+		Iterator<Object> it = others.iterator();
 		while (it.hasNext())
 			adjacent(it.next()).remove(vertex);
 		verticesToNeighbors.remove(vertex);
@@ -148,7 +148,7 @@ public class Graph {
 		return sb.toString();
 	}
 
-	protected Map verticesToPoints = new HashMap();
+	protected Map<Object, Object> verticesToPoints = new HashMap<>();
 
-	protected Map verticesToNeighbors = new HashMap();
+	protected Map<Object, HashSet<Object>> verticesToNeighbors = new HashMap<>();
 }

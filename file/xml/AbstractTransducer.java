@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.Map;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
+import org.w3c.dom.Document;
 
 /**
  * This is an abstract implementation of a transducer that implements very
@@ -91,9 +92,9 @@ public abstract class AbstractTransducer implements Transducer {
 	 *            the node to get the map for
 	 * @return the map from children element names to their textual contents
 	 */
-	protected static Map elementsToText(Node node) {
+	protected static Map<String, String> elementsToText(Node node) {
 		NodeList children = node.getChildNodes();
-		Map e2t = new java.util.HashMap();
+		Map<String, String> e2t = new java.util.HashMap<>();
 		for (int i = 0; i < children.getLength(); i++) {
 			Node c = children.item(i);
 			if (c.getNodeType() != Node.ELEMENT_NODE)
@@ -135,7 +136,7 @@ public abstract class AbstractTransducer implements Transducer {
 	 * @return a new element
 	 */
 	protected static Element createElement(Document document, String tagname,
-			Map attributes, String text) {
+			Map<String, String> attributes, String text) {
 		// Create the new element.
         tagname = tagname.replaceAll("'", "");
         tagname = tagname.replaceAll("&", "");
@@ -149,7 +150,7 @@ public abstract class AbstractTransducer implements Transducer {
 		Element element = document.createElement(tagname);
 		// Set the attributes.
 		if (attributes != null) {
-			Iterator it = attributes.keySet().iterator();
+			Iterator<String> it = attributes.keySet().iterator();
 			while (it.hasNext()) {
 				String name = (String) it.next();
 				String value = (String) attributes.get(name);

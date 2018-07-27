@@ -106,7 +106,7 @@ public class UnitProductionRemover {
 	 * @return all unit productions in <CODE>grammar</CODE>.
 	 */
 	public Production[] getUnitProductions(Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		ProductionChecker pc = new ProductionChecker();
 
 		Production[] productions = grammar.getProductions();
@@ -126,7 +126,7 @@ public class UnitProductionRemover {
 	 * @return all non-unit productions in <CODE>grammar</CODE>.
 	 */
 	public Production[] getNonUnitProductions(Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		ProductionChecker pc = new ProductionChecker();
 
 		Production[] productions = grammar.getProductions();
@@ -268,7 +268,7 @@ public class UnitProductionRemover {
 	 */
 	public String[] getDependencies(String variable, Grammar grammar,
 			VariableDependencyGraph graph) {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		String[] variables = grammar.getVariables();
 		for (int k = 0; k < variables.length; k++) {
 			if (!variable.equals(variables[k])) {
@@ -296,7 +296,7 @@ public class UnitProductionRemover {
 	 */
 	public Production[] getNewProductions(String variable,
 			Production[] oldProductions) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		for (int k = 0; k < oldProductions.length; k++) {
 			list.add(new Production(variable, oldProductions[k].getRHS()));
 		}

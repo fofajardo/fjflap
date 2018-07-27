@@ -33,6 +33,7 @@ import javax.swing.JToolBar;
 
 import automata.fsa.FiniteStateAutomaton;
 import gui.editor.ArrowNontransitionTool;
+import gui.editor.Tool;
 import gui.editor.ToolBox;
 import gui.environment.AutomatonEnvironment;
 import gui.environment.Universe;
@@ -52,6 +53,11 @@ import gui.viewer.SelectionDrawer;
  *
  */
 public class AddTrapStatePane extends JPanel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The environment that holds the automaton. The automaton from the
@@ -90,8 +96,8 @@ public class AddTrapStatePane extends JPanel{
 
 		gui.editor.EditorPane ep = new gui.editor.EditorPane(automatonDrawer,
 				new ToolBox() {
-					public List tools(AutomatonPane view, AutomatonDrawer drawer) {
-						LinkedList tools = new LinkedList();
+					public List<Tool> tools(AutomatonPane view, AutomatonDrawer drawer) {
+						LinkedList<Tool> tools = new LinkedList<>();
 						tools.add(new ArrowNontransitionTool(view, drawer));
 						tools.add(new TrapStateTool(view, drawer,
 										controller));
@@ -105,6 +111,11 @@ public class AddTrapStatePane extends JPanel{
 		
 		bar.addSeparator();
 		bar.add(new JButton(new AbstractAction("Do All") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.doAll();
 			}

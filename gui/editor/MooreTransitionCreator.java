@@ -74,7 +74,11 @@ public class MooreTransitionCreator extends MealyTransitionCreator
         final MooreTransition t = (MooreTransition) transition;
         return new AbstractTableModel()
             {
-                String s[] = new String[] {t.getLabel()};
+                /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				String s[] = new String[] {t.getLabel()};
                 public Object getValueAt(int r, int c)          {return s[c];}
                 public void setValueAt(Object o, int r, int c)  {s[c] = (String) o;}
                 public boolean isCellEditable(int r, int c)     {return true;}

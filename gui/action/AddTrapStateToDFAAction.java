@@ -45,6 +45,11 @@ import automata.fsa.Minimizer;
 public class AddTrapStateToDFAAction extends FSAAction{
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The automaton. */
 	private Automaton automaton;
 

@@ -111,6 +111,54 @@ public class TuringConvertController extends ConvertController {
 		return converter.createProductionsForTransition(transition, myTuringMachine.getFinalStates());
 	}
 	
+	class ProductionComp implements Comparator<Production> {
+		public int compare(Production p1, Production p2) {
+			if ("S".equals(p1.getLHS())) {
+				if (p1.getLHS().equals(p2.getLHS())) {
+					return 0;
+				} else {
+					return 1;
+				}
+			}
+			if ("S".equals(p2.getLHS())) {
+				return -1;
+			} 
+			return p1.getLHS().compareTo(p2.getLHS());			
+		}
+		public boolean equals(Object o) {
+			return false;
+		}
+	}
+
+//	a failed attempt to create a more robust comparator
+//	class ProductionComp implements Comparator<Production> {
+//		public int compare(Production p1, Production p2) {
+//			if ("S".equals(p1.getLHS())) {
+//				if (p1.getLHS().equals(p2.getLHS())) {
+//					return p1.getRHS().length() - p2.getRHS().length();
+//				} else {
+//					return -1;
+//				}
+//			}
+//			if ("S".equals(p2.getLHS())) {
+//				return 1;
+//			}
+//			if ("=".equals(p1.getLHS().substring(0,1))) {
+//				if (!"=".equals(p2.getLHS().substring(0,1))) {
+//					return 1;
+//				}
+//			}
+//			if ("=".equals(p2.getLHS().substring(0,1))){
+//				return -1;
+//			}
+//			int comp = p1.getLHS().compareTo(p2.getLHS());
+//			if (comp != 0) {
+//				return comp;
+//			}
+//			return p1.getLHS().length() - p2.getLHS().length(); 
+//		}
+//	}
+	
 	
 	@Override
 	protected ConvertedUnrestrictedGrammar getGrammar() {
@@ -129,8 +177,11 @@ public class TuringConvertController extends ConvertController {
 		//	production = converter.getSimplifiedProduction(production);
 			productions.add(production);
 		}
-
-		Collections.sort(productions, new Comparator() {
+		
+		Collections.sort(productions, new ProductionComp());
+		
+		/* old comparator
+		 * Collections.sort(productions, new Comparator() {
 			public int compare(Object o1, Object o2) {
 				Production p1 = (Production) o1, p2 = (Production) o2;
 				if ("S".equals(p1.getLHS())) {
@@ -147,7 +198,8 @@ public class TuringConvertController extends ConvertController {
 			public boolean equals(Object o) {
 				return false;
 			}
-		});
+		});*/
+
 		for (int i=0; i<productions.size(); i++)
 		{
 			grammar.addProduction(productions.get(i));
@@ -188,14 +240,15 @@ public class TuringConvertController extends ConvertController {
 							"Conversion Unfinished", JOptionPane.ERROR_MESSAGE);
 			changeSelection();
 			return null;
-		}
+		} 
 		try {
 			ConvertedUnrestrictedGrammar g=getGrammar();
 			ArrayList <Production> prods=new ArrayList <Production>();
 			Production[] temp=g.getProductions();
-			for (int i=0; i<temp.length; i++)
+			for (int i=0; i<temp.length; i++) {
 				prods.add(temp[i]);
-			
+			}
+			//original comparator
 			Collections.sort(prods, new Comparator<Production>(){
 		            public int compare(Production o1, Production o2) {
 		            	if (o1.getLHS().equals("S"))
@@ -203,6 +256,7 @@ public class TuringConvertController extends ConvertController {
 		            	return (o1.getRHS().length()-o2.getRHS().length());
 		            }
 		    });
+
 			ConvertedUnrestrictedGrammar gg=new ConvertedUnrestrictedGrammar();
 			for (int i=0; i<temp.length; i++)
 				temp[i]=prods.get(i);
@@ -216,7 +270,7 @@ public class TuringConvertController extends ConvertController {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Trimming the grammar. Gets rid of variable V(aa) to regular variable "A" or "B"
 	 * NOTE: It is no longer used in this class 

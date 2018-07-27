@@ -31,6 +31,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
+import gui.PanelTextSizeSlider;
+import gui.TextFieldSizeSlider;
 /**
  * This is a brute force parse pane.
  * 
@@ -39,6 +41,11 @@ import javax.swing.tree.*;
 
 public class BruteParsePane extends ParsePane {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BruteParsePane (GrammarEnvironment environment, Grammar g)
 	{
 		super(environment, g);
@@ -56,7 +63,7 @@ public class BruteParsePane extends ParsePane {
 		initView();
 		myModel = model;
 	}
-
+	
 	/**
 	 * Inits a parse table.
 	 * 
@@ -79,9 +86,14 @@ public class BruteParsePane extends ParsePane {
 		c.fill = GridBagConstraints.BOTH;
 
 		c.weightx = 0.0;
+		//JLabel input = new JLabel("Input");
+		//input.setPreferredSize(inputField.getSize());
 		panel.add(new JLabel("Input"), c);
+		inputField.add(new JLabel("Input"));
 		c.weightx = 1.0;
 		c.gridwidth = GridBagConstraints.REMAINDER;
+		//Font font = new Font("Default", Font.PLAIN, 30);
+		//inputField.setFont(font);
 		panel.add(inputField, c);
 		inputField.addActionListener(startAction);
 		// c.weightx = 0.0;
@@ -92,6 +104,7 @@ public class BruteParsePane extends ParsePane {
 		panel.add(progress, c);
 
 		bigger.add(panel, BorderLayout.CENTER);
+		bigger.add(new TextFieldSizeSlider(inputField, JSlider.HORIZONTAL, "Input Field Text Size"), BorderLayout.SOUTH);
 		bigger.add(initInputToolbar(), BorderLayout.NORTH);
 
 		return bigger;
@@ -294,6 +307,11 @@ public class BruteParsePane extends ParsePane {
 
 	/** The pause/resume action. */
 	protected Action pauseResumeAction = new AbstractAction("Pause") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			synchronized (parser) {
 				if (parser == null)
@@ -303,6 +321,6 @@ public class BruteParsePane extends ParsePane {
 				else
 					parser.start();
 			}
-		}
+		} 
 	};
 }

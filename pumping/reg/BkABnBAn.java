@@ -30,6 +30,11 @@ import pumping.*;
  */
 public class BkABnBAn extends RegularPumpingLemma {	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getHTMLTitle() 
 	{
 		return "<i>b<sup>k</sup>(ab)<sup>n</sup>(ba)<sup>n</sup></i> : <i>k</i> " + GREATER_OR_EQ + " 4"+

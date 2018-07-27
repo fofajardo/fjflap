@@ -62,11 +62,21 @@ public class ItemSetChooser {
 		// Set up the tool bar.
 		JToolBar bar = new JToolBar();
 		bar.add(new AbstractAction("Closure") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				closure();
 			}
 		});
 		bar.add(new AbstractAction("Finish") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				finish();
 			}
@@ -78,7 +88,7 @@ public class ItemSetChooser {
 	 * This will add the closure of all selected items in choice to the choice.
 	 */
 	private void closure() {
-		HashSet selected = new HashSet();
+		HashSet<Production> selected = new HashSet<>();
 		GrammarTableModel model = choiceTable.getGrammarModel();
 		for (int i = 0; i < model.getRowCount() - 1; i++)
 			if (choiceTable.isRowSelected(i))
@@ -89,9 +99,9 @@ public class ItemSetChooser {
 					"Nothing Selected", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		Set closureSet = Operations.closure(grammar, selected);
+		Set<Production> closureSet = Operations.closure(grammar, selected);
 		closureSet.removeAll(alreadyChosen);
-		Iterator it = closureSet.iterator();
+		Iterator<Production> it = closureSet.iterator();
 		while (it.hasNext())
 			addItem((Production) it.next());
 	}
@@ -106,9 +116,9 @@ public class ItemSetChooser {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		HashSet toAdd = new HashSet(restricted);
+		HashSet<Production> toAdd = new HashSet<>(restricted);
 		toAdd.removeAll(alreadyChosen);
-		Iterator it = toAdd.iterator();
+		Iterator<Production> it = toAdd.iterator();
 		while (it.hasNext())
 			addItem((Production) it.next());
 	}
@@ -125,23 +135,23 @@ public class ItemSetChooser {
 	 * @return an array containing the items the user selected, or <CODE>null</CODE>
 	 *         if the user cancelled the action
 	 */
-	public Production[] getItemSet(Set items, String message) {
+	public Production[] getItemSet(Set<Production> items, String message) {
 		restricted = items;
 		choiceTable.setModel(new ImmutableGrammarTableModel());
-		alreadyChosen = new HashSet();
+		alreadyChosen = new HashSet<Production>();
 		while (true) {
 			int choice = JOptionPane.showConfirmDialog(parent, panel, message,
 					JOptionPane.OK_CANCEL_OPTION);
 			if (choice == JOptionPane.CANCEL_OPTION)
 				return null;
 			// Get those selected.
-			List selected = new ArrayList();
+			List<Production> selected = new ArrayList<>();
 			GrammarTableModel model = choiceTable.getGrammarModel();
 			for (int i = 0; i < model.getRowCount() - 1; i++)
 				selected.add(model.getProduction(i));
 			// Check if it's our target.
 			if (items != null) {
-				Set selectedSet = new HashSet(selected);
+				Set<Production> selectedSet = new HashSet<>(selected);
 				if (!selectedSet.equals(items)) {
 					JOptionPane.showMessageDialog(parent,
 							"Some items are missing!", "Items Missing",
@@ -231,10 +241,10 @@ public class ItemSetChooser {
 	 * Items able to be added are restricted to this set. If null, there are no
 	 * restrictions.
 	 */
-	private Set restricted = null;
+	private Set<Production> restricted = null;
 
 	/** The items that have been added sofar are listed here. */
-	private Set alreadyChosen;
+	private Set<Production> alreadyChosen;
 
 	/** The grammar for the item set chooser. */
 	private Grammar grammar;

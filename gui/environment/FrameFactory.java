@@ -48,6 +48,7 @@ public class FrameFactory {
 	 */
 	public static EnvironmentFrame createFrame(Serializable object) {
 		Environment environment = EnvironmentFactory.getEnvironment(object);
+		//System.out.println("ENVIRONMENT:" + environment);
 		if (environment == null)
 			return null; // No environment could be found.
 		EnvironmentFrame frame = new EnvironmentFrame(environment);

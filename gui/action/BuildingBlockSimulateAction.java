@@ -42,7 +42,10 @@ import automata.AutomatonSimulator;
 import automata.Configuration;
 import automata.turing.TMSimulator;
 import automata.turing.TuringMachine;
-
+import automata.turing.TuringMachineBuildingBlocks;
+import automata.NondeterminismDetector;
+import automata.NondeterminismDetectorFactory;
+import automata.State;
 /**
  * @author Andrew
  * 
@@ -50,6 +53,11 @@ import automata.turing.TuringMachine;
  * Preferences - Java - Code Style - Code Templates
  */
 public class BuildingBlockSimulateAction extends SimulateAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>NoInteractionSimulateAction</CODE>.
 	 * 
@@ -86,8 +94,21 @@ public class BuildingBlockSimulateAction extends SimulateAction {
 		AutomatonSimulator simulator = getSimulator(automaton);
 		// Get the initial configurations.
 		if (getObject() instanceof TuringMachine) {
-			String[] s = (String[]) input;
-			configs = ((TMSimulator) simulator).getInitialConfigurations(s);
+			//if the TM is nondeterministic, display error message and stop
+			NondeterminismDetector d = NondeterminismDetectorFactory.getDetector(automaton);
+            State[] nd = d.getNondeterministicStates(automaton);
+            if(nd.length > 0)
+            {
+                JOptionPane.showMessageDialog((Component) e.getSource(),
+                    "Please remove nondeterminism for simulation.\n" +
+                    "Select menu item Test : Highlight Nondeterminism\nto see nondeterministic states.",
+                    "Nondeterministic states detected", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else {
+            		String[] s = (String[]) input;
+            		configs = ((TMSimulator) simulator).getInitialConfigurations(s);
+            }
+          //if not a Turing machine
 		} else {
 			String s = (String) input;
 			configs = simulator.getInitialConfigurations(s);
@@ -133,7 +154,14 @@ public class BuildingBlockSimulateAction extends SimulateAction {
 	 *         automaton, <CODE>false</CODE> otherwise
 	 */
 	public static boolean isApplicable(Serializable object) {
-		return object instanceof TuringMachine;
+		if (object instanceof TuringMachineBuildingBlocks) {
+			if (((TuringMachine) object).tapes() == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
 
 	/** The automaton this simulate action runs simulations on! */

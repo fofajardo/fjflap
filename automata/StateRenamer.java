@@ -41,16 +41,22 @@ public class StateRenamer {
 	public static void rename(Automaton a) {
 		State[] s = a.getStates();
 		int maxId = s.length - 1;
-		Set untaken = new HashSet(), reassign = new HashSet(Arrays.asList(s));
-		for (int i = 0; i <= maxId; i++)
-			untaken.add(new Integer(i));
-		for (int i = 0; i < s.length; i++)
-			if (untaken.remove(new Integer(s[i].getID())))
+		Set<Integer> untaken = new HashSet<>();
+		Set<State> reassign = new HashSet<State>(Arrays.asList(s));
+		for (int i = 0; i <= maxId; i++) {
+			Integer integer = Integer.valueOf(i);
+			untaken.add(integer);
+		}
+		for (int i = 0; i < s.length; i++) {
+			Integer integer = Integer.valueOf(i);
+			if (untaken.remove(integer)) {
 				reassign.remove(s[i]);
+			}
+		}
 		// Now untaken has the untaken IDs, and reassign has the
 		// states that need reassigning.
 		s = (State[]) reassign.toArray(new State[0]);
-		Iterator it = untaken.iterator();
+		Iterator<Integer> it = untaken.iterator();
 		for (int i = 0; i < s.length; i++) {
 			s[i].setID(((Integer) it.next()).intValue());
 		}

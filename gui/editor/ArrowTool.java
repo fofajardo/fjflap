@@ -30,6 +30,7 @@ import gui.viewer.CurvedArrow;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -42,9 +43,12 @@ import java.util.Iterator;
 
 import javax.swing.Icon;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SingleSelectionModel;
 
@@ -61,6 +65,7 @@ import automata.graph.layout.GEMLayoutAlgorithm;
 import automata.turing.TMTransition;
 import automata.turing.TMState;
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 import debug.EDebug;
 
 /**
@@ -181,10 +186,11 @@ public class ArrowTool extends Tool {
 	 * popup trigger.
 	 */
 	public void mousePressed(MouseEvent event) {
-		if (getDrawer().getAutomaton().getEnvironmentFrame() !=null)
-    		((AutomatonEnvironment)getDrawer().getAutomaton().getEnvironmentFrame().getEnvironment()).saveStatus();
-        else
+		if (getDrawer().getAutomaton().getEnvironmentFrame() !=null) {
+    			((AutomatonEnvironment)getDrawer().getAutomaton().getEnvironmentFrame().getEnvironment()).saveStatus();
+		} else {
             EDebug.print("I cannot preserve what you ask");
+		}
 		initialPointClick.setLocation(event.getPoint());
 		lastClickedState = getDrawer().stateAtPoint(event.getPoint());
 		if (lastClickedState == null)
@@ -210,7 +216,7 @@ public class ArrowTool extends Tool {
 			initialPointClick.setLocation(event.getPoint());
 		}	
 		else {
-			ArrayList notes = getDrawer().getAutomaton().getNotes();
+			ArrayList<Note> notes = getDrawer().getAutomaton().getNotes();
 			for(int k = 0; k < notes.size(); k++){
 				((Note)notes.get(k)).setEditable(false);
 				((Note)notes.get(k)).setEnabled(false);
@@ -449,6 +455,11 @@ public class ArrowTool extends Tool {
      * remove the "Final State" option from Moore and Mealy machines.
      */
 	protected class StateMenu extends JPopupMenu implements ActionListener {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public StateMenu() {
 			makeFinal = new JCheckBoxMenuItem("Final");
 			makeFinal.addActionListener(this);
@@ -481,14 +492,17 @@ public class ArrowTool extends Tool {
 		public void show(State state, Component comp, Point at) {
 			this.remove(editBlock);
 			this.state = state;
-//			if (state.getInternalName() != null) {
-			if (state instanceof TMState) {
+			//System.out.println(getDrawer().getAutomaton().getEnvironmentFrame());
+			//System.out.println(getDrawer().getAutomaton().getEnvironmentFrame().getEnvironment());
+			if (getDrawer().getAutomaton() instanceof TuringMachineBuildingBlocks) { //add building block options for TMBB
+				//System.out.println(getDrawer().getAutomaton().getEnvironmentFrame());
+				//System.out.println(getDrawer().getAutomaton().getEnvironmentFrame().getEnvironment());
 				this.add(editBlock);
 				this.add(copyBlock);
 				editBlock.setEnabled(true);
 				copyBlock.setEnabled(true);
 				this.add(replaceSymbol);
-				replaceSymbol.setEnabled(true);
+				replaceSymbol.setEnabled(true);	
 			}
 			makeFinal.setSelected(getAutomaton().isFinalState(state));
 			makeInitial.setSelected(getAutomaton().getInitialState() == state);
@@ -532,9 +546,58 @@ public class ArrowTool extends Tool {
 			
                 //not sure why need highest level automaton, but okay
 				TMState parent = (TMState) state;
-				while (((TuringMachine)parent.getAutomaton()).getParent() != null) {
-					parent = ((TuringMachine)parent.getAutomaton()).getParent();
+				while (((TuringMachineBuildingBlocks)parent.getAutomaton()).getParent() != null) {
+					parent = ((TuringMachineBuildingBlocks)parent.getAutomaton()).getParent();
 				}
+				//pop up box asking for building block name if myInternalName has not already been set or
+				//was set to a default machine name.
+				TMState tmState = (TMState) state;
+				if (tmState.myInternalName == null || tmState.myInternalName.contains("Machine" + tmState.getID())) {
+					JPanel panel = new JPanel(new GridLayout(3, 1));
+					JTextField field = new JTextField();
+					panel.add(new JLabel("Note: If you want to save this block as a seperate file, use 'Save As' while in the 'Edit Block' window"));
+					panel.add(new JLabel("Building Block Name" + " "));
+					panel.add(field);
+					int result = JOptionPane.showOptionDialog((Component) e.getSource(), panel, "Give Building Block a Name",
+							JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+							null, null, null);
+					if (result != JOptionPane.YES_OPTION && result != JOptionPane.OK_OPTION) {
+						return;
+					}
+					String input = field.getText();
+					TMState parent2 = tmState;
+					while (((TuringMachineBuildingBlocks)parent2.getAutomaton()).getParent() != null) {
+						parent2 = ((TuringMachineBuildingBlocks)parent2.getAutomaton()).getParent();
+						if (parent2.myInternalName != null) {
+							if (parent2.myInternalName.equals(input + ".jff")) {
+								JOptionPane.showMessageDialog((Component) e.getSource(), "Cannot use the same name as a parent block!",
+										"A Parent Block Already Has This Name",JOptionPane.ERROR_MESSAGE);
+								return;
+							}
+						}
+					}
+					//loop through state to see if there is already a block with this name
+					for (State regState: tmState.getAutomaton().states) {
+						TMState stateTM = (TMState) regState;
+						if (stateTM.getInternalName().equals(input + ".jff")) {
+							Object[] options = { "CANCEL", "YES" };
+							int selectedOption = JOptionPane.showOptionDialog((Component) e.getSource(), "We STRONGLY suggest to NOT "
+									+ "use building blocks with the same name. Do you wish to continue anyways?", "Same Name as Another Building Block",
+							JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+							null, options, options[0]);
+							System.out.println(selectedOption);
+							if (selectedOption != 1) {
+								return;
+							}
+							break;
+						}
+					}
+					state.setName(input);
+					System.out.println(tmState.myInternalName);
+					tmState.setInternalName(input + ".jff");
+					System.out.println(tmState.myInternalName);
+				}
+				
 				EditBlockPane editor = new EditBlockPane(((TMState)state).getInnerTM()); //give it a Turing Machine //just edit the Automaton directly; there is no need for a repaint either, because the other guy does not paint it
 
 				EnvironmentFrame rootFrame = parent.getAutomaton().getEnvironmentFrame();
@@ -562,8 +625,8 @@ public class ArrowTool extends Tool {
                 //MERLIN MERLIN MERLIN MERLIN MERLIN// 
 
 //				TMState buffer = ((TuringMachine) getAutomaton()).createTMState((Point)state.getPoint()); //again, we assume that the cast will work, since copyBlock hould never be there except with Turing.
-				TMState buffer = ((TuringMachine) getAutomaton()).createTMState(new Point(state.getPoint().x+4, state.getPoint().y)); //again, we assume that the cast will work, since copyBlock hould never be there except with Turing.
-                buffer.setInnerTM((TuringMachine)((TMState) state).getInnerTM().clone()); //all states have an inner TM, although this inner TM might have zero states within it, in which case it acts as a simple state.
+				TMState buffer = ((TuringMachineBuildingBlocks) getAutomaton()).createTMState(new Point(state.getPoint().x+4, state.getPoint().y)); //again, we assume that the cast will work, since copyBlock hould never be there except with Turing.
+                buffer.setInnerTM((TuringMachineBuildingBlocks)((TMState) state).getInnerTM().clone()); //all states have an inner TM, although this inner TM might have zero states within it, in which case it acts as a simple state.
 
 
 			}
@@ -597,7 +660,7 @@ public class ArrowTool extends Tool {
 		
 		private void replaceCharactersInBlock(TMState start, String toReplace, String replaceWith){ //this shall be a recursive method, replacing the inside and then the out
 
-            TuringMachine tm = start.getInnerTM();
+            TuringMachineBuildingBlocks tm = start.getInnerTM();
                 
             for (int i = 0; i < tm.getStates().length; i++)
                 replaceCharactersInBlock((TMState)tm.getStates()[i], toReplace, replaceWith);      
@@ -634,12 +697,21 @@ public class ArrowTool extends Tool {
 	 */
 	private class TransitionMenu extends JPopupMenu {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 	}
 
 	/**
 	 * The contextual menu class for context clicks in blank space.
 	 */
 	private class EmptyMenu extends JPopupMenu implements ActionListener {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		public EmptyMenu() {
 			stateLabels = new JCheckBoxMenuItem("Display State Labels");
 			stateLabels.addActionListener(this);

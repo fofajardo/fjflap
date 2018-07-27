@@ -30,7 +30,12 @@ import pumping.*;
  */
 public class Palindrome extends RegularPumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "w w^R : w element_of {ab}*";
     }

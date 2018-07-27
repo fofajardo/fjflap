@@ -125,7 +125,7 @@ public class NFAToDFA {
 			return new State[0];
 		StringTokenizer tokenizer = new StringTokenizer(state.getLabel(),
 				" \t\n\r\f,q");
-		ArrayList states = new ArrayList();
+		ArrayList<State> states = new ArrayList<>();
 		while (tokenizer.hasMoreTokens())
 			states.add(automaton.getStateWithID(Integer.parseInt(tokenizer
 					.nextToken())));
@@ -165,7 +165,7 @@ public class NFAToDFA {
 	 */
 	public State[] getStatesOnTerminal(String terminal, State[] states,
 			Automaton automaton) {
-		ArrayList list = new ArrayList();
+		ArrayList<State> list = new ArrayList<>();
 		for (int k = 0; k < states.length; k++) {
 			State state = states[k];
 			Transition[] transitions = automaton.getTransitionsFromState(state);
@@ -281,8 +281,8 @@ public class NFAToDFA {
 	 *            the dfa being built from the conversion
 	 * @return a list of States created by expanding <CODE>state</CODE>.
 	 */
-	public ArrayList expandState(State state, Automaton nfa, Automaton dfa) {
-		ArrayList list = new ArrayList();
+	public ArrayList<State> expandState(State state, Automaton nfa, Automaton dfa) {
+		ArrayList<State> list = new ArrayList<>();
 		AlphabetRetriever far = new FSAAlphabetRetriever();
 		String[] alphabet = far.getAlphabet(nfa);
 		/** for each letter in the alphabet. */
@@ -373,12 +373,12 @@ public class NFAToDFA {
 		/**
 		 * get initial state and add to list of states that need to be expanded.
 		 */
-		ArrayList list = new ArrayList();
+		ArrayList<State> list = new ArrayList<>();
 		list.add(initialState);
 		/** while still more states to be expanded. */
 		while (!list.isEmpty()) {
-			ArrayList statesToExpand = new ArrayList();
-			Iterator it = list.iterator();
+			ArrayList<State> statesToExpand = new ArrayList<>();
+			Iterator<State> it = list.iterator();
 			while (it.hasNext()) {
 				State state = (State) it.next();
 				/** expand state. */

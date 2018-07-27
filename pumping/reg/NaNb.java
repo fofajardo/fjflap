@@ -32,7 +32,12 @@ import pumping.RegularPumpingLemma;
  */
 public class NaNb extends RegularPumpingLemma 
 {
-    public String getHTMLTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getHTMLTitle() 
     {
         return "<i>w</i> " + ELEMENT_OF + " " + AB_STAR + " : <i>n<sub>a</sub></i> (<i>w</i>) " +
             LESS_THAN + " <i>n<sub>b</sub></i> (<i>w</i>)";

@@ -34,6 +34,11 @@ import automata.Automaton;
 
 public class AutomatonDraggerPane extends AutomatonPane {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates the automaton dragger pane.
 	 * 
 	 * @param drawer

@@ -38,6 +38,11 @@ import java.awt.Point;
 
 public abstract class Transition implements Serializable, Cloneable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>Transition</CODE>.
 	 * 
 	 * @param from

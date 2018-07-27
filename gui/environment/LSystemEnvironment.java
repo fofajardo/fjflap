@@ -45,6 +45,11 @@ import java.io.Serializable;
 
 public class LSystemEnvironment extends Environment {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>GrammarEnvironment</CODE> with the given
 	 * <CODE>GrammarInputPane</CODE>.
 	 * 

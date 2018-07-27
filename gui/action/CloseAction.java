@@ -47,6 +47,11 @@ import automata.State;
 
 public class CloseAction extends RestrictedAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>CloseAction</CODE>.
 	 * 
 	 * @param environment

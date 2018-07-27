@@ -109,7 +109,7 @@ public class PDAConvertController extends ConvertController {
 		int rows = getModel().getRowCount();
 		ContextFreeGrammar grammar = new ContextFreeGrammar();
 		grammar.setStartVariable("S");
-		ArrayList productions = new ArrayList();
+		ArrayList<Production> productions = new ArrayList<>();
 		for (int i = 0; i < rows; i++) {
 			Production production = getModel().getProduction(i);
 			if (production == null)
@@ -118,7 +118,7 @@ public class PDAConvertController extends ConvertController {
 			productions.add(production);
 		}
 
-		Collections.sort(productions, new Comparator() {
+		Collections.sort(productions, new Comparator<Object>() {
 			public int compare(Object o1, Object o2) {
 				Production p1 = (Production) o1, p2 = (Production) o2;
 				if ("S".equals(p1.getLHS())) {
@@ -136,7 +136,7 @@ public class PDAConvertController extends ConvertController {
 				return false;
 			}
 		});
-		Iterator it = productions.iterator();
+		Iterator<Production> it = productions.iterator();
 		while (it.hasNext())
 			grammar.addProduction((Production) it.next());
 		return grammar;

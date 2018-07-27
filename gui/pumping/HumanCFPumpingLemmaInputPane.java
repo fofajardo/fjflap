@@ -37,6 +37,10 @@ import pumping.ContextFreePumpingLemma;
 public class HumanCFPumpingLemmaInputPane extends HumanFirstPane
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Message displayed if computer wins.
      */
     private static String I_WIN = "I WIN. Do you want to play again or concede "

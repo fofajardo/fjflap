@@ -45,6 +45,11 @@ import automata.State;
 
 public class NondeterminismAction extends AutomatonAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>NondeterminismAction</CODE>.
 	 * 
 	 * @param automaton
@@ -91,6 +96,11 @@ public class NondeterminismAction extends AutomatonAction {
 	 * A class that exists to make integration with the help system feasible.
 	 */
 	private class NondeterminismPane extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public NondeterminismPane(AutomatonPane ap) {
 			super(new BorderLayout());
 			ap.addMouseListener(new ArrowDisplayOnlyTool(ap, ap.getDrawer()));

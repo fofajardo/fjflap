@@ -26,6 +26,7 @@ import java.awt.geom.Point2D;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
+import automata.graph.layout.CircleLayoutAlgorithm.Box;
 
 /**
  * A layout algorithm that lays out groupings of vertices in circles.  Each grouping
@@ -40,7 +41,7 @@ public class CircleLayoutAlgorithm extends LayoutAlgorithm {
 	/**
 	 * This list contains all the boxes that are used in this algorithm.
 	 */
-	private ArrayList boxes;
+	private ArrayList<Box> boxes;
 	
 	/**
 	 * Assigns some default values.
@@ -64,12 +65,12 @@ public class CircleLayoutAlgorithm extends LayoutAlgorithm {
 	}
 	
 	
-	public void layout(Graph graph, Set notMoving) {
-		ArrayList vertices = getMovableVertices(graph, notMoving);
+	public void layout(Graph graph, Set<Object> notMoving) {
+		ArrayList<Object> vertices = getMovableVertices(graph, notMoving);
 		if (graph==null || vertices.size() == 0)
 			return;
 			
-		boxes = new ArrayList();		
+		boxes = new ArrayList<>();		
 		for (int i=0; i<vertices.size(); i++)
 			if (!addToExistingBox(vertices.get(i))) {
 				Box box = new Box(graph, vertexDim, vertexBuffer);
@@ -129,7 +130,7 @@ public class CircleLayoutAlgorithm extends LayoutAlgorithm {
 	 * 
 	 * @author Chris Morgan
 	 */
-	private class Box extends CircleChain {
+	public class Box extends CircleChain {
 		/**
 		 * The size of the square in which only this box may layout values.
 		 */

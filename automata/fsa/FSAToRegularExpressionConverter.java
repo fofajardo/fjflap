@@ -29,7 +29,6 @@ import automata.Automaton;
 import automata.State;
 import automata.StatePlacer;
 import automata.Transition;
-
 /**
  * The fsa to regular expression converter can be used to convert a finite state
  * automaton to its equivalent regular expression. In order to perform this
@@ -321,7 +320,7 @@ public static Transition[] getTransitionsForRemoveState(State state,
 			Automaton automaton) {
 		if (!isRemovable(state, automaton))
 			return null;
-		ArrayList list = new ArrayList();
+		ArrayList<Transition> list = new ArrayList<>();
 		int k = state.getID();
 		State[] states = automaton.getStates();
 		for (int i = 0; i < states.length; i++) {

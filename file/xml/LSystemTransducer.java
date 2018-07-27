@@ -25,7 +25,9 @@ import grammar.*;
 import grammar.lsystem.*;
 import java.util.*;
 import org.w3c.dom.*;
-
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 /**
  * This transducer is the codec for {@link grammar.lsystem.LSystem} objects.
  * 
@@ -49,8 +51,8 @@ public class LSystemTransducer extends AbstractTransducer {
 	 *            the list to convert to a string
 	 * @return a string containing the elements of the list
 	 */
-	private static String listAsString(List list) {
-		Iterator it = list.iterator();
+	private static String listAsString(List<String> list) {
+		Iterator<String> it = list.iterator();
 		if (!it.hasNext())
 			return "";
 		StringBuffer sb = new StringBuffer();
@@ -62,6 +64,7 @@ public class LSystemTransducer extends AbstractTransducer {
 		return sb.toString();
 	}
 
+
 	/**
 	 * Returns the productions representing the rewriting rules for a given
 	 * node.
@@ -70,7 +73,7 @@ public class LSystemTransducer extends AbstractTransducer {
 	 *            the node the encapsulates a production
 	 */
 	private static Production[] createRules(Node node) {
-		Map e2t = elementsToText(node);
+		Map<String, String> e2t = elementsToText(node);
 		String left = (String) e2t.get(RULE_LEFT_NAME);
 		if (left == null)
 			left = "";
@@ -98,7 +101,8 @@ public class LSystemTransducer extends AbstractTransducer {
 			String left) {
 		Element re = createElement(document, RULE_NAME, null, null);
 		re.appendChild(createElement(document, RULE_LEFT_NAME, null, left));
-		List[] replacements = lsystem.getReplacements(left);
+		List<String>[] replacements = lsystem.getReplacements(left);
+		lsystem.getReplacements(left);
 		for (int i = 0; i < replacements.length; i++) {
 			re.appendChild(createElement(document, RULE_RIGHT_NAME, null,
 					listAsString(replacements[i])));
@@ -151,12 +155,12 @@ public class LSystemTransducer extends AbstractTransducer {
 	 *            the DOM document to read parameters from
 	 * @return the mapping of parameter names to values
 	 */
-	private Map readParameters(Document document) {
-		Map p = new HashMap();
+	private Map<Object, Object> readParameters(Document document) {
+		Map<Object, Object> p = new HashMap<>();
 		NodeList list = document.getDocumentElement().getElementsByTagName(
 				PARAMETER_NAME);
 		for (int i = 0; i < list.getLength(); i++) {
-			Map e2t = elementsToText(list.item(i));
+			Map<String, String> e2t = elementsToText(list.item(i));
 			String name = (String) e2t.get(PARAMETER_NAME_NAME), value = (String) e2t
 					.get(PARAMETER_VALUE_NAME);
 			if (name == null)
@@ -179,7 +183,7 @@ public class LSystemTransducer extends AbstractTransducer {
 	public java.io.Serializable fromDOM(Document document) {
 		String axiom = readAxiom(document);
 		Grammar rules = readGrammar(document);
-		Map parameters = readParameters(document);
+		Map<Object, Object> parameters = readParameters(document);
 		return new LSystem(axiom, rules, parameters);
 	}
 
@@ -200,25 +204,23 @@ public class LSystemTransducer extends AbstractTransducer {
 		se.appendChild(createElement(doc, AXIOM_NAME, null,
 				listAsString(lsystem.getAxiom())));
 		// Add the rewriting rules.
-		Set symbols = lsystem.getSymbolsWithReplacements();
-		Iterator it = symbols.iterator();
+		Set<String> symbols = lsystem.getSymbolsWithReplacements();
+		Iterator<String> it = symbols.iterator();
 		if (it.hasNext())
 			se.appendChild(createComment(doc, COMMENT_RULE));
 		while (it.hasNext())
 			se.appendChild(createRuleElement(doc, lsystem, (String) it.next()));
 		// Add the parameters.
-		Map parameters = lsystem.getValues();
-		it = parameters.keySet().iterator();
-		if (it.hasNext())
+		Map<Object, Object> parameters = lsystem.getValues();
+		Iterator<Object> it2 = parameters.keySet().iterator();
+		if (it2.hasNext())
 			se.appendChild(createComment(doc, COMMENT_PARAMETER));
-		while (it.hasNext()) {
-			String name = (String) it.next();
+		while (it2.hasNext()) {
+			String name = (String) it2.next();
 			String value = (String) parameters.get(name);
 			Element pe = createElement(doc, PARAMETER_NAME, null, null);
 			pe.appendChild(createElement(doc, PARAMETER_NAME_NAME, null, name));
-			pe
-					.appendChild(createElement(doc, PARAMETER_VALUE_NAME, null,
-							value));
+			pe.appendChild(createElement(doc, PARAMETER_VALUE_NAME, null, value));
 			se.appendChild(pe);
 		}
 		// Return the completed document.

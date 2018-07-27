@@ -72,7 +72,7 @@ public class CYKTracer {
 	private void initializeLambdaStepMap()
 	{
 		LambdaProductionRemover remover = new LambdaProductionRemover();
-		Set lambdaDerivers = remover.getCompleteLambdaSet(myOriginalGrammar);
+		Set<String> lambdaDerivers = remover.getCompleteLambdaSet(myOriginalGrammar);
 		Grammar g=myOriginalGrammar;
 	    //System.out.println("LD = "+lambdaDerivers);
 		if (lambdaDerivers.size() > 0) {
@@ -293,7 +293,7 @@ public class CYKTracer {
 			{
 				pp[i]=resultList.get(i);
 			}
-			pp=converter.convert(pp);
+			pp=CNFConverter.convert(pp);
 			//System.out.println("CONverted : "+Arrays.asList(pp));
 			for (int i=0; i<pp.length; i++)
 			{

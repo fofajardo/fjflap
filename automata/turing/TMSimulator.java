@@ -209,7 +209,7 @@ public class TMSimulator extends AutomatonSimulator {
      *
      * @return List containing the single configuration, or null if there are no valid transitions.
      */
-    public List stepBlock(TMConfiguration config){
+    public List<Configuration> stepBlock(TMConfiguration config){
         EDebug.print("Inside StepBlock");
            while (((TuringMachine)(config = (TMConfiguration) stepConfiguration(config).get(0)).getCurrentState().getAutomaton()).getParent() != null);
            return Arrays.asList(config);
@@ -224,12 +224,12 @@ public class TMSimulator extends AutomatonSimulator {
      *
      * @return ArrayList containing the single configuration, or null if there are no valid transitions.
 	 */
-	public ArrayList stepConfiguration(Configuration config) { //one step, and will dig into building blocks if necessary
+	public ArrayList<Configuration> stepConfiguration(Configuration config) { //one step, and will dig into building blocks if necessary
 		
         //MERLIN MERLIN MERLIN MERLIN MERLIN//
 
         
-		ArrayList list = new ArrayList();
+		ArrayList<Configuration> list = new ArrayList<>();
 		TMConfiguration configuration = (TMConfiguration) config;
 
 
@@ -375,11 +375,11 @@ outer:  while (true){
 			//System.out.println("HERE!!!!!");
 			if (isAccepted())
 				return true;
-			ArrayList configurationsToAdd = new ArrayList();
-			Iterator it = myConfigurations.iterator();
+			ArrayList<Configuration> configurationsToAdd = new ArrayList<>();
+			Iterator<Configuration> it = myConfigurations.iterator();
 			while (it.hasNext()) {
 				TMConfiguration configuration = (TMConfiguration) it.next();
-				ArrayList configsToAdd = stepConfiguration(configuration);
+				ArrayList<Configuration> configsToAdd = stepConfiguration(configuration);
 				configurationsToAdd.addAll(configsToAdd);
 				it.remove();
 			}

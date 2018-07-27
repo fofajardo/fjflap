@@ -32,7 +32,12 @@ import pumping.*;
  */
 public class NagNbeNc extends ContextFreePumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "w element_of {abc}* : na(w) > nb(w) = nc(w)";
     }

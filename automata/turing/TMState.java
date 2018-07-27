@@ -31,29 +31,33 @@ import automata.Automaton;
   @author Henry Qin
   */
 public class TMState extends State{
-    private TuringMachine myInnerTuringMachine;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private TuringMachineBuildingBlocks myInnerTuringMachine;
 
     public TMState(int id, Point point, Automaton tm){ //do we really need a pointer to the parent?
         super(id, point, tm);
 
         assert(tm instanceof TuringMachine);
 
-        myInnerTuringMachine = new TuringMachine();
+        myInnerTuringMachine = new TuringMachineBuildingBlocks();
         myInnerTuringMachine.setParent(this);
     }
 
     public TMState(TMState copyMe){ //do we really need a pointer to the parent?
         this(copyMe.getID(), (Point)copyMe.getPoint().clone(), copyMe.getAutomaton());
 
-        myInnerTuringMachine = (TuringMachine) copyMe.getInnerTM().clone(); //this should result in recursion until we reach a TMState whose inner TM does not contain states.
+        myInnerTuringMachine = (TuringMachineBuildingBlocks) copyMe.getInnerTM().clone(); //this should result in recursion until we reach a TMState whose inner TM does not contain states.
     }
 
-    public void setInnerTM(TuringMachine tm){
+    public void setInnerTM(TuringMachineBuildingBlocks tm){
         myInnerTuringMachine = tm;
         myInnerTuringMachine.setParent(this);
         assert (myInnerTuringMachine.getParent() == this);
     }
-    public TuringMachine getInnerTM(){
+    public TuringMachineBuildingBlocks getInnerTM(){
         return myInnerTuringMachine;
     }
     public String getInternalName(){ //just for trying to preserve old way of saving.
@@ -64,6 +68,6 @@ public class TMState extends State{
         myInternalName = s;
     }
 
-    private String myInternalName = null;
+    public String myInternalName = null;
 
 }

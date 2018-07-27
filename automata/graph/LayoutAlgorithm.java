@@ -73,7 +73,7 @@ public abstract class LayoutAlgorithm {
 	 * @param notMoving
 	 *            the set of vertices that will not move at all.
 	 */
-	public abstract void layout(Graph graph, Set notMoving);		
+	public abstract void layout(Graph graph, Set<Object> notMoving);		
 	
 	/**
 	 * Method that can make sure that all vertices are visible in the screen.  The
@@ -156,9 +156,9 @@ public abstract class LayoutAlgorithm {
 	 * 
 	 * @return the list of vertices 
 	 */
-	public static ArrayList getMovableVertices(Graph graph, Set notMoving) {
+	public static ArrayList<Object> getMovableVertices(Graph graph, Set<Object> notMoving) {
 		Object[] vArray = graph.vertices();
-		ArrayList vertices = new ArrayList();		
+		ArrayList<Object> vertices = new ArrayList<>();		
 		for (int i=0; i<vArray.length; i++)
 			if (notMoving == null || !notMoving.contains(vArray[i]))
 			   vertices.add(vArray[i]);
@@ -172,7 +172,7 @@ public abstract class LayoutAlgorithm {
 	 * @param graph - the graph the points are listed in
 	 * @param vertices - a list of objects whose points need to be changed
 	 */
-	public static void cartesianToPolar(Graph graph, ArrayList vertices) {
+	public static void cartesianToPolar(Graph graph, ArrayList<Object> vertices) {
 		double theta, r;
 		Point2D cartesian;
 		for (int i=0; i<vertices.size(); i++) {
@@ -194,7 +194,7 @@ public abstract class LayoutAlgorithm {
 	 * @param graph - the graph the points are listed in
 	 * @param vertices - a list of objects whose points need to be changed
 	 */
-	public static void polarToCartesian(Graph graph, ArrayList vertices) {
+	public static void polarToCartesian(Graph graph, ArrayList<Object> vertices) {
 		Point2D polar, cartesian;
 		for (int i=0; i<vertices.size(); i++) {
 			polar = graph.pointForVertex(vertices.get(i));

@@ -38,6 +38,11 @@ import debug.EDebug;
 
 public class EditCanvas extends AutomatonPane {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>EditCanvas</CODE>.
 	 * 
 	 * @param drawer

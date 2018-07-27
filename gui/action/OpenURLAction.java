@@ -31,6 +31,11 @@ import javax.swing.Action;
 
 public class OpenURLAction extends RestrictedAction {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public OpenURLAction(){
 		super("Open URL", null);
 	}

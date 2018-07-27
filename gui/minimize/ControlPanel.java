@@ -40,6 +40,11 @@ import automata.fsa.MinimizeTreeNode;
 
 class ControlPanel extends JToolBar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>ControlPanel</CODE>.
 	 * 
 	 * @param treeDrawer
@@ -74,6 +79,11 @@ class ControlPanel extends JToolBar {
 	private void initView() {
 		setTerminalAction = new TooltipAction("Set Terminal",
 				"Begins the split of a group on a terminal.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				MinimizeTreeNode node = getNode();
 				if (node == null) {
@@ -89,6 +99,11 @@ class ControlPanel extends JToolBar {
 
 		autoPartitionAction = new TooltipAction("Auto Partition",
 				"Does the split of a group for you.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				MinimizeTreeNode node = getNode();
 				if (node == null) {
@@ -104,6 +119,11 @@ class ControlPanel extends JToolBar {
 
 		completeSubtreeAction = new TooltipAction("Complete Subtree",
 				"Does the split of this group and any subgroups for you.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				MinimizeTreeNode node = getNode();
 				if (node == null) {
@@ -119,6 +139,11 @@ class ControlPanel extends JToolBar {
 
 		checkNodeAction = new TooltipAction("Check Node",
 				"Verifies that a split of a group is correct.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				controller.check();
 				controller.setEnabledness();
@@ -128,6 +153,11 @@ class ControlPanel extends JToolBar {
 
 		addChildAction = new TooltipAction("Add Child",
 				"Adds a new partition a group being split.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				/*
 				 * TreeNode[] selected = treeDrawer.getSelected(); for (int i=0;
@@ -142,6 +172,11 @@ class ControlPanel extends JToolBar {
 
 		removeAction = new TooltipAction("Remove",
 				"Removes a partition from a group being split.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				TreeNode[] selected = treeDrawer.getSelected();
 				for (int i = 0; i < selected.length; i++)
@@ -153,6 +188,11 @@ class ControlPanel extends JToolBar {
 
 		finishAction = new TooltipAction("Finish",
 				"If the tree is done, begins building the automaton.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				controller.finished();
 				controller.setEnabledness();

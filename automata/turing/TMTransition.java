@@ -34,6 +34,11 @@ import java.util.*;
 
 public class TMTransition extends Transition {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//added for turing to grammar conversion
 	private int tapes;
 	
@@ -89,9 +94,9 @@ public class TMTransition extends Transition {
 		if (tapes == 0)
 			throw new IllegalArgumentException(
 					"Attempted to create a transition with 0 tapes!");
-		toRead = new ArrayList();
-		toWrite = new ArrayList();
-		direction = new ArrayList();
+		toRead = new ArrayList<String>();
+		toWrite = new ArrayList<String>();
+		direction = new ArrayList<String>();
 		for (int i = 0; i < tapes; i++) {
 			toRead.add("");
 			toWrite.add("");
@@ -315,13 +320,13 @@ public class TMTransition extends Transition {
 	private boolean blockTransition = false;
 
 	/** The read symbols. */
-	private List toRead;
+	private List<String> toRead;
 
 	/** The write symbols. */
-	private List toWrite;
+	private List<String> toWrite;
 
 	/** The direction fields. */
-	private List direction;
+	private List<String> direction;
 
 	/** The blank symbol. */
 	public static final String BLANK = "" + Tape.BLANK;

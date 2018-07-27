@@ -17,7 +17,6 @@
 
 
 
-
 package gui.action;
 
 import gui.environment.Environment;
@@ -45,6 +44,10 @@ import javax.swing.KeyStroke;
  */
 
 public class PrintAction extends RestrictedAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Instantiates a new <CODE>PrintAction</CODE>.
 	 * 
@@ -78,7 +81,7 @@ public class PrintAction extends RestrictedAction {
 	 */
 	private static class PrintUtilities implements Printable {
 		public static void printComponent(JComponent c) {
-			new PrintUtilities(c).print();
+			new PrintUtilities(c).print();	
 		}
 
 		public PrintUtilities(JComponent componentToBePrinted) {
@@ -150,3 +153,4 @@ public class PrintAction extends RestrictedAction {
 		public Rectangle2D printerBounds();
 	}
 }
+

@@ -57,6 +57,11 @@ import javax.swing.tree.TreeNode;
  */
 public class UserControlParsePane extends BruteParsePane {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The parser that is going to be used **/
 	private UserParser myParser;
 	
@@ -73,10 +78,10 @@ public class UserControlParsePane extends BruteParsePane {
 	private int myPreviousCount=0;
 	
 	/** DefaultListModel to show current string at the bottom of the pane **/
-	private DefaultListModel myJListModel;
+	private DefaultListModel<String> myJListModel;
 	
 	/** JList to show the current string and allow user to click on the variables **/
-	private JList myStringJList;
+	private JList<String> myStringJList;
 	
 	/** Target string that user is trying to derive **/
 	private String myTarget;
@@ -104,8 +109,8 @@ public class UserControlParsePane extends BruteParsePane {
 		GrammarTable g = initGrammarTable(grammar);
 		JScrollPane grammarTable = new JScrollPane(g);
 		
-		myJListModel=new DefaultListModel();
-		myStringJList=new JList(myJListModel);
+		myJListModel=new DefaultListModel<String>();
+		myStringJList=new JList<String>(myJListModel);
 		myStringJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		
 		addMultipleSelectionToJList();
@@ -114,7 +119,12 @@ public class UserControlParsePane extends BruteParsePane {
 		JScrollPane scroll=new JScrollPane(myStringJList);
 		
 		treeDerivationPane.add(initTreePanel(), "0");
-		derivationPane = new JScrollPane(initDerivationTable());
+		JTable table = initDerivationTable();
+		JPanel derivationPanel = new JPanel();
+		derivationPanel.setLayout(new BorderLayout());
+		derivationPanel.add(table, BorderLayout.CENTER);
+		derivationPanel.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		derivationPane = new JScrollPane(derivationPanel);
 		treeDerivationPane.add(derivationPane, "1");
 		bottomSplit = SplitPaneFactory.createSplit(environment, true, 0.3,
 				grammarTable, treeDerivationPane);
@@ -125,7 +135,7 @@ public class UserControlParsePane extends BruteParsePane {
 				topSplit, bottomSplit);
 		add(mainSplit, BorderLayout.CENTER);
 		add(statusDisplay, BorderLayout.SOUTH);
-		add(new TableTextSizeSlider(g), BorderLayout.NORTH);
+		add(new TableTextSizeSlider(g, JSlider.HORIZONTAL), BorderLayout.NORTH);
 		
 	}
 	
@@ -137,6 +147,11 @@ public class UserControlParsePane extends BruteParsePane {
 	{
 		myStringJList.setSelectionModel(new DefaultListSelectionModel()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void setSelectionInterval(int index0, int index1) {
 				if (isSelectedIndex(index0))
 					super.removeSelectionInterval(index0, index1);
@@ -242,6 +257,11 @@ public class UserControlParsePane extends BruteParsePane {
 		JToolBar toolbar = new JToolBar();
 		toolbar.add(startAction);
 		myPreviousAction = new AbstractAction("Previous") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				previous();
 			}
@@ -254,7 +274,7 @@ public class UserControlParsePane extends BruteParsePane {
 		// Set up the view customizer controls.
 		toolbar.addSeparator();
 
-		final JComboBox box = new JComboBox(getViewChoices());
+		final JComboBox<Object> box = new JComboBox<>(getViewChoices());
 		box.setSelectedIndex(0);
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

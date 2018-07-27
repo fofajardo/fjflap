@@ -45,6 +45,11 @@ import java.util.*;
 
 public class ToolBar extends JToolBar implements ActionListener {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new tool bar.
 	 * 
 	 * @param view
@@ -89,7 +94,7 @@ public class ToolBar extends JToolBar implements ActionListener {
 	private void initBar() {
 		ButtonGroup group = new ButtonGroup();
 		JToggleButton button = null;
-		Iterator it = tools.iterator();
+		Iterator<Tool> it = tools.iterator();
 		KeyStroke key;
 		while (it.hasNext()) {
 			Tool tool = (Tool) it.next();
@@ -132,7 +137,7 @@ public class ToolBar extends JToolBar implements ActionListener {
 			   //Cursor hourglassCursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
 			   //view.setCursor(hourglassCursor);
 		}
-	}
+	} 
 
 	/**
 	 * Draws the tool view.
@@ -154,6 +159,11 @@ public class ToolBar extends JToolBar implements ActionListener {
 	 * The action that clicks a button.
 	 */
 	private class ButtonClicker extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public ButtonClicker(AbstractButton button) {
 			this.button = button;
 		}
@@ -169,9 +179,9 @@ public class ToolBar extends JToolBar implements ActionListener {
 
 	private AutomatonDrawer drawer;
 
-	private List tools;
+	private List<Tool> tools;
 
-	private HashMap buttonsToTools = new HashMap();
+	private HashMap<JToggleButton, Tool> buttonsToTools = new HashMap<>();
 
 	private ToolAdapter adapter;
 

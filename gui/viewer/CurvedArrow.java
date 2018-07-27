@@ -20,6 +20,7 @@
 
 package gui.viewer;
 
+import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
@@ -156,6 +157,7 @@ public class CurvedArrow {
 	public void draw(Graphics2D g) {
 		if (needsRefresh)
 			refreshCurve();
+		g.setColor(ARROW_COLOR);
 		g.draw(curve); // Draws the main part of the arrow.
 		drawArrow(g, end, control); // Draws the arrow head.
 		drawText(g);
@@ -208,6 +210,7 @@ public class CurvedArrow {
 				.getDescent();
 		bounds.setRect(bounds.getX() - dx, bounds.getY() + dy, bounds
 				.getWidth(), bounds.getHeight());
+		g2.setColor(new Color(0,0,0));
 		for (int i = 0; i < label.length(); i += CHARS_PER_STEP) {
 			String sublabel = label.substring(i, Math.min(i + CHARS_PER_STEP,
 					label.length()));
@@ -461,8 +464,11 @@ public class CurvedArrow {
 	/** The high factor of a control point. */
 	private static double HEIGHT = 30.0;
 
-	public static java.awt.Color HIGHLIGHT_COLOR = new java.awt.Color(255, 0,
-			0, 128);
+	/** Color when a transition is highlighted, default is red **/
+	public static java.awt.Color HIGHLIGHT_COLOR = new java.awt.Color(255, 0, 0);
+	
+	/** Color of the arrow, default is black**/
+	public static java.awt.Color ARROW_COLOR = new java.awt.Color(0,0,0);
 
     public Transition myTransition;
 }

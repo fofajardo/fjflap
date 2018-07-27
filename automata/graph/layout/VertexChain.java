@@ -33,7 +33,7 @@ public class VertexChain{
 	/**
 	 * List of vertices in the chain.
 	 */
-	ArrayList vertices;	
+	ArrayList<Object> vertices;	
 	/**
 	 * The graph from which edge information is processed.
 	 */
@@ -46,7 +46,7 @@ public class VertexChain{
 	 */
 	public VertexChain(Graph g) 
 	{
-		vertices = new ArrayList();
+		vertices = new ArrayList<>();
 		graph = g;
 	}				
 	
@@ -64,7 +64,7 @@ public class VertexChain{
 	 * 
 	 * @return the vertices in the chain.
 	 */
-	public ArrayList getVertices()
+	public ArrayList<Object> getVertices()
 	{
 		return vertices;
 	}

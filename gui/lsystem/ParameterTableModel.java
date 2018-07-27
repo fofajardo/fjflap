@@ -22,6 +22,7 @@ package gui.lsystem;
 
 import gui.GrowableTableModel;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * A mapping of parameters to values.
@@ -30,6 +31,11 @@ import java.util.*;
  */
 
 public class ParameterTableModel extends GrowableTableModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Constructs an empty parameter table model.
 	 */
@@ -43,12 +49,12 @@ public class ParameterTableModel extends GrowableTableModel {
 	 * @param parameters
 	 *            the mapping of parameter names to parameter objects
 	 */
-	public ParameterTableModel(Map parameters) {
+	public ParameterTableModel(Map<Object, Object> parameters) {
 		this();
-		Iterator it = parameters.entrySet().iterator();
+		Iterator<Entry<Object, Object>> it = parameters.entrySet().iterator();
 		int i = 0;
 		while (it.hasNext()) {
-			Map.Entry entry = (Map.Entry) it.next();
+			Map.Entry<Object, Object> entry = (Map.Entry<Object, Object>) it.next();
 			setValueAt(entry.getKey(), i, 0);
 			setValueAt(entry.getValue(), i, 1);
 			i++;
@@ -70,8 +76,8 @@ public class ParameterTableModel extends GrowableTableModel {
 	 * @return the mapping from parameter names to parameters (i.e., map of
 	 *         contents of the left column to contents of the right column)
 	 */
-	public SortedMap getParameters() {
-		TreeMap map = new TreeMap();
+	public SortedMap<Object, Object> getParameters() {
+		TreeMap<Object, Object> map = new TreeMap<>();
 		for (int i = 0; i < getRowCount() - 1; i++) {
 			Object o = getValueAt(i, 0);
 			if (o.equals(""))

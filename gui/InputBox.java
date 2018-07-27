@@ -46,6 +46,11 @@ import automata.turing.TuringMachine;
  */
 public class InputBox extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String myInputString;
 	
 	private final Component myComponent;

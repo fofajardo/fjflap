@@ -37,10 +37,15 @@ import java.util.*;
 
 class Turtle implements Cloneable, Serializable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a turtle.
 	 */
 	public Turtle() {
-		parametersToNumbers = new HashMap();
+		parametersToNumbers = new HashMap<>();
 
 		setDistance(15.0);
 		setAngleChange(15.0);
@@ -75,7 +80,7 @@ class Turtle implements Cloneable, Serializable {
 		// The direction settings.
 		angleChange = turtle.angleChange;
 		// The parameters to the number values.
-		parametersToNumbers = new HashMap(turtle.parametersToNumbers);
+		parametersToNumbers = new HashMap<Object, Object>(turtle.parametersToNumbers);
 	}
 
 	/**
@@ -527,12 +532,12 @@ class Turtle implements Cloneable, Serializable {
 	 * @param values
 	 *            the map of string objects to number objects
 	 */
-	private static Number valueOf(String string, Map values) {
+	private static Number valueOf(String string, Map<Object, Object> values) {
 		string = string.replaceAll("-", " -");
 		StringReader reader = new StringReader(string);
 		StreamTokenizer st = new StreamTokenizer(reader);
 		st.ordinaryChar('/');
-		ArrayList list = new ArrayList();
+		ArrayList<Object> list = new ArrayList<>();
 		Number zero = new Integer(0);
 		boolean number = false;
 		Character plus = new Character('+');
@@ -567,7 +572,7 @@ class Turtle implements Cloneable, Serializable {
 			return new Double(Double.NaN); // We canna do it, captain!
 		}
 		// So now we have all these symbols in a list... great!
-		Iterator it = list.iterator();
+		Iterator<Object> it = list.iterator();
 		return valueOf(it);
 	}
 
@@ -577,9 +582,9 @@ class Turtle implements Cloneable, Serializable {
 	 * @param it
 	 *            the iterator through operators and numbers
 	 */
-	private static Number valueOf(Iterator it) {
-		Stack values = new Stack();
-		Stack operators = new Stack();
+	private static Number valueOf(Iterator<Object> it) {
+		Stack<Object> values = new Stack<>();
+		Stack<Character> operators = new Stack<>();
 		values.push(new Double(0.0));
 
 		while (it.hasNext()) {
@@ -707,6 +712,11 @@ class Turtle implements Cloneable, Serializable {
 
 	/** The current location. */
 	public final Point2D position = new Point2D.Double(0.0, 0.0) {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void setLocation(double x, double y) {
 			// This should ensure our bounds are always kept up
 			// to date. Excellent...
@@ -744,7 +754,7 @@ class Turtle implements Cloneable, Serializable {
 	public double angleChange = 15.0;
 
 	/** The mapping of string parameter names to numbers. */
-	public Map parametersToNumbers;
+	public Map<Object, Object> parametersToNumbers;
 
 	/**
 	 * The current matrix. The translation of the origin into this matrix
@@ -753,10 +763,10 @@ class Turtle implements Cloneable, Serializable {
 	public Matrix matrix = new Matrix();
 
 	/** The mapping of strings to special colors. */
-	public static Map COLORS;
+	public static Map<String, Color> COLORS;
 
 	static {
-		Map m = new HashMap();
+		Map<String, Color> m = new HashMap<>();
 		m.put("dukeBlue", new Color(0, 0, 156));
 		m.put("brown", new Color(129, 0, 0));
 		m.put("oliveDrab", new Color(114, 93, 0));

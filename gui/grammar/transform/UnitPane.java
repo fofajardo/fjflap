@@ -43,6 +43,11 @@ import javax.swing.event.*;
 
 public class UnitPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new unit removing pane.
 	 * 
 	 * @param environment
@@ -89,9 +94,9 @@ public class UnitPane extends JPanel {
 
 		vdgDrawer = new SelectionDrawer(controller.vdg);
 		vdgEditor = new EditorPane(vdgDrawer, new ToolBox() {
-			public java.util.List tools(AutomatonPane view,
+			public java.util.List<Tool> tools(AutomatonPane view,
 					AutomatonDrawer drawer) {
-				java.util.List t = new LinkedList();
+				java.util.List<Tool> t = new LinkedList<>();
 				t.add(new ArrowNontransitionTool(view, drawer) {
 					public void mouseClicked(MouseEvent e) {
 						super.mouseClicked(e);
@@ -140,6 +145,11 @@ public class UnitPane extends JPanel {
 	 */
 	private GrammarTable initGrammarTable() {
 		grammarTable = new GrammarTable(new GrammarTableModel(grammar) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int r, int c) {
 				return false;
 			}
@@ -244,7 +254,7 @@ public class UnitPane extends JPanel {
 		Grammar g = editingGrammarView.getGrammar(grammar.getClass());
 		Production p[] = g.getProductions();
 		final String S = grammar.getStartVariable();
-		Arrays.sort(p, new Comparator() {
+		Arrays.sort(p, new Comparator<Object>() {
 			public int compare(Object o1, Object o2) {
 				Production p1 = (Production) o1, p2 = (Production) o2;
 				if (S.equals(p1.getLHS())) {
@@ -331,18 +341,33 @@ public class UnitPane extends JPanel {
 
 	// These are general controls.
 	AbstractAction doStepAction = new AbstractAction("Do Step") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doStep();
 		}
 	};
 
 	AbstractAction doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doAll();
 		}
 	};
 
 	AbstractAction proceedAction = new AbstractAction("Proceed") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			GrammarTransformAction
 					.hypothesizeUseless(environment, getGrammar());
@@ -350,6 +375,11 @@ public class UnitPane extends JPanel {
 	};
 
 	AbstractAction exportAction = new AbstractAction("Export") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			FrameFactory.createFrame(getGrammar());
 		}
@@ -369,6 +399,11 @@ public class UnitPane extends JPanel {
 
 	/** The editing grammar table mode. */
 	GrammarTableModel editingGrammarModel = new GrammarTableModel() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public boolean isCellEditable(int r, int c) {
 			if (!editingActive)
 				return false;
@@ -393,6 +428,11 @@ public class UnitPane extends JPanel {
 
 	/** The delete action for deleting rows. */
 	AbstractAction deleteAction = new AbstractAction("Delete") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			deleteActivated();
 		}
@@ -401,6 +441,11 @@ public class UnitPane extends JPanel {
 	/** The complete selected action. */
 	AbstractAction completeSelectedAction = new AbstractAction(
 			"Complete Selected") {
+		/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			cancelEditing();
 			controller.doSelected();

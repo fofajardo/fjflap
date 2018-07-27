@@ -70,7 +70,7 @@ public abstract class UserParser
 	/**
 	 * The "smaller" set, those symbols that may possibly reduce to nothing.
 	 */
-	protected Set mySmallerSet;
+	protected Set<String> mySmallerSet;
 
 	/** The Production rule that the User has set to apply to the String **/
 	private Production myCurrentProduction;
@@ -79,7 +79,7 @@ public abstract class UserParser
 	private int myCount=0;
 	
 	/** This holds the list of nodes for the BFS. */
-	private LinkedList myQueue = new LinkedList();
+	private LinkedList<ParseNode> myQueue = new LinkedList<>();
 	
 	/**
 	 * Constructor for UserParser abstract class.

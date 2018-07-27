@@ -44,6 +44,11 @@ import debug.EDebug;
 
 public class GrammarTable extends HighlightTable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>GrammarTable</CODE> with an empty grammar.
 	 */
 	public GrammarTable() {
@@ -99,7 +104,8 @@ public class GrammarTable extends HighlightTable {
 		this.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 
 		getColumnModel().getColumn(2).setCellRenderer(RENDERER);
-		add(new TableTextSizeSlider(this), BorderLayout.NORTH);
+		add(new TableTextSizeSlider(this, JSlider.HORIZONTAL), BorderLayout.NORTH);
+	
 	}
 
 	/**
@@ -123,7 +129,7 @@ public class GrammarTable extends HighlightTable {
 	 *             if the grammar class passed in could not be instantiated with
 	 *             an empty constructor, or is not even a subclass of <CODE>Grammar</CODE>.
 	 */
-	public Grammar getGrammar(Class grammarClass) {
+	public Grammar getGrammar(Class<?> grammarClass) {
 		Grammar grammar = null;
 		try {
 			grammar = (Grammar) grammarClass.newInstance();
@@ -166,6 +172,11 @@ public class GrammarTable extends HighlightTable {
 	 * The modified table cell renderer.
 	 */
 	private static class LambdaCellRenderer extends DefaultTableCellRenderer {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {

@@ -45,6 +45,11 @@ import automata.Configuration;
 
 public class NoInteractionSimulateAction extends SimulateAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public NoInteractionSimulateAction(Grammar gram,
 			Environment environment) {
 		super(gram, environment);
@@ -142,7 +147,7 @@ public class NoInteractionSimulateAction extends SimulateAction {
 					warningGenerated *= 2;
 			}
 			// Get the next batch of configurations.
-			ArrayList next = new ArrayList();
+			ArrayList<Configuration> next = new ArrayList<>();
 			for (int i = 0; i < configs.length; i++) {
 				if (configs[i].isAccept()) {
 					numberAccepted++;

@@ -56,7 +56,7 @@ public abstract class GrammarToAutomatonConverter {
 	 * Initializes the converter for a new conversion by clearing its map.
 	 */
 	public void initialize() {
-		MAP = new HashMap();
+		MAP = new HashMap<String, State>();
 	}
 
 	/**
@@ -102,7 +102,7 @@ public abstract class GrammarToAutomatonConverter {
 	 *         they will accept the same language.
 	 */
 	public Automaton convertToAutomaton(Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Transition> list = new ArrayList<>();
 		Automaton automaton = new Automaton();
 		createStatesForConversion(grammar, automaton);
 		Production[] productions = grammar.getProductions();
@@ -110,7 +110,7 @@ public abstract class GrammarToAutomatonConverter {
 			list.add(getTransitionForProduction(productions[k]));
 		}
 
-		Iterator it = list.iterator();
+		Iterator<Transition> it = list.iterator();
 		while (it.hasNext()) {
 			Transition transition = (Transition) it.next();
 			automaton.addTransition(transition);
@@ -132,7 +132,7 @@ public abstract class GrammarToAutomatonConverter {
 	public abstract void createStatesForConversion(Grammar grammar,
 			Automaton automaton);
 
-	protected HashMap MAP;
+	protected HashMap<String, State> MAP;
 
 	protected String BOTTOM_OF_STACK = "Z";
 }

@@ -25,12 +25,7 @@ import gui.tree.Trees;
 import gui.viewer.SelectionDrawer;
 
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultTreeModel;
@@ -314,7 +309,7 @@ class MinimizeController {
 				MinimizeTreeNode child = (MinimizeTreeNode) children[i];
 				if (child == node)
 					continue;
-				Collection c = Arrays.asList(child.getStates());
+				Collection<State> c = Arrays.asList(child.getStates());
 				if (c.contains(state)) {
 					JOptionPane.showMessageDialog(view,
 							"Another partition already contains state "
@@ -330,7 +325,7 @@ class MinimizeController {
 
 		// Add/remove the state to/from the list of states.
 		State[] states = node.getStates();
-		java.util.List list = new LinkedList(Arrays.asList(states));
+		List<State> list = new LinkedList<>(Arrays.asList(states));
 		if (list.contains(state))
 			list.remove(state);
 		else
@@ -353,9 +348,9 @@ class MinimizeController {
 		// Remove any children that may exist.
 		killChildren(node);
 		// Get the states for the correct splittage.
-		ArrayList groups = minimizer.splitOnTerminal(node.getStates(), node
+		ArrayList<State[]> groups = minimizer.splitOnTerminal(node.getStates(), node
 				.getTerminal(), getAutomaton(), getTree());
-		Iterator it = groups.iterator();
+		Iterator<State[]> it = groups.iterator();
 		while (it.hasNext())
 			addChild(node, (State[]) it.next());
 		expanding = null;
@@ -607,7 +602,7 @@ class MinimizeController {
 		}
 
 		// If it is splittable, make sure no subpartitions are empty.
-		HashSet userPartitions = new HashSet();
+		HashSet<HashSet<State>> userPartitions = new HashSet<>();
 		for (int i = 0; i < children.length; i++) {
 			MinimizeTreeNode child = (MinimizeTreeNode) children[i];
 			if (child.getStates().length == 0) {
@@ -617,21 +612,21 @@ class MinimizeController {
 				return false;
 			}
 			// While we're at it...
-			userPartitions.add(new HashSet(Arrays.asList(child.getStates())));
+			userPartitions.add(new HashSet<State>(Arrays.asList(child.getStates())));
 		}
 		// Check to make sure that the partitions are the same.
 		// Remove any children that may exist.
-		HashSet realPartitions = new HashSet();
+		HashSet<HashSet<State>> realPartitions = new HashSet<>();
 		// Remove the children so as not to confuse the minimizer.
 		// killChildren(node);
-		ArrayList groups = minimizer.splitOnTerminal(node.getStates(), node
+		ArrayList<State[]> groups = minimizer.splitOnTerminal(node.getStates(), node
 				.getTerminal(), getAutomaton(), getTree());
 
 		addChildren(node, children);
 
-		Iterator it = groups.iterator();
+		Iterator<State[]> it = groups.iterator();
 		while (it.hasNext())
-			realPartitions.add(new HashSet(Arrays.asList((State[]) it.next())));
+			realPartitions.add(new HashSet<State>(Arrays.asList((State[]) it.next())));
 		if (!realPartitions.equals(userPartitions)) {
 			JOptionPane.showMessageDialog(view, "The parititons are wrong!");
 			return false;

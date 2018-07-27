@@ -56,6 +56,11 @@ import javax.swing.event.ChangeListener;
 
 public class DisplayPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Implements a display pane.
 	 * 
 	 * @param lsystem
@@ -114,7 +119,7 @@ public class DisplayPane extends JPanel {
 	 */
 	private void updateDisplay() {
 		int recursionDepth = spinnerModel.getNumber().intValue();
-		final List expansion = expander.expansionForLevel(recursionDepth);
+		final List<String> expansion = expander.expansionForLevel(recursionDepth);
 		progressBar.setMaximum(expansion.size() * 2);
 		imageDisplay.setImage(null);
 		Image renderImage = null;
@@ -137,7 +142,7 @@ public class DisplayPane extends JPanel {
 				} else
 					expansionDisplay.setText("Suffice to say, quite long.");
 				// Now, set the display.
-				Map parameters = lsystem.getValues();
+				Map<Object, Object> parameters = lsystem.getValues();
 
 				t.start();
 				Matrix m = new Matrix();
@@ -168,9 +173,9 @@ public class DisplayPane extends JPanel {
 	 */
 	public void printComponent(Graphics g) {
 		int recursionDepth = spinnerModel.getNumber().intValue();
-		List expansion = expander.expansionForLevel(recursionDepth);
+		List<String> expansion = expander.expansionForLevel(recursionDepth);
 		// Now, set the display.
-		Map parameters = lsystem.getValues();
+		Map<Object, Object> parameters = lsystem.getValues();
 		Matrix m = new Matrix();
 		double pitch = pitchModel.getNumber().doubleValue(), roll = rollModel
 				.getNumber().doubleValue(), yaw = yawModel.getNumber()
@@ -215,6 +220,11 @@ public class DisplayPane extends JPanel {
 
 	/** The action for redisplaying. */
 	private Action displayAction = new AbstractAction("Redisplay") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			updateDisplay();
 			displayAction.setEnabled(false);

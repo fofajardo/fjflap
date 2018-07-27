@@ -48,7 +48,7 @@ public class RestrictedBruteParser extends BruteParser {
 			return false;
 		int targetSearched = 0;
 		boolean startBookend = false, endBookend = false;
-		ArrayList discrete = new ArrayList();
+		ArrayList<String> discrete = new ArrayList<>();
 		StringBuffer sb = new StringBuffer();
 		int start = -1;
 

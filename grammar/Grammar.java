@@ -36,13 +36,18 @@ import java.util.*;
 
 public abstract class Grammar implements Serializable, Cloneable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates an instance of <CODE>Grammar</CODE>. The created instance has
 	 * no productions, no terminals, no variables, and specifically no start
 	 * variable.
 	 */
 	public Grammar() {
-		myVariables = new HashSet();
-		myTerminals = new HashSet();
+		myVariables = new HashSet<String>();
+		myTerminals = new HashSet<String>();
 		myStartVariable = null;
 	}
 	
@@ -56,13 +61,14 @@ public abstract class Grammar implements Serializable, Cloneable {
 	public Object clone() {
 		Grammar g;
 		try {
-			g = (Grammar) getClass().newInstance();
+			//g = (Grammar) getClass().newInstance(); deprecated code
+			g = (Grammar) getClass().getDeclaredConstructor().newInstance();
 		} catch (Throwable e) {
 			System.err.println("Warning: clone of grammar failed!");
 			return null;
 		}
 
-		HashMap map = new HashMap(); // old variables to new variables
+		HashMap<String, String> map = new HashMap<>(); // old variables to new variables
 
 		String[] variables = getVariables();
 		for (int v = 0; v < variables.length; v++) {
@@ -417,16 +423,16 @@ public abstract class Grammar implements Serializable, Cloneable {
 	 private String fileName ="";
 
 	/** Set of Variables. */
-	protected Set myVariables;
+	protected Set<String> myVariables;
 
 	/** Set of Terminals. */
-	protected Set myTerminals;
+	protected Set<String> myTerminals;
 
 	/** Start variable. */
 	protected String myStartVariable;
 
 	/** Set of Production rules. */
-	protected List myProductions = new ArrayList();
+	protected List<Production> myProductions = new ArrayList<>();
 
 
 

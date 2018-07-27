@@ -32,6 +32,11 @@ import automata.State;
 
 public class VDGTransition extends Transition {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>VDGTransition</CODE> object.
 	 * 
 	 * @param from

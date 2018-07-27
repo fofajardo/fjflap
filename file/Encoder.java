@@ -51,7 +51,7 @@ public interface Encoder {
 	 * @throws EncodeException
 	 *             if there was a problem writing the file
 	 */
-	public File encode(Serializable structure, File file, Map parameters);
+	public File encode(Serializable structure, File file, Map<?, ?> parameters);
 
 	/**
 	 * Returns if this type of structure can be encoded with this encoder. This

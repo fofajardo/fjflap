@@ -32,6 +32,11 @@ import grammar.ProductionChecker;
 
 public class RightLinearGrammar extends RegularGrammar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The production checker makes sure that the production added is a proper
 	 * right linear production.
 	 * 

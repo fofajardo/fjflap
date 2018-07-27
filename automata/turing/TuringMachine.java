@@ -27,6 +27,7 @@ import automata.Note;
 import java.awt.Point;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Collection;
 
@@ -48,6 +49,11 @@ import javax.swing.JButton;
  */
 
 public class TuringMachine extends Automaton {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Creates a 1-tape Turing machine with no states and no transitions.
 	 */
@@ -180,7 +186,7 @@ public class TuringMachine extends Automaton {
 	 * @param point
 	 *            the point to put the state at
 	 */
-	public final TMState createBlock(Point point) {
+	public TMState createBlock(Point point) {
 		int i = 0;
 		while (getStateWithID(i) != null)
 			i++;
@@ -213,7 +219,7 @@ public class TuringMachine extends Automaton {
         
         //MERLIN MERLIN MERLIN MERLIN MERLIN//
 
-        block.setInnerTM(tm);
+        //block.setInnerTM(tm);
 
 		block.setName(lastFile.getName().substring(0, lastFile.getName().length() - 4));
 		addState(block);
@@ -225,7 +231,7 @@ public class TuringMachine extends Automaton {
       *
       *
       */
-    public final TMState createTMStateWithID(Point p, int i){
+    public TMState createTMStateWithID(Point p, int i){
 		TMState state = new TMState(i, p, this);
 		addState(state);
 		return state;
@@ -236,7 +242,7 @@ public class TuringMachine extends Automaton {
       *
       *
       */
-    public final TMState createTMState(Point point) {
+    public TMState createTMState(Point point) {
 		int i = 0;
 		while (getStateWithID(i) != null)
 			i++;
@@ -247,7 +253,7 @@ public class TuringMachine extends Automaton {
 
     public TMState createInnerTM(Point point, Serializable auto, String name, int i) {
          TMState ntms = new TMState(i, point, this);
-         TuringMachine innerTM = (TuringMachine) auto;
+         TuringMachineBuildingBlocks innerTM = (TuringMachineBuildingBlocks) auto;
          addState(ntms);
          ntms.setInnerTM(innerTM);
          ntms.setInternalName(name);
@@ -306,7 +312,11 @@ public class TuringMachine extends Automaton {
 
     public Map<String, TuringMachine> getBlockMap(){
         Map<String, TuringMachine> ret = new HashMap<String, TuringMachine>();
-        for (TMState s: (Collection<TMState>) states) //that's right, EVERY state in TM has an inner Auto, even if that inner auto might be empty.
+        HashSet<TMState> statesSet = new HashSet<>();
+        for (State s: states) {
+        		statesSet.add((TMState) s);
+        }
+        for (TMState s: statesSet) //that's right, EVERY state in TM has an inner Auto, even if that inner auto might be empty.
             ret.put(s.getInternalName(), s.getInnerTM());
          
         return ret;

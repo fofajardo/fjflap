@@ -45,6 +45,11 @@ import automata.turing.TuringMachine;
 
 public class MultipleOutputSimulateAction extends MultipleSimulateAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>MultipleOuptutSimulateAction</CODE>.
 	 * 
 	 * @param automaton
@@ -86,9 +91,9 @@ public class MultipleOutputSimulateAction extends MultipleSimulateAction {
 		table.setShowGrid(true);
 		table.setGridColor(Color.lightGray);
         if(multiple){
-            ArrayList autos  = this.getEnvironment().myObjects;
-            ArrayList strings = this.getEnvironment().myTestStrings;
-            ArrayList outs = this.getEnvironment().myTransducerStrings;
+            ArrayList<Object> autos  = this.getEnvironment().myObjects;
+            ArrayList<String> strings = this.getEnvironment().myTestStrings;
+            ArrayList<String> outs = this.getEnvironment().myTransducerStrings;
             int offset = strings.size();
             int tapeNum = 1;
             if(autos.get(0) instanceof TuringMachine){

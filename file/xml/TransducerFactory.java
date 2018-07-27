@@ -21,8 +21,20 @@
 package file.xml;
 
 import org.w3c.dom.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+import gui.action.OpenAction;
+
+import org.w3c.dom.Element;
 
 /**
  * Maps either a DOM or a object to the appropriate transducer.
@@ -47,6 +59,16 @@ public class TransducerFactory {
 		Element elem = document.getDocumentElement();
 		// Check for the type tag.
 		NodeList typeNodes = elem.getElementsByTagName("type");
+		NodeList bbNodes = elem.getElementsByTagName("block");
+		NodeList multitapeNodes = elem.getElementsByTagName("tapes");
+		//if we have a multitape Turing machine, automatically open as standard Turing machine
+		if (multitapeNodes.getLength() >0) {
+			return instantiate(new TMTransducer()); 
+		}
+		//if we have a Turing machine with building blocks, automatically open as TMBB
+		if (bbNodes.getLength() >0) {			
+			return instantiate(new TMBBTransducer());
+		}
 		if (typeNodes.getLength() == 0)
 			throw new IllegalArgumentException(
 					"No <type> tag appears to exist!");
@@ -63,6 +85,22 @@ public class TransducerFactory {
 			}
 		}
 		// Check for the type.
+		//if single tape standard Turing machine, ask user if they wish to open TM as standard TM or TMBB
+		if (type.equals("turing")) {
+			if (OpenAction.openOrRead) {
+				return instantiate(new TMBBTransducer());
+			}
+			Object[] possibleValues = {"Standard Turing Machine", "Turing Machine with Building Blocks"};
+			Object selectedValue = JOptionPane.showInputDialog(null,
+					"What type of Turing machine do you wish to open this file as?", "Type of Turing machine",
+					JOptionPane.INFORMATION_MESSAGE, null,
+					possibleValues, possibleValues[0]);
+			if (selectedValue==possibleValues[0]){
+				return instantiate(new TMTransducer()); 
+			}else if(selectedValue==possibleValues[1]){
+				return instantiate(new TMBBTransducer());
+			}
+		}
 		Object o = typeToTransducer.get(type);
 		if (o == null)
 			throw new IllegalArgumentException("The type \"" + type
@@ -87,7 +125,7 @@ public class TransducerFactory {
 	 *             if the structure does not map to a transducer
 	 */
 	public static Transducer getTransducer(Serializable structure) {
-		Class c = structure.getClass();
+		Class<?> c = structure.getClass();
 		// Cycle through the superclasses.
 		while (c != null) {
 			Object o = classToTransducer.get(c);
@@ -117,7 +155,7 @@ public class TransducerFactory {
 	private static Transducer instantiate(Object object) {
 		if (object instanceof Class) {
 			try {
-				return (Transducer) ((Class) object).newInstance();
+				return (Transducer) object.getClass().getDeclaredConstructor().newInstance();
 			} catch (Throwable e) {
 				throw new IllegalArgumentException("Could not instantiate "
 						+ object + "!");
@@ -143,7 +181,7 @@ public class TransducerFactory {
 	 * @param transducer
 	 *            either a transducer instance, or a transducer class
 	 */
-	private static void add(String type, Class structureClass, Object transducer) {
+	private static void add(String type, Class<?> structureClass, Object transducer) {
 		if (type == null)
 			type = ((Transducer) transducer).getType();
 		typeToTransducer.put(type, transducer);
@@ -154,11 +192,12 @@ public class TransducerFactory {
 	 * Initializes the maps.
 	 */
 	static {
-		typeToTransducer = new HashMap();
-		classToTransducer = new HashMap();
+		typeToTransducer = new HashMap<>();
+		classToTransducer = new HashMap<>();
 		add(null, automata.fsa.FiniteStateAutomaton.class, new FSATransducer());
 		add(null, automata.pda.PushdownAutomaton.class, new PDATransducer());
 		add(null, automata.turing.TuringMachine.class, new TMTransducer());
+		add(null, automata.turing.TuringMachineBuildingBlocks.class, new TMBBTransducer());
 		add(null, grammar.Grammar.class, new GrammarTransducer());
 		add(null, regular.RegularExpression.class, new RETransducer());
 		add(null, grammar.lsystem.LSystem.class, new LSystemTransducer());
@@ -169,8 +208,8 @@ public class TransducerFactory {
 	}
 
 	/** Mapping of DOM "type" tags to a corresponding transducer class. */
-	private static Map typeToTransducer;
+	private static Map<String, Object> typeToTransducer;
 
 	/** Mapping of structure classes to a corresponding transducer class. */
-	private static Map classToTransducer;
+	private static Map<Class<?>, Object> classToTransducer;
 }

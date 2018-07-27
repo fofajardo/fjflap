@@ -38,6 +38,10 @@ import automata.Transition;
 public class MealyTransition extends Transition 
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Transition label
      */
     protected String myLabel;

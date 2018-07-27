@@ -159,7 +159,7 @@ public class GrammarChecker {
 	 */
 	public static Production[] getProductionsOnVariable(String variable,
 			Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		ProductionChecker pc = new ProductionChecker();
 		Production[] productions = grammar.getProductions();
 		for (int k = 0; k < productions.length; k++) {
@@ -185,7 +185,7 @@ public class GrammarChecker {
 	 */
 	public static Production[] getNonUnitProductionsOnVariable(String variable,
 			Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		ProductionChecker pc = new ProductionChecker();
 		Production[] productions = grammar.getProductions();
 		for (int k = 0; k < productions.length; k++) {
@@ -231,7 +231,7 @@ public class GrammarChecker {
 	 */
 	public static Production[] getProductionsWithVariable(String variable,
 			Grammar grammar) {
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		ProductionChecker pc = new ProductionChecker();
 		Production[] productions = grammar.getProductions();
 		for (int k = 0; k < productions.length; k++) {
@@ -257,7 +257,7 @@ public class GrammarChecker {
 	public static Production[] getProductionsWithVariableOnRHS(String variable,
 			Grammar grammar) {
 		ProductionChecker pc = new ProductionChecker();
-		ArrayList list = new ArrayList();
+		ArrayList<Production> list = new ArrayList<>();
 		Production[] productions = grammar.getProductions();
 		for (int k = 0; k < productions.length; k++) {
 			if (ProductionChecker.isVariableOnRHS(productions[k], variable))
@@ -276,7 +276,7 @@ public class GrammarChecker {
 	 */
 	public static String[] getUnresolvedVariables(Grammar grammar) {
 		String[] variables = grammar.getVariables();
-		HashSet variableSet = new HashSet();
+		HashSet<String> variableSet = new HashSet<String>();
 		for (int i = 0; i < variables.length; i++)
 			variableSet.add(variables[i]);
 		Production[] productions = grammar.getProductions();

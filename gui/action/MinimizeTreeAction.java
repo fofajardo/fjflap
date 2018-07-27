@@ -42,6 +42,11 @@ import automata.fsa.Minimizer;
 
 public class MinimizeTreeAction extends FSAAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>MinimizeTreeAction</CODE>.
 	 * 
 	 * @param automaton

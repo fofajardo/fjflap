@@ -31,6 +31,11 @@ package grammar;
 
 public class UnboundGrammar extends Grammar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a new grammar.
 	 */
 	public UnboundGrammar() {

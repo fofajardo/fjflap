@@ -34,6 +34,12 @@ import pumping.RegularPumpingLemma;
 public class CompRegPumpingLemmaInputPane extends ComputerFirstPane {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
      * Creates a <code>CompRegPumpingInputPane</code> for a <code>RegularPumpingLemma</code>.
      *
      * @param l the <code>RegularPumpingLemma</code> we want to run

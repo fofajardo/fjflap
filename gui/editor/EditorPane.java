@@ -44,6 +44,11 @@ import automata.Note;
 
 public class EditorPane extends JComponent {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new editor pane for the given automaton.
 	 * 
 	 * @param automaton
@@ -88,7 +93,7 @@ public class EditorPane extends JComponent {
 	 * @param drawer
 	 *            the special automaton drawer for this editor
 	 * @param box
-	 *            the tool box to get teh tools from
+	 *            the tool box to get the tools from
 	 * @param fit
 	 *            <CODE>true</CODE> if the editor should resize its view to
 	 *            fit the automaton; note that this can be <I>very</I> annoying
@@ -115,7 +120,7 @@ public class EditorPane extends JComponent {
 		this.add(toolbar, BorderLayout.NORTH);
 		this.add(new AutomatonSizeSlider(pane, drawer), BorderLayout.SOUTH);
 
-		ArrayList notes = drawer.getAutomaton().getNotes();
+		ArrayList<Note> notes = drawer.getAutomaton().getNotes();
 		for(int k = 0; k < notes.size(); k++){
 			((Note)notes.get(k)).initializeForView(pane);
 		}

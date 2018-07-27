@@ -49,6 +49,11 @@ import javax.swing.text.html.HTMLDocument;
 
 public class WebFrame extends JFrame {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * This constructs a new <TT>WebFrame</TT> that initializes its display to
 	 * the location shown.
 	 * 
@@ -302,7 +307,7 @@ public class WebFrame extends JFrame {
 	private JEditorPane myBrowserDisplay = new JEditorPane();
 
 	/** The vector that holds old addresses. */
-	private ArrayList myURLHistory = new ArrayList();
+	private ArrayList<String> myURLHistory = new ArrayList<>();
 
 	/** Our current position in the vector of addresses. */
 	private int myCurrentPosition = -1;

@@ -35,7 +35,10 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -65,6 +68,11 @@ import gui.sim.multiple.InputTableModel;
  */
 public class CYKParsePane extends BruteParsePane{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The parser that is going to be used **/
 	private CYKParser myParser;
 	
@@ -85,7 +93,7 @@ public class CYKParsePane extends BruteParsePane{
 	
 	private Production[] myAnswers;
 	
-	private LinkedList myQueue;
+	private LinkedList<ParseNode> myQueue;
 	
 	private int myIndex;
 	
@@ -127,7 +135,12 @@ public class CYKParsePane extends BruteParsePane{
 		JScrollPane grammarTable = new JScrollPane(g);
 		
 		treeDerivationPane.add(initTreePanel(), "0");
-		derivationPane = new JScrollPane(initDerivationTable());
+		JTable table = initDerivationTable();
+		JPanel derivationPanel = new JPanel();
+		derivationPanel.setLayout(new BorderLayout());
+		derivationPanel.add(table, BorderLayout.CENTER);
+		derivationPanel.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		derivationPane = new JScrollPane(derivationPanel);
 		treeDerivationPane.add(derivationPane, "1");
 		bottomSplit = SplitPaneFactory.createSplit(environment, true, 0.3,
 				grammarTable, treeDerivationPane);
@@ -137,7 +150,7 @@ public class CYKParsePane extends BruteParsePane{
 				topSplit, bottomSplit);
 		add(mainSplit, BorderLayout.CENTER);
 		add(statusDisplay, BorderLayout.SOUTH);
-		add(new TableTextSizeSlider(g), BorderLayout.NORTH);
+		add(new TableTextSizeSlider(g, JSlider.HORIZONTAL), BorderLayout.NORTH);
 	}
 	
 
@@ -233,7 +246,7 @@ public class CYKParsePane extends BruteParsePane{
 			System.out.println(myAnswers[i].getLHS()+" -> "+myAnswers[i].getRHS());
 	*/		
 		myCurrentAnswerNode=new ParseNode(grammar.getStartVariable(), new Production[0], new int[0]);
-		myQueue=new LinkedList();
+		myQueue=new LinkedList<ParseNode>();
 		myQueue.add(myCurrentAnswerNode);
 		myIndex=0;
 		stepForward();
@@ -281,6 +294,11 @@ public class CYKParsePane extends BruteParsePane{
 		JToolBar toolbar = new JToolBar();
 		toolbar.add(startAction);
 		myStepAction = new AbstractAction("Step") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				stepForward();
 			}
@@ -292,7 +310,7 @@ public class CYKParsePane extends BruteParsePane{
 		toolbar.addSeparator();
 
 		
-		final JComboBox box = new JComboBox(getViewChoices());
+		final JComboBox<?> box = new JComboBox<Object>(getViewChoices());
 		box.setSelectedIndex(0);
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -35,6 +35,10 @@ import automata.graph.AutomatonGraph;
  */
 public class LayoutStorageAction extends AutomatonAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * The automaton whose layout will be saved and possibly restored.
 	 */
 	private Automaton automaton;
@@ -60,6 +64,11 @@ public class LayoutStorageAction extends AutomatonAction {
 		super(saveString, null);
 		automaton = a;
 		restoreAction = new AutomatonAction(restoreString, null) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				graph.moveAutomatonStates();				
 			}

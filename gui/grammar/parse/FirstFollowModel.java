@@ -36,6 +36,11 @@ import javax.swing.table.*;
 
 public class FirstFollowModel extends AbstractTableModel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>FirstFollowModel</CODE>.
 	 * 
 	 * @param grammar
@@ -59,7 +64,7 @@ public class FirstFollowModel extends AbstractTableModel {
 	 * @return the first sets, a map from all single symbols A in the grammar to
 	 *         the set of symbols that represent FIRST(A)
 	 */
-	public Map getFirst() {
+	public Map<String, Set<String>> getFirst() {
 		return null;
 	}
 
@@ -69,7 +74,7 @@ public class FirstFollowModel extends AbstractTableModel {
 	 * @return the follow sets, a map from all single variables A in the grammar
 	 *         to the set of symbols that represent FOLLOW(A)
 	 */
-	public Map getFollow() {
+	public Map<String, Set<String>> getFollow() {
 		return null;
 	}
 
@@ -165,9 +170,9 @@ public class FirstFollowModel extends AbstractTableModel {
 	 *            the column to get the set for, which will be 1 for first and 2
 	 *            for follow
 	 */
-	public Set getSet(int row, int column) {
+	public Set<String> getSet(int row, int column) {
 		String s = (String) getValueAt(row, column);
-		Set set = new TreeSet();
+		Set<String> set = new TreeSet<>();
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == '!') {
 				set.add("");
@@ -191,7 +196,7 @@ public class FirstFollowModel extends AbstractTableModel {
 	 *         removed
 	 */
 	private String removeDuplicateCharacters(String s) {
-		Set characters = new HashSet();
+		Set<Character> characters = new HashSet<>();
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {
 			Character c = new Character(s.charAt(i));
@@ -235,9 +240,9 @@ public class FirstFollowModel extends AbstractTableModel {
 	 * @param column
 	 *            the column index of the cell to set the set for
 	 */
-	public void setSet(Set set, int row, int column) {
+	public void setSet(Set<String> set, int row, int column) {
 		StringBuffer sb = new StringBuffer();
-		Iterator it = set.iterator();
+		Iterator<String> it = set.iterator();
 		while (it.hasNext()) {
 			String element = (String) it.next();
 			if (element.length() == 0)

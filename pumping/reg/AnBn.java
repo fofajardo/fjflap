@@ -30,7 +30,12 @@ import pumping.*;
  */
 public class AnBn extends RegularPumpingLemma 
 {
-    public String getTitle()
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle()
     {
         return "a^n b^n : n >= 0";
     }

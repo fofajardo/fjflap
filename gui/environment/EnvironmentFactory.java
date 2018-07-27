@@ -34,6 +34,7 @@ import gui.grammar.GrammarInputPane;
 import gui.lsystem.LSystemInputPane;
 import gui.pumping.*;
 
+import java.awt.Component;
 import java.io.Serializable;
 
 import javax.swing.JOptionPane;
@@ -46,6 +47,8 @@ import regular.RegularExpression;
 import automata.Automaton;
 import automata.mealy.MealyMachine;
 import automata.mealy.MooreMachine;
+import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * The <CODE>EnvironmentFactory</CODE> creates environments for some
@@ -77,7 +80,7 @@ public class EnvironmentFactory {
         {
             RegPumpingLemmaChooser plc = new RegPumpingLemmaChooser();
             Environment env = new PumpingLemmaEnvironment(plc);
-            PumpingLemmaChooserPane pane = new PumpingLemmaChooserPane(plc, env);
+            PumpingLemmaChooserPane pane = new  PumpingLemmaChooserPane(plc, env);
             env.add(pane, "Select a Pumping Lemma", EDITOR_PERMANENT_TAG);
             RegularPumpingLemma pl = (RegularPumpingLemma)object;
             PumpingLemmaInputPane inputPane;
@@ -150,7 +153,6 @@ public class EnvironmentFactory {
             env.add(editor, EDITOR_NAME, EDITOR_PERMANENT_TAG);
             return env;
         } 
-        
 		if (object instanceof Automaton) {
 			Automaton aut = (Automaton) object;
 			Environment env = new AutomatonEnvironment(aut);

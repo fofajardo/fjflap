@@ -35,6 +35,10 @@ import gui.environment.Environment;
  */
 public class LayoutAlgorithmAction extends AutomatonAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * The amount of space it is assumed that the <code>environment</code> will use for menus,
 	 * buttons, framseBorders, etc.  It is not the shape of a height*width box, but rather it simply
 	 * stores the relative height and width taken up when starting from the respective borders.

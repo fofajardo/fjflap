@@ -203,7 +203,7 @@ public class REToFSAController {
 	 */
 	public void completeStep() {
 		if (action == 0) {
-			Iterator it = toDo.iterator();
+			Iterator<FSATransition> it = toDo.iterator();
 			FSATransition t = (FSATransition) it.next();
 			transitionCheck(t);
 		}
@@ -442,10 +442,10 @@ public class REToFSAController {
 	private FiniteStateAutomaton automaton;
 
 	/** The set of transitions that still require expansion. */
-	private Set toDo = new HashSet();
+	private Set<FSATransition> toDo = new HashSet<>();
 
 	/** The set of lambda-transitions still unborn! */
-	private Set toDoTransitions = new HashSet();
+	private Set<FSATransition> toDoTransitions = new HashSet<>();
 
 	/** The current action, or 0 if no action. */
 	private int action = 0;

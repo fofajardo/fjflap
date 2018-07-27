@@ -53,6 +53,7 @@ public class Profile {
 	public String lambdaText = "u03BB";
 	public String epsilonText = "u03B5";
 	private String emptyString = lambda;
+	public String Color = "Original";
 	public int undo_num = 50;
 	
 	/** The tag bane for the empty string preference. */
@@ -175,6 +176,23 @@ public class Profile {
 	 */
 	public String getEmptyString(){
 		return emptyString;
+	}
+	
+	/**
+	 * Sets the color.
+	 * 
+	 * @param new color
+	 */
+	public void setColor(String color) {
+		Color = color;
+	}
+	
+	/**
+	 * Returns the current color.	
+	 * @return the current color
+	 */
+	public String getColor() {
+		return Color;
 	}
 	
 	/**
@@ -316,7 +334,7 @@ public class Profile {
 	}
 	
 	protected static Element createElement(Document document, String tagname,
-			Map attributes, String text) {
+			Map<?, ?> attributes, String text) {
 		// Create the new element.
 		Element element = document.createElement(tagname);
 		

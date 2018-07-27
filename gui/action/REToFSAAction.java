@@ -35,6 +35,11 @@ import javax.swing.JOptionPane;
 
 public class REToFSAAction extends RegularAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>REToFSAAction</CODE>.
 	 * 
 	 * @param environment

@@ -21,6 +21,7 @@
 package gui.regular;
 
 import gui.editor.ArrowNontransitionTool;
+import gui.editor.Tool;
 import gui.editor.ToolBox;
 import gui.environment.RegularEnvironment;
 import gui.environment.Universe;
@@ -53,6 +54,11 @@ import automata.fsa.FiniteStateAutomaton;
  */
 
 public class ConvertToAutomatonPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Creates a new conversion pane for the conversion of a regular expression
 	 * to an automaton.
@@ -89,8 +95,8 @@ public class ConvertToAutomatonPane extends JPanel {
 
 		gui.editor.EditorPane ep = new gui.editor.EditorPane(automatonDrawer,
 				new ToolBox() {
-					public List tools(AutomatonPane view, AutomatonDrawer drawer) {
-						LinkedList tools = new LinkedList();
+					public List<Tool> tools(AutomatonPane view, AutomatonDrawer drawer) {
+						LinkedList<Tool> tools = new LinkedList<>();
 						tools.add(new ArrowNontransitionTool(view, drawer));
 						tools.add(new RegularToAutomatonTransitionTool(view,
 								drawer, controller));
@@ -135,24 +141,44 @@ public class ConvertToAutomatonPane extends JPanel {
 
 	/** The actions. */
 	AbstractAction doStepAction = new AbstractAction("Do Step") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.completeStep();
 		}
 	};
 
 	AbstractAction doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.completeAll();
 		}
 	};
 
 	AbstractAction exportAction = new AbstractAction("Export") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.export();
 		}
 	};
 
 	AbstractAction exportAction2 = new AbstractAction("Export Now") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.exportToTab();
 		}

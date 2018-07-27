@@ -62,7 +62,11 @@ import automata.turing.TuringMachine;
 */
 
 public class TestAction extends  RestrictedAction{
-    private JFileChooser fileChooser;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JFileChooser fileChooser;
 
     /**
      * Instantiates a new <CODE>Turing Test Action</CODE>.
@@ -92,7 +96,7 @@ public class TestAction extends  RestrictedAction{
         }
     }
     
-    public ArrayList chooseFile(Component source, boolean fromPerformAction){
+    public ArrayList<Object> chooseFile(Component source, boolean fromPerformAction){
     	 File tempFile = fileChooser.getCurrentDirectory();
          fileChooser.setCurrentDirectory(tempFile.getParentFile());
          fileChooser.setCurrentDirectory(tempFile);
@@ -160,7 +164,7 @@ public class TestAction extends  RestrictedAction{
     }
     
     public void performAction(Component source){
-    	ArrayList files = null;
+    	ArrayList<Object> files = null;
     	boolean sameType = false;
     	while(files == null || sameType == false){
     		if(myEnvFrame != null){
@@ -196,8 +200,8 @@ public class TestAction extends  RestrictedAction{
         //open text file of inputs and outputs
       
         
-        ArrayList testStrings = new ArrayList();
-        ArrayList transStrings = new ArrayList();
+        ArrayList<String> testStrings = new ArrayList<>();
+        ArrayList<String> transStrings = new ArrayList<>();
         if (result != JFileChooser.APPROVE_OPTION){
         }
         else{
@@ -340,7 +344,7 @@ public class TestAction extends  RestrictedAction{
         throw p;
     }
     
-    public static ArrayList myObjects = new ArrayList();
+    public static ArrayList<Object> myObjects = new ArrayList<>();
     public static EnvironmentFrame myEnvFrame;
 
 }

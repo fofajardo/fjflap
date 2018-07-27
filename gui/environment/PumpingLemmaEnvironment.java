@@ -30,7 +30,12 @@ import gui.pumping.PumpingLemmaChooser;
  */
 public class PumpingLemmaEnvironment extends Environment 
 {
-    public PumpingLemmaEnvironment(PumpingLemmaChooser lemma) 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public PumpingLemmaEnvironment(PumpingLemmaChooser lemma) 
     {
         super(lemma);
     }

@@ -177,5 +177,5 @@ public class TransitionTool extends Tool {
 	private static Stroke STROKE = new java.awt.BasicStroke(2.4f);
 
 	/** The color for the line. */
-	private static java.awt.Color COLOR = new java.awt.Color(.5f, .5f, .5f, .5f);
+	public static java.awt.Color COLOR = new java.awt.Color(.5f, .5f, .5f, .5f);
 }

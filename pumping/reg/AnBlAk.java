@@ -32,7 +32,12 @@ import pumping.*;
  */
 public class AnBlAk extends RegularPumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "a^n b^l a^k : n > 5, l > 3, k <= l";
     }

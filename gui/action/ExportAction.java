@@ -42,6 +42,11 @@ import debug.EDebug;
 
 public class ExportAction extends RestrictedAction {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Instantiates a new <CODE>ExportAction</CODE>.
      * @param environment
      */

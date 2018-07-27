@@ -49,7 +49,7 @@ public class LenoreSystemsCodec extends Codec {
 	 * @throws ParseException
 	 *             if there was a problem reading the file
 	 */
-	public Serializable decode(File file, Map parameters) {
+	public Serializable decode(File file, Map<?, ?> parameters) {
 		throw new ParseException("This codec is not implemented yet.");
 	}
 
@@ -67,7 +67,7 @@ public class LenoreSystemsCodec extends Codec {
 	 * @throws EncodeException
 	 *             if there was a problem writing the file
 	 */
-	public File encode(Serializable structure, File file, Map parameters) {
+	public File encode(Serializable structure, File file, Map<?, ?> parameters) {
 		return file;
 	}
 

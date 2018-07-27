@@ -31,6 +31,7 @@ import gui.viewer.SelectionDrawer;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 
 /**
@@ -41,6 +42,11 @@ import javax.swing.JSplitPane;
  */
 
 public class ConvertPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>ConvertPane</CODE>.
 	 */
@@ -53,7 +59,7 @@ public class ConvertPane extends JPanel {
 		automatonPane.addMouseListener(new ArrowDisplayOnlyTool(automatonPane,
 				automatonPane.getDrawer()));
 		add(split, BorderLayout.CENTER);
-		add(new TableTextSizeSlider(table), BorderLayout.SOUTH);
+		add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.SOUTH);
 	}
 
 	/**
@@ -89,6 +95,11 @@ public class ConvertPane extends JPanel {
 	/** The grammar table. */
 	private GrammarTable table = new GrammarTable(
 			new gui.grammar.GrammarTableModel() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public boolean isCellEditable(int r, int c) {
 					return false;
 				}

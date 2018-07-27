@@ -22,6 +22,9 @@ package gui.grammar.parse;
 
 import grammar.parse.LRParseTable;
 import gui.LeftTable;
+import gui.TableTextSizeSlider;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -33,6 +36,11 @@ import javax.swing.table.*;
  */
 
 public class LRParseTablePane extends LeftTable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new parse table pane for a parse table.
 	 * 
@@ -85,6 +93,11 @@ public class LRParseTablePane extends LeftTable {
 	 * This extends the concept of the cell renderer.
 	 */
 	class CellRenderer extends DefaultTableCellRenderer {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public java.awt.Component getTableCellRendererComponent(JTable aTable,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
@@ -95,7 +108,6 @@ public class LRParseTablePane extends LeftTable {
 		}
 
 	}
-
 	/** The built in renderer. */
 	private TableHighlighterRendererGenerator THRG = new TableHighlighterRendererGenerator() {
 		public TableCellRenderer getRenderer(int row, int column) {

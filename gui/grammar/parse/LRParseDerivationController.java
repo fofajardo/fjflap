@@ -32,6 +32,8 @@ import gui.environment.GrammarEnvironment;
 import gui.viewer.SelectionDrawer;
 import java.awt.Point;
 import java.util.*;
+import java.util.Map.Entry;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -78,8 +80,8 @@ public class LRParseDerivationController extends LLParseDerivationController {
 	 * 
 	 * @return the initial goto item set
 	 */
-	private Set initialGotoSet() {
-		Set initSet = new HashSet();
+	private Set<Production> initialGotoSet() {
+		Set<Production> initSet = new HashSet<>();
 		// I am one lazy son of a bitch.
 		Production[] ps = augmented.getProductions();
 		Production p = ps[0]; // Oh yeah.
@@ -94,21 +96,21 @@ public class LRParseDerivationController extends LLParseDerivationController {
 	 * 
 	 * @return the set of variables that have $ in their follow set
 	 */
-	private Set variablesWithEndFollow() {
-		Map closure = Operations.follow(grammar);
-		Set variables = new HashSet();
-		Iterator it = closure.entrySet().iterator();
+	private Set<String> variablesWithEndFollow() {
+		Map<String, Set<String>> closure = Operations.follow(grammar);
+		Set<String> variables = new HashSet<>();
+		Iterator<Entry<String, Set<String>>> it = closure.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry entry = (Map.Entry) it.next();
-			if (((Set) entry.getValue()).contains("$"))
+			Map.Entry<String, Set<String>> entry = (Map.Entry<String, Set<String>>) it.next();
+			if (((Set<String>) entry.getValue()).contains("$"))
 				variables.add(entry.getKey());
 		}
 		variables.add(grammar.getStartVariable() + "'");
 		return variables;
 	}
 
-	private boolean isFinalSet(Set set) {
-		Iterator it = set.iterator();
+	private boolean isFinalSet(Set<Production> set) {
+		Iterator<Production> it = set.iterator();
 		while (it.hasNext()) {
 			Production p = (Production) it.next();
 			if (p.getRHS().endsWith(GOTO_SYMBOL))
@@ -131,12 +133,12 @@ public class LRParseDerivationController extends LLParseDerivationController {
 		case FOLLOW_SETS:
 			return super.done();
 		case BUILD_DFA:
-			Iterator it = itemsToState.entrySet().iterator();
+			Iterator<Entry<Set<Production>, State>> it = itemsToState.entrySet().iterator();
 			SelectionDrawer drawer = (SelectionDrawer) editor.getDrawer();
 			int selected = 0;
 			while (it.hasNext()) {
-				Map.Entry entry = (Map.Entry) it.next();
-				Set items = (Set) entry.getKey();
+				Map.Entry<Set<Production>, State> entry = (Map.Entry<Set<Production>, State>) it.next();
+				Set<Production> items = (Set<Production>) entry.getKey();
 				State state = (State) entry.getValue();
 				Transition[] t = dfa.getTransitionsFromState(state);
 				String[] s = Operations.getCanGoto(items);
@@ -157,8 +159,8 @@ public class LRParseDerivationController extends LLParseDerivationController {
 			// Now check the final states.
 			it = itemsToState.entrySet().iterator();
 			while (it.hasNext()) {
-				Map.Entry entry = (Map.Entry) it.next();
-				Set items = (Set) entry.getKey();
+				Map.Entry<Set<Production>, State> entry = (Map.Entry<Set<Production>, State>) it.next();
+				Set<Production> items = (Set<Production>) entry.getKey();
 				State state = (State) entry.getValue();
 				boolean finalState = isFinalSet(items);
 				if (finalState ^ dfa.isFinalState(state)) {
@@ -293,14 +295,14 @@ public class LRParseDerivationController extends LLParseDerivationController {
 		}
 		// At this point, at least the initial state should exist.
 		StatePlacer placer = new StatePlacer();
-		Set handledStates = new HashSet();
+		Set<State> handledStates = new HashSet<>();
 		State[] states = dfa.getStates();
-		Set originalStates = new HashSet(Arrays.asList(states));
+		Set<Object> originalStates = new HashSet<>(Arrays.asList(states));
 		while (states.length != handledStates.size()) {
 			for (int i = 0; i < states.length; i++) {
 				if (handledStates.contains(states[i]))
 					continue;
-				Set itemSet = (Set) stateToItems.get(states[i]);
+				Set<Production> itemSet = (Set<Production>) stateToItems.get(states[i]);
 				if (isFinalSet(itemSet)) {
 					dfa.addFinalState(states[i]);
 				} else {
@@ -308,15 +310,15 @@ public class LRParseDerivationController extends LLParseDerivationController {
 				}
 				// See what symbols have not been "gone to" yet.
 				Transition[] t = dfa.getTransitionsFromState(states[i]);
-				Set mayAdd = new TreeSet(Arrays.asList(Operations
+				Set<String> mayAdd = new TreeSet<>(Arrays.asList(Operations
 						.getCanGoto(itemSet)));
 				for (int j = 0; j < t.length; j++)
 					mayAdd.remove(((FSATransition) t[j]).getLabel());
 				// Now mayAdd holds symbols those we haven't done yet.
-				Iterator it = mayAdd.iterator();
+				Iterator<String> it = mayAdd.iterator();
 				while (it.hasNext()) {
 					String symbol = (String) it.next();
-					Set gotoSet = Operations.goTo(augmented, itemSet, symbol);
+					Set<Production> gotoSet = Operations.goTo(augmented, itemSet, symbol);
 					State second = (State) itemsToState.get(gotoSet);
 					if (second == null) {
 						Point p = placer.getPointForState(dfa);
@@ -372,8 +374,8 @@ public class LRParseDerivationController extends LLParseDerivationController {
 				"What is the grammar symbol for the transition?");
 		if (symbol == null)
 			return;
-		Set from = (Set) stateToItems.get(first);
-		Set to = Operations.goTo(augmented, from, symbol);
+		Set<Production> from = (Set<Production>) stateToItems.get(first);
+		Set<Production> to = Operations.goTo(augmented, from, symbol);
 		// Does this group even progress on this symbol?
 		if (to.size() == 0) {
 			JOptionPane.showMessageDialog(firstFollow,
@@ -384,7 +386,7 @@ public class LRParseDerivationController extends LLParseDerivationController {
 		// Did the user drag to a state, or to empty space?
 		if (second != null) {
 			// We know what the second group is.
-			Set toUser = (Set) stateToItems.get(second);
+			Set<Production> toUser = (Set<Production>) stateToItems.get(second);
 			if (!to.equals(toUser)) {
 				JOptionPane.showMessageDialog(firstFollow, "The symbol "
 						+ symbol + " can't join these two states.",
@@ -397,7 +399,7 @@ public class LRParseDerivationController extends LLParseDerivationController {
 					.getItemSet(to, "Goto on " + symbol);
 			if (items == null)
 				return;
-			Set itemSet = new HashSet();
+			Set<Production> itemSet = new HashSet<>();
 			for (int i = 0; i < items.length; i++)
 				itemSet.add(items[i]);
 			second = (State) itemsToState.get(itemSet);
@@ -447,7 +449,7 @@ public class LRParseDerivationController extends LLParseDerivationController {
 											+ "Do you want to define the initial set yourself?",
 									"Initial Set Construction",
 									JOptionPane.YES_NO_OPTION);
-			Set initialGotoSet = initialGotoSet();
+			Set<Production> initialGotoSet = initialGotoSet();
 			Production[] initials = choice == JOptionPane.YES_OPTION ? null
 					: (Production[]) initialGotoSet.toArray(new Production[0]);
 			while (initials == null) {
@@ -509,7 +511,7 @@ public class LRParseDerivationController extends LLParseDerivationController {
 	 *            the state to assign the items to
 	 */
 	private void assignItemsToState(Production[] items, State state) {
-		Set itemSet = new HashSet();
+		Set<Production> itemSet = new HashSet<>();
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < items.length; i++) {
 			itemSet.add(items[i]);
@@ -540,10 +542,10 @@ public class LRParseDerivationController extends LLParseDerivationController {
 	private LRParseTableDerivationPane derivation;
 
 	/** The mapping of states to a set of items. */
-	private Map stateToItems = new HashMap();
+	private Map<State, Set<Production>> stateToItems = new HashMap<>();
 
 	/** The mapping of item sets to a state. */
-	private Map itemsToState = new HashMap();
+	private Map<Set<Production>, State> itemsToState = new HashMap<>();
 
 	/** The target parse table. */
 	private LRParseTable targetParseTable;

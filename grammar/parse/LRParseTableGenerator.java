@@ -48,9 +48,14 @@ public abstract class LRParseTableGenerator {
 	 *            the mapping of variables to follow sets
 	 */
 	public static LRParseTable generate(Grammar grammar,
-			FiniteStateAutomaton gotoGraph, Map stateToItems, Map itemsToState,
-			Map followSets) {
+			FiniteStateAutomaton gotoGraph, Map<State, Set<Production>> stateToItems, Map<Set<Production>, State> itemsToState,
+			Map<String, Set<String>> followSets) {
 		LRParseTable pt = new LRParseTable(grammar, gotoGraph) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -72,8 +77,8 @@ public abstract class LRParseTableGenerator {
 		// Find the acceptance and reduction.
 		State[] finals = gotoGraph.getFinalStates();
 		for (int i = 0; i < finals.length; i++) {
-			Set items = (Set) stateToItems.get(finals[i]);
-			Iterator it = items.iterator();
+			Set<Production> items = (Set<Production>) stateToItems.get(finals[i]);
+			Iterator<Production> it = items.iterator();
 			while (it.hasNext()) {
 				Production p = (Production) it.next();
 				if (p.getLHS().length() == 2) {
@@ -89,8 +94,8 @@ public abstract class LRParseTableGenerator {
 					int j = 0;
 					while (!p2.equals(ps[j]))
 						j++;
-					Set follow = (Set) followSets.get(p.getLHS());
-					Iterator fit = follow.iterator();
+					Set<String> follow = (Set<String>) followSets.get(p.getLHS());
+					Iterator<String> fit = follow.iterator();
 					while (fit.hasNext()) {
 						String followSymbol = (String) fit.next();
 						pt.appendValueAt("r" + j, finals[i].getID(),

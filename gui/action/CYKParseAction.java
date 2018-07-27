@@ -56,6 +56,11 @@ import javax.swing.JOptionPane;
  */
 public class CYKParseAction extends GrammarAction{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The grammar environment. */
 	protected GrammarEnvironment environment;
 
@@ -124,7 +129,8 @@ public class CYKParseAction extends GrammarAction{
 	 */
 	protected void hypothesizeLambda(GrammarEnvironment env, Grammar g) {
 		LambdaProductionRemover remover = new LambdaProductionRemover();
-		Set lambdaDerivers = remover.getCompleteLambdaSet(g);
+		Set<String> lambdaDerivers = remover.getCompleteLambdaSet(g);
+		remover.getCompleteLambdaSet(g);
 		if (lambdaDerivers.contains(g.getStartVariable())) {
 			JOptionPane.showMessageDialog(env,
 					"WARNING : The start variable derives lambda.\n"
@@ -221,7 +227,7 @@ public class CYKParseAction extends GrammarAction{
 			{
 				pp[i]=resultList.get(i);
 			}
-			pp=converter.convert(pp);
+			pp=CNFConverter.convert(pp);
 			String var=g.getStartVariable();
 			g=new UnrestrictedGrammar();
 			g.addProductions(pp);

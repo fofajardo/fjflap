@@ -38,6 +38,11 @@ import javax.swing.event.*;
 
 public class LambdaPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new lambda pane.
 	 * 
 	 * @param environment
@@ -62,7 +67,7 @@ public class LambdaPane extends JPanel {
 		JSplitPane mainSplit = SplitPaneFactory.createSplit(environment, true,
 				0.4, new JScrollPane(grammarTable), rightPanel);
 		this.add(mainSplit, BorderLayout.CENTER);
-		this.add(new TableTextSizeSlider(grammarTable), BorderLayout.NORTH);
+		this.add(new TableTextSizeSlider(grammarTable, JSlider.HORIZONTAL), BorderLayout.NORTH);
 	}
 
 	/**
@@ -113,6 +118,11 @@ public class LambdaPane extends JPanel {
 	 */
 	private GrammarTable initGrammarTable() {
 		grammarTable = new GrammarTable(new GrammarTableModel(grammar) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int r, int c) {
 				return false;
 			}
@@ -291,18 +301,33 @@ public class LambdaPane extends JPanel {
 
 	// These are general controls.
 	AbstractAction doStepAction = new AbstractAction("Do Step") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doStep();
 		}
 	};
 
 	AbstractAction doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			controller.doAll();
 		}
 	};
 
 	AbstractAction proceedAction = new AbstractAction("Proceed") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			gui.action.GrammarTransformAction.hypothesizeUnit(environment,
 					getGrammar());
@@ -310,6 +335,11 @@ public class LambdaPane extends JPanel {
 	};
 
 	AbstractAction exportAction = new AbstractAction("Export") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			FrameFactory.createFrame(editingGrammarView.getGrammar(grammar
 					.getClass()));
@@ -330,6 +360,11 @@ public class LambdaPane extends JPanel {
 
 	/** The editing grammar table mode. */
 	GrammarTableModel editingGrammarModel = new GrammarTableModel() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public boolean isCellEditable(int r, int c) {
 			if (controller.step != LambdaController.PRODUCTION_MODIFY)
 				return false;
@@ -352,6 +387,11 @@ public class LambdaPane extends JPanel {
 
 	/** The delete action for deleting rows. */
 	AbstractAction deleteAction = new AbstractAction("Delete") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			deleteActivated();
 		}
@@ -360,6 +400,11 @@ public class LambdaPane extends JPanel {
 	/** The complete selected action. */
 	AbstractAction completeSelectedAction = new AbstractAction(
 			"Complete Selected") {
+		/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			cancelEditing();
 			for (int i = 0; i < grammarTable.getRowCount() - 1; i++)

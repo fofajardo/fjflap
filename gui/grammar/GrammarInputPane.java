@@ -39,6 +39,11 @@ import java.awt.*;
 
 public class GrammarInputPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates an empty <CODE>GrammarInputPane</CODE>.
 	 */
 	public GrammarInputPane() {
@@ -115,7 +120,7 @@ public class GrammarInputPane extends JPanel {
 		// Put the table in this pane.
 		setLayout(new BorderLayout());
 		add(new JScrollPane(table), BorderLayout.CENTER);
-		add(new TableTextSizeSlider(table), BorderLayout.NORTH);
+		add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
 	}
 
 	/**
@@ -140,7 +145,7 @@ public class GrammarInputPane extends JPanel {
 	 *             if the grammar class passed in could not be instantiated with
 	 *             an empty constructor, or is not even a subclass of <CODE>Grammar</CODE>.
 	 */
-	public Grammar getGrammar(Class grammarClass) {
+	public Grammar getGrammar(Class<?> grammarClass) {
 		return table.getGrammar(grammarClass);
 	}
 

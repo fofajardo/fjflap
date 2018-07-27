@@ -38,6 +38,11 @@ import javax.swing.Icon;
 
 public abstract class GrammarAction extends RestrictedAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>GrammarAction</CODE>.
 	 * 
 	 * @param string

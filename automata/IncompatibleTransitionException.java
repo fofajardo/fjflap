@@ -33,4 +33,9 @@ package automata;
 
 public class IncompatibleTransitionException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

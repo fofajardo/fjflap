@@ -64,9 +64,9 @@ public class SpiralLayoutAlgorithm extends LayoutAlgorithm {
 	}
 	
 	
-	public void layout(Graph g, Set notMoving) {
+	public void layout(Graph g, Set<Object> notMoving) {
 		graph = g;
-		ArrayList vertices = getMovableVertices(graph, notMoving);
+		ArrayList<Object> vertices = getMovableVertices(graph, notMoving);
 		if (graph==null || vertices.size() == 0)
 			return;
 		
@@ -75,7 +75,7 @@ public class SpiralLayoutAlgorithm extends LayoutAlgorithm {
 		 * edge intersections.
 		 */
 		VertexChain chain = new VertexChain(graph);		
-		Collections.sort(vertices, new Comparator() {
+		Collections.sort(vertices, new Comparator<Object>() {
 			public int compare(Object o1, Object o2) {				
 				if (graph.degree(o1) == graph.degree(o2))
 					return 0;

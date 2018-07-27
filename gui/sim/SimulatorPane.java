@@ -54,6 +54,11 @@ import automata.Configuration;
 
 public class SimulatorPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a simulator pane for a given automaton, and a given input
 	 * string.
 	 * 

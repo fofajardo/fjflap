@@ -23,6 +23,7 @@ package gui.grammar.parse;
 import grammar.Grammar;
 import grammar.parse.*;
 import gui.SplitPaneFactory;
+import gui.TableTextSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.grammar.GrammarTable;
 import java.awt.BorderLayout;
@@ -35,6 +36,11 @@ import javax.swing.*;
  */
 
 public class LLParseTableDerivationPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new derivation pane for a grammar environment.
 	 * 
@@ -56,6 +62,11 @@ public class LLParseTableDerivationPane extends JPanel {
 		fftable.getFFModel().setCanEditFollow(true);
 
 		LLParseTable parseTableModel = new LLParseTable(g) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int r, int c) {
 				return controller.step != LLParseDerivationController.FINISHED
 						&& super.isCellEditable(r, c);
@@ -68,18 +79,28 @@ public class LLParseTableDerivationPane extends JPanel {
 				false, 0.5, new JScrollPane(fftable), new JScrollPane(
 						parseTable));
 		right.add(rightSplit, BorderLayout.CENTER);
-
+		right.add(new TableTextSizeSlider(fftable, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		right.add(new TableTextSizeSlider(parseTable, JSlider.HORIZONTAL), BorderLayout.SOUTH);
 		controller = new LLParseDerivationController(g, environment, fftable,
 				parseTable, description);
 
 		GrammarTable table = new GrammarTable(
 				new gui.grammar.GrammarTableModel(g) {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 					public boolean isCellEditable(int r, int c) {
 						return false;
 					}
 				});
+		JPanel grammarHolder = new JPanel();
+		grammarHolder.setLayout(new BorderLayout());
+		grammarHolder.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		grammarHolder.add(table, BorderLayout.CENTER);
 		JSplitPane pane = SplitPaneFactory.createSplit(environment, true, 0.3,
-				table, right);
+				grammarHolder, right);
 		this.add(pane, BorderLayout.CENTER);
 
 		// Make the tool bar.

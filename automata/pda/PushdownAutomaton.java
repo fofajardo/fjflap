@@ -30,6 +30,10 @@ import automata.Automaton;
  */
 
 public class PushdownAutomaton extends Automaton {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public boolean singleInputPDA = false;
 	
 	/**

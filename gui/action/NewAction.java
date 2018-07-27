@@ -47,6 +47,11 @@ import automata.mealy.MooreMachine;
 
 public class NewAction extends RestrictedAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>NewAction</CODE>.
 	 */
 	public NewAction() {
@@ -106,11 +111,16 @@ public class NewAction extends RestrictedAction {
 	/** The dialog box that allows one to create new environments. */
 	private static class NewDialog extends JFrame {
 		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		/**
 		 * Instantiates a <CODE>NewDialog</CODE> instance.
 		 */
 		public NewDialog() {
 			// super((java.awt.Frame)null, "New Document");
-			super("JFLAP 7.0");
+			super("JFLAP 7.1");
 			getContentPane().setLayout(new GridLayout(0, 1));
 			initMenu();
 			initComponents();
@@ -160,11 +170,15 @@ public class NewAction extends RestrictedAction {
             tmPrefMenu.add(Universe.curProfile.getAcceptByHaltingCheckBox());
             tmPrefMenu.add(Universe.curProfile.getAllowStayCheckBox());
 
+            //MenuBarCreator.addItem(menu, new ColorChooserAction());
             MenuBarCreator.addItem(menu, new EmptyStringCharacterAction());
 //            menu.add(Universe.curProfile.getTuringFinalCheckBox());
             menu.add(new SetUndoAmountAction());
+            menu.add(new ColorChooserAction());
 
             menu.add(tmPrefMenu);
+            
+            
 
             menuBar.add(menu);
 			setJMenuBar(menuBar);
@@ -244,6 +258,14 @@ public class NewAction extends RestrictedAction {
 				}
 
 				private Integer[] INTS = null;
+			});
+			getContentPane().add(button);
+			
+			button = new JButton("Turing Machine With Building Blocks");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					createWindow(new automata.turing.TuringMachineBuildingBlocks(1));
+				}
 			});
 			getContentPane().add(button);
 

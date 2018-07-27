@@ -79,7 +79,7 @@ public class LLParseDerivationController {
 			return true;
 		case FIRST_SETS:
 		case FOLLOW_SETS:
-			Map sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
+			Map<String, Set<String>> sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
 			int col = step == FIRST_SETS ? 1 : 2;
 			FirstFollowModel ffm = firstFollow.getFFModel();
 			try {
@@ -144,13 +144,13 @@ public class LLParseDerivationController {
 		switch (step) {
 		case FIRST_SETS:
 		case FOLLOW_SETS:
-			Map sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
+			Map<String, Set<String>> sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
 			int col = step == FIRST_SETS ? 1 : 2;
 			FirstFollowModel ffm = firstFollow.getFFModel();
 			// Get each variable.
 			for (int i = 0; i < ffm.getRowCount(); i++) {
 				String var = (String) ffm.getValueAt(i, 0);
-				ffm.setSet((Set) sets.get(var), i, col);
+				ffm.setSet((Set<String>) sets.get(var), i, col);
 			}
 			try {
 				firstFollow.getCellEditor().stopCellEditing();
@@ -190,7 +190,7 @@ public class LLParseDerivationController {
 		switch (step) {
 		case FIRST_SETS:
 		case FOLLOW_SETS:
-			Map sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
+			Map<String, Set<String>> sets = step == FIRST_SETS ? targetFirstSets : targetFollowSets;
 			int col = step == FIRST_SETS ? 1 : 2;
 			FirstFollowModel ffm = firstFollow.getFFModel();
 			int viewCol = firstFollow.convertColumnIndexToView(col);
@@ -199,7 +199,7 @@ public class LLParseDerivationController {
 					continue;
 				// ////System.out.println("Doing row "+i);
 				String var = (String) ffm.getValueAt(i, 0);
-				ffm.setSet((Set) sets.get(var), i, col);
+				ffm.setSet((Set<String>) sets.get(var), i, col);
 			}
 			try {
 				firstFollow.getCellEditor().stopCellEditing();
@@ -332,10 +332,10 @@ public class LLParseDerivationController {
 			FINISHED = 3;
 
 	/** The target first sets. */
-	Map targetFirstSets;
+	Map<String, Set<String>> targetFirstSets;
 
 	/** The target follow sets. */
-	Map targetFollowSets;
+	Map<String, Set<String>> targetFollowSets;
 
 	/** The grammar. */
 	Grammar grammar;
@@ -348,22 +348,47 @@ public class LLParseDerivationController {
 	 * deactivated as is appropriate.
 	 */
 	AbstractAction doSelectedAction = new AbstractAction("Do Selected") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			completeSelected();
 		}
 	}, doStepAction = new AbstractAction("Do Step") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			completeStep();
 		}
 	}, doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			completeAll();
 		}
 	}, nextAction = new AbstractAction("Next") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			nextStep();
 		}
 	}, parseAction = new AbstractAction("Parse") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			parse();
 		}

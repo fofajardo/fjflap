@@ -73,9 +73,9 @@ public class MealyStepByStateSimulator extends AutomatonSimulator
      * 
      * @param configuration the configuration simulate one step on
      */
-    public ArrayList stepConfiguration(Configuration configuration)
+    public ArrayList<Configuration> stepConfiguration(Configuration configuration)
     {
-        ArrayList list = new ArrayList();
+        ArrayList<Configuration> list = new ArrayList<>();
         MealyConfiguration config = (MealyConfiguration) configuration;
         
         String unprocessedInput = config.getUnprocessedInput();
@@ -112,7 +112,7 @@ public class MealyStepByStateSimulator extends AutomatonSimulator
      */
     public boolean isAccepted() 
     {
-        Iterator it = myConfigurations.iterator();
+        Iterator<Configuration> it = myConfigurations.iterator();
         while(it.hasNext())
         {
             MealyConfiguration config = (MealyConfiguration) it.next();
@@ -140,8 +140,8 @@ public class MealyStepByStateSimulator extends AutomatonSimulator
         {
             if(isAccepted())
                 return true;
-            ArrayList configurationsToAdd = new ArrayList();
-            Iterator it = myConfigurations.iterator();
+            ArrayList<Configuration> configurationsToAdd = new ArrayList<>();
+            Iterator<Configuration> it = myConfigurations.iterator();
             while(it.hasNext())
             {
                 MealyConfiguration config = (MealyConfiguration) it.next();

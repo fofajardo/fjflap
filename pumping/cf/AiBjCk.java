@@ -32,7 +32,12 @@ import pumping.*;
  */
 public class AiBjCk extends ContextFreePumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "a^i b^j c^k : i > j, i > k";
     }

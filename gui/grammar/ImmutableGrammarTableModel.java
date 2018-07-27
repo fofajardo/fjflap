@@ -33,6 +33,11 @@ import grammar.Grammar;
 
 public class ImmutableGrammarTableModel extends GrammarTableModel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>GrammarTableModel</CODE>.
 	 */
 	public ImmutableGrammarTableModel() {

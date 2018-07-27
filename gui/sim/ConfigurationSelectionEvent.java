@@ -36,6 +36,11 @@ import java.util.EventObject;
 
 public class ConfigurationSelectionEvent extends EventObject {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>ConfigurationSelectionEvent</CODE> object.
 	 * 
 	 * @param configurationPane

@@ -36,6 +36,11 @@ import javax.swing.JToolBar;
 
 public class ControlPanel extends JToolBar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>ControlPanel</CODE> for the given
 	 * configuration controller.
 	 * 
@@ -62,6 +67,11 @@ public class ControlPanel extends JToolBar {
 	protected void initView() {
 		this.add(new TooltipAction("Step", "Moves existing valid "
 				+ "configurations to the next " + "configurations.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.step(blockStep);
 			}
@@ -69,6 +79,11 @@ public class ControlPanel extends JToolBar {
 
 		this.add(new TooltipAction("Reset", "Resets the simulation to "
 				+ "start conditions.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.reset();
 			}
@@ -79,36 +94,66 @@ public class ControlPanel extends JToolBar {
          */
         if(controller.isTuringMachine()) {
     		this.add(new AbstractAction("Focus") {
-    			public void actionPerformed(ActionEvent e) {
+    			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent e) {
     				controller.focus();
     			}
     		});
     
     		this.add(new AbstractAction("Defocus") {
-    			public void actionPerformed(ActionEvent e) {
+    			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent e) {
     				controller.defocus();
     			}
     		});
         }
 		this.add(new AbstractAction("Freeze") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.freeze();
 			}
 		});
 
 		this.add(new AbstractAction("Thaw") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.thaw();
 			}
 		});
 
 		this.add(new AbstractAction("Trace") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.trace();
 			}
 		});
 
 		this.add(new AbstractAction("Remove") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.remove();
 			}

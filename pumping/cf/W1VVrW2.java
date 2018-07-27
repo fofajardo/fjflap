@@ -34,6 +34,11 @@ import pumping.LemmaMath;
  */
 public class W1VVrW2 extends ContextFreePumpingLemma {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getTitle() 
     {
         return "w1 v v^R w2 : na(w1) = na(w2), |v|>=3, w1 & w2 element_of {ab}*";

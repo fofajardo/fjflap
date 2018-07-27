@@ -227,7 +227,7 @@ public class StateDrawer {
 	 */
 	public void drawBackground(Graphics g, State state, Point point, Color color) {
 		g.setColor(color);
-		if(state.isSelected()) g.setColor(new Color(100, 200, 200));
+		if(state.isSelected()) g.setColor(HIGHLIGHT_COLOR);
 //		if (state.getInternalName() == null)
 			g.fillOval(point.x - radius, point.y - radius, 2 * radius,
 					2 * radius);
@@ -253,7 +253,10 @@ public class StateDrawer {
 	public static final int STATE_RADIUS = 20;
 
 	/** The base color for states. */
-	public static final Color STATE_COLOR = new Color(255, 255, 150);
+	public static Color STATE_COLOR = new Color(255, 255, 150);
+	
+	/** The color of a selected state. **/
+	public static Color HIGHLIGHT_COLOR = new  Color(100, 200, 200);
 
 	/** The label padding for states. */
 	public static final int STATE_LABEL_PAD = 3;

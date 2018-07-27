@@ -32,6 +32,11 @@ import grammar.*;
 
 public class RegularGrammar extends Grammar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates an instance of <CODE>RegularGrammar</CODE>. The created
 	 * instance has no productions, no terminals, no variables, and specifically
 	 * no start variable.

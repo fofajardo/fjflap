@@ -20,6 +20,7 @@
 
 package gui.action;
 
+import automata.Transition;
 import automata.graph.*;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import automata.pda.PushdownAutomaton;
@@ -42,6 +43,11 @@ import javax.swing.JOptionPane;
  */
 
 public class ConvertCFGLR extends GrammarAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>GrammarOutputAction</CODE>.
 	 * 
@@ -71,7 +77,7 @@ public class ConvertCFGLR extends GrammarAction {
 		CFGToPDALRConverter convert = new CFGToPDALRConverter();
 		convert.createStatesForConversion(grammar, pda);
 		// Create the map of productions to transitions.
-		HashMap ptot = new HashMap();
+		HashMap<Production, Transition> ptot = new HashMap<>();
 		Production[] prods = grammar.getProductions();
 		for (int i = 0; i < prods.length; i++)
 			ptot.put(prods[i], convert.getTransitionForProduction(prods[i]));

@@ -421,7 +421,7 @@ public class MenuBarCreator {
 			addItem(menu, new GrammarTypeTestAction ((gui.environment.GrammarEnvironment) environment));
 		return menu;
 	}
-
+	
 	/**
 	 * This is the menu for doing conversions.
 	 * 
@@ -520,6 +520,11 @@ public class MenuBarCreator {
 		
 		//Temporary help action.
 		addItem(menu, new AbstractAction("Help...") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent event) {
 				JOptionPane.showMessageDialog(null, "For help, feel free to access the JFLAP tutorial at\n" +
 						"                          www.jflap.org.", "Help", JOptionPane.PLAIN_MESSAGE);

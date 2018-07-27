@@ -49,7 +49,7 @@ public class ClosureTaker {
 	 * @return the set of states that represent the closure of state.
 	 */
 	public static State[] getClosure(State state, Automaton automaton) {
-		List list = new ArrayList();
+		List<State> list = new ArrayList<>();
 		list.add(state);
 		for (int i = 0; i < list.size(); i++) {
 			state = (State) list.get(i);

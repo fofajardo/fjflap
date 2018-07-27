@@ -30,7 +30,7 @@ import java.util.Comparator;
  * @author Thomas Finley
  */
 
-public class ProductionComparator implements Comparator {
+public class ProductionComparator implements Comparator<Object> {
 	/**
 	 * Instantiates a comparator, getting the start variable from a given
 	 * grammar.

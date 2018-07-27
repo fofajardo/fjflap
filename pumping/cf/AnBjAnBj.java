@@ -32,7 +32,12 @@ import pumping.*;
  */
 public class AnBjAnBj extends ContextFreePumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "a^n b^j a^n b^j : n >= 0, j >= 0";
     }

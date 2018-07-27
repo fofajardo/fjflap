@@ -32,6 +32,11 @@ import automata.Automaton;
 public class MealyMachine extends Automaton 
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Creates a Mealy machine with no states or transitions.
      *
      */

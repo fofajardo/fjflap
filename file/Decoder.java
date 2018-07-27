@@ -49,7 +49,7 @@ public interface Decoder {
 	 * @throws ParseException
 	 *             if there was a problem reading the file
 	 */
-	public Serializable decode(File file, Map parameters);
+	public Serializable decode(File file, Map<?, ?> parameters);
 
 	/**
 	 * Returns an instance of a corresponding encoder. In many cases the

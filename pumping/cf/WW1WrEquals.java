@@ -30,6 +30,11 @@ import pumping.*;
  */
 public class WW1WrEquals extends ContextFreePumpingLemma {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getTitle() 
     {
         return "w w1 w^R : |w| = |w1|, w & w1 element_of {ab}*";

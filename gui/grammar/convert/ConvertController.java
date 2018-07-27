@@ -28,6 +28,7 @@ import gui.event.*;
 import gui.viewer.SelectionDrawer;
 import java.awt.Component;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * A <CODE>ConvertController</CODE> object is a controller used in the
@@ -60,7 +61,7 @@ class ConvertController {
 	 *            its message boxes, which may be null
 	 */
 	public ConvertController(GrammarViewer grammarView, SelectionDrawer drawer,
-			Map productionsToTransitions, Component parent) {
+			Map<Production, Transition> productionsToTransitions, Component parent) {
 		this.grammarView = grammarView;
 		this.drawer = drawer;
 		this.parent = parent;
@@ -80,18 +81,18 @@ class ConvertController {
 	 * @return the inverse of the passed in map, or <CODE>null</CODE> if an
 	 *         error occurred
 	 */
-	private Map invert(Map map) {
-		Set entries = map.entrySet();
-		Iterator it = entries.iterator();
-		Map inverse = null;
+	private Map<Transition, Production> invert(Map<Production, Transition> map) {
+		Set<Entry<Production, Transition>> entries = map.entrySet();
+		Iterator<Entry<Production, Transition>> it = entries.iterator();
+		Map<Transition, Production> inverse = new HashMap<Transition, Production>();
 		try {
-			inverse = (Map) map.getClass().newInstance();
-			while (it.hasNext()) {
-				Map.Entry entry = (Map.Entry) it.next();
+			//inverse = (Map) map.getClass().getDeclaredConstructor().newInstance();
+			while (it.hasNext()) {				
+				Map.Entry<Production, Transition> entry = (Map.Entry<Production, Transition>) it.next();
 				inverse.put(entry.getValue(), entry.getKey());
 			}
 		} catch (Throwable e) {
-
+			inverse = null;
 		}
 		return inverse;
 	}
@@ -136,8 +137,8 @@ class ConvertController {
 	 * Puts all of the remaining uncreated transitions into the automaton.
 	 */
 	public void complete() {
-		Collection productions = new HashSet(pToT.keySet());
-		Iterator it = productions.iterator();
+		Collection<Production> productions = new HashSet<>(pToT.keySet());
+		Iterator<Production> it = productions.iterator();
 		while (it.hasNext()) {
 			Production p = (Production) it.next();
 			if (alreadyDone.contains(p))
@@ -205,15 +206,15 @@ class ConvertController {
 	protected Automaton automaton;
 
 	/** The map of productions to transitions the user should come up with. */
-	protected Map pToT;
+	protected Map<Production, Transition> pToT;
 
 	/** The map of transitions to productions. */
-	protected Map tToP;
+	protected Map<Transition, Production> tToP;
 
 	/**
 	 * The set of productions whose transitions have already been added.
 	 */
-	protected Set alreadyDone = new HashSet();
+	protected Set<Production> alreadyDone = new HashSet<>();
 
 	/** The parent component. */
 	protected Component parent;

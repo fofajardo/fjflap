@@ -28,6 +28,9 @@ import java.util.Set;
 
 
 import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
 
 import file.DataException;
 
@@ -76,7 +79,7 @@ public class MooreTransducer extends MealyTransducer
      * @param isBlock
      * @return the new transition
      */
-    protected Transition createTransition(State from, State to, Node node, Map e2t, boolean isBlock) 
+    protected Transition createTransition(State from, State to, Node node, Map<String, String> e2t, boolean isBlock) 
     {
         /*
          * The boolean isBlock seems to be ignored in FSATransducer.java, so I'm ignoring

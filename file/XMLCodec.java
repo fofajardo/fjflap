@@ -25,6 +25,7 @@ import java.io.*;
 import java.util.Map;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
+import org.w3c.dom.Document;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -61,7 +62,7 @@ public class XMLCodec extends Codec {
 	 * @throws ParseException
 	 *             if there was a problem reading the file
 	 */
-	public Serializable decode(File file, Map parameters) {
+	public Serializable decode(File file, Map<?, ?> parameters) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -97,11 +98,10 @@ public class XMLCodec extends Codec {
 	 * @throws EncodeException
 	 *             if there was a problem writing the file
 	 */
-	public File encode(Serializable structure, File file, Map parameters) {
+	public File encode(Serializable structure, File file, Map<?, ?> parameters) {
 		Transducer transducer = null;
 		try {
 			transducer = TransducerFactory.getTransducer(structure);
-            
             /*
              * If we are saving a pumping lemma, the associated structure would
              * actually be a pumping lemma chooser. Thus, we have to get the

@@ -36,7 +36,7 @@ import javax.swing.event.ChangeListener;
 
 import debug.EDebug;
 
-import sun.security.util.Debug;
+//import sun.security.util.Debug;
 
 /**
  * The environment class is the central view that manages various "hangers on"
@@ -56,6 +56,11 @@ public abstract class Environment extends JPanel {
 
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new environment for the given object. This environment is
 	 * assumed to have no native file to which to save the object. One should
 	 * use the <CODE>setFile</CODE> object if this environment should have
@@ -109,7 +114,7 @@ public abstract class Environment extends JPanel {
 	 *            the file change event to distribute
 	 */
 	protected void distributeFileChangeEvent(FileChangeEvent event) {
-		Iterator it = fileListeners.iterator();
+		Iterator<FileChangeListener> it = fileListeners.iterator();
 		while (it.hasNext()) {
 			FileChangeListener listener = (FileChangeListener) it.next();
 			listener.fileChanged(event);
@@ -142,7 +147,7 @@ public abstract class Environment extends JPanel {
 	}
 
 
-    public void setMultipleObjects(ArrayList objects) {     
+    public void setMultipleObjects(ArrayList<Object> objects) {     
         this.myObjects = objects;
     }
 
@@ -341,7 +346,7 @@ public abstract class Environment extends JPanel {
 	protected void distributeChangeEvent() {
 		
 		ChangeEvent e = new ChangeEvent(this);
-		Iterator it = (new HashSet(changeListeners)).iterator();
+		Iterator<ChangeListener> it = (new HashSet<ChangeListener>(changeListeners)).iterator();
 		while (it.hasNext())
 			((ChangeListener) it.next()).stateChanged(e);
 	}
@@ -400,7 +405,7 @@ public abstract class Environment extends JPanel {
 	 *         tags, satisfied the satisfier
 	 */
 	public Component[] getComponents(Satisfier satisfier) {
-		ArrayList list = new ArrayList();
+		ArrayList<Component> list = new ArrayList<>();
 		for (int i = 0; i < tabbed.getTabCount(); i++) {
 			Component c = tabbed.getComponentAt(i);
 			if (satisfier.satisfies(c, (Tag) componentTags.get(c)))
@@ -477,20 +482,20 @@ public abstract class Environment extends JPanel {
 	
 	
     /**For Testing multiple objects*/
-    public ArrayList myObjects;
-    public ArrayList myTestStrings;
-    public ArrayList myTransducerStrings;
+    public ArrayList<Object> myObjects;
+    public ArrayList<String> myTestStrings;
+    public ArrayList<String> myTransducerStrings;
 	/** The encoder for this document. */
 	private Encoder encoder = null;
 
 	/** The mapping of components to their respective tag objects. */
-	private HashMap componentTags = new HashMap();
+	private HashMap<Component, Tag> componentTags = new HashMap<>();
 
 	/** The tabbed pane for this environment. */
 	public JTabbedPane tabbed;
 
 	/** The collection of change listeners for this object. */
-	private transient HashSet changeListeners = new HashSet();
+	private transient HashSet<ChangeListener> changeListeners = new HashSet<>();
 
 	/** The object that this environment centers on. */
 	private Serializable theMainObject;
@@ -499,7 +504,7 @@ public abstract class Environment extends JPanel {
 	private File file;
 
 	/** The collection of file change listeners. */
-	private Set fileListeners = new HashSet();
+	private Set<FileChangeListener> fileListeners = new HashSet<>();
 
 	/**
 	 * The number of "CriticalTag" tagged components. Hokey but fast.

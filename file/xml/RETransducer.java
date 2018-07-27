@@ -23,6 +23,8 @@ package file.xml;
 import file.ParseException;
 import java.util.Map;
 import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import regular.*;
 
 /**
@@ -50,7 +52,7 @@ public class RETransducer extends AbstractTransducer {
 	 * @return the {@link regular.RegularExpression} instance
 	 */
 	public java.io.Serializable fromDOM(Document document) {
-		Map e2t = elementsToText(document.getDocumentElement());
+		Map<String, String> e2t = elementsToText(document.getDocumentElement());
 		String expression = (String) e2t.get(EXPRESSION_NAME);
 		if (expression == null)
 			if (e2t.containsKey(EXPRESSION_NAME))

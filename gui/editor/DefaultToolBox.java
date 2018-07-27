@@ -26,6 +26,7 @@ import gui.viewer.AutomatonPane;
 import java.util.List;
 
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * The <CODE>DefaultToolBox</CODE> has all the tools for general editing of an
@@ -44,8 +45,8 @@ public class DefaultToolBox implements ToolBox {
 	 *            the drawer that will draw the automaton in the view
 	 * @return a list of <CODE>Tool</CODE> objects.
 	 */
-	public List tools(AutomatonPane view, AutomatonDrawer drawer) {
-		List list = new java.util.ArrayList();
+	public List<Tool> tools(AutomatonPane view, AutomatonDrawer drawer) {
+		List<Tool> list = new java.util.ArrayList<>();
 		list.add(new ArrowTool(view, drawer));
 		list.add(new StateTool(view, drawer));
 		list.add(new TransitionTool(view, drawer));
@@ -55,8 +56,10 @@ public class DefaultToolBox implements ToolBox {
 		if (drawer.getAutomaton() instanceof TuringMachine) {
 			TuringMachine turingMachine = (TuringMachine) drawer.getAutomaton();
 			if (turingMachine.tapes() == 1) {
-				list.add(new BuildingBlockTool(view, drawer));
-				list.add(new BlockTransitionTool(view, drawer));
+				if (drawer.getAutomaton() instanceof TuringMachineBuildingBlocks) {
+					list.add(new BuildingBlockTool(view, drawer));
+					list.add(new BlockTransitionTool(view, drawer));
+				}
 			}
 		}
 		return list;

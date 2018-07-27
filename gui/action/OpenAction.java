@@ -22,6 +22,7 @@ package gui.action;
 
 import file.Codec;
 import file.DataException;
+import file.Decoder;
 import file.ParseException;
 import gui.environment.EnvironmentFrame;
 import gui.environment.FrameFactory;
@@ -42,6 +43,7 @@ import javax.swing.filechooser.FileFilter;
 
 import automata.Automaton;
 import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * The <CODE>OpenAction</CODE> is an action to load a structure from a file,
@@ -51,6 +53,11 @@ import automata.turing.TuringMachine;
  */
 
 public class OpenAction extends RestrictedAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>OpenAction</CODE>.
 	 */
@@ -130,8 +137,8 @@ public class OpenAction extends RestrictedAction {
 	public static Codec[] makeFilters() {
 		// Set up the file filters.
 		Universe.CHOOSER.resetChoosableFileFilters();
-		List decoders = Universe.CODEC_REGISTRY.getDecoders();
-		Iterator it = decoders.iterator();
+		List<Decoder> decoders = Universe.CODEC_REGISTRY.getDecoders();
+		Iterator<Decoder> it = decoders.iterator();
 		while (it.hasNext())
 			Universe.CHOOSER.addChoosableFileFilter((FileFilter) it.next());
 		Universe.CHOOSER.setFileFilter(Universe.CHOOSER
@@ -162,14 +169,18 @@ public class OpenAction extends RestrictedAction {
 	 *             if there was an error with all or one of the codecs
 	 */
 	public static void openFile(File file, Codec[] codecs) {
+		dontOpen = false;
 		ParseException p = null;
 		for (int i = 0; i < codecs.length; i++) {
 			try {
 				Serializable object = codecs[i].decode(file, null);
-				if (openOrRead && !(object instanceof TuringMachine)) {
+				System.out.println(openOrRead);
+				if (openOrRead && !(object instanceof TuringMachineBuildingBlocks)) {
+					dontOpen = true;
                     JOptionPane.showMessageDialog(null,
-                            "Only Turing Machine files can be added as building blocks.", "Wrong File Type",
+                            "Only single-tape Turing machines can be used as building blocks!", "Wrong File Type",
                             JOptionPane.ERROR_MESSAGE);
+                    
                     return;
 					
 				}
@@ -236,8 +247,11 @@ public class OpenAction extends RestrictedAction {
 
 	// ** False causes file to be opened, True causes file to be read but not
 	// opened"
-	private static boolean openOrRead = false;
+	public static boolean openOrRead = false;
 
+	/**Set to true when user attempts to open incorrect file type as a building block */
+	public static boolean dontOpen = false;
+	
 	/** The file chooser. */
 	private JFileChooser fileChooser;
 
@@ -249,6 +263,11 @@ public class OpenAction extends RestrictedAction {
 
 	/** The exception class for when a file could not be read properly. */
 	protected static class FileReadException extends RuntimeException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		/**
 		 * Instantiates a file read exception with a given message.
 		 * 

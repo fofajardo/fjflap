@@ -47,6 +47,7 @@ import automata.graph.AutomatonDirectedGraph;
 import automata.mealy.MealyMachine;
 import automata.turing.TuringMachine;
 import automata.turing.TMSimulator;
+import automata.turing.NDTMSimulator;
 
 /**
  * This is the action used for the stepwise simulation of data. This method can
@@ -56,7 +57,12 @@ import automata.turing.TMSimulator;
  */
 
 public class SimulateAction extends AutomatonAction {
-	private Grammar gram;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Grammar gram; 
 
 	/**
 	 * Instantiates a new <CODE>SimulateAction</CODE>.
@@ -221,6 +227,7 @@ public class SimulateAction extends AutomatonAction {
 				    			{
 				    				JOptionPane.showMessageDialog(component, "Input file does not have enough input for all tapes", "File read error"
 				    						, JOptionPane.ERROR_MESSAGE);
+				    				sc.close();
 				    				return;
 				    			}
 				    		}
@@ -233,7 +240,7 @@ public class SimulateAction extends AutomatonAction {
 							JOptionPane.getFrameForComponent(component).dispose();
 							handleInputFile(tt);
 						}
-						
+						sc.close();
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generate catch block
 						e1.printStackTrace();
@@ -320,9 +327,16 @@ public class SimulateAction extends AutomatonAction {
 			return;
 		
 		// Get the initial configurations.
-		if (getObject() instanceof TuringMachine) {
+		if (getObject() instanceof TuringMachine) {			
 			String[] s = (String[]) input;
-			configs = ((TMSimulator) simulator).getInitialConfigurations(s);
+			//check for nondeterminism
+			NondeterminismDetector d = NondeterminismDetectorFactory.getDetector(automaton);
+            State[] nd = d.getNondeterministicStates(automaton);
+            if(nd.length > 0) {
+            		configs = ((NDTMSimulator) simulator).getInitialConfigurations(s);
+            } else {
+            	configs = ((TMSimulator) simulator).getInitialConfigurations(s);
+            }
 		} else {
 			String s = (String) input;
 			configs = simulator.getInitialConfigurations(s); 

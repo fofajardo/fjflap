@@ -23,6 +23,7 @@ package grammar.lsystem;
 import grammar.*;
 import java.io.Serializable;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * The <CODE>LSystem</CODE> class represents L-systems. This does not do any
@@ -37,10 +38,15 @@ import java.util.*;
 // Oh, just fine! Thank you. Very well. Mmm-hmm! I'm just...
 public class LSystem implements Serializable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructs an empty L-System.
 	 */
 	public LSystem() {
-		this("", new UnrestrictedGrammar(), new HashMap());
+		this("", new UnrestrictedGrammar(), new HashMap<>());
 	}
 
 	/**
@@ -56,7 +62,7 @@ public class LSystem implements Serializable {
 	 * @param axiom
 	 *            the start symbols as a space delimited string
 	 */
-	public LSystem(String axiom, Grammar replacements, Map values) {
+	public LSystem(String axiom, Grammar replacements, Map<Object, Object> values) {
 		this.values = Collections.unmodifiableMap(values);
 		initReplacements(replacements);
 		this.axiom = tokenify(axiom);
@@ -70,9 +76,9 @@ public class LSystem implements Serializable {
 	 *            the string to take tokens from
 	 * @return a list containing all tokens of the string
 	 */
-	public static List tokenify(String string) {
+	public static List<String> tokenify(String string) {
 		StringTokenizer st = new StringTokenizer(string);
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		while (st.hasMoreTokens())
 			list.add(st.nextToken());
 		return list;
@@ -85,18 +91,18 @@ public class LSystem implements Serializable {
 	 *            the grammar holding the replacement rules
 	 */
 	private void initReplacements(Grammar replacements) {
-		Map reps = new HashMap();
+		Map<String, ArrayList<List<String>>> reps = new HashMap<>();
 		Production[] p = replacements.getProductions();
 		for (int i = 0; i < p.length; i++) {
 			String replace = p[i].getLHS();
-			ArrayList currentReplacements = null;
+			ArrayList<List<String>> currentReplacements = null;
 			if (!reps.containsKey(replace))
-				reps.put(replace, currentReplacements = new ArrayList());
+				reps.put(replace, currentReplacements = new ArrayList<List<String>>());
 			else
-				currentReplacements = (ArrayList) reps.get(replace);
-			List currentSubstitution = tokenify(p[i].getRHS());
+				currentReplacements = reps.get(replace);
+			List<String> currentSubstitution = tokenify(p[i].getRHS());
 			try {
-				List lastSubstitution = (List) currentReplacements
+				List<String> lastSubstitution = (List<String>) currentReplacements
 						.get(currentReplacements.size() - 1);
 				if (!currentSubstitution.equals(lastSubstitution))
 					nondeterministic = true;
@@ -105,13 +111,13 @@ public class LSystem implements Serializable {
 			}
 			currentReplacements.add(currentSubstitution);
 		}
-		Iterator it = reps.entrySet().iterator();
-		symbolToReplacements = new TreeMap();
-		List[] emptyListArray = new List[0];
+		Iterator<Entry<String, ArrayList<List<String>>>> it = reps.entrySet().iterator();
+		symbolToReplacements = new TreeMap<>();
+		List<String>[] emptyListArray = new List[0];
 		while (it.hasNext()) {
-			Map.Entry entry = (Map.Entry) it.next();
-			List l = (List) entry.getValue();
-			List[] replacementArray = (List[]) l.toArray(emptyListArray);
+			Map.Entry<String, ArrayList<List<String>>> entry = (Entry<String, ArrayList<List<String>>>) it.next();
+			List<List<String>> l = (List<List<String>>) entry.getValue();
+			List<String>[] replacementArray = (List<String>[]) l.toArray(emptyListArray);
 			symbolToReplacements.put(entry.getKey(), replacementArray);
 		}
 	}
@@ -121,7 +127,7 @@ public class LSystem implements Serializable {
 	 * 
 	 * @return the list of symbols for the axiom
 	 */
-	public List getAxiom() {
+	public List<String> getAxiom() {
 		return axiom;
 	}
 
@@ -133,8 +139,8 @@ public class LSystem implements Serializable {
 	 * @return an array of lists, where each list is a list of the strings; the
 	 *         array will be empty if there are no replacements
 	 */
-	public List[] getReplacements(String symbol) {
-		List[] toReturn = (List[]) symbolToReplacements.get(symbol);
+	public List<String>[] getReplacements(String symbol) {
+		List<String>[] toReturn = (List<String>[]) symbolToReplacements.get(symbol);
 		return toReturn == null ? EMPTY_LIST : toReturn;
 	}
 
@@ -143,7 +149,7 @@ public class LSystem implements Serializable {
 	 * 
 	 * @return the set of symbols that have replacements in this L-system
 	 */
-	public Set getSymbolsWithReplacements() {
+	public Set<String> getSymbolsWithReplacements() {
 		return symbolToReplacements.keySet();
 	}
 
@@ -153,7 +159,7 @@ public class LSystem implements Serializable {
 	 * 
 	 * @return the map of names of parameters to the parameters themselves
 	 */
-	public Map getValues() {
+	public Map<Object, Object> getValues() {
 		return values;
 	}
 
@@ -169,17 +175,17 @@ public class LSystem implements Serializable {
 	}
 
 	/** The grammar holding the replacement rules. */
-	private Map symbolToReplacements;
+	private Map<String, List<String>[]> symbolToReplacements;
 
 	/** The mapping of keys to values. */
-	private Map values;
+	private Map<Object, Object> values;
 
 	/** The axiom. */
-	private List axiom;
+	private List<String> axiom;
 
 	/** Whether or not the L-system has stochiastic properties. */
 	private boolean nondeterministic = false;
 
 	/** An empty list array. */
-	private static final List[] EMPTY_LIST = new List[0];
+	private static final List<String>[] EMPTY_LIST = new List[0];
 }

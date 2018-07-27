@@ -21,6 +21,7 @@
 package gui.regular;
 
 import gui.editor.ArrowNontransitionTool;
+import gui.editor.Tool;
 import gui.editor.ToolBox;
 import gui.environment.AutomatonEnvironment;
 import gui.environment.Universe;
@@ -51,6 +52,11 @@ import automata.fsa.FiniteStateAutomaton;
 
 public class ConvertPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a new conversion pane for the conversion of an automaton to a
 	 * regular expression.
 	 * 
@@ -78,8 +84,8 @@ public class ConvertPane extends JPanel {
 
 		gui.editor.EditorPane ep = new gui.editor.EditorPane(automatonDrawer,
 				new ToolBox() {
-					public List tools(AutomatonPane view, AutomatonDrawer drawer) {
-						LinkedList tools = new LinkedList();
+					public List<Tool> tools(AutomatonPane view, AutomatonDrawer drawer) {
+						LinkedList<Tool> tools = new LinkedList<>();
 						tools.add(new ArrowNontransitionTool(view, drawer));
 						tools
 								.add(new RegularStateTool(view, drawer,
@@ -96,11 +102,21 @@ public class ConvertPane extends JPanel {
 		JToolBar bar = ep.getToolBar();
 		bar.addSeparator();
 		bar.add(new JButton(new AbstractAction("Do It") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.moveNextStep();
 			}
 		}));
 		bar.add(new JButton(new AbstractAction("Export") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.export();
 			}

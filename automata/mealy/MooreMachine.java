@@ -42,9 +42,13 @@ import automata.State;
 public class MooreMachine extends MealyMachine 
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Map of states (keys) to output (values).
      */
-    private Map myMap;
+    private Map<State, String> myMap;
     
     /**
      * Creates a Moore machine with no states or transitions.
@@ -53,7 +57,7 @@ public class MooreMachine extends MealyMachine
     public MooreMachine()
     {
         super();
-        myMap = new HashMap();
+        myMap = new HashMap<State, String>();
     }
     
     /**

@@ -44,6 +44,11 @@ import automata.Configuration;
 
 public class ConfigurationPane extends JPanel implements ActionListener {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a <CODE>ConfigurationPane</CODE>. The instance as created has
 	 * no configurations loaded into it yet.
 	 * 
@@ -242,8 +247,8 @@ public class ConfigurationPane extends JPanel implements ActionListener {
 	 */
 	public Configuration[] getValidConfigurations() {
 		// A state is valid for return if it is normal.
-		ArrayList list = new ArrayList();
-		Iterator it = configurationToButtonMap.values().iterator();
+		ArrayList<Configuration> list = new ArrayList<>();
+		Iterator<ConfigurationButton> it = configurationToButtonMap.values().iterator();
 		while (it.hasNext()) {
 			ConfigurationButton button = (ConfigurationButton) it.next();
 			if (button.state == ConfigurationButton.NORMAL
@@ -259,9 +264,9 @@ public class ConfigurationPane extends JPanel implements ActionListener {
 	 */
 	public void clearFinal() {
 		// Avoid concurrent modification exceptions.
-		ArrayList list = new ArrayList();
+		ArrayList<ConfigurationButton> list = new ArrayList<>();
 		list.addAll(configurationToButtonMap.values());
-		Iterator it = list.iterator();
+		Iterator<ConfigurationButton> it = list.iterator();
 
 		while (it.hasNext()) {
 			ConfigurationButton button = (ConfigurationButton) it.next();
@@ -276,9 +281,9 @@ public class ConfigurationPane extends JPanel implements ActionListener {
 	 */
 	public void clearThawed() {
 		// Avoid concurrent modification exceptions.
-		ArrayList list = new ArrayList();
+		ArrayList<ConfigurationButton> list = new ArrayList<>();
 		list.addAll(configurationToButtonMap.values());
-		Iterator it = list.iterator();
+		Iterator<ConfigurationButton> it = list.iterator();
 
 		while (it.hasNext()) {
 			ConfigurationButton button = (ConfigurationButton) it.next();
@@ -338,7 +343,7 @@ public class ConfigurationPane extends JPanel implements ActionListener {
 	 *            the listener to add
 	 */
 	void distributeSelectionEvent(ConfigurationSelectionEvent event) {
-		Iterator it = selectionListeners.iterator();
+		Iterator<ConfigurationSelectionListener> it = selectionListeners.iterator();
 		while (it.hasNext()) {
 			ConfigurationSelectionListener listener = (ConfigurationSelectionListener) it
 					.next();
@@ -350,12 +355,12 @@ public class ConfigurationPane extends JPanel implements ActionListener {
 	private Automaton automaton;
 
 	/** The map from configurations to their buttons. */
-	private HashMap configurationToButtonMap = new HashMap();
+	private HashMap<Configuration, ConfigurationButton> configurationToButtonMap = new HashMap<>();
 
 	/** The set of selected configurations. */
-	private HashSet selected = new HashSet();
+	private HashSet<Configuration> selected = new HashSet<>();
 
 	/** The set of listeners to selection events. */
-	private transient HashSet selectionListeners = new HashSet();
+	private transient HashSet<ConfigurationSelectionListener> selectionListeners = new HashSet<>();
 
 }

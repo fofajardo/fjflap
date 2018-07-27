@@ -21,6 +21,7 @@
 package grammar;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * Converts grammars to Chomsky normal form.
@@ -51,7 +52,7 @@ public class CNFConverter {
 	 *             if the string has anything that interferes with productions
 	 */
 	public static String[] separateString(String string) {
-		LinkedList list = new LinkedList();
+		LinkedList<String> list = new LinkedList<>();
 		for (int i = string.length() - 1; i >= 0; i--) {
 			int start = i;
 			if (string.charAt(i) != ')') {
@@ -106,10 +107,10 @@ public class CNFConverter {
 	 */
 	public static Production[] convert(Production[] p) {
 		// Figure out what we need, and what's available.
-		TreeSet vars = new TreeSet(); // Set of available vars.
+		TreeSet<String> vars = new TreeSet<>(); // Set of available vars.
 		for (char c = 'A'; c <= 'Z'; c++)
 			vars.add("" + c);
-		TreeSet unresolved = new TreeSet(); // Set of vars needing conversion.
+		TreeSet<String> unresolved = new TreeSet<>(); // Set of vars needing conversion.
 		for (int i = 0; i < p.length; i++) {
 			String[] tokens = separateString(p[i].getRHS());
 			for (int j = 0; j < tokens.length; j++)
@@ -127,8 +128,8 @@ public class CNFConverter {
 					"26 variables available, but " + needed + " needed!");
 		}
 		// Build the replacement map.
-		HashMap replacements = new HashMap();
-		Iterator it = unresolved.iterator(), it2 = vars.iterator();
+		HashMap<String, String> replacements = new HashMap<>();
+		Iterator<String> it = unresolved.iterator(), it2 = vars.iterator();
 		while (it.hasNext())
 			replacements.put(it.next(), it2.next());
 		// Make the substitutions.
@@ -219,7 +220,7 @@ public class CNFConverter {
 	 */
 	public Production[] determinalize(Production production) {
 		String[] tokens = separateString(production.getRHS());
-		List list = new ArrayList();
+		List<Production> list = new ArrayList<>();
 		String rhs = "";
 		for (int i = 0; i < tokens.length; i++) {
 			if (grammar.isTerminal(tokens[i])) {
@@ -274,19 +275,19 @@ public class CNFConverter {
 				// Add it to the list of productions.
 				productions.add(p[i]);
 				// Check the right hand side map.
-				Set rhses = (Set) lhsToRhs.get(lhs);
+				Set<String> rhses = (Set<String>) lhsToRhs.get(lhs);
 				if (rhses == null) {
-					rhses = new HashSet();
+					rhses = new HashSet<>();
 					lhsToRhs.put(lhs, rhses);
 				}
 				rhses.add(rhs);
 			}
 			// Creates the map of RHSes to LHSes.
-			Iterator it = lhsToRhs.entrySet().iterator();
+			Iterator<Entry<String, Set<String>>> it = lhsToRhs.entrySet().iterator();
 			while (it.hasNext()) {
-				Map.Entry entry = (Map.Entry) it.next();
-				Set rhses = (Set) entry.getValue();
-				Iterator it2 = rhses.iterator();
+				Map.Entry<String, Set<String>> entry = (Entry<String, Set<String>>) it.next();
+				Set<String> rhses = (Set<String>) entry.getValue();
+				Iterator<String> it2 = rhses.iterator();
 				String rhs = (String) it2.next();
 				if (it2.hasNext())
 					continue;
@@ -309,9 +310,9 @@ public class CNFConverter {
 				throw new IllegalArgumentException(rhs
 						+ " already represented by " + rhsToLhs.get(rhs));
 			// Add the production.
-			Set rhses = (Set) lhsToRhs.get(lhs);
+			Set<String> rhses = (Set<String>) lhsToRhs.get(lhs);
 			if (rhses == null) {
-				rhses = new HashSet();
+				rhses = new HashSet<String>();
 				lhsToRhs.put(lhs, rhses);
 			}
 			rhses.add(rhs);
@@ -327,7 +328,7 @@ public class CNFConverter {
 		 *         appear in the grammar
 		 */
 		public String[] getRight(String lhs) {
-			Set rhses = (Set) lhsToRhs.get(lhs);
+			Set<String> rhses = (Set<String>) lhsToRhs.get(lhs);
 			return (String[]) rhses.toArray(new String[0]);
 		}
 
@@ -344,16 +345,16 @@ public class CNFConverter {
 		}
 
 		/** The productions. */
-		private List productions = new ArrayList();
+		private List<Production> productions = new ArrayList<>();
 
 		/** The map of LHS to multiple RHS stored as sets. */
-		private Map lhsToRhs = new TreeMap();
+		private Map<String, Set<String>> lhsToRhs = new TreeMap<>();
 
 		/**
 		 * The map of RHS to a LHS, given that the RHS of the production is
 		 * unique to the LHS of the production (that is, that LHS maps only to
 		 * this RHS).
 		 */
-		private Map rhsToLhs = new HashMap();
+		private Map<String, String> rhsToLhs = new HashMap<>();
 	}
 }

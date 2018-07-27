@@ -77,8 +77,8 @@ public class FSAStepByStateSimulator extends AutomatonSimulator {
 	 * @param config
 	 *            the configuration to simulate the one step on.
 	 */
-	public ArrayList stepConfiguration(Configuration config) {
-		ArrayList list = new ArrayList();
+	public ArrayList<Configuration> stepConfiguration(Configuration config) {
+		ArrayList<Configuration> list = new ArrayList<>();
 		FSAConfiguration configuration = (FSAConfiguration) config;
 		/** get all information from configuration. */
 		String unprocessedInput = configuration.getUnprocessedInput();
@@ -132,7 +132,7 @@ public class FSAStepByStateSimulator extends AutomatonSimulator {
 	 *         the machine in a final state.
 	 */
 	public boolean isAccepted() {
-		Iterator it = myConfigurations.iterator();
+		Iterator<Configuration> it = myConfigurations.iterator();
 		while (it.hasNext()) {
 			FSAConfiguration configuration = (FSAConfiguration) it.next();
 			State currentState = configuration.getCurrentState();
@@ -162,11 +162,11 @@ public class FSAStepByStateSimulator extends AutomatonSimulator {
 		while (!myConfigurations.isEmpty()) {
 			if (isAccepted())
 				return true;
-			ArrayList configurationsToAdd = new ArrayList();
-			Iterator it = myConfigurations.iterator();
+			ArrayList<Configuration> configurationsToAdd = new ArrayList<>();
+			Iterator<Configuration> it = myConfigurations.iterator();
 			while (it.hasNext()) {
 				FSAConfiguration configuration = (FSAConfiguration) it.next();
-				ArrayList configsToAdd = stepConfiguration(configuration);
+				ArrayList<Configuration> configsToAdd = stepConfiguration(configuration);
 				configurationsToAdd.addAll(configsToAdd);
 				/**
 				 * Remove configuration since just stepped from that

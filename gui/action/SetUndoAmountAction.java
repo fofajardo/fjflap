@@ -42,6 +42,11 @@ import debug.EDebug;
 
 public class SetUndoAmountAction extends RestrictedAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>SetUndoAmountAction</CODE>.
 	 * 
 	 * @param environment

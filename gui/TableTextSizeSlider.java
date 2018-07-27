@@ -38,16 +38,25 @@ import javax.swing.event.ChangeListener;
 
 public class TableTextSizeSlider extends JSlider{
 
-    static final int FONT_SIZE_MIN = 1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	static final int FONT_SIZE_MIN = 1;
     static final int FONT_SIZE_MAX = 600;
     static final int FONT_SIZE_INIT = 200;
-    static final String TABLE_SIZE_TITLE = "Table Text Size";
+    static String TABLE_SIZE_TITLE = "Table Text Size";
     
     JTable myTable;
 	
-	public TableTextSizeSlider(JTable table) {
-		super(FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_INIT); 
+	public TableTextSizeSlider(JTable table, int orientation) {
+		super(orientation, FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_INIT); 
 	    this.addChangeListener(new SliderListener());
+	    if (orientation == JSlider.VERTICAL) {
+	    		TABLE_SIZE_TITLE = "TTS";
+	    } else {
+	    		TABLE_SIZE_TITLE = "Table Text Size";
+	    }
 	    setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), TABLE_SIZE_TITLE));
 	    myTable = table;
 	}
@@ -58,6 +67,7 @@ public class TableTextSizeSlider extends JSlider{
                 JSlider source = (JSlider)e.getSource();
                 myTable.setFont(new Font("Default", Font.PLAIN, source.getValue()/10));
                 myTable.setRowHeight(source.getValue()/10+10);
+               
             }
       }
 }

@@ -43,6 +43,11 @@ import javax.swing.JOptionPane;
  */
 public class TuringBruteParseAction extends GrammarAction {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The grammar environment. */
 	private GrammarEnvironment environment;
 

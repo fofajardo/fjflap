@@ -69,11 +69,11 @@ public class FSAToRegularGrammarConverter {
 	 *            the automaton.
 	 */
 	public void initializeConverter(Automaton automaton) {
-		MAP = new HashMap();
+		MAP = new HashMap<>();
 		State[] states = automaton.getStates();
 		State initialState = automaton.getInitialState();
 		// Do the variables.
-		VARIABLE = new LinkedList();
+		VARIABLE = new LinkedList<>();
 		for (char c = 'A'; c <= 'Z'; c++)
 			VARIABLE.add("" + c);
 		// Map the initial state to S.
@@ -82,9 +82,9 @@ public class FSAToRegularGrammarConverter {
 			MAP.put(initialState, START_VARIABLE);
 		}
 		// Assign variables to the other states.
-		List stateList = new ArrayList(Arrays.asList(states));
+		List<Object> stateList = new ArrayList<>(Arrays.asList(states));
 		stateList.remove(initialState);
-		Collections.sort(stateList, new Comparator() {
+		Collections.sort(stateList, new Comparator<Object>() {
 			public int compare(Object o1, Object o2) {
 				return ((State) o1).getID() - ((State) o2).getID();
 			}
@@ -93,7 +93,7 @@ public class FSAToRegularGrammarConverter {
 				return false;
 			}
 		});
-		Iterator it = stateList.iterator();
+		Iterator<Object> it = stateList.iterator();
 		while (it.hasNext()) {
 			State state = (State) it.next();
 			MAP.put(state, VARIABLE.removeFirst());
@@ -199,7 +199,7 @@ public class FSAToRegularGrammarConverter {
 	}
 
 	/** The map of states in the fsa to variables in the grammar. */
-	protected HashMap MAP;
+	protected HashMap<State, String> MAP;
 
 	/** The start variable. */
 	protected static final String START_VARIABLE = "S";
@@ -208,5 +208,5 @@ public class FSAToRegularGrammarConverter {
 	protected static final String LAMBDA = "";
 
 	/** The list of unclaimed variable symbols. */
-	protected LinkedList VARIABLE;
+	protected LinkedList<String> VARIABLE;
 }

@@ -33,6 +33,11 @@ import java.util.EventObject;
 
 public class BruteParserEvent extends EventObject {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new brute parser event.
 	 * 
 	 * @param parser

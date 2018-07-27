@@ -21,6 +21,9 @@
 package gui.tree;
 
 import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+
+import java.awt.geom.Point2D;
 import java.util.Map;
 
 /**
@@ -46,5 +49,5 @@ public interface NodePlacer {
 	 * @return a map from the nodes of the tree to points where those nodes
 	 *         should be drawn
 	 */
-	public Map placeNodes(TreeModel tree, NodeDrawer drawer);
+	public Map<TreeNode, Point2D.Float> placeNodes(TreeModel tree, NodeDrawer drawer);
 }

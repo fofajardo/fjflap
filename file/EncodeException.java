@@ -30,6 +30,11 @@ package file;
 
 public class EncodeException extends RuntimeException {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a generic encoder exception.
 	 */
 	public EncodeException() {

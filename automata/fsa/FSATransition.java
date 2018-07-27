@@ -36,6 +36,11 @@ import automata.State;
 
 public class FSATransition extends Transition {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>FSATransition</CODE> object.
 	 * 
 	 * @param from

@@ -36,6 +36,11 @@ import automata.Transition;
 public class MooreTransition extends MealyTransition 
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Instantiates a new <code>MooreTransition</code> object and changes 
      * the output of the state <code>to</code> to <code>output</code>.
      * 

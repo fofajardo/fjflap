@@ -15,7 +15,7 @@
  */
 
 
-
+package automata.turing;
 
 //MERLIN MERLIN MERLIN MERLIN MERLIN//
 //DELETE THIS if it is never used. Currently it is never used.

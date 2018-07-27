@@ -21,6 +21,7 @@
 package gui.tree;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Float;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,8 +50,8 @@ public class DefaultNodePlacer implements NodePlacer {
 	 * @return a map from the nodes of the tree to points where those nodes
 	 *         should be drawn
 	 */
-	public Map placeNodes(TreeModel tree, NodeDrawer drawer) {
-		HashMap nodeToPoint = new HashMap();
+	public Map<TreeNode, Float> placeNodes(TreeModel tree, NodeDrawer drawer) {
+		HashMap<TreeNode, Float> nodeToPoint = new HashMap<>();
 		int[] width = Trees.width(tree), sofar = new int[width.length];
 		Arrays.fill(sofar, 0);
 		setPoints((TreeNode) tree.getRoot(), width.length - 1, 0, width, sofar,
@@ -76,7 +77,7 @@ public class DefaultNodePlacer implements NodePlacer {
 	 *            the mapping of nodes to points built
 	 */
 	private void setPoints(TreeNode node, int depth, int thisDepth,
-			int[] width, int[] widthSofar, Map nodeToPoint) {
+			int[] width, int[] widthSofar, Map<TreeNode, Float> nodeToPoint) {
 		// Scale points along ([0,1], [0,1]).
 		float x = (float) (widthSofar[thisDepth] + 1)
 				/ (float) (width[thisDepth] + 1);

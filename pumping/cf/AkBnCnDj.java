@@ -30,6 +30,11 @@ import pumping.*;
  */
 public class AkBnCnDj extends ContextFreePumpingLemma {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getTitle() 
     {
         return "a^k b^n c^n d^j : j != k";

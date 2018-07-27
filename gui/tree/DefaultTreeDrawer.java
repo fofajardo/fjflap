@@ -23,10 +23,13 @@ package gui.tree;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.*;
+import java.awt.geom.Point2D.Float;
+
 import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.tree.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * The <CODE>DefaultTreeDrawer</CODE> object is used to draw a <CODE>TreeModel</CODE>
@@ -233,6 +236,7 @@ public class DefaultTreeDrawer implements TreeDrawer, TreeModelListener {
 	public void revalidate() {
 		valid = true;
 		nodeToPoint = nodePlacer.placeNodes(tree, nodeDrawer);
+		nodePlacer.placeNodes(tree, nodeDrawer);
 	}
 
 	/**
@@ -244,10 +248,10 @@ public class DefaultTreeDrawer implements TreeDrawer, TreeModelListener {
 	 *            the size that the tree, if drawn, would be drawn in
 	 */
 	public TreeNode nodeAtPoint(Point2D point, Dimension2D size) {
-		Iterator it = nodeToPoint.entrySet().iterator();
+		Iterator<Entry<TreeNode, Float>> it = nodeToPoint.entrySet().iterator();
 		while (it.hasNext()) {
 		
-			Map.Entry entry = (Map.Entry) it.next();
+			Map.Entry<TreeNode, Float> entry = (Map.Entry<TreeNode, Float>) it.next();
 			Point2D p = scalePoint((Point2D) entry.getValue(), size);
 			TreeNode node = (TreeNode) entry.getKey();
 			if (nodeDrawer.onNode(node, point.getX() - p.getX(), point.getY()
@@ -388,7 +392,7 @@ public class DefaultTreeDrawer implements TreeDrawer, TreeModelListener {
 	private TreeModel tree;
 
 	/** The mapping of nodes to points. */
-	private Map nodeToPoint = new HashMap();
+	private Map<TreeNode, Float> nodeToPoint = new HashMap<>();
 
 	/**
 	 * True if visible set denotes invisible nodes (default is visible), false
@@ -397,7 +401,7 @@ public class DefaultTreeDrawer implements TreeDrawer, TreeModelListener {
 	private boolean defaultVisible = true;
 
 	/** The set of visible/invisible nodes. */
-	private WeakHashMap visibleNodes = new WeakHashMap();
+	private WeakHashMap<TreeNode, ?> visibleNodes = new WeakHashMap<>();
 
 	/** The drawer for the nodes. */
 	private NodeDrawer nodeDrawer = new DefaultNodeDrawer();

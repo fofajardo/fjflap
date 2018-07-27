@@ -33,7 +33,12 @@ import pumping.LemmaMath;
  */
 public class AnBn extends ContextFreePumpingLemma 
 {
-    public String getTitle() 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String getTitle() 
     {
         return "a^n b^n : n >= 0";
     }

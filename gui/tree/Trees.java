@@ -50,7 +50,7 @@ public class Trees {
 		TreeNode[] children = new TreeNode[node.getChildCount()];
 		if (!node.isLeaf()) {
 			int i = 0;
-			Enumeration enumer = node.children();
+			Enumeration<TreeNode> enumer = node.children();
 			while (i < children.length)
 				children[i++] = (TreeNode) enumer.nextElement();
 		}
@@ -142,7 +142,7 @@ public class Trees {
 		TreeNode[] children = Trees.children(node);
 		if (children.length == 0)
 			return new TreeNode[] { node };
-		ArrayList leaves = new ArrayList();
+		ArrayList<TreeNode> leaves = new ArrayList<>();
 		for (int i = 0; i < children.length; i++) {
 			TreeNode[] subleaves = leaves(children[i]);
 			for (int j = 0; j < subleaves.length; j++)

@@ -39,7 +39,11 @@ import automata.Note;
 */
 
 public class AutomatonSizeSlider extends JSlider{
-    //Set up animation parameters.
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//Set up animation parameters.
     static final int AUTOMATON_SIZE_MIN = 1;
     static final int AUTOMATON_SIZE_MAX = 800;
     static final int AUTOMATON_SIZE_INIT = 220;

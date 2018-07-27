@@ -42,6 +42,11 @@ import debug.EDebug;
 public class GrammarTypeTestAction extends GrammarAction {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The grammar environment. */
 	private GrammarEnvironment environment;
 

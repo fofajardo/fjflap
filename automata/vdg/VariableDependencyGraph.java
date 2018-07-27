@@ -32,6 +32,11 @@ import automata.Automaton;
 
 public class VariableDependencyGraph extends Automaton {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a variable dependency graph with no states and no transitions.
 	 */
 	public VariableDependencyGraph() {

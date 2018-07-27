@@ -22,6 +22,7 @@ package gui.environment;
 
 import file.Codec;
 import file.EncodeException;
+import file.Encoder;
 import file.ParseException;
 import gui.editor.EditBlockPane;
 import gui.editor.EditorPane;
@@ -50,6 +51,11 @@ import javax.swing.filechooser.FileFilter;
  */
 
 public class EnvironmentFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>EnvironmentFrame</CODE>. This does not fill
 	 * the environment with anything.
@@ -157,11 +163,11 @@ public class EnvironmentFrame extends JFrame {
 	 * @return <CODE>true</CODE> if the save was a success, <CODE>false</CODE>
 	 *         if it was not
 	 */
-	public boolean save(boolean saveAs) {
+	public boolean save(boolean saveAs) {		
 		File file = saveAs ? null : environment.getFile();
         Codec codec = (Codec) environment.getEncoder();
         Serializable object = environment.getObject();
-        if(environment.myObjects!=null  && environment.getActive()!=null && environment.getActive() instanceof EditorPane){
+        if(environment.myObjects!=null  && environment.getActive()!=null && environment.getActive() instanceof EditorPane){       		
             EditorPane ep = (EditorPane)environment.getActive();
             File expected = new File(ep.getAutomaton().getFilePath()+ep.getAutomaton().getFileName());
             file = saveAs ? null : expected;
@@ -197,8 +203,8 @@ public class EnvironmentFrame extends JFrame {
 		FileFilter[] filters = Universe.CHOOSER.getChoosableFileFilters();
 		for (int i = 0; i < filters.length; i++)
 			Universe.CHOOSER.removeChoosableFileFilter(filters[i]);
-		List encoders = Universe.CODEC_REGISTRY.getEncoders(object);
-		Iterator it = encoders.iterator();
+		List<Encoder> encoders = Universe.CODEC_REGISTRY.getEncoders(object);
+		Iterator<Encoder> it = encoders.iterator();
 		while (it.hasNext())
 			Universe.CHOOSER.addChoosableFileFilter((FileFilter) it.next());
 		if (codec != null && codec.canEncode(object)) {
@@ -267,14 +273,15 @@ public class EnvironmentFrame extends JFrame {
 				}
 			}
 		}
-		// //System.out.println("CODEC: "+codec.getDescription());
+		//System.out.println(CODEC: "+codec.getDescription());
 		Universe.CHOOSER.resetChoosableFileFilters();
 
 		// Use the codec to save the file.
 		try {
 			codec.encode(object, file, null);
-			if (!blockEdit)
+			if (!blockEdit) {				
 				environment.setFile(file);
+			}
 			environment.setEncoder(codec);
 			environment.clearDirty();
 			return true;

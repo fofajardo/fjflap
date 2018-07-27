@@ -30,6 +30,7 @@ import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.tree.TreeNode;
 
@@ -47,6 +48,10 @@ import javax.swing.tree.TreeNode;
  */
 public class SelectableUnrestrictedTreePanel extends UnrestrictedTreePanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean myClicked=false;
 	private Point2D myClickedNodePoint;
 	
@@ -73,13 +78,13 @@ public class SelectableUnrestrictedTreePanel extends UnrestrictedTreePanel{
 	public TreeNode nodeAtPoint(Point2D point) {
 		double x1=point.getX();
 		double y1=point.getY();
-		Iterator it = nodeToPoint.entrySet().iterator();
+		Iterator<Entry<UnrestrictedTreeNode, Point2D>> it = nodeToPoint.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry e = (Map.Entry) it.next();
+			Map.Entry<UnrestrictedTreeNode, Point2D> e = (Map.Entry<UnrestrictedTreeNode, Point2D>) it.next();
 			Point2D tempPoint=(Point2D) e.getValue();
 			double x2=tempPoint.getX();
 			double y2=tempPoint.getY();
-			if (Math.pow((x2-x1), 2)+Math.pow((y2-y1), 2)<=Math.pow(nodeDrawer.NODE_RADIUS,2))
+			if (Math.pow((x2-x1), 2)+Math.pow((y2-y1), 2)<=Math.pow(DefaultNodeDrawer.NODE_RADIUS,2))
 			{
 				myClicked=true;
 				myClickedNodePoint=new Point2D.Double(x2,y2);

@@ -147,10 +147,10 @@ public class Universe {
 	}
 
 	/** The mapping of environments to frames. */
-	private static Map environmentToFrame = new HashMap();
+	private static Map<Environment, EnvironmentFrame> environmentToFrame = new HashMap<>();
 
 	/** The mapping of files to frames. */
-	private static Map fileToFrame = new HashMap();
+	private static Map<String, EnvironmentFrame> fileToFrame = new HashMap<>();
 
 	/** The universal JFileChooser. */
 	public static JFileChooser CHOOSER = null;

@@ -53,7 +53,7 @@ class LLParseController {
 	 */
 	public void initialize(String string) {
 		dehighlight();
-		ArrayList nodes = new ArrayList();
+		ArrayList<MutableTreeNode> nodes = new ArrayList<>();
 		tree = parseTree(string, pane.grammar, pane.table, nodes);
 		pane.treeDrawer.setModel(tree);
 		pane.treeDrawer.hideAll();
@@ -63,7 +63,7 @@ class LLParseController {
 		// Initialize those global structures! :)
 		NODES = (TreeNode[]) nodes.toArray(new TreeNode[0]);
 		STRING = string + "$";
-		STACK = new Stack();
+		STACK = new Stack<TreeNode>();
 		P = 0;
 		NODECOUNT = 0;
 		stepMode = INITIALIZE;
@@ -287,10 +287,10 @@ class LLParseController {
 	 * @return the parse tree
 	 */
 	private DefaultTreeModel parseTree(String string, Grammar grammar,
-			LLParseTable table, List nodes) {
+			LLParseTable table, List<MutableTreeNode> nodes) {
 		int p = 0;
 		string = string + "$";
-		Stack stack = new Stack();
+		Stack<MutableTreeNode> stack = new Stack<>();
 		MutableTreeNode root = new DefaultMutableTreeNode(grammar
 				.getStartVariable());
 		stack.push(root);
@@ -347,7 +347,7 @@ class LLParseController {
 
 	private int NODECOUNT;
 
-	private Stack STACK;
+	private Stack<TreeNode> STACK;
 
 	private TreeNode[] NODES;
 

@@ -42,6 +42,10 @@ import pumping.*;
 public abstract class PumpingLemmaInputPane extends JPanel 
 {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * The maximum size of the window. It should fit onto most
      * screens.
      */

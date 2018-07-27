@@ -46,6 +46,12 @@ import javax.swing.*;
 
 public class AutomatonPane extends JPanel implements Scrollable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
 	 * Instantiates an AutomatonPane.
 	 * 
 	 * @param drawer
@@ -148,7 +154,7 @@ public class AutomatonPane extends JPanel implements Scrollable {
 		//g2.translate(-transform.getTranslateX(), -transform.getTranslateY());
 		//g2.scale(1.0/transform.getScaleX(), 1.0/transform.getScaleY());
 		//reposition the notes on scroll...since I can't figure out where it is scrolling, I do it here.
-		ArrayList notes = this.getDrawer().getAutomaton().getNotes();
+		ArrayList<Note> notes = this.getDrawer().getAutomaton().getNotes();
 		for(int k = 0; k < notes.size(); k++){
 			Note curNote = (Note)notes.get(k);
 			curNote.updateView();	
@@ -193,7 +199,7 @@ public class AutomatonPane extends JPanel implements Scrollable {
         drawer.invalidate();
 		drawer.drawAutomaton(g);
 
-		ArrayList notes = this.getDrawer().getAutomaton().getNotes();
+		ArrayList<Note> notes = this.getDrawer().getAutomaton().getNotes();
 		for(int k = 0; k < notes.size(); k++){
 			Note curNote = (Note)notes.get(k);
 			curNote.updateView();	
@@ -571,4 +577,4 @@ public class AutomatonPane extends JPanel implements Scrollable {
 	
 	/**Factor to scale everyone by, when we don't use auto-scale*/
 	private double scaleBy = 1;
-}
+} 

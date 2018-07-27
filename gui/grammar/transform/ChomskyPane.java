@@ -37,6 +37,11 @@ import javax.swing.*;
 
 public class ChomskyPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a Chomsky pane.
 	 * 
 	 * @param environment
@@ -65,11 +70,12 @@ public class ChomskyPane extends JPanel {
 	 */
 	private void initView() {
 		super.setLayout(new BorderLayout());
-		initGrammarTable();
+		GrammarTable table = initGrammarTable();
 		JPanel rightPanel = initRightPanel();
 		JSplitPane mainSplit = SplitPaneFactory.createSplit(environment, true,
 				0.4, new JScrollPane(grammarTable), rightPanel);
 		add(mainSplit, BorderLayout.CENTER);
+		add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
 	}
 
 	/**
@@ -86,6 +92,7 @@ public class ChomskyPane extends JPanel {
 		right.add(mainLabel);
 		right.add(directionLabel);
 		right.add(new JScrollPane(editingGrammarView));
+		right.add(new TableTextSizeSlider(editingGrammarView, JSlider.HORIZONTAL), BoxLayout.Y_AXIS);
 
 		JPanel biggie = new JPanel(new BorderLayout());
 		biggie.add(right, BorderLayout.CENTER);
@@ -123,7 +130,7 @@ public class ChomskyPane extends JPanel {
 	 * @return an array of row indices that need reduction
 	 */
 	private int[] getWhatNeedsDone() {
-		ArrayList list = new ArrayList();
+		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < editingGrammarModel.getRowCount() - 1; i++)
 			if (!converter.isChomsky(editingGrammarModel.getProduction(i)))
 				list.add(new Integer(i));
@@ -214,7 +221,7 @@ public class ChomskyPane extends JPanel {
 			return;
 		int[] r = editingGrammarView.getSelectedRows();
 		int unneeded = 0;
-		ArrayList list = new ArrayList();
+		ArrayList<Integer> list = new ArrayList<>();
 		editingGrammarView.dehighlight();
 		
 		for (int i = r.length - 1; i >= 0; i--) {
@@ -280,6 +287,11 @@ public class ChomskyPane extends JPanel {
 	 */
 	private GrammarTable initGrammarTable() {
 		grammarTable = new GrammarTable(new GrammarTableModel(grammar) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int r, int c) {
 				return false;
 			}
@@ -307,6 +319,11 @@ public class ChomskyPane extends JPanel {
 
 	/** The grammar table. */
 	GrammarTableModel editingGrammarModel = new GrammarTableModel() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public boolean isCellEditable(int r, int c) {
 			return false;
 		}
@@ -323,6 +340,11 @@ public class ChomskyPane extends JPanel {
 
 	/** The convert action. */
 	AbstractAction convertAction = new AbstractAction("Convert Selected") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			convertSelected();
 		}
@@ -330,6 +352,11 @@ public class ChomskyPane extends JPanel {
 
 	/** The do all action. */
 	AbstractAction doAllAction = new AbstractAction("Do All") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			doAll();
 		}
@@ -337,6 +364,11 @@ public class ChomskyPane extends JPanel {
 
 	/** The highlight remaining action. */
 	AbstractAction highlightAction = new AbstractAction("What's Left?") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			highlightRemaining();
 		}
@@ -344,6 +376,11 @@ public class ChomskyPane extends JPanel {
 
 	/** The export action. */
 	AbstractAction exportAction = new AbstractAction("Export") {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {
 			export();
 		}

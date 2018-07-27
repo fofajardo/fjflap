@@ -24,6 +24,7 @@ import gui.SplitPaneFactory;
 import gui.TooltipAction;
 import gui.editor.ArrowNontransitionTool;
 import gui.editor.EditorPane;
+import gui.editor.Tool;
 import gui.editor.ToolBox;
 import gui.environment.Environment;
 import gui.viewer.AutomatonDraggerPane;
@@ -42,6 +43,8 @@ import javax.swing.JToolBar;
 
 import automata.fsa.FiniteStateAutomaton;
 
+import java.util.*;
+
 /**
  * This is the pane where the user defines all that is needed for the conversion
  * of an NFA to a DFA.
@@ -50,6 +53,11 @@ import automata.fsa.FiniteStateAutomaton;
  */
 
 public class ConversionPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>ConversionPane</CODE>.
 	 * 
@@ -90,9 +98,9 @@ public class ConversionPane extends JPanel {
 	private EditorPane createEditor(FiniteStateAutomaton dfa) {
 		SelectionDrawer drawer = new SelectionDrawer(dfa);
 		editor = new EditorPane(drawer, new ToolBox() {
-			public java.util.List tools(AutomatonPane view,
+			public List<Tool> tools(AutomatonPane view,
 					AutomatonDrawer drawer) {
-				java.util.List tools = new java.util.LinkedList();
+				List<Tool> tools = new LinkedList<>();
 				tools.add(new ArrowNontransitionTool(view, drawer));
 				tools.add(new TransitionExpanderTool(view, drawer, controller));
 				tools.add(new StateExpanderTool(view, drawer, controller));
@@ -113,11 +121,21 @@ public class ConversionPane extends JPanel {
 		toolbar.addSeparator();
 		toolbar.add(new TooltipAction("Complete",
 				"This will finish all expansion.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.complete();
 			}
 		});
 		toolbar.add(new TooltipAction("Done?", "Are we finished?") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.done();
 			}

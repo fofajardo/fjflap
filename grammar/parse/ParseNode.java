@@ -41,6 +41,11 @@ import java.util.Arrays;
 
 public class ParseNode extends DefaultMutableTreeNode {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new parse node.
 	 * 
 	 * @param derivation

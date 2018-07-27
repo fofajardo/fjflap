@@ -36,6 +36,11 @@ import automata.State;
 
 public class PDATransition extends Transition {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>PDATransition</CODE> object.
 	 * 
 	 * @param from

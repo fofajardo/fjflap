@@ -37,6 +37,11 @@ import automata.State;
 
 public class MinimizeTreeNode extends DefaultMutableTreeNode {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a new <CODE>MinimizeTreeNode</CODE> with <CODE>userObject</CODE>
 	 * as its user object and the empty string as its terminal.
 	 * 

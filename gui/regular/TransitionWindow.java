@@ -41,6 +41,11 @@ import javax.swing.event.ListSelectionEvent;
 
 public class TransitionWindow extends JFrame {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>TransitionWindow</CODE>.
 	 * 
 	 * @param controller
@@ -57,6 +62,11 @@ public class TransitionWindow extends JFrame {
 				BorderLayout.NORTH);
 		getContentPane().add(new JScrollPane(table), BorderLayout.CENTER);
 		getContentPane().add(new JButton(new AbstractAction("Finalize") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				TransitionWindow.this.controller.finalizeStateRemove();
 			}

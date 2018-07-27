@@ -35,6 +35,11 @@ import automata.Configuration;
 
 public class ConfigurationButton extends JToggleButton {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a configuration button with a configuration with the default
 	 * setting of the state being labeled as NORMAL.
 	 * 

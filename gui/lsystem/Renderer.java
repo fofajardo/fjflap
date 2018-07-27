@@ -20,6 +20,7 @@
 
 package gui.lsystem;
 
+import gui.lsystem.Renderer.CommandHandler;
 import gui.transform.Matrix;
 
 import java.awt.Color;
@@ -38,6 +39,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -170,7 +172,7 @@ public class Renderer {
 	 *             if there is a passed in graphics object and its clip area is
 	 *             not set
 	 */
-	public Image render(List symbols, Map parameters, Matrix matrix,
+	public Image render(List<String> symbols, Map<Object, Object> parameters, Matrix matrix,
 			Graphics2D graphics, Point2D origin) {
 		BufferedImage image = null;
 		Rectangle2D bounds = new Rectangle2D.Double();
@@ -239,9 +241,9 @@ public class Renderer {
 						ourBounds.getY() - newBounds.getY());
 			}
 			// Do the initial parameters.
-			Iterator it = parameters.entrySet().iterator();
+			Iterator<Entry<Object, Object>> it = parameters.entrySet().iterator();
 			while (it.hasNext()) {
-				Map.Entry entry = (Map.Entry) it.next();
+				Map.Entry<Object, Object> entry = (Map.Entry<Object, Object>) it.next();
 				try {
 					assign((String) entry.getKey(), (String) entry.getValue());
 				} catch (Throwable e) {
@@ -253,10 +255,10 @@ public class Renderer {
 			capLinePath();
 			// Repeatedly read symbols, and call the appropriate
 			// command handler.
-			it = symbols.iterator();
-			while (it.hasNext()) {
+			Iterator<String> it2 = symbols.iterator();
+			while (it2.hasNext()) {
 				completedSymbols++;
-				String symbol = (String) it.next();
+				String symbol = (String) it2.next();
 				Renderer.CommandHandler handler = getHandler(symbol);
 				if (handler != null) {
 					try {
@@ -336,7 +338,7 @@ public class Renderer {
 	}
 
 	/** The command handler maps from symbols to the appropriate handler. */
-	private Map handlers = new HashMap();
+	private Map<String, CommandHandler> handlers = new HashMap<>();
 
 	/**
 	 * <CODE>true</CODE> if we are actually drawing, elsewise we're in the
@@ -348,7 +350,7 @@ public class Renderer {
 	private boolean isActive = false;
 
 	/** The stack of turtles. */
-	private Stack turtleStack = new Stack();
+	private Stack<Object> turtleStack = new Stack<>();
 
 	/** The current turtle. */
 	private Turtle currentTurtle;
@@ -372,16 +374,16 @@ public class Renderer {
 	private int totalSymbols;
 
 	/** The set of words that can be assigned to. */
-	public static Set ASSIGN_WORDS;
+	public static Set<String> ASSIGN_WORDS;
 
 	/** The set of words that cannot be assigned a numerical value. */
-	public static Set NONASSIGN_WORDS;
+	public static Set<String> NONASSIGN_WORDS;
 
 	static {
-		Set s = new TreeSet();
+		Set<String> s = new TreeSet<>();
 		s.add("color");
 		s.add("polygonColor");
-		NONASSIGN_WORDS = Collections.unmodifiableSet(new HashSet(s));
+		NONASSIGN_WORDS = Collections.unmodifiableSet(new HashSet<String>(s));
 		s.add("angle");
 		s.add("lineWidth");
 		s.add("lineIncrement");

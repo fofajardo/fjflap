@@ -36,7 +36,7 @@ import java.util.Comparator;
  * @author Thomas Finley
  */
 
-public class ColorComparator implements Comparator {
+public class ColorComparator implements Comparator<Object> {
 	/**
 	 * Imposes the ordering on colors, first by alpha, then by saturation, then
 	 * by brightness, then by hue.
@@ -112,7 +112,7 @@ public class ColorComparator implements Comparator {
 	public static void main(String args[]) {
 		Color first = Color.black;
 		Color second = Color.red;
-		Comparator comp = new ColorComparator();
+		Comparator<Object> comp = new ColorComparator();
 		// //System.out.println(comp.compare(first, second));
 	}
 }

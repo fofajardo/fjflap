@@ -70,11 +70,9 @@ public class Main {
 	 * @param args
 	 *            the command line arguments, which may hold files to open
 	 */
-	public static void main(String[] args, boolean dont) {
+	public static void main(String[] args) {
 
-        
-
-		dontQuit=dont;
+       
 		// Make sure we're not some old version.
 		try {
 			String v = System.getProperty("java.specification.version");
@@ -179,7 +177,7 @@ public class Main {
 					
 					//Then set the Turing final state constant
 					parent = doc.getDocumentElement()
-					   .getElementsByTagName(current.TURING_FINAL_NAME).item(0);
+					   .getElementsByTagName(Profile.TURING_FINAL_NAME).item(0);
 					if (parent!=null) {
 						String turingFinal = parent.getTextContent();
 						if (turingFinal.equals("true"))
@@ -190,7 +188,7 @@ public class Main {
 
                     //set the Turing Acceptance ways.
 					parent = doc.getDocumentElement()
-					   .getElementsByTagName(current.ACCEPT_FINAL_STATE).item(0);
+					   .getElementsByTagName(Profile.ACCEPT_FINAL_STATE).item(0);
 					if (parent!=null) {
 						String acceptFinal = parent.getTextContent();
 						if (acceptFinal.equals("true"))
@@ -200,7 +198,7 @@ public class Main {
 					}
 
 					parent = doc.getDocumentElement()
-					   .getElementsByTagName(current.ACCEPT_HALT).item(0);
+					   .getElementsByTagName(Profile.ACCEPT_HALT).item(0);
 					if (parent!=null) {
 						String acceptHalt = parent.getTextContent();
 						if (acceptHalt.equals("true"))
@@ -212,7 +210,7 @@ public class Main {
 
                     //set the AllowStay option
 					parent = doc.getDocumentElement()
-					   .getElementsByTagName(current.ALLOW_STAY).item(0);
+					   .getElementsByTagName(Profile.ALLOW_STAY).item(0);
 					if (parent!=null) {
 						String allowStay = parent.getTextContent();
 						if (allowStay.equals("true"))
@@ -223,7 +221,7 @@ public class Main {
                     
                     //Now set the Undo amount
 					parent = doc.getDocumentElement()
-					   .getElementsByTagName(current.UNDO_AMOUNT_NAME).item(0);
+					   .getElementsByTagName(Profile.UNDO_AMOUNT_NAME).item(0);
 					if (parent!=null) {
                         String number = parent.getTextContent();
                         current.setNumUndo(Integer.parseInt(number));

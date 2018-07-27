@@ -32,6 +32,8 @@ import java.awt.Graphics;
 import java.awt.RenderingHints;
 import java.awt.geom.*;
 import java.util.*;
+import java.util.Map.Entry;
+
 import javax.swing.tree.*;
 
 /**
@@ -43,6 +45,11 @@ import javax.swing.tree.*;
 
 public class UnrestrictedTreePanel extends TreePanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private HashMap <String, String> myVariableMap;
 	/**
 	 * Instantiates an unrestricted tree panel.
@@ -67,8 +74,8 @@ public class UnrestrictedTreePanel extends TreePanel {
 	public String getTB() {
 		StringBuffer total = new StringBuffer();
 		for (int i = 0; i < top.length; i++) {
-			List t = new LinkedList();
-			List b = new LinkedList();
+			List<List<UnrestrictedTreeNode>> t = new LinkedList<>();
+			List<List<UnrestrictedTreeNode>> b = new LinkedList<>();
 			for (int j = 0; j < top[i].length; j++)
 				t.add(Arrays.asList(top[i][j]));
 			for (int j = 0; j < bottom[i].length; j++)
@@ -80,7 +87,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 	}
 
 	private UnrestrictedTreeNode[] levelNodes(int level) {
-		List list = new ArrayList();
+		List<UnrestrictedTreeNode> list = new ArrayList<>();
         if(top[level] != null){
             for (int i = 0; i < top[level].length; i++)
                 for (int j = 0; j < top[level][i].length; j++)
@@ -95,8 +102,8 @@ public class UnrestrictedTreePanel extends TreePanel {
 		Production[] prods = solutionParseNodes[level].getProductions();
 		int[] prodStarts = solutionParseNodes[level].getSubstitutions();
 		int length = 0, prodNum = 0;
-		List bottomList = new LinkedList();
-		List topList = new LinkedList();
+		List<UnrestrictedTreeNode[]> bottomList = new LinkedList<>();
+		List<UnrestrictedTreeNode[]> topList = new LinkedList<>();
 		UnrestrictedTreeNode[] U = new UnrestrictedTreeNode[0];
 		UnrestrictedTreeNode[][] UU = new UnrestrictedTreeNode[0][0];
 		for (int i = 0; i < prev.length; i++) {
@@ -111,8 +118,8 @@ public class UnrestrictedTreePanel extends TreePanel {
 				// Starting a production.
 
 				
-				List currentBottom = new LinkedList();
-				List currentTop = new LinkedList();
+				List<UnrestrictedTreeNode> currentBottom = new LinkedList<>();
+				List<UnrestrictedTreeNode> currentTop = new LinkedList<>();
 				String rhs = prods[prodNum].getRHS();
 				String lhs = prods[prodNum].getLHS();
 				while (length < prodStarts[prodNum] + lhs.length()) {
@@ -368,7 +375,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 			setMetaWidth();
 		metaHeight = top.length;
 		Point2D p = new Point2D.Double();
-		nodeToPoint = new HashMap();
+		nodeToPoint = new HashMap<UnrestrictedTreeNode, Point2D>();
 		for (int l = 0; l <= level; l++) {
 			double total = 0.0;
 			UnrestrictedTreeNode[][] GG = l < level ? bottom[l] : top[l];
@@ -480,10 +487,10 @@ public class UnrestrictedTreePanel extends TreePanel {
 			}
 		}
 		// Do the drawing of the nodes.
-		Iterator it = nodeToPoint.entrySet().iterator();
+		Iterator<Entry<UnrestrictedTreeNode, Point2D>> it = nodeToPoint.entrySet().iterator();
 		
 		while (it.hasNext()) {
-			Map.Entry e = (Map.Entry) it.next();
+			Map.Entry<UnrestrictedTreeNode, Point2D> e = (Map.Entry<UnrestrictedTreeNode, Point2D>) it.next();
 			paintNode(g, ((UnrestrictedTreeNode) e.getKey()), (Point2D) e.getValue());
 		}
 		
@@ -610,23 +617,27 @@ public class UnrestrictedTreePanel extends TreePanel {
 	protected UnrestrictedTreeNode[][][] bottom = null;
 
 	/** The mapping of nodes to the center weight points of parent edges. */
-	protected Map nodeToParentWeights = new HashMap();
+	protected Map<UnrestrictedTreeNode, Double> nodeToParentWeights = new HashMap<>();
 
 	/** The mapping of nodes to their parent group. */
-	protected Map nodeToParentGroup = new HashMap();
+	protected Map<UnrestrictedTreeNode, UnrestrictedTreeNode[]> nodeToParentGroup = new HashMap<>();
 
 	
-	protected Map nodeToPoint;
+	protected Map<UnrestrictedTreeNode, Point2D> nodeToPoint;
 	
 	
 	/** The node drawer. */
 	protected DefaultNodeDrawer nodeDrawer = new DefaultNodeDrawer();
 
 	/** Colors. */
-	protected static final Color INNER = new Color(100, 200, 120),
-			LEAF = new Color(255, 255, 100),
-			BRACKET = new Color(150, 150, 255), BRACKET_OUT = BRACKET.darker()
-					.darker();
+	protected final Color INNER = new Color(100, 200, 120);
+
+	protected static final Color LEAF = new Color(255, 255, 100);
+
+	protected static final Color BRACKET = new Color(150, 150, 255);
+
+	protected static final Color BRACKET_OUT = BRACKET.darker()
+			.darker();
 
 	/** Current level. */
 	int level = 0;

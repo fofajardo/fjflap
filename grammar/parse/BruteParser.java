@@ -83,6 +83,8 @@ public abstract class BruteParser {
 
 		smaller = Collections.unmodifiableSet(Unrestricted
 				.smallerSymbols(grammar));
+		Collections.unmodifiableSet(Unrestricted
+				.smallerSymbols(grammar));
 		
 		this.grammar = grammar;
 		productions = grammar.getProductions();
@@ -154,11 +156,12 @@ public abstract class BruteParser {
 	 * Returns a list of possible one step parses for a given string. The first
 	 * entry is always the identity.
 	 */
-	private List getPossibilities(String c) {
-		List possibilities = new ArrayList();
-		if (prederived.containsKey(c))
-			return (List) prederived.get(c);
-		HashSet alreadyEncountered = new HashSet();
+	private List<ParseNode> getPossibilities(String c) {
+		List<ParseNode> possibilities = new ArrayList<>();
+		if (prederived.containsKey(c)) {
+			return (List<ParseNode>) prederived.get(c);
+		}
+		HashSet<String> alreadyEncountered = new HashSet<>();
 		if (c.length() == 0) {
 			possibilities.add(E);
 			return possibilities;
@@ -169,10 +172,11 @@ public abstract class BruteParser {
 			// Find the start of the production.
 			int start = c.indexOf(prod.getLHS());
 			int lengthSubs = prod.getLHS().length();
-			if (start == -1)
+			if (start == -1) {
 				continue;
-			List list = getPossibilities(c.substring(start + lengthSubs));
-			Iterator it = list.iterator();
+			}
+			List<ParseNode> list = getPossibilities(c.substring(start + lengthSubs));
+			Iterator<ParseNode> it = list.iterator();
 			String prepend = c.substring(0, start) + prod.getRHS();
 			int lengthReplace = start + prod.getLHS().length();
 			// Make adjustments for each entry.
@@ -298,9 +302,9 @@ public abstract class BruteParser {
 		// Get one element.
 		ParseNode node = (ParseNode) queue.removeFirst();
 		beingConsideredNodes = 0;
-		List pos = getPossibilities(node.getDerivation());
+		List<ParseNode> pos = getPossibilities(node.getDerivation());
 		beingConsideredNodes = 0;
-		Iterator it = pos.iterator();
+		Iterator<ParseNode> it = pos.iterator();
 		while (it.hasNext()) {
 			ParseNode pNode = (ParseNode) it.next();
 			if (!alreadyAdded.add(pNode.getDerivation()))
@@ -354,13 +358,13 @@ public abstract class BruteParser {
 	 *            the brute parser event to distribute
 	 */
 	protected void distributeEvent(BruteParserEvent event) {
-		Iterator it = listeners.iterator();
+		Iterator<BruteParserListener> it = listeners.iterator();
 		while (it.hasNext())
 			((BruteParserListener) it.next()).bruteParserStateChange(event);
 	}
 
 	/** The set of listeners. */
-	protected Set listeners = new HashSet();
+	protected Set<BruteParserListener> listeners = new HashSet<>();
 
 	/** This is the grammar. */
 	protected Grammar grammar;
@@ -381,16 +385,16 @@ public abstract class BruteParser {
 	private Thread parseThread = null;
 
 	/** This set holds those strings already added to the tree. */
-	private Set alreadyAdded = new HashSet();
+	private Set<String> alreadyAdded = new HashSet<>();
 
 	/**
 	 * This holds those strings that have already been derived, with a map to
 	 * those nodes for each string.
 	 */
-	private Map prederived = new HashMap();
+	private Map<String, List<ParseNode>> prederived = new HashMap<>();
 
 	/** This holds the list of nodes for the BFS. */
-	protected LinkedList queue = new LinkedList();
+	protected LinkedList<ParseNode> queue = new LinkedList<>();
 
 	/** The number of explored nodes. */
 	private int consideredNodes = 0;
@@ -407,5 +411,5 @@ public abstract class BruteParser {
 	/**
 	 * The "smaller" set, those symbols that may possibly reduce to nothing.
 	 */
-	protected Set smaller;
+	protected Set<String> smaller;
 }

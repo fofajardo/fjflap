@@ -48,6 +48,11 @@ import javax.swing.JOptionPane;
 
 public class GrammarTransformAction extends GrammarAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>GrammarTransformAction</CODE>.
 	 * 
 	 * @param environment
@@ -72,7 +77,7 @@ public class GrammarTransformAction extends GrammarAction {
 	// Changed to support the Lambda removal for Grammar, which Start variable derives Lambda.
 	public static void hypothesizeLambda(GrammarEnvironment env, Grammar g) {
 		LambdaProductionRemover remover = new LambdaProductionRemover();
-		Set lambdaDerivers = remover.getCompleteLambdaSet(g);
+		Set<String> lambdaDerivers = remover.getCompleteLambdaSet(g);
 	    if (lambdaDerivers.contains(g.getStartVariable())) {
 			JOptionPane.showMessageDialog(env,
 					"WARNING : The start variable derives lambda.\n"

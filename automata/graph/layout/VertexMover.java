@@ -86,8 +86,8 @@ public class VertexMover extends LayoutAlgorithm {
 		command = c;	
 	}	
 	
-	public void layout(Graph graph, Set notMoving) {  
-		ArrayList vertices = getMovableVertices(graph, notMoving);
+	public void layout(Graph graph, Set<Object> notMoving) {  
+		ArrayList<Object> vertices = getMovableVertices(graph, notMoving);
 		
 		//Check whether to fill the screen first, because other commands will call the other
 		//shiftOntoScreen method.

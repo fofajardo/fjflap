@@ -29,6 +29,7 @@ import automata.mealy.*;
 import gui.JTableExtender;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
+import gui.action.MultipleSimulateAction.MultiplePane;
 import gui.editor.ArrowDisplayOnlyTool;
 import gui.editor.EditorPane;
 import gui.environment.AutomatonEnvironment;
@@ -68,6 +69,7 @@ import java.util.Scanner;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -76,16 +78,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
+import javax.swing.ScrollPaneLayout;
 import javax.swing.Timer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.tree.TreeNode;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
+//import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
 import automata.Automaton;
 import automata.AutomatonSimulator;
@@ -95,6 +99,7 @@ import automata.NondeterminismDetectorFactory;
 import automata.SimulatorFactory;
 import automata.State;
 import automata.turing.TMSimulator;
+import automata.turing.NDTMSimulator;
 import automata.turing.TuringMachine;
 
 /**
@@ -106,6 +111,11 @@ import automata.turing.TuringMachine;
  */
 
 public class MultipleSimulateAction extends NoInteractionSimulateAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new <CODE>MultipleSimulateAction</CODE>.
 	 * 
@@ -160,8 +170,9 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 	 */
 	protected int handleInput(Automaton automaton,
 			AutomatonSimulator simulator, Configuration[] configs,
-			Object initialInput, List associatedConfigurations) {
+			Object initialInput, List<Configuration> associatedConfigurations) {
 		JFrame frame = Universe.frameForEnvironment(getEnvironment());
+		//frame.pack();
 		// How many configurations have we had?
 		int numberGenerated = 0;
 		// When should the next warning be?
@@ -179,7 +190,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 					warningGenerated *= 2;
 			}
 			// Get the next batch of configurations.
-			ArrayList next = new ArrayList();
+			ArrayList<Configuration> next = new ArrayList<>();
 			for (int i = 0; i < configs.length; i++) {
 				lastConsidered = configs[i];
 				if (configs[i].isAccept()) {
@@ -227,9 +238,9 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 			tcmodel.removeColumn(tcmodel.getColumn(inputCount));
 		}
 		if(multiple){
-            ArrayList autos  = this.getEnvironment().myObjects;
+            ArrayList<Object> autos  = this.getEnvironment().myObjects;
             //System.out.println("In initialize: " + autos.size());
-            ArrayList strings = this.getEnvironment().myTestStrings;
+            ArrayList<String> strings = this.getEnvironment().myTestStrings;
             int offset = strings.size();
             int row = 0;
             for(int m = 0; m < autos.size(); m++){      
@@ -303,12 +314,26 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		
 		JPanel panel = new JPanel(new BorderLayout());
 		JToolBar bar = new JToolBar();
-		panel.add(new JScrollPane(table), BorderLayout.CENTER);
-		panel.add(bar, BorderLayout.SOUTH);
-		panel.add(new TableTextSizeSlider(table), BorderLayout.NORTH);
-	
+		if (this.getEnvironment().getObject() instanceof Automaton) {
+			JScrollPane scrollPane = new JScrollPane(table);
+			scrollPane.add(bar, ScrollPaneLayout.LOWER_LEFT_CORNER);
+			panel.add(scrollPane, BorderLayout.CENTER);
+			panel.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+			//put in some glue to push the buttons to the right
+			bar.add(Box.createHorizontalGlue());			
+		} else {
+			panel.add(new JScrollPane(table), BorderLayout.CENTER);
+			panel.add(bar, BorderLayout.SOUTH);
+			panel.add(new TableTextSizeSlider(table, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		}
+		
 		//Load inputs
 		bar.add(new AbstractAction("Load Inputs"){
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -346,7 +371,8 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 							String temp=sc.next();
 							model.setValueAt(temp, last, 0);
 							last++;
-						}		
+						}
+						sc.close();
 					}
 					catch (FileNotFoundException e1) {
 						// TODO Auto-generate catch block
@@ -358,6 +384,11 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		});
 		// Add the running input thing.
 		bar.add(new AbstractAction("Run Inputs") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Make sure any recent changes are registered.
@@ -392,16 +423,25 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 						Object input = null;
 						// Is this a Turing machine?
 						if (currentAuto instanceof TuringMachine) {
-							 
-							configs = ((TMSimulator) simulator)
+							Automaton a = (Automaton)getObject();
+							NondeterminismDetector d = NondeterminismDetectorFactory.getDetector(a);
+				            State[] nd = d.getNondeterministicStates(a);
+				            // Is the Turing machine nondeterministic?
+				            if(nd.length > 0) {
+				            		configs = ((NDTMSimulator) simulator)
+										.getInitialConfigurations(inputs[r]);
+								input = inputs[r];
+				            } else {
+				            		configs = ((TMSimulator) simulator)
 									.getInitialConfigurations(inputs[r]);
-							input = inputs[r];
+				            		input = inputs[r];
+				            }
 						} else { // If it's not a Turing machine.
 							configs = simulator
 									.getInitialConfigurations(inputs[r][0]);
 							input = inputs[r][0];
 						}
-						List associated = new ArrayList();
+						List<Configuration> associated = new ArrayList<>();
 						int result = handleInput(currentAuto, simulator,
 								configs, input, associated);
 						Configuration c = null;
@@ -450,6 +490,11 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		if(!((InputTableModel)table.getModel()).isMultiple){
 		// Add the clear button.
 		bar.add(new AbstractAction("Clear") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Make sure any recent changes are registered.
@@ -463,7 +508,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		});
 		
         /*
-         * So that it will show up as Lambday or Epsilon, depending on the
+         * So that it will show up as Lambda or Epsilon, depending on the
          * profile. Sorry about the cheap hack. 
          * 
          * Jinghui Lim
@@ -474,6 +519,11 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
         else if(Universe.curProfile.getEmptyString().equals(Profile.EPSILON))
             empty = "Epsilon";
 		bar.add(new AbstractAction("Enter " + empty/*"Enter Lambda"*/) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				int row = table.getSelectedRow();
 				if (row == -1)
@@ -485,10 +535,15 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		}
 		if(getObject() instanceof Automaton) {
 			bar.add(new AbstractAction("View Trace") {
+			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				int[] rows = table.getSelectedRows();
 				InputTableModel tm = (InputTableModel) table.getModel();
-				List nonassociatedRows = new ArrayList();
+				List<Integer> nonassociatedRows = new ArrayList<>();
 				for (int i = 0; i < rows.length; i++) {
 					if (rows[i] == tm.getRowCount() - 1)
 						continue;
@@ -533,7 +588,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		if(((InputTableModel)table.getModel()).isMultiple){
 		    
 		    bar.add(new AbstractAction("Edit File"){
-		        public void actionPerformed(ActionEvent arg0) {		            
+		        /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent arg0) {		            
 		            int k = getMachineIndexBySelectedRow(table);
 		            if(k>=0 && k < getEnvironment().myObjects.size()){
 		                if(getObject() instanceof Automaton){
@@ -558,7 +618,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		    });
 		    
         	bar.add(new AbstractAction("Add input string"){
-        		public void actionPerformed(ActionEvent arg0) {
+        		/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent arg0) {
                     //add input
                     int inputsNeeded = 1;
                     boolean turing = false;
@@ -569,12 +634,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
     
             			if(input instanceof String){
             				String s = (String)input;
-            				((ArrayList)getEnvironment().myTestStrings).add(s);
+            				((ArrayList<String>)getEnvironment().myTestStrings).add(s);
             			}
             			else if(input instanceof String[]){
             				String[] s = (String[]) input;
                             for(int k = 0; k < s.length; k++){
-                                ((ArrayList)getEnvironment().myTestStrings).add(s[k]);
+                                ((ArrayList<String>)getEnvironment().myTestStrings).add(s[k]);
                             }
             			}
                         else return;
@@ -586,12 +651,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
     
                             if(output instanceof String){
                                 String s = (String)output;
-                                ((ArrayList)getEnvironment().myTransducerStrings).add(s);
+                                ((ArrayList<String>)getEnvironment().myTransducerStrings).add(s);
                             }
                             else if(output instanceof String[]){
                                 String[] s = (String[]) output;
                                 for(int k = 0; k < s.length; k++){
-                                    ((ArrayList)getEnvironment().myTransducerStrings).add(s[k]);
+                                    ((ArrayList<String>)getEnvironment().myTransducerStrings).add(s[k]);
                                 }
                             }
                             else{
@@ -605,11 +670,11 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 
                     if(result instanceof String){
                         String s = (String)result;
-                        ((ArrayList)getEnvironment().myTransducerStrings).add(s);
+                        ((ArrayList<String>)getEnvironment().myTransducerStrings).add(s);
                     }
                     else if(result instanceof String[]){
                         String[] s = (String[]) result;
-                        ((ArrayList)getEnvironment().myTransducerStrings).add(s[0]);
+                        ((ArrayList<String>)getEnvironment().myTransducerStrings).add(s[0]);
                     }
                     else {
                         getEnvironment().myTestStrings.remove(getEnvironment().myTestStrings.size()-1);
@@ -624,7 +689,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
             	});
         	
         	bar.add(new AbstractAction("Add file"){
-        		public void actionPerformed(ActionEvent arg0) {
+        		/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent arg0) {
         			TestAction test = new TestAction();
         			test.chooseFile(getEnvironment().getActive(), false);
         			getEnvironment().remove(getEnvironment().getActive());
@@ -633,7 +703,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
             });
         	
         	bar.add(new AbstractAction("Remove file"){
-        		public void actionPerformed(ActionEvent arg0) {
+        		/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent arg0) {
         			int k = getMachineIndexBySelectedRow(table);
                     if(k>=0 && k < getEnvironment().myObjects.size()){
             			getEnvironment().myObjects.remove(k);
@@ -654,7 +729,12 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
             	});
         	
         	bar.add(new AbstractAction("Save Results"){
-        	    public void actionPerformed(ActionEvent arg0) {
+        	    /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public void actionPerformed(ActionEvent arg0) {
         	        final JFrame frame = new JFrame("Save Location");
         	        
         	        
@@ -697,7 +777,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
         	                        if (!badname) {
                                         Universe.CHOOSER.setFileFilter(null);
                                         Universe.CHOOSER.setDialogTitle("Choose directory to save files in");
-                                        Universe.CHOOSER.setFileSelectionMode(Universe.CHOOSER.DIRECTORIES_ONLY);
+                                        Universe.CHOOSER.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         	                            int result = Universe.CHOOSER.showSaveDialog(frame);
         	                            if (result != JFileChooser.APPROVE_OPTION)
         	                                break;
@@ -815,7 +895,8 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
         	ap.addMouseListener(new ArrowDisplayOnlyTool(ap, ap.getDrawer()));
         	JSplitPane split = SplitPaneFactory.createSplit(getEnvironment(), true,
 				0.5, ap, panel);
-        	MultiplePane mp = new MultiplePane(split);
+        	
+        	MultiplePaneWBar mp = new MultiplePaneWBar(split, bar);
         	getEnvironment().add(mp, getComponentTitle(), new CriticalTag() {
     		});
     		getEnvironment().setActive(mp);
@@ -826,8 +907,8 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
             if(getEnvironment().myTestStrings != null && getEnvironment().myTestStrings.size()>0) bp.inputField.setText((String)getEnvironment().myTestStrings.get(0));
         	JSplitPane split = SplitPaneFactory.createSplit(getEnvironment(), true,
     				0.5, bp, panel);
-          
-        	MultiplePane mp = new MultiplePane(split);
+ 
+    		MultiplePane mp = new MultiplePane(split);
         	getEnvironment().add(mp, getComponentTitle(), new CriticalTag() {
     		});
     		getEnvironment().setActive(mp);
@@ -844,7 +925,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 	}
 	
 	public int getMachineIndexByName(String machineFileName){
-	        ArrayList machines = getEnvironment().myObjects;
+	        ArrayList<Object> machines = getEnvironment().myObjects;
 	        if(machines == null) return -1;
 	        for(int k = 0; k < machines.size(); k++){            
 	            Object current = machines.get(k);
@@ -897,7 +978,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
      * 
      */
     protected void updateView(String machineFileName, String input, JTableExtender table) {
-        ArrayList machines = this.getEnvironment().myObjects;
+        ArrayList<Object> machines = this.getEnvironment().myObjects;
         Object current = null;
         if(machines != null) current = machines.get(0);
         else current = this.getEnvironment().getObject();
@@ -911,7 +992,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
                     newAP.addMouseListener(new ArrowDisplayOnlyTool(newAP, newAP.getDrawer()));
                     JSplitPane split = SplitPaneFactory.createSplit(getEnvironment(), true,
                             0.5, newAP, myPanel);
-                    MultiplePane mp = new MultiplePane(split);
+                    MultiplePaneWBar mp = new MultiplePaneWBar(split, new JToolBar());
                     
                     EnvironmentFrame frame = Universe.frameForEnvironment(getEnvironment());
                     String newTitle = cur.getFileName();
@@ -959,7 +1040,25 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 	 * This auxillary class is convenient so that the help system can easily
 	 * identify what type of component is active according to its class.
 	 */
+	public class MultiplePaneWBar extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		public MultiplePaneWBar(JSplitPane split, JToolBar bar) {
+			super(new BorderLayout());
+			add(split, BorderLayout.CENTER);
+			mySplit = split;
+			System.out.println("here we go");
+			add(bar, BorderLayout.SOUTH);
+		}
+		public JSplitPane mySplit = null;
+	}
 	public class MultiplePane extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		public MultiplePane(JSplitPane split) {
 			super(new BorderLayout());
 			add(split, BorderLayout.CENTER);

@@ -51,6 +51,10 @@ import gui.environment.tag.Tag;
 public class CloseButton extends javax.swing.JButton 
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * The environment to handle closing tabs for.
      */
     private Environment env;

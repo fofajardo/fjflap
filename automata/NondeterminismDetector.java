@@ -58,7 +58,7 @@ public abstract class NondeterminismDetector {
 	public State[] getNondeterministicStates(Automaton automaton) {
 		LambdaTransitionChecker lc = LambdaCheckerFactory
 				.getLambdaChecker(automaton);
-		ArrayList list = new ArrayList();
+		ArrayList<State> list = new ArrayList<>();
 		/* Get all states in automaton. */
 		State[] states = automaton.getStates();
 		/* Check each state for nondeterminism. */

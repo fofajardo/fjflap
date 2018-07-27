@@ -39,6 +39,11 @@ import automata.event.AutomataStateEvent;
 
 public class State implements Serializable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new state.
 	 * 
 	 * @param id
@@ -190,7 +195,7 @@ public class State implements Serializable {
 			labels = new String[0];
 		} else {
 			StringTokenizer st = new StringTokenizer(label, "\n");
-			ArrayList lines = new ArrayList();
+			ArrayList<String> lines = new ArrayList<>();
 			while (st.hasMoreTokens())
 				lines.add(st.nextToken());
 			labels = (String[]) lines.toArray(new String[0]);

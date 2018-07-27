@@ -39,6 +39,11 @@ import automata.Note;
 
 public class AutomataNoteEvent extends EventObject {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new <CODE>AutomataStateEvent</CODE>.
 	 * 
 	 * @param auto

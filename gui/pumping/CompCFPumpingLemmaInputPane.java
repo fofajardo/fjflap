@@ -35,6 +35,12 @@ import pumping.RegularPumpingLemma;
 public class CompCFPumpingLemmaInputPane extends ComputerFirstPane {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
      * Creates a <code>CompCFPumpingInputPane</code> for a <code>ContextFreePumpingLemma</code>.
      *
      * @param l the <code>ContextFreePumpingLemma</code> we want to run

@@ -32,6 +32,11 @@ import grammar.*;
 
 public class ContextFreeGrammar extends Grammar {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates an instance of <CODE>ContextFreeGrammar</CODE>. The created
 	 * instance has no productions, no terminals, no variables, and specifically
 	 * no start variable.

@@ -46,11 +46,11 @@ public class TwoCircleLayoutAlgorithm extends LayoutAlgorithm {
 	/**
 	 * The vertices associated with the graph
 	 */
-	ArrayList vertices;
+	ArrayList<Object> vertices;
 	/**
 	 * Two lists that represent the division of the vertices into an inner and an outer circle
 	 */
-	ArrayList innerCircle, outerCircle;
+	ArrayList<Object> innerCircle, outerCircle;
 	/**
 	 * <code>VertexChains</code> that represent values in the outer circle.  Each <code>VertexChain</code> corresponds 
 	 * to a vertex in the <code>innerCircleChain</code>, and values in each <code>outerCircleChain</code> are laid
@@ -88,12 +88,12 @@ public class TwoCircleLayoutAlgorithm extends LayoutAlgorithm {
 	}
 	
 	
-	public void layout(Graph g, Set notMoving) 
+	public void layout(Graph g, Set<Object> notMoving) 
 	{
 		//First, initialize classwide variables.
 		graph = g;		
-		innerCircle = new ArrayList();
-		outerCircle = new ArrayList();
+		innerCircle = new ArrayList<Object>();
+		outerCircle = new ArrayList<Object>();
 		vertices = getMovableVertices(graph, notMoving);
 		if (graph==null || vertices.size() == 0)
 			return;
@@ -139,7 +139,7 @@ public class TwoCircleLayoutAlgorithm extends LayoutAlgorithm {
 				outerCircle.add(vertices.get(i));
 		if (innerCircle.size()==0) {
 			innerCircle = outerCircle;
-			outerCircle = new ArrayList();
+			outerCircle = new ArrayList<Object>();
 			return;
 		}
 		
@@ -286,7 +286,7 @@ public class TwoCircleLayoutAlgorithm extends LayoutAlgorithm {
 		graph.addEdge(vertices[3], vertices[1]);
 		graph.addEdge(vertices[3], verticesadjacent(finalStates[i]).size()[0]);
 		graph.addEdge(vertices[3], vertices[2]);*/
-		HashSet set = new HashSet();
+		HashSet<Object> set = new HashSet<Object>();
 		//temp.add(vertices[6]);
 
 		layout.layout(graph, set);

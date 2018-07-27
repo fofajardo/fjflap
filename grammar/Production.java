@@ -37,6 +37,11 @@ import java.util.TreeSet;
 
 public class Production implements Serializable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates an instance of <CODE>Production</CODE>.
 	 * 
 	 * @param lhs
@@ -97,7 +102,7 @@ public class Production implements Serializable {
 	 * @return all symbols in a production
 	 */
 	public String[] getSymbols() {
-		SortedSet symbols = new TreeSet();
+		SortedSet<String> symbols = new TreeSet<>();
 		symbols.addAll(Arrays.asList(getVariables()));
 		symbols.addAll(Arrays.asList(getTerminals()));
 		return (String[]) symbols.toArray(new String[0]);
@@ -110,7 +115,7 @@ public class Production implements Serializable {
 	 */
 	public String[] getVariables() {
 
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		String[] rhsVariables = getVariablesOnRHS();
 		for (int k = 0; k < rhsVariables.length; k++) {
 			if (!list.contains(rhsVariables[k])) {
@@ -134,7 +139,7 @@ public class Production implements Serializable {
 	 * @return all variables on the left hand side of the production.
 	 */
 	public String[] getVariablesOnLHS() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
         if(myLHS == null) return new String[0];
 		for(int i = 0; i < myLHS.length(); i++) {
 			char c = myLHS.charAt(i);
@@ -151,7 +156,7 @@ public class Production implements Serializable {
 	 */
 	public String[] getVariablesOnRHS() {
 		ProductionChecker pc = new ProductionChecker();
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		for (int i = 0; i < myRHS.length(); i++) {
 			char c = myRHS.charAt(i);
 			if (ProductionChecker.isVariable(c))
@@ -166,7 +171,7 @@ public class Production implements Serializable {
 	 * @return all terminals in the production.
 	 */
 	public String[] getTerminals() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		String[] rhsTerminals = getTerminalsOnRHS();
 		for (int k = 0; k < rhsTerminals.length; k++) {
 			if (!list.contains(rhsTerminals[k])) {
@@ -191,7 +196,7 @@ public class Production implements Serializable {
 	 */
 	public String[] getTerminalsOnRHS() {
 		ProductionChecker pc = new ProductionChecker();
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		for (int i = 0; i < myRHS.length(); i++) {
 			char c = myRHS.charAt(i);
 			if (ProductionChecker.isTerminal(c))
@@ -232,7 +237,7 @@ public class Production implements Serializable {
 	 * @return all terminals on the left hand side of the production.
 	 */
 	public String[] getTerminalsOnLHS() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<String>();
 		for (int i = 0; i < myLHS.length(); i++) {
 			char c = myLHS.charAt(i);
 			if (ProductionChecker.isTerminal(c))
@@ -263,7 +268,7 @@ public class Production implements Serializable {
 	 * the array of strings <CODE>{"B","C","D"}</CODE>.
 	 */
 	public String[] getSymbolsOnRHS() {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		for (int i = 0; i < myRHS.length(); i++) {
 			char c = myRHS.charAt(i);
 			list.add(myRHS.substring(i, i + 1));

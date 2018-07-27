@@ -75,8 +75,8 @@ public class FSAStepWithClosureSimulator extends FSAStepByStateSimulator {
 	 * @param config
 	 *            the configuration to simulate the one step on.
 	 */
-	public ArrayList stepConfiguration(Configuration config) {
-		ArrayList list = new ArrayList();
+	public ArrayList<Configuration> stepConfiguration(Configuration config) {
+		ArrayList<Configuration> list = new ArrayList<>();
 		FSAConfiguration configuration = (FSAConfiguration) config;
 		/** get all information from configuration. */
 		String unprocessedInput = configuration.getUnprocessedInput();

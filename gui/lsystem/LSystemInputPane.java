@@ -25,6 +25,7 @@ import grammar.UnboundGrammar;
 import grammar.lsystem.*;
 import gui.HighlightTable;
 import gui.TableTextSizeSlider;
+import gui.TextFieldSizeSlider;
 import gui.grammar.GrammarInputPane;
 import java.awt.*;
 import java.awt.event.*;
@@ -40,6 +41,11 @@ import javax.swing.event.*;
  */
 
 public class LSystemInputPane extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates an empty <CODE>LSystemInputPane</CODE>.
 	 */
@@ -70,12 +76,12 @@ public class LSystemInputPane extends JPanel {
 		// Create the axiom text field.
 		axiomField = new JTextField(listAsString(lsystem.getAxiom()));
 		// Create the grammar view that holds replacement productions.
-		Set replacements = lsystem.getSymbolsWithReplacements();
-		Iterator it = replacements.iterator();
+		Set<String> replacements = lsystem.getSymbolsWithReplacements();
+		Iterator<String> it = replacements.iterator();
 		UnboundGrammar g = new UnboundGrammar();
 		while (it.hasNext()) {
 			String symbol = (String) it.next();
-			java.util.List[] r = lsystem.getReplacements(symbol);
+			java.util.List<String>[] r = lsystem.getReplacements(symbol);
 			for (int i = 0; i < r.length; i++) {
 				Production p = new Production(symbol, listAsString(r[i]));
 				g.addProduction(p);
@@ -96,12 +102,16 @@ public class LSystemInputPane extends JPanel {
 		JPanel axiomView = new JPanel(new BorderLayout());
 		axiomView.add(new JLabel("Axiom: "), BorderLayout.WEST);
 		axiomView.add(axiomField, BorderLayout.CENTER);
+		axiomView.add(new TextFieldSizeSlider(axiomField, JSlider.HORIZONTAL, "Input Field Text Size"), BorderLayout.SOUTH);
 		add(axiomView, BorderLayout.NORTH);
 		// Create the view for the grammar pane and the rest.
 		parameterTable = new HighlightTable(parameterModel);
-		parameterTable.add(new TableTextSizeSlider(parameterTable), BorderLayout.SOUTH);
-		JScrollPane scroller = new JScrollPane(parameterTable);
-		Dimension bestSize = new Dimension(400, 200);
+		JPanel parameterPanel = new JPanel();
+		parameterPanel.setLayout(new BorderLayout());
+		parameterPanel.add(parameterTable, BorderLayout.CENTER);
+		parameterPanel.add(new TableTextSizeSlider(parameterTable, JSlider.HORIZONTAL), BorderLayout.NORTH);
+		JScrollPane scroller = new JScrollPane(parameterPanel);
+		Dimension bestSize = new Dimension(400, 200); 
 		/*
 		 * parameterTable.setPreferredSize(bestSize);
 		 * productionInputPane.getTable().setPreferredSize(bestSize);
@@ -183,8 +193,8 @@ public class LSystemInputPane extends JPanel {
 	 *            the list to convert to a string
 	 * @return a string containing the elements of the list
 	 */
-	public static String listAsString(java.util.List list) {
-		Iterator it = list.iterator();
+	public static String listAsString(java.util.List<String> list) {
+		Iterator<String> it = list.iterator();
 		if (!it.hasNext())
 			return "";
 		StringBuffer sb = new StringBuffer();
@@ -245,7 +255,7 @@ public class LSystemInputPane extends JPanel {
 	 */
 	protected void fireLSystemInputEvent() {
 		cachedSystem = null;
-		Iterator it = lSystemInputListeners.iterator();
+		Iterator<LSystemInputListener> it = lSystemInputListeners.iterator();
 		while (it.hasNext())
 			((LSystemInputListener) (it.next())).lSystemChanged(reusedEvent);
 	}
@@ -286,7 +296,7 @@ public class LSystemInputPane extends JPanel {
 	private HighlightTable parameterTable;
 
 	/** The set of input listeners. */
-	private Set lSystemInputListeners = new HashSet();
+	private Set<LSystemInputListener> lSystemInputListeners = new HashSet<>();
 
 	/** The event reused in firing off the notifications. */
 	private LSystemInputEvent reusedEvent = new LSystemInputEvent(this);

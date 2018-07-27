@@ -21,6 +21,7 @@
 package gui.grammar.convert;
 
 import automata.Automaton;
+import automata.Transition;
 import grammar.*;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
@@ -41,6 +42,11 @@ import javax.swing.*;
 
 public class ConvertPane extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>ConvertPane</CODE>.
 	 * 
 	 * @param grammar
@@ -55,7 +61,7 @@ public class ConvertPane extends JPanel {
 	 *            the environment to which this pane will be added
 	 */
 	public ConvertPane(Grammar grammar, Automaton automaton,
-			Map productionsToTransitions, Environment env) {
+			Map<Production, Transition> productionsToTransitions, Environment env) {
 		this.grammar = grammar;
 		this.automaton = automaton;
 
@@ -65,16 +71,16 @@ public class ConvertPane extends JPanel {
 		this.add(split, BorderLayout.CENTER);
 
 		grammarViewer = new GrammarViewer(grammar);
-		this.add(new TableTextSizeSlider(grammarViewer), BorderLayout.NORTH);
+		this.add(new TableTextSizeSlider(grammarViewer, JSlider.HORIZONTAL), BorderLayout.NORTH);
 		JScrollPane scroller = new JScrollPane(grammarViewer);
 		split.setLeftComponent(scroller);
 		// Create the right view.
 
 		automatonDrawer = new SelectionDrawer(automaton);
 		EditorPane ep = new EditorPane(automatonDrawer, new ToolBox() {
-			public java.util.List tools(AutomatonPane view,
+			public java.util.List<Tool> tools(AutomatonPane view,
 					AutomatonDrawer drawer) {
-				LinkedList tools = new LinkedList();
+				LinkedList<Tool> tools = new LinkedList<>();
 				tools.add(new ArrowNontransitionTool(view, drawer));
 				tools.add(new TransitionTool(view, drawer));
 				return tools;
@@ -97,21 +103,41 @@ public class ConvertPane extends JPanel {
 	private void controlPanel(JToolBar bar, final ConvertController controller) {
 		bar.addSeparator();
 		bar.add(new AbstractAction("Show All") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.complete();
 			}
 		});
 		bar.add(new AbstractAction("Create Selected") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.createForSelected();
 			}
 		});
 		bar.add(new AbstractAction("Done?") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.isDone();
 			}
 		});
 		bar.add(new AbstractAction("Export") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.export();
 			}

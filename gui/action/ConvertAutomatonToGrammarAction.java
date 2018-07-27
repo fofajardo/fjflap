@@ -47,6 +47,11 @@ import automata.Automaton;
 
 public abstract class ConvertAutomatonToGrammarAction extends AutomatonAction {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a <CODE>ConvertAutomatonToGrammarAction</CODE>.
 	 * 
 	 * @param environment
@@ -121,12 +126,22 @@ public abstract class ConvertAutomatonToGrammarAction extends AutomatonAction {
 		JToolBar bar = new JToolBar();
 		bar.add(new TooltipAction("Hint",
 				"Shows the productions for one object.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.revealRandomProductions();
 			}
 		});
 		bar.add(new TooltipAction("Show All",
 				"Shows all productions remaining.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.revealAllProductions();
 			}
@@ -134,12 +149,22 @@ public abstract class ConvertAutomatonToGrammarAction extends AutomatonAction {
 		bar.addSeparator();
 		bar.add(new TooltipAction("What's Left?",
 				"Highlights remaining objects to convert.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.highlightUntransformed();
 			}
 		});
 		bar.add(new TooltipAction("Export",
 				"Exports a finished grammar to a new window.") {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				controller.exportGrammar();
 			}

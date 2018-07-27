@@ -49,7 +49,7 @@ public class FSAAlphabetRetriever extends AlphabetRetriever {
 	 * @return the alphabet, in a string[].
 	 */
 	public String[] getAlphabet(Automaton automaton) {
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<>();
 		Transition[] transitions = automaton.getTransitions();
 		for (int k = 0; k < transitions.length; k++) {
 			FSATransition transition = (FSATransition) transitions[k];

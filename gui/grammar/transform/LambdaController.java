@@ -59,7 +59,7 @@ public class LambdaController {
 			pane.detailLabel
 					.setText("Click productions; the LHS variable will be added.");
 			lambdaVariables = remover.getCompleteLambdaSet(grammar);
-			derivedLambdaVariables = new TreeSet();
+			derivedLambdaVariables = new TreeSet<String>();
 			pane.deleteAction.setEnabled(false);
 			pane.completeSelectedAction.setEnabled(false);
 
@@ -104,7 +104,7 @@ public class LambdaController {
 		}
 	}
 	
-	public Map getExpansionMap()
+	public Map<Production, Production[]> getExpansionMap()
 	{
 		return productionsToExpansion;
 	}
@@ -177,7 +177,7 @@ public class LambdaController {
 		return pane.getGrammar();
 	}
 
-	public Set getLambdaSet()
+	public Set<Production> getLambdaSet()
 	{
 		return lambdaProductions;
 	}
@@ -299,19 +299,19 @@ public class LambdaController {
 	LambdaProductionRemover remover = new LambdaProductionRemover();
 
 	/** The set of variables that derive lambda, and those discovered. */
-	Set lambdaVariables, derivedLambdaVariables;
+	Set<String> lambdaVariables, derivedLambdaVariables;
 
 	/**
 	 * The set of productions that should comprise the grammar, those that
 	 * currently do, and those that should be removed.
 	 */
-	Set desiredProductions = new HashSet(), currentProductions = new HashSet(),
-			lambdaProductions = new HashSet();
+	Set<Production> desiredProductions = new HashSet<>(), currentProductions = new HashSet<Production>(),
+			lambdaProductions = new HashSet<Production>();
 
 	/**
 	 * The mapping of productions to those elements they are supposed to add.
 	 */
-	Map productionsToExpansion = new HashMap();
+	Map<Production, Production[]> productionsToExpansion = new HashMap<>();
 
 	/** The current step. */
 	int step = 0;

@@ -93,8 +93,8 @@ public class PDAStepByStateSimulator extends AutomatonSimulator {
 	 * @param config
 	 *            the configuration to simulate the one step on
 	 */
-	public ArrayList stepConfiguration(Configuration config) {
-		ArrayList list = new ArrayList();
+	public ArrayList<Configuration> stepConfiguration(Configuration config) {
+		ArrayList<Configuration> list = new ArrayList<Configuration>();
 		PDAConfiguration configuration = (PDAConfiguration) config;
 		/** get all information from configuration. */
 		String unprocessedInput = configuration.getUnprocessedInput();
@@ -151,7 +151,7 @@ public class PDAStepByStateSimulator extends AutomatonSimulator {
 	 *         the machine in a final state.
 	 */
 	public boolean isAccepted() {
-		Iterator it = myConfigurations.iterator();
+		Iterator<Configuration> it = myConfigurations.iterator();
 		while (it.hasNext()) {
 			PDAConfiguration configuration = (PDAConfiguration) it.next();
 			if (myAcceptance == FINAL_STATE) {
@@ -190,11 +190,11 @@ public class PDAStepByStateSimulator extends AutomatonSimulator {
 		while (!myConfigurations.isEmpty()) {
 			if (isAccepted())
 				return true;
-			ArrayList configurationsToAdd = new ArrayList();
-			Iterator it = myConfigurations.iterator();
+			ArrayList<Configuration> configurationsToAdd = new ArrayList<Configuration>();
+			Iterator<Configuration> it = myConfigurations.iterator();
 			while (it.hasNext()) {
 				PDAConfiguration configuration = (PDAConfiguration) it.next();
-				ArrayList configsToAdd = stepConfiguration(configuration);
+				ArrayList<Configuration> configsToAdd = stepConfiguration(configuration);
 				configurationsToAdd.addAll(configsToAdd);
 				it.remove();
                 count++;
