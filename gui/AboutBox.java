@@ -114,9 +114,6 @@ public class AboutBox extends JWindow {
 		}
 	}
 
-	/** A simple object to get the class off for resource reading. */
-	private static Object OBJECT = new Object();
-
 	/** The image to display in the about box. */
 	private static Image IMAGE = null;
 
@@ -134,7 +131,7 @@ public class AboutBox extends JWindow {
 	static {
 		try {
 			IMAGE = Toolkit.getDefaultToolkit().getImage(
-					OBJECT.getClass().getResource("/MEDIA/about.png"));
+					AboutBox.class.getResource("/MEDIA/about.png"));
 		} catch (NullPointerException e) {
 
 		}
