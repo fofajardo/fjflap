@@ -22,6 +22,7 @@ package gui.action;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
+import java.awt.Toolkit;
 
 /**
  * The <CODE>RestrictedAction</CODE> is the general action that various
@@ -72,5 +73,6 @@ public abstract class RestrictedAction extends AbstractAction {
 	 * enabler (e.g., command on Macintosh, control on Wintel, and meta on
 	 * *n[iu]x).
 	 */
-	protected static int MAIN_MENU_MASK = MenuConstants.getMainMenuMask();
+	protected static int MAIN_MENU_MASK =
+			Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx();
 }
