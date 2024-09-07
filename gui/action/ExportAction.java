@@ -27,10 +27,9 @@ import javax.swing.*;
 import java.io.*;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.svggen.SVGGeneratorContext;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.swing.svg.SVGFileFilter;
 import org.w3c.dom.Document;
-import debug.EDebug;
 
 /**
  * This action handles saving structures as a vector or raster image,
