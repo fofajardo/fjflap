@@ -21,8 +21,10 @@
 package automata.fsa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import debug.EDebug;
@@ -69,7 +71,7 @@ public class FSAStepByStateSimulator extends AutomatonSimulator {
 				input, input);
 		return configs;
 	}
-
+	
 	/**
 	 * Simulates one step for a particular configuration, adding all possible
 	 * configurations reachable in one step to set of possible configurations.
@@ -90,37 +92,118 @@ public class FSAStepByStateSimulator extends AutomatonSimulator {
 			FSATransition transition = (FSATransition) transitions[k];
 			/** get all information from transition. */
 			String transLabel = transition.getLabel();
-			HashSet<String> trange = new HashSet<String>();
-			if (transLabel.contains("[")){
-				for(int i=transLabel.charAt(transLabel.indexOf("[")+1); i<=transLabel.charAt(transLabel.indexOf("[")+3); i++){
-					trange.add(Character.toString((char)i));
-					EDebug.print(Character.toString((char)i));
-				}
-				for(String element : trange){
-					if (unprocessedInput.startsWith(element)) {
-						String input = "";
-						if (element.length() < unprocessedInput.length()) {
-							input = unprocessedInput.substring(element.length());
-						}
-						State toState = transition.getToState();
-						FSAConfiguration configurationToAdd = new FSAConfiguration(
-								toState, configuration, totalInput, input);
-						list.add(configurationToAdd);
-					}
-				}
-			}
-			else if (unprocessedInput.startsWith(transLabel)) {
-				String input = "";
-				if (transLabel.length() < unprocessedInput.length()) {
-					input = unprocessedInput.substring(transLabel.length());
-				}
-				State toState = transition.getToState();
-				FSAConfiguration configurationToAdd = new FSAConfiguration(
-						toState, configuration, totalInput, input);
-				list.add(configurationToAdd);
+			if (isTransitionList(transLabel)){
+				processElementList(list, configuration, unprocessedInput, totalInput,
+						transition);
+			} else {
+				processElement(list, configuration, unprocessedInput,
+						totalInput, transition, transLabel);
 			}
 		}
 		return list;
+	}
+
+	protected boolean isTransitionList(String transitionLabel) {
+		return (transitionLabel.indexOf("[") != -1) &&
+				(transitionLabel.indexOf("]") != -1);
+	}
+	
+	/**
+	 * Adds all possible configurations from a transition list.
+	 * @param list
+	 * 		      the list containing possible configurations.
+	 * @param configuration
+	 *            the configuration to simulate the one step on.
+	 * @param unprocessedInput
+	 * 			  the unprocessed input.
+	 * @param totalInput
+	 * 			  the total input.
+	 * @param transition
+	 * 			  the transition that emanates from a state.
+	 */
+	protected void processElementList(
+			ArrayList<Configuration> list,
+			FSAConfiguration configuration,
+			String unprocessedInput,
+			String totalInput,
+			FSATransition transition) {
+		String transitionLabel = transition.getLabel();
+		// XXX: This will ignore values outside the square brackets.
+		transitionLabel = transitionLabel.substring(
+				transitionLabel.indexOf("[") + 1,
+				transitionLabel.indexOf("]"));
+		HashSet<String> transitionList = new HashSet<String>(
+				Arrays.asList(transitionLabel.split(",")));
+		// Iterate through all elements of the list in the transition label.
+		for (String element : transitionList) {
+			// Block implicit lambda values.
+			if (element.isEmpty()) {
+				continue;
+			// Process range values.
+			} else if (element.contains("..")) {
+				String[] transitionRange = element.split("\\.\\.");
+				boolean isRange = false;
+				String first = transitionRange[0].strip();
+				String last = transitionRange[1].strip();
+				// Treat it as a range iff after splitting, the array only
+				// has two elements and both elements contain only a single
+				// character.
+				isRange = transitionRange.length == 2 &&
+						first.length() == 1 &&
+						last.length() == 1;
+				if (isRange) {
+					int start = first.charAt(0);
+					int end = last.charAt(0);
+					// Process all characters within the range.
+					for (int i = start; i<= end; i++) {
+						String currentChar = Character.toString((char)i);
+						EDebug.print("RA: " + currentChar);
+						processElement(list, configuration, unprocessedInput,
+								totalInput, transition, currentChar);
+					}
+					continue;
+				}
+				EDebug.print(element + " is not a transition range.");
+			}
+			// Process normal string values.
+			EDebug.print(element);
+			processElement(list, configuration, unprocessedInput,
+					totalInput, transition, element);
+		}
+	}
+
+	/**
+	 * Adds a configuration to the set of possible configurations.
+	 * @param list
+	 * 		      the list containing possible configurations.
+	 * @param configuration
+	 *            the configuration to simulate the one step on.
+	 * @param unprocessedInput
+	 * 			  the unprocessed input.
+	 * @param totalInput
+	 * 			  the total input.
+	 * @param transition
+	 * 			  the transition that emanates from a state.
+	 * @param element
+	 * 			  the transition label or an element from a list or range.
+	 */
+	private void processElement(
+			ArrayList<Configuration> list,
+			FSAConfiguration configuration,
+			String unprocessedInput,
+			String totalInput,
+			FSATransition transition,
+			String element) {
+		if (unprocessedInput.startsWith(element)) {
+			String input = "";
+			if (element.length() < unprocessedInput.length()) {
+				input = unprocessedInput.substring(element.length());
+			}
+			State toState = transition.getToState();
+			FSAConfiguration configurationToAdd = new FSAConfiguration(
+					toState, configuration, totalInput, input);
+			list.add(configurationToAdd);
+		}
 	}
 
 	/**

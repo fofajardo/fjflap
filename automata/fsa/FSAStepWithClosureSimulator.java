@@ -88,41 +88,21 @@ public class FSAStepWithClosureSimulator extends FSAStepByStateSimulator {
 			FSATransition transition = (FSATransition) transitions[k];
 			/** get all information from transition. */
 			String transLabel = transition.getLabel();
-			HashSet<String> trange = new HashSet<String>();
-			if (transLabel.contains("[")){
-				for(int i=transLabel.charAt(transLabel.indexOf("[")+1); i<=transLabel.charAt(transLabel.indexOf("[")+3); i++){
-					trange.add(Character.toString((char)i));
-					EDebug.print(Character.toString((char)i));
+			if (isTransitionList(transLabel)){
+				processElementList(list, configuration, unprocessedInput, totalInput,
+						transition);
+			} else if (unprocessedInput.startsWith(transLabel)) {
+				String input = "";
+				if (transLabel.length() < unprocessedInput.length()) {
+					input = unprocessedInput.substring(transLabel.length());
 				}
-				if (transLabel.length() > 0) {
-					for(String element : trange){
-						if (unprocessedInput.startsWith(element)) {
-							String input = "";
-							if (element.length() < unprocessedInput.length()) {
-								input = unprocessedInput.substring(element.length());
-							}
-							State toState = transition.getToState();
-							FSAConfiguration configurationToAdd = new FSAConfiguration(
-								toState, configuration, totalInput, input);
-							list.add(configurationToAdd);
-						}
-					}
-				}
-			}
-			else if (transLabel.length() > 0) {
-				if (unprocessedInput.startsWith(transLabel)) {
-					String input = "";
-					if (transLabel.length() < unprocessedInput.length()) {
-						input = unprocessedInput.substring(transLabel.length());
-					}
-					State toState = transition.getToState();
-					State[] closure = ClosureTaker.getClosure(toState,
-							myAutomaton);
-					for (int i = 0; i < closure.length; i++) {
-						FSAConfiguration configurationToAdd = new FSAConfiguration(
-								closure[i], configuration, totalInput, input);
-						list.add(configurationToAdd);
-					}
+				State toState = transition.getToState();
+				State[] closure = ClosureTaker.getClosure(toState,
+						myAutomaton);
+				for (int i = 0; i < closure.length; i++) {
+					FSAConfiguration configurationToAdd = new FSAConfiguration(
+							closure[i], configuration, totalInput, input);
+					list.add(configurationToAdd);
 				}
 			}
 		}
