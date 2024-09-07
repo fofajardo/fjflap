@@ -110,19 +110,6 @@ public class FSALabelHandler {
 			from = going;
 		}
 	}
-	
-	public static void splitLabel(Transition transition, Automaton automaton){
-		FSATransition trans = (FSATransition) transition;
-		State from = transition.getFromState(), f = from, to = transition
-		.getToState();
-		automaton.removeTransition(trans);
-		String label = trans.getLabel();
-		for(int i=label.charAt(label.indexOf("[")+1); i<=label.charAt(label.indexOf("[")+3); i++){
-			Transition newTrans = new FSATransition(from, to, Character.toString((char)i));
-			automaton.addTransition(newTrans);
-		}
-	}
-		
 
 	/**
 	 * Changes all transitions in <CODE>automaton</CODE> into transitions with
