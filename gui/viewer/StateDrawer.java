@@ -146,7 +146,7 @@ public class StateDrawer {
 				g.drawPolygon(x, y, 3);
 			}
 //		} else {
-//			Double temp = new Double(radius * 1.5);
+//			Double temp = Double.valueOf(radius * 1.5);
 //			g.drawRect(point.x - radius, point.y - radius, 2 * radius,
 //					2 * radius);
 //			// If this is a final state, draw the little "inner rectangle."

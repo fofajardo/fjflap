@@ -347,14 +347,9 @@ public abstract class AutomatonTransducer extends AbstractTransducer {
 	 */
 	protected static Integer parseID(String string) {
 		try {
-			int num = Integer.parseInt(string);
-			//return new Integer(num); //deprecated
-			Integer integer = Integer.valueOf(num);
-			return integer;
+			return Integer.valueOf(string);
 		} catch (NumberFormatException e) {
-			Integer integer = Integer.valueOf(-1);
-			return integer;
-			//return new Integer(-1); //deprecated
+			return -1;
 		}
 	}
 
