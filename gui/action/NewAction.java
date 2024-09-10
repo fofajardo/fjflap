@@ -153,9 +153,6 @@ public class NewAction extends RestrictedAction {
 				MenuBarCreator.addItem(menu, new OpenAction());
 			}
 			try {
-				SecurityManager sm = System.getSecurityManager();
-				if (sm != null)
-					sm.checkExit(0);
 				MenuBarCreator.addItem(menu, new QuitAction());
 			} catch (SecurityException e) {
 				// Well, can't exit anyway.

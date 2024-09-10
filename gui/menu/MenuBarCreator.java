@@ -212,7 +212,6 @@ public class MenuBarCreator {
 		Environment environment = frame.getEnvironment();
 		JMenu menu = new JMenu("File");
 		addItem(menu, new NewAction());
-		SecurityManager sm = System.getSecurityManager();
 		if (Universe.CHOOSER != null) {
 			// Can't open and save files.
 			addItem(menu, new OpenAction());
@@ -254,15 +253,11 @@ public class MenuBarCreator {
 		addItem(menu, new CloseAction(environment));
 		addItem(menu, new CloseWindowAction(frame));
 		try {
-			if (sm != null)
-				sm.checkPrintJobAccess();
 			addItem(menu, new PrintAction(environment));
 		} catch (SecurityException e) {
 			// Damn. Can't print!
 		}
 		try {
-			if (sm != null)
-				sm.checkExit(0);
 			addItem(menu, new QuitAction());
 		} catch (SecurityException e) {
 			// Well, can't exit anyway.
