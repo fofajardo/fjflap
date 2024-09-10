@@ -20,12 +20,9 @@
 
 package gui.action;
 
-import gui.editor.TransitionTool;
-import gui.environment.Profile;
-import gui.environment.Universe;
-import gui.viewer.CurvedArrow;
-import gui.viewer.StateDrawer;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -38,9 +35,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.KeyStroke;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Point;
+import gui.editor.TransitionTool;
+import gui.environment.Profile;
+import gui.environment.Universe;
+import gui.viewer.CurvedArrow;
+import gui.viewer.StateDrawer;
 
 /**
 * The <CODE>ColorChooserAction</CODE> is an action to display a window with various color 

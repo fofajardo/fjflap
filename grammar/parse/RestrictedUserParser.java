@@ -19,9 +19,9 @@
 
 package grammar.parse;
 
-import grammar.Grammar;
-
 import java.util.ArrayList;
+
+import grammar.Grammar;
 
 /**
  * RestrictedUser Parser 

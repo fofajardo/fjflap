@@ -20,13 +20,12 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import automata.State;
+import gui.environment.AutomatonEnvironment;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is a subclass of a <code>MealyArrowTool</code> for Moore 

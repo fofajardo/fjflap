@@ -20,10 +20,16 @@
 
 package grammar.parse;
 
-import automata.fsa.*;
-import automata.*;
-import grammar.*;
-import java.util.*;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import automata.State;
+import automata.Transition;
+import automata.fsa.FSATransition;
+import automata.fsa.FiniteStateAutomaton;
+import grammar.Grammar;
+import grammar.Production;
 
 /**
  * This class generates {@link grammar.parse.LRParseTable}s. The intention is

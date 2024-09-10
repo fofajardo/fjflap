@@ -20,13 +20,13 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-import gui.environment.Universe;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
+
+import gui.environment.Environment;
+import gui.environment.Universe;
 
 /**
  * The <CODE>SaveAction</CODE> is an action to save a serializable object

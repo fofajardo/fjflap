@@ -20,11 +20,11 @@
 
 package gui.tree;
 
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreeNode;
-
 import java.awt.geom.Point2D;
 import java.util.Map;
+
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
 
 /**
  * A <CODE>NodePlacer</CODE> object is used to assign locations to nodes in a

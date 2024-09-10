@@ -20,10 +20,14 @@
 
 package grammar.parse;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import grammar.Grammar;
 import grammar.Production;
 import grammar.UnrestrictedGrammar;
-import java.util.*;
 
 /**
  * This class is a utility class for determining some facts about unrestricted

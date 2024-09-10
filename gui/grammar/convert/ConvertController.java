@@ -20,15 +20,24 @@
 
 package gui.grammar.convert;
 
+import java.awt.Component;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import automata.Automaton;
 import automata.Transition;
-import automata.event.*;
-import grammar.*;
-import gui.event.*;
+import automata.event.AutomataTransitionEvent;
+import automata.event.AutomataTransitionListener;
+import grammar.Grammar;
+import grammar.Production;
+import gui.event.SelectionEvent;
+import gui.event.SelectionListener;
 import gui.viewer.SelectionDrawer;
-import java.awt.Component;
-import java.util.*;
-import java.util.Map.Entry;
 
 /**
  * A <CODE>ConvertController</CODE> object is a controller used in the

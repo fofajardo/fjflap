@@ -20,13 +20,15 @@
 
 package gui.grammar.parse;
 
+import java.awt.event.MouseEvent;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import automata.State;
 import gui.editor.TransitionTool;
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
-import java.awt.event.MouseEvent;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  * This is a specialized transition tool that handles the movement of gotos from

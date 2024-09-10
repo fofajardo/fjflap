@@ -20,12 +20,13 @@
 
 package file.xml;
 
-import file.ParseException;
 import java.util.Map;
-import org.w3c.dom.*;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import regular.*;
+
+import file.ParseException;
+import regular.RegularExpression;
 
 /**
  * This transducer is the codec for {@link regular.RegularExpression} objects.

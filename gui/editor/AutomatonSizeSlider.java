@@ -19,12 +19,7 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -33,6 +28,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import automata.Note;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
 * @author Henry Qin and Jonathan Su

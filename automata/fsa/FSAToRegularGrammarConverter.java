@@ -20,9 +20,6 @@
 
 package automata.fsa;
 
-import grammar.Production;
-import grammar.reg.RegularGrammar;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,6 +32,8 @@ import java.util.List;
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
+import grammar.Production;
+import grammar.reg.RegularGrammar;
 
 /**
  * The FSA to regular grammar converter can be used to convert a finite state

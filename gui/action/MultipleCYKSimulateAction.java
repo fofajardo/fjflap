@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.AbstractAction;
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -47,8 +46,9 @@ import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
-import javax.swing.ScrollPaneLayout;
 
+import automata.Automaton;
+import automata.turing.TuringMachine;
 import grammar.Grammar;
 import gui.JTableExtender;
 import gui.SplitPaneFactory;
@@ -62,9 +62,6 @@ import gui.environment.tag.CriticalTag;
 import gui.grammar.GrammarInputPane;
 import gui.grammar.parse.CYKParsePane;
 import gui.sim.multiple.InputTableModel;
-import automata.Automaton;
-
-import automata.turing.TuringMachine;
 
 /**
  * Similiar code to MultipleSimulateAction.  Once again, did not want to mess up the original code.

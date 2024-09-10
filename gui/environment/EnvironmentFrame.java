@@ -20,21 +20,12 @@
 
 package gui.environment;
 
-import file.Codec;
-import file.EncodeException;
-import file.Encoder;
-import file.ParseException;
-import gui.editor.EditBlockPane;
-import gui.editor.EditorPane;
-import gui.grammar.GrammarInputPane;
-
 import java.awt.BorderLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,6 +33,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+
+import file.Codec;
+import file.EncodeException;
+import file.Encoder;
+import file.ParseException;
+import gui.editor.EditBlockPane;
+import gui.editor.EditorPane;
+import gui.grammar.GrammarInputPane;
 
 /**
  * The <CODE>EnvironmentFrame</CODE> is the general sort of frame for holding

@@ -19,17 +19,15 @@
 
 package gui.action;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
 import grammar.Grammar;
 import grammar.UnrestrictedGrammar;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
-
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 /**
  * Multiple CYK Parse Action class

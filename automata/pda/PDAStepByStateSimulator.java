@@ -25,8 +25,6 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import debug.EDebug;
-
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;

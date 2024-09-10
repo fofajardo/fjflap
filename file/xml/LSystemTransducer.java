@@ -20,14 +20,22 @@
 
 package file.xml;
 
-import file.ParseException;
-import grammar.*;
-import grammar.lsystem.*;
-import java.util.*;
-import org.w3c.dom.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import file.ParseException;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.UnboundGrammar;
+import grammar.lsystem.LSystem;
 /**
  * This transducer is the codec for {@link grammar.lsystem.LSystem} objects.
  * 

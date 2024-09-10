@@ -19,14 +19,13 @@
 
 package automata.turing;
 
-import grammar.Production;
-
 import java.util.ArrayList;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
 
-import automata.Automaton;
 import automata.State;
 import automata.Transition;
+import grammar.Production;
 
 /**
  * Converter for turing to unrestricted grammar

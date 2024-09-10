@@ -20,17 +20,18 @@
 
 package gui.action;
 
-import automata.Automaton;
-import gui.JTableExtender;
-import gui.environment.Environment;
-import javax.swing.*;
-import javax.swing.table.*;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import gui.sim.multiple.InputTableModel;
+import javax.swing.KeyStroke;
+import javax.swing.table.TableModel;
+
+import automata.Automaton;
 import automata.turing.TuringMachine;
+import gui.JTableExtender;
+import gui.environment.Environment;
+import gui.sim.multiple.InputTableModel;
 
 /**
  * This is the action used for the simulation of multiple inputs on an automaton

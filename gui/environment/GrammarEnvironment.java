@@ -20,12 +20,14 @@
 
 package gui.environment;
 
+import java.io.Serializable;
+
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import grammar.Grammar;
 import grammar.UnboundGrammar;
 import gui.grammar.GrammarInputPane;
-import java.io.Serializable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 
 /**
  * The <CODE>GrammarEnvironment</CODE> is an environment for holding a

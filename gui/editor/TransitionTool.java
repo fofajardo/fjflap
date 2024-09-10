@@ -20,10 +20,6 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Stroke;
@@ -33,6 +29,9 @@ import javax.swing.Icon;
 import javax.swing.KeyStroke;
 
 import automata.State;
+import gui.environment.AutomatonEnvironment;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * A tool that handles the creation of transitions.

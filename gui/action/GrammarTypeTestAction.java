@@ -19,6 +19,10 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
 import grammar.CNFConverter;
 import grammar.Grammar;
 import grammar.Production;
@@ -27,12 +31,6 @@ import grammar.UnrestrictedGrammar;
 import gui.environment.EnvironmentFrame;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
-
-import java.awt.event.ActionEvent;
-
-import javax.swing.JOptionPane;
-
-import debug.EDebug;
 
 /**
  * Action for testing grammar to see what type of grammar it is.

@@ -20,14 +20,21 @@
 
 package gui.grammar.parse;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+
 import grammar.Grammar;
-import grammar.parse.*;
+import grammar.parse.LLParseTable;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.grammar.GrammarTable;
-import java.awt.BorderLayout;
-import javax.swing.*;
 
 /**
  * This is the view for the derivation of a LL parse table from a grammar.

@@ -20,13 +20,7 @@
 
 package gui.lsystem;
 
-import grammar.lsystem.Expander;
-import grammar.lsystem.LSystem;
-import gui.ImageDisplayComponent;
-import gui.transform.Matrix;
-
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -47,6 +41,11 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import grammar.lsystem.Expander;
+import grammar.lsystem.LSystem;
+import gui.ImageDisplayComponent;
+import gui.transform.Matrix;
 
 /**
  * The L-system display pane has the interface to display an L-system.

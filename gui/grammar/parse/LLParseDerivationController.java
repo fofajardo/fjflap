@@ -20,14 +20,19 @@
 
 package gui.grammar.parse;
 
-import grammar.*;
-import grammar.parse.*;
-import gui.environment.GrammarEnvironment;
 import java.awt.event.ActionEvent;
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+
 import javax.swing.AbstractAction;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import grammar.Grammar;
+import grammar.parse.LLParseTable;
+import grammar.parse.LLParseTableGenerator;
+import grammar.parse.Operations;
+import gui.environment.GrammarEnvironment;
 
 /**
  * This controller handles user actions for the parsing of a grammar.

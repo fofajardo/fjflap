@@ -20,20 +20,35 @@
 
 package gui.grammar.parse;
 
-import automata.fsa.FiniteStateAutomaton;
-import grammar.Grammar;
-import grammar.parse.*;
-import gui.SplitPaneFactory;
-import gui.TableTextSizeSlider;
-import gui.editor.*;
-import gui.environment.GrammarEnvironment;
-import gui.grammar.GrammarTable;
-import gui.viewer.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
-import javax.swing.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+
+import automata.fsa.FiniteStateAutomaton;
+import grammar.Grammar;
+import grammar.parse.LRParseTable;
+import grammar.parse.Operations;
+import gui.SplitPaneFactory;
+import gui.TableTextSizeSlider;
+import gui.editor.ArrowNontransitionTool;
+import gui.editor.EditorPane;
+import gui.editor.Tool;
+import gui.editor.ToolBox;
+import gui.environment.GrammarEnvironment;
+import gui.grammar.GrammarTable;
+import gui.viewer.AutomatonDraggerPane;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is the view for the derivation of a LR parse table from a grammar.

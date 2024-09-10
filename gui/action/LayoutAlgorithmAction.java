@@ -21,11 +21,14 @@ package gui.action;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import automata.turing.TuringMachine;
-import automata.pda.PushdownAutomaton;
-import automata.mealy.MealyMachine;
+
 import automata.Automaton;
-import automata.graph.*;
+import automata.graph.AutomatonGraph;
+import automata.graph.LayoutAlgorithm;
+import automata.graph.LayoutAlgorithmFactory;
+import automata.mealy.MealyMachine;
+import automata.pda.PushdownAutomaton;
+import automata.turing.TuringMachine;
 import gui.environment.Environment;
 
 /**

@@ -20,17 +20,15 @@
 
 package gui.action;
 
-import gui.environment.AutomatonEnvironment;
-import gui.environment.Universe;
-import gui.environment.tag.CriticalTag;
-import gui.regular.ConvertPane;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import automata.fsa.FSAToRegularExpressionConverter;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.Universe;
+import gui.environment.tag.CriticalTag;
+import gui.regular.ConvertPane;
 
 /**
  * This action handles the conversion of an FSA to a regular expression.

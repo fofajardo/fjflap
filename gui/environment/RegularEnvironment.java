@@ -20,9 +20,9 @@
 
 package gui.environment;
 
-import regular.RegularExpression;
-import regular.ExpressionChangeListener;
 import regular.ExpressionChangeEvent;
+import regular.ExpressionChangeListener;
+import regular.RegularExpression;
 
 /**
  * This is the environment for a regular expression.

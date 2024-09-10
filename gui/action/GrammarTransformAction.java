@@ -20,6 +20,11 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
+
 import grammar.CNFConverter;
 import grammar.Grammar;
 import grammar.LambdaProductionRemover;
@@ -34,11 +39,6 @@ import gui.grammar.transform.ChomskyPane;
 import gui.grammar.transform.LambdaPane;
 import gui.grammar.transform.UnitPane;
 import gui.grammar.transform.UselessPane;
-
-import java.awt.event.ActionEvent;
-import java.util.Set;
-
-import javax.swing.JOptionPane;
 
 /**
  * This is an action to transform a grammar.

@@ -20,12 +20,6 @@
 
 package gui.sim;
 
-import gui.SplitPaneFactory;
-import gui.editor.ArrowDisplayOnlyTool;
-import gui.environment.Environment;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -38,6 +32,11 @@ import javax.swing.event.ChangeListener;
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
+import gui.SplitPaneFactory;
+import gui.editor.ArrowDisplayOnlyTool;
+import gui.environment.Environment;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * The <CODE>SimulatorPane</CODE> is the main view for the GUI front end for

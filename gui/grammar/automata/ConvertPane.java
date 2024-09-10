@@ -20,6 +20,13 @@
 
 package gui.grammar.automata;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+
 import automata.Automaton;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
@@ -28,11 +35,6 @@ import gui.environment.AutomatonEnvironment;
 import gui.grammar.GrammarTable;
 import gui.viewer.AutomatonPane;
 import gui.viewer.SelectionDrawer;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-import javax.swing.JSplitPane;
 
 /**
  * This <CODE>ConvertPane</CODE> exists for the user to convert an automaton

@@ -20,9 +20,13 @@
 
 package automata.graph;
 
-import java.util.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A graph data structure. The idea behind the graph data structure is that a

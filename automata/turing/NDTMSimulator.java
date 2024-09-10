@@ -28,8 +28,16 @@
 
 package automata.turing;
 
-import java.util.*;
-import automata.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import automata.Automaton;
+import automata.AutomatonSimulator;
+import automata.Configuration;
+import automata.State;
+import automata.Transition;
 import gui.environment.Universe;
 
 

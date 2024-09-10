@@ -20,11 +20,13 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
 import gui.environment.RegularEnvironment;
 import gui.environment.tag.CriticalTag;
 import gui.regular.ConvertToAutomatonPane;
-import java.awt.event.*;
-import javax.swing.JOptionPane;
 
 /**
  * This class initiates the conversion of a regular expression to a

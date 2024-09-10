@@ -20,9 +20,11 @@
 
 package grammar.parse;
 
-import javax.swing.tree.*;
-import grammar.Production;
 import java.util.Arrays;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import grammar.Production;
 
 /**
  * A parse node is used as an aide for brute force parsing. It contains a

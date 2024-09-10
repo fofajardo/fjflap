@@ -20,6 +20,18 @@
 
 package gui.deterministic;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+
+import automata.fsa.FiniteStateAutomaton;
 import gui.SplitPaneFactory;
 import gui.TooltipAction;
 import gui.editor.ArrowNontransitionTool;
@@ -31,19 +43,6 @@ import gui.viewer.AutomatonDraggerPane;
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
 import gui.viewer.SelectionDrawer;
-
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-
-import automata.fsa.FiniteStateAutomaton;
-
-import java.util.*;
 
 /**
  * This is the pane where the user defines all that is needed for the conversion

@@ -20,30 +20,20 @@
 package gui.deterministic;
 
 import java.awt.Point;
-import java.util.*;
-
-import gui.editor.FSATransitionCreator;
-import gui.editor.TransitionCreator;
-import gui.environment.Environment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.FrameFactory;
-import gui.environment.Universe;
-import gui.regular.FSAToREController;
-import gui.regular.TransitionWindow;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import regular.RegularExpression;
-
 import automata.State;
 import automata.Transition;
-import automata.fsa.FSAToRegularExpressionConverter;
 import automata.fsa.FSATransition;
 import automata.fsa.FiniteStateAutomaton;
+import gui.environment.FrameFactory;
+import gui.viewer.SelectionDrawer;
 
 /**
  * Controller that is responsible for creating trap state and adding necessary transitions

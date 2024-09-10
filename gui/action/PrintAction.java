@@ -19,8 +19,6 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -35,6 +33,8 @@ import java.awt.print.PrinterJob;
 
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+
+import gui.environment.Environment;
 
 /**
  * This action handles printing. It will attempt to print the currently active

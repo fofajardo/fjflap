@@ -25,8 +25,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import debug.EDebug;
-
 import automata.event.AutomataStateEvent;
 
 /**

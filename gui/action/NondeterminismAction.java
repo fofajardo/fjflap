@@ -20,12 +20,6 @@
 
 package gui.action;
 
-import gui.editor.ArrowDisplayOnlyTool;
-import gui.environment.Environment;
-import gui.environment.tag.CriticalTag;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
@@ -36,6 +30,11 @@ import automata.Automaton;
 import automata.NondeterminismDetector;
 import automata.NondeterminismDetectorFactory;
 import automata.State;
+import gui.editor.ArrowDisplayOnlyTool;
+import gui.environment.Environment;
+import gui.environment.tag.CriticalTag;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is the action used to highlight nondeterministic states.

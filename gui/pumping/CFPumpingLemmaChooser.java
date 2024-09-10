@@ -20,10 +20,22 @@
 
 package gui.pumping;
 
-import pumping.ContextFreePumpingLemma;
-//import pumping.PumpingLemma;
-import pumping.cf.*;
 import java.util.ArrayList;
+
+//import pumping.PumpingLemma;
+import pumping.cf.AiBjCk;
+import pumping.cf.AkBnCnDj;
+import pumping.cf.AnBjAnBj;
+import pumping.cf.AnBn;
+import pumping.cf.AnBnCn;
+import pumping.cf.NaNbNc;
+import pumping.cf.NagNbeNc;
+import pumping.cf.W1BnW2;
+import pumping.cf.W1CW2CW3CW4;
+import pumping.cf.W1VVrW2;
+import pumping.cf.WW;
+import pumping.cf.WW1WrEquals;
+import pumping.cf.WW1WrGrtrThanEq;
 
 /**
  * A <code>CFPumpingLemmaChooser</code> is a {@link gui.pumping.PumpingLemmaChooser} 

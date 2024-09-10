@@ -20,11 +20,6 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-import gui.environment.Universe;
-import gui.environment.tag.CriticalTag;
-import gui.minimize.MinimizePane;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
@@ -32,6 +27,10 @@ import javax.swing.JOptionPane;
 import automata.AutomatonChecker;
 import automata.fsa.FiniteStateAutomaton;
 import automata.fsa.Minimizer;
+import gui.environment.Environment;
+import gui.environment.Universe;
+import gui.environment.tag.CriticalTag;
+import gui.minimize.MinimizePane;
 
 /**
  * This action allows the user to manually minimize a DFA using a minimization

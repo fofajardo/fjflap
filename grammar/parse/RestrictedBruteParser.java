@@ -20,8 +20,9 @@
 
 package grammar.parse;
 
+import java.util.ArrayList;
+
 import grammar.Grammar;
-import java.util.*;
 
 /**
  * This is the brute parser for an restricted grammar. It has additional tests

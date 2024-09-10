@@ -19,9 +19,10 @@
 
 package automata.turing;
 
-import automata.State;
 import java.awt.Point;
+
 import automata.Automaton;
+import automata.State;
 
 
 /**

@@ -19,7 +19,9 @@
 
 package pumping.cf;
 
-import pumping.*;
+import pumping.Case;
+import pumping.ContextFreePumpingLemma;
+import pumping.LemmaMath;
 
 /**
  * The context-free pumping lemma for <i>L</i> = 

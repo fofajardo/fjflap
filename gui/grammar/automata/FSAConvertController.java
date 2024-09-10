@@ -20,6 +20,11 @@
 
 package gui.grammar.automata;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
 import automata.State;
 import automata.Transition;
 import automata.fsa.FSAToRegularGrammarConverter;
@@ -28,7 +33,6 @@ import grammar.Grammar;
 import grammar.Production;
 import grammar.reg.RegularGrammar;
 import gui.viewer.SelectionDrawer;
-import java.util.*;
 
 /**
  * This controls the conversion of a finite state automaton to a regular

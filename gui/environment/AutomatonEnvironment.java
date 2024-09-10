@@ -20,14 +20,14 @@
 
 package gui.environment;
 
-import gui.editor.UndoKeeper;
 import automata.Automaton;
+import automata.event.AutomataNoteEvent;
+import automata.event.AutomataNoteListener;
 import automata.event.AutomataStateEvent;
 import automata.event.AutomataStateListener;
 import automata.event.AutomataTransitionEvent;
 import automata.event.AutomataTransitionListener;
-import automata.event.AutomataNoteEvent;
-import automata.event.AutomataNoteListener;
+import gui.editor.UndoKeeper;
 
 public class AutomatonEnvironment extends Environment {
 	/**

@@ -20,7 +20,9 @@
 
 package automata;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The useless states detector object can be used to find all states in an

@@ -19,15 +19,14 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.KeyStroke;
 
 import automata.State;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 /**
  * The Block Transition tool works the same way as a normal transition, except it is between
  * two blocks.

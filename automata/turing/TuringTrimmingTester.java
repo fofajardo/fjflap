@@ -19,11 +19,11 @@
 
 package automata.turing;
 
-import grammar.Production;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Scanner;
+
+import grammar.Production;
 
 /**
  * Temporary tester for turing trimming algo

@@ -19,14 +19,13 @@
 
 package automata.graph.layout;
 
-import java.util.Set;
-import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Set;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
-import automata.graph.layout.CircleLayoutAlgorithm.Box;
 
 /**
  * A layout algorithm that lays out groupings of vertices in circles.  Each grouping

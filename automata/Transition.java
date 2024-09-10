@@ -20,9 +20,8 @@
 
 package automata;
 
-import automata.State;
-import java.io.Serializable;
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  * A <CODE>Transition</CODE> object is a simple abstract class representing a

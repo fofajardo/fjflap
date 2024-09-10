@@ -20,6 +20,23 @@
 
 package gui.action;
 
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
@@ -27,27 +44,17 @@ import automata.NondeterminismDetector;
 import automata.NondeterminismDetectorFactory;
 import automata.SimulatorFactory;
 import automata.State;
+import automata.graph.AutomatonDirectedGraph;
+import automata.mealy.MealyMachine;
+import automata.turing.NDTMSimulator;
+import automata.turing.TMSimulator;
+import automata.turing.TuringMachine;
 import grammar.Grammar;
-import gui.InputBox;
 import gui.editor.EditBlockPane;
 import gui.environment.Environment;
 import gui.environment.Universe;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import gui.sim.SimulatorPane;
 import gui.environment.tag.CriticalTag;
-import javax.swing.*;
-
-import java.awt.GridLayout;
-import java.awt.Component;
-import java.util.*;
-import java.io.*;
-import automata.graph.AutomatonDirectedGraph;
-import automata.mealy.MealyMachine;
-import automata.turing.TuringMachine;
-import automata.turing.TMSimulator;
-import automata.turing.NDTMSimulator;
+import gui.sim.SimulatorPane;
 
 /**
  * This is the action used for the stepwise simulation of data. This method can

@@ -16,11 +16,21 @@
 
 package grammar.parse;
 
-import grammar.*;
-import grammar.cfg.ContextFreeGrammar;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import javax.swing.JOptionPane;
+
+import grammar.Grammar;
+import grammar.Production;
+import grammar.cfg.ContextFreeGrammar;
 
 /**
  * This is a utility class for finding out things about a grammar for purposes

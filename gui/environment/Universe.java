@@ -20,11 +20,15 @@
 
 package gui.environment;
 
-import file.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JFileChooser;
+
+import file.CodecRegistry;
+import file.XMLCodec;
 
 /**
  * The <CODE>Universe</CODE> class serves as a large global "registry" for the

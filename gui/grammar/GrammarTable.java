@@ -20,20 +20,26 @@
 
 package gui.grammar;
 
-import grammar.Grammar;
-import grammar.Production;
-import gui.HighlightTable;
-import gui.TableTextSizeSlider;
-import gui.environment.Universe;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
-import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
 import debug.EDebug;
+import grammar.Grammar;
+import grammar.Production;
+import gui.HighlightTable;
+import gui.TableTextSizeSlider;
+import gui.environment.Universe;
 
 /**
  * The <CODE>GrammarTable</CODE> is a simple extension to the <CODE>JTable</CODE>

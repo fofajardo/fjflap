@@ -20,14 +20,17 @@
 
 package gui.grammar.parse;
 
+import java.awt.Color;
+
+import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.JToolTip;
+import javax.swing.ToolTipManager;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+
 import grammar.parse.LRParseTable;
 import gui.LeftTable;
-import gui.TableTextSizeSlider;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.*;
-import javax.swing.table.*;
 
 /**
  * This holds a LR parse table.

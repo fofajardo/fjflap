@@ -20,9 +20,9 @@
 
 package gui.editor;
 
-import gui.viewer.SelectionDrawer;
 import automata.Automaton;
 import automata.State;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is a view that holds a tool bar and the canvas where the automaton is

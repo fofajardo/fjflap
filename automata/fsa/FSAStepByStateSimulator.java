@@ -24,16 +24,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import debug.EDebug;
 
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
 import automata.State;
 import automata.Transition;
+import debug.EDebug;
 
 /**
  * The FSA step by state simulator object simulates the behavior of a finite

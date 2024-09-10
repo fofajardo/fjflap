@@ -20,10 +20,6 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.Universe;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JComboBox;
@@ -32,6 +28,9 @@ import javax.swing.JOptionPane;
 import automata.UselessStatesDetector;
 import automata.fsa.FiniteStateAutomaton;
 import automata.graph.FSAEqualityChecker;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.Universe;
 
 /**
  * This tests to see if two finite state automatons accept the same language.

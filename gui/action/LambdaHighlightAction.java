@@ -20,17 +20,25 @@
 
 package gui.action;
 
-import automata.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import automata.Automaton;
+import automata.LambdaCheckerFactory;
+import automata.LambdaTransitionChecker;
+import automata.Transition;
 import gui.editor.ArrowDisplayOnlyTool;
 import gui.environment.Environment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
-import gui.viewer.*;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is an action that will highlight all states that have

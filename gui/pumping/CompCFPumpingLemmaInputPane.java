@@ -19,10 +19,7 @@
 
 package gui.pumping;
 
-import javax.swing.JPanel;
-
 import pumping.ContextFreePumpingLemma;
-import pumping.RegularPumpingLemma;
 
 /**
  * This is a subclass of <code>ComputerFirstPane</code> that deals with

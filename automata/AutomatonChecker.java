@@ -20,7 +20,8 @@
 
 package automata;
 
-import automata.fsa.*;
+import automata.fsa.FSANondeterminismDetector;
+import automata.fsa.FiniteStateAutomaton;
 
 /**
  * The Automaton checker can be used to determine certain properties about

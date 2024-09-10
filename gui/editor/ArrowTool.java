@@ -20,14 +20,6 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.environment.Environment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.tag.CriticalTag;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-import gui.viewer.CurvedArrow;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -36,10 +28,8 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.Icon;
 import javax.swing.JCheckBoxMenuItem;
@@ -50,23 +40,25 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-import javax.swing.SingleSelectionModel;
 
-import automata.Automaton;
 import automata.Note;
 import automata.State;
 import automata.StateRenamer;
 import automata.Transition;
-import automata.fsa.FSALabelHandler;
-import automata.fsa.FSATransition;
 import automata.graph.AutomatonGraph;
 import automata.graph.LayoutAlgorithm;
 import automata.graph.layout.GEMLayoutAlgorithm;
-import automata.turing.TMTransition;
 import automata.turing.TMState;
-import automata.turing.TuringMachine;
+import automata.turing.TMTransition;
 import automata.turing.TuringMachineBuildingBlocks;
 import debug.EDebug;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.tag.CriticalTag;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.CurvedArrow;
 
 /**
  * The arrow tool is used mostly for editing existing objects.

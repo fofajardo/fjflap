@@ -19,22 +19,17 @@
 
 package gui.action;
 
-import grammar.ConvertedUnrestrictedGrammar;
+import java.awt.event.ActionEvent;
+import java.util.HashMap;
+
 import grammar.Grammar;
 import grammar.Production;
 import grammar.UnrestrictedGrammar;
 import gui.environment.EnvironmentFrame;
-import gui.environment.FrameFactory;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
-import gui.grammar.parse.BruteParsePane;
 import gui.grammar.parse.TMBruteParsePane;
-
-import java.awt.event.ActionEvent;
-import java.util.HashMap;
-
-import javax.swing.JOptionPane;
 
 /**
  * Special brute force parser for parsing grammar that was converted from Turing Machine

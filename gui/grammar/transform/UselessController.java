@@ -20,14 +20,22 @@
 
 package gui.grammar.transform;
 
-import automata.*;
-import automata.vdg.*;
-import grammar.*;
-
 import java.awt.event.MouseEvent;
-import java.util.*;
-import javax.swing.*;
-import automata.event.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.swing.JOptionPane;
+
+import automata.State;
+import automata.Transition;
+import automata.event.AutomataTransitionEvent;
+import automata.event.AutomataTransitionListener;
+import automata.vdg.VariableDependencyGraph;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.UselessProductionRemover;
 
 /**
  * This is the controller for the useless panel. Bleh.

@@ -20,14 +20,12 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import debug.EDebug;
+import gui.environment.AutomatonEnvironment;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * An <CODE>EditCanvas</CODE> is an extension of <CODE>AutomatonPane</CODE>

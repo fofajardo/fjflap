@@ -20,12 +20,13 @@
 
 package gui;
 
-import gui.environment.Universe;
-
 import java.awt.Component;
+
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import gui.environment.Universe;
 
 /**
  * This is a cell renderer that displays a specified character if the

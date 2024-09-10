@@ -20,21 +20,29 @@
 
 package gui.grammar.parse;
 
-import grammar.*;
-import grammar.parse.*;
-import gui.environment.Universe;
-import gui.tree.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.*;
-import java.util.*;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
+import grammar.Production;
+import grammar.parse.ParseNode;
+import gui.environment.Universe;
+import gui.tree.DefaultNodeDrawer;
+import gui.tree.TreePanel;
 
 /**
  * This is the special drawer for an unrestricted parse tree. Woe betide any

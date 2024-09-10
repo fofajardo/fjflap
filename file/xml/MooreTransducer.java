@@ -20,25 +20,15 @@
 
 package file.xml;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
-
-import org.w3c.dom.*;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.Element;
-
-import file.DataException;
+import org.w3c.dom.Node;
 
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
-import automata.mealy.MealyMachine;
-import automata.mealy.MealyTransition;
 import automata.mealy.MooreMachine;
 import automata.mealy.MooreTransition;
 

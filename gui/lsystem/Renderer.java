@@ -20,10 +20,6 @@
 
 package gui.lsystem;
 
-import gui.lsystem.Renderer.CommandHandler;
-import gui.transform.Matrix;
-
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -43,6 +39,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
+
+import gui.transform.Matrix;
 
 /**
  * A <CODE>Renderer</CODE> object allows a client to create an image of a

@@ -20,8 +20,6 @@
 
 package gui.sim;
 
-import gui.viewer.StateDrawer;
-
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,6 +29,7 @@ import javax.swing.Icon;
 
 import automata.Automaton;
 import automata.Configuration;
+import gui.viewer.StateDrawer;
 
 /**
  * The <CODE>ConfigurationIcon</CODE> is a general sort of icon that can be

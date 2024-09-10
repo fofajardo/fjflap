@@ -20,8 +20,6 @@
 
 package gui.deterministic;
 
-import gui.environment.FrameFactory;
-
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -49,6 +47,7 @@ import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import debug.EDebug;
+import gui.environment.FrameFactory;
 
 /**
  * This is the class that controls the conversion of an NFA to a DFA.

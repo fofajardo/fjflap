@@ -20,9 +20,13 @@
 
 package automata.graph;
 
-import java.util.*;
-import automata.*;
-import automata.fsa.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import automata.State;
+import automata.Transition;
+import automata.fsa.FSATransition;
+import automata.fsa.FiniteStateAutomaton;
 
 /**
  * This is an object that checks if two deterministic finite state automatons

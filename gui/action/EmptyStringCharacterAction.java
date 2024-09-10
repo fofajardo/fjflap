@@ -20,9 +20,8 @@
 
 package gui.action;
 
-import gui.environment.Profile;
-import gui.environment.Universe;
-
+import java.awt.BorderLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -35,8 +34,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.KeyStroke;
 
-import java.awt.BorderLayout;
-import java.awt.Point;
+import gui.environment.Profile;
+import gui.environment.Universe;
 
 /**
 * The <CODE>TestTuringAction</CODE> is an action to load a structure from a file,

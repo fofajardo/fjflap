@@ -20,9 +20,10 @@
 
 package gui.editor;
 
+import java.util.List;
+
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
-import java.util.List;
 
 /**
  * A <CODE>ToolBox</CODE> is an object used for defining what tools are in a

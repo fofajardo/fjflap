@@ -21,9 +21,6 @@ package gui;
 
 import java.awt.Font;
 
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import javax.swing.BorderFactory;
 import javax.swing.JSlider;
 import javax.swing.JTable;

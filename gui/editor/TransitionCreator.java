@@ -20,12 +20,14 @@
 
 package gui.editor;
 
+import java.awt.Point;
+
+import javax.swing.JOptionPane;
+
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
 import gui.viewer.AutomatonPane;
-import java.awt.Point;
-import javax.swing.JOptionPane;
 
 /**
  * A <CODE>TransitionCreator</CODE> object is used to present a graphical

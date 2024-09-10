@@ -19,8 +19,13 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
+
 import grammar.CNFConverter;
-import grammar.ConvertedUnrestrictedGrammar;
 import grammar.Grammar;
 import grammar.LambdaProductionRemover;
 import grammar.Production;
@@ -31,23 +36,13 @@ import gui.environment.EnvironmentFrame;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
-import gui.grammar.GrammarInputPane;
 import gui.grammar.parse.CYKParsePane;
-import gui.grammar.transform.ChomskyPane;
 import gui.grammar.transform.LambdaController;
 import gui.grammar.transform.LambdaPane;
 import gui.grammar.transform.UnitController;
 import gui.grammar.transform.UnitPane;
 import gui.grammar.transform.UselessController;
 import gui.grammar.transform.UselessPane;
-
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Set;
-
-import javax.swing.JOptionPane;
 
 /**
  * CYK Parsing Action class

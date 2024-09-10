@@ -20,7 +20,7 @@
 
 package gui.grammar.parse;
 
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 class UnrestrictedTreeNode extends DefaultMutableTreeNode {
 	/**

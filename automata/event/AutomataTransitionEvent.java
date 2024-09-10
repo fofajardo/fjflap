@@ -21,6 +21,7 @@
 package automata.event;
 
 import java.util.EventObject;
+
 import automata.Automaton;
 import automata.Transition;
 

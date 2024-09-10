@@ -20,27 +20,19 @@
 
 package automata.turing;
 
-import automata.Automaton;
-import automata.Transition;
-import automata.State;
-import automata.Note;
-
-import java.awt.Component;
 import java.awt.Point;
-
+import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Collection;
-
-import java.io.Serializable;
-import java.io.File;
-
-import gui.action.OpenAction;
-import gui.environment.EnvironmentFrame;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
+
+import automata.Note;
+import automata.State;
+import automata.Transition;
+import gui.action.OpenAction;
 
 /**
  * A COPY OF TuringMachine.java with modifications*/

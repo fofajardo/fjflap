@@ -20,12 +20,19 @@
 
 package gui.regular;
 
-import automata.Transition;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
+
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import automata.Transition;
 
 /**
  * This shows a bunch of transitions for the step of the conversion when the

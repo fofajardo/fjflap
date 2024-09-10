@@ -20,20 +20,39 @@
 
 package gui.minimize;
 
-import automata.*;
-import automata.fsa.*;
-import automata.graph.*;
+import java.awt.BorderLayout;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+
+import automata.State;
+import automata.Transition;
+import automata.fsa.FiniteStateAutomaton;
+import automata.fsa.MinimizeTreeNode;
+import automata.fsa.Minimizer;
+import automata.graph.AutomatonGraph;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import gui.SplitPaneFactory;
-import gui.editor.*;
+import gui.editor.EditorPane;
+import gui.editor.Tool;
+import gui.editor.ToolBox;
+import gui.editor.TransitionTool;
 import gui.environment.Environment;
-import gui.tree.*;
-import gui.viewer.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.tree.*;
+import gui.tree.SelectTreeDrawer;
+import gui.tree.TreePanel;
+import gui.tree.Trees;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * The <CODE>MinimizePane</CODE> is a view created to minimize a DFA using

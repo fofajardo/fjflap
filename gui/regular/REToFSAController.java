@@ -20,16 +20,20 @@
 
 package gui.regular;
 
-import automata.*;
-import automata.fsa.*;
-import gui.environment.FrameFactory;
-import gui.environment.Universe;
-
 import java.awt.Point;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.swing.JOptionPane;
+
+import automata.State;
+import automata.fsa.FSATransition;
+import automata.fsa.FiniteStateAutomaton;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
 import regular.Discretizer;
 
 /**

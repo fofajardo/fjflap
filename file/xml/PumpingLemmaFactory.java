@@ -20,9 +20,31 @@
 
 package file.xml;
 
-import pumping.*;
-import pumping.reg.*;
-import pumping.cf.*;
+import pumping.PumpingLemma;
+import pumping.cf.AiBjCk;
+import pumping.cf.AkBnCnDj;
+import pumping.cf.AnBjAnBj;
+import pumping.cf.AnBnCn;
+import pumping.cf.NaNbNc;
+import pumping.cf.NagNbeNc;
+import pumping.cf.W1BnW2;
+import pumping.cf.W1CW2CW3CW4;
+import pumping.cf.W1VVrW2;
+import pumping.cf.WW;
+import pumping.cf.WW1WrEquals;
+import pumping.cf.WW1WrGrtrThanEq;
+import pumping.reg.AB2n;
+import pumping.reg.ABnAk;
+import pumping.reg.AnBk;
+import pumping.reg.AnBkCnk;
+import pumping.reg.AnBlAk;
+import pumping.reg.AnEven;
+import pumping.reg.B5W;
+import pumping.reg.B5Wmod;
+import pumping.reg.BBABAnAn;
+import pumping.reg.BkABnBAn;
+import pumping.reg.NaNb;
+import pumping.reg.Palindrome;
 
 /**
  * 

@@ -20,7 +20,6 @@
 package grammar.parse;
 
 import java.util.ArrayList;
-import java.util.*;
 
 import grammar.Grammar;
 import grammar.Production;

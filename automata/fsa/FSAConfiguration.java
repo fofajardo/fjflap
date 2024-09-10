@@ -20,7 +20,9 @@
 
 package automata.fsa;
 
-import automata.*;
+import automata.Automaton;
+import automata.Configuration;
+import automata.State;
 
 /**
  * An <CODE>FSAConfiguration</CODE> object is a <CODE>Configuration</CODE>

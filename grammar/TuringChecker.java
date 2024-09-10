@@ -19,9 +19,6 @@
 
 package grammar;
 
-import grammar.Grammar;
-import grammar.Production;
-
 import java.io.Serializable;
 
 /**

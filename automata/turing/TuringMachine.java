@@ -20,24 +20,20 @@
 
 package automata.turing;
 
-import automata.Automaton;
-import automata.Transition;
-import automata.State;
-import automata.Note;
 import java.awt.Point;
-
+import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Collection;
-
-import java.io.Serializable;
-import java.io.File;
-
-import gui.action.OpenAction;
-import gui.environment.EnvironmentFrame;
 
 import javax.swing.JButton;
+
+import automata.Automaton;
+import automata.Note;
+import automata.State;
+import automata.Transition;
+import gui.action.OpenAction;
 
 /**
  * This subclass of <CODE>Automaton</CODE> is specifically for a definition of

@@ -20,7 +20,10 @@
 
 package file.xml;
 
-import org.w3c.dom.*;
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  * This prettier converts DOMs to a prettier form. When creating a new raw DOM,

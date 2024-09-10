@@ -21,8 +21,15 @@ package automata.graph;
 
 import java.awt.Dimension;
 import java.util.Random;
+
 import automata.Automaton;
-import automata.graph.layout.*;
+import automata.graph.layout.CircleLayoutAlgorithm;
+import automata.graph.layout.GEMLayoutAlgorithm;
+import automata.graph.layout.RandomLayoutAlgorithm;
+import automata.graph.layout.SpiralLayoutAlgorithm;
+import automata.graph.layout.TreeLayoutAlgorithm;
+import automata.graph.layout.TwoCircleLayoutAlgorithm;
+import automata.graph.layout.VertexMover;
 
 /**
  * This class allows the user to fetch a new <code>LayoutAlgorithm</code>, either a random one or a 

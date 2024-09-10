@@ -20,9 +20,10 @@
 
 package gui.action;
 
+import java.awt.Toolkit;
+
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
-import java.awt.Toolkit;
 
 /**
  * The <CODE>RestrictedAction</CODE> is the general action that various

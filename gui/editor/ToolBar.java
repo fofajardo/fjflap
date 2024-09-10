@@ -20,10 +20,6 @@
 
 package gui.editor;
 
-import javax.swing.*;
-
-import debug.EDebug;
-
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -32,10 +28,22 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import gui.viewer.AutomatonDrawer;
-
 import java.net.URL;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.swing.AbstractAction;
+import javax.swing.AbstractButton;
+import javax.swing.ActionMap;
+import javax.swing.ButtonGroup;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+
+import gui.viewer.AutomatonDrawer;
 
 /**
  * A tool bar for editing and manipulating an automaton.

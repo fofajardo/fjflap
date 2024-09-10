@@ -19,14 +19,17 @@
 
 package automata.graph.layout;
 
-import java.util.*;
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
-
-import java.awt.geom.Point2D;
 
 /**
  * This layout algorithm arranges vertices according to a circle algorithm.  Vertices

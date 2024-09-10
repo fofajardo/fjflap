@@ -19,6 +19,8 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+
 import grammar.Grammar;
 import grammar.UnrestrictedGrammar;
 import gui.environment.EnvironmentFrame;
@@ -26,9 +28,6 @@ import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
 import gui.grammar.parse.UserControlParsePane;
-
-
-import java.awt.event.ActionEvent;
 
 /**
  * Action for User Controlling Parsing

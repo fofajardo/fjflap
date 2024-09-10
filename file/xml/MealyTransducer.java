@@ -29,8 +29,8 @@ import org.w3c.dom.Node;
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
-
-import automata.mealy.*;
+import automata.mealy.MealyMachine;
+import automata.mealy.MealyTransition;
 
 /**
  * This is the transducer for encoding and decoding 

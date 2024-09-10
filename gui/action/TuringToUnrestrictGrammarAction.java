@@ -19,15 +19,14 @@
 
 package gui.action;
 
+import automata.Automaton;
+import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
 import gui.environment.AutomatonEnvironment;
-import gui.environment.GrammarEnvironment;
 import gui.grammar.automata.ConvertController;
 import gui.grammar.automata.ConvertPane;
 import gui.grammar.automata.TuringConvertController;
 import gui.viewer.SelectionDrawer;
-import automata.Automaton;
-import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * Class for converting Turing Machine to Unrestricted Grammar

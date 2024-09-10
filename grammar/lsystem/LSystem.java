@@ -20,10 +20,21 @@
 
 package grammar.lsystem;
 
-import grammar.*;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
+
+import grammar.Grammar;
+import grammar.Production;
+import grammar.UnrestrictedGrammar;
 
 /**
  * The <CODE>LSystem</CODE> class represents L-systems. This does not do any

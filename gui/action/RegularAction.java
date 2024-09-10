@@ -20,10 +20,9 @@
 
 package gui.action;
 
-import gui.environment.RegularEnvironment;
-
 import javax.swing.Icon;
 
+import gui.environment.RegularEnvironment;
 import regular.RegularExpression;
 
 /**

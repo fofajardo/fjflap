@@ -20,15 +20,15 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
+
+import gui.environment.AutomatonEnvironment;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * A tool that handles the creation of states.

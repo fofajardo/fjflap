@@ -22,8 +22,9 @@ package gui.tree;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import javax.swing.tree.TreeNode;
 import java.util.WeakHashMap;
+
+import javax.swing.tree.TreeNode;
 
 /**
  * Adding this to a drawer allows one to select nodes, and have them appear to

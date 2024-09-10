@@ -20,12 +20,20 @@
 
 package file;
 
-import automata.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Map;
+
+import automata.Automaton;
+import automata.State;
+import automata.Transition;
 import grammar.Grammar;
 import grammar.Production;
 import grammar.UnboundGrammar;
-import java.io.*;
-import java.util.Map;
 import regular.RegularExpression;
 
 /**

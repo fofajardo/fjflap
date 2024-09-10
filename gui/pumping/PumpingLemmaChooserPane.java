@@ -20,14 +20,24 @@
 
 package gui.pumping;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
 import gui.environment.Environment;
 import gui.environment.tag.CriticalTag;
-import pumping.*;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
+import pumping.ContextFreePumpingLemma;
+import pumping.PumpingLemma;
+import pumping.RegularPumpingLemma;
 
 
 /**

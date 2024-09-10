@@ -19,12 +19,11 @@
 
 package gui;
 
-import gui.action.BatchMultipleSimulateAction;
-import gui.action.MultipleSimulateAction;
-import gui.sim.multiple.InputTableModel;
-
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
+
+import gui.action.BatchMultipleSimulateAction;
+import gui.action.MultipleSimulateAction;
 
 public class JTableExtender extends JTable{
 	/**

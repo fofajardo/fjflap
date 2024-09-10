@@ -20,16 +20,15 @@
 
 package gui.action;
 
-import gui.deterministic.ConversionPane;
-import gui.environment.Environment;
-import gui.environment.tag.CriticalTag;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
 import automata.AutomatonChecker;
 import automata.fsa.FiniteStateAutomaton;
+import gui.deterministic.ConversionPane;
+import gui.environment.Environment;
+import gui.environment.tag.CriticalTag;
 
 /**
  * This is a simple action for showing the DFA form of an NFA.

@@ -20,8 +20,8 @@
 
 package gui.environment;
 
-import java.util.EventObject;
 import java.io.File;
+import java.util.EventObject;
 
 /**
  * This is an event that registers with a listener that an environment has

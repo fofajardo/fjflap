@@ -20,11 +20,13 @@
 
 package gui.grammar.parse;
 
-import gui.environment.GrammarEnvironment;
+import javax.swing.JComponent;
+import javax.swing.JTable;
+
 import grammar.Grammar;
-import grammar.parse.*;
-import javax.swing.*;
-import gui.tree.*;
+import grammar.parse.LLParseTable;
+import gui.environment.GrammarEnvironment;
+import gui.tree.SelectNodeDrawer;
 
 /**
  * This is a parse pane for LL grammars.

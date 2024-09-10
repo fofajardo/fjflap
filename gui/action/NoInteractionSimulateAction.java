@@ -20,10 +20,6 @@
 
 package gui.action;
 
-import grammar.Grammar;
-import gui.environment.Environment;
-import gui.environment.Universe;
-
 import java.awt.Component;
 import java.util.ArrayList;
 
@@ -34,6 +30,9 @@ import javax.swing.JOptionPane;
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
+import grammar.Grammar;
+import gui.environment.Environment;
+import gui.environment.Universe;
 
 /**
  * This is the action used for the simulation of input on an automaton with no

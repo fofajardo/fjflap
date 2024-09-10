@@ -20,16 +20,23 @@
 
 package gui.regular;
 
+import java.awt.Point;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import automata.State;
 import automata.Transition;
 import automata.fsa.FSAToRegularExpressionConverter;
 import automata.fsa.FSATransition;
 import automata.fsa.FiniteStateAutomaton;
-import gui.environment.*;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
 import gui.viewer.AutomatonPane;
 import gui.viewer.SelectionDrawer;
-import java.awt.*;
-import javax.swing.*;
 import regular.RegularExpression;
 
 /**

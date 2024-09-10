@@ -20,22 +20,35 @@
 
 package gui.grammar.parse;
 
-import automata.*;
-import automata.graph.*;
-import automata.graph.layout.GEMLayoutAlgorithm;
-import automata.fsa.FSATransition;
-import automata.fsa.FiniteStateAutomaton;
-import grammar.*;
-import grammar.parse.*;
-import gui.editor.EditorPane;
-import gui.environment.GrammarEnvironment;
-import gui.viewer.SelectionDrawer;
 import java.awt.Point;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import automata.State;
+import automata.StatePlacer;
+import automata.Transition;
+import automata.fsa.FSATransition;
+import automata.fsa.FiniteStateAutomaton;
+import automata.graph.AutomatonGraph;
+import automata.graph.LayoutAlgorithm;
+import automata.graph.layout.GEMLayoutAlgorithm;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.parse.LRParseTable;
+import grammar.parse.LRParseTableGenerator;
+import grammar.parse.Operations;
+import gui.editor.EditorPane;
+import gui.environment.GrammarEnvironment;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This controller handles user actions for the building of an LR grammar parse

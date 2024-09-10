@@ -20,8 +20,21 @@
 
 package gui.pumping;
 
-import java.util.*;
-import pumping.reg.*;
+import java.util.ArrayList;
+
+import pumping.reg.AB2n;
+import pumping.reg.ABnAk;
+import pumping.reg.AnBk;
+import pumping.reg.AnBkCnk;
+import pumping.reg.AnBlAk;
+import pumping.reg.AnBn;
+import pumping.reg.AnEven;
+import pumping.reg.B5W;
+import pumping.reg.B5Wmod;
+import pumping.reg.BBABAnAn;
+import pumping.reg.BkABnBAn;
+import pumping.reg.NaNb;
+import pumping.reg.Palindrome;
 
 /**
  * A <code>RegPumpingLemmaChooser</code> is a <code>PumpingLemmaChooser</code> 

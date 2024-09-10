@@ -22,43 +22,27 @@ package gui.grammar.parse;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.util.LinkedList;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.DefaultListModel;
-import javax.swing.DefaultListSelectionModel;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.tree.TreeNode;
-
-import java.util.*;
 
 import grammar.Grammar;
 import grammar.Production;
-import grammar.parse.BruteParser;
-import grammar.parse.BruteParserEvent;
 import grammar.parse.CYKParser;
 import grammar.parse.CYKTracer;
 import grammar.parse.ParseNode;
-import grammar.parse.UserParser;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.grammar.GrammarTable;
-import gui.grammar.GrammarTableModel;
 import gui.sim.multiple.InputTableModel;
 
 /**

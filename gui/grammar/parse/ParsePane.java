@@ -20,22 +20,41 @@
 
 package gui.grammar.parse;
 
-import grammar.Grammar;
-import grammar.parse.LRParseTable;
-import gui.PanelTextSizeSlider;
-import gui.SplitPaneFactory;
-import gui.TableTextSizeSlider;
-import gui.TextFieldSizeSlider;
-import gui.TripleTextFieldSizeSlider;
-import gui.environment.GrammarEnvironment;
-import gui.grammar.*;
-import gui.tree.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.tree.*;
+
+import javax.swing.AbstractAction;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+
+import grammar.Grammar;
+import gui.SplitPaneFactory;
+import gui.TableTextSizeSlider;
+import gui.TripleTextFieldSizeSlider;
+import gui.environment.GrammarEnvironment;
+import gui.grammar.GrammarTable;
+import gui.grammar.GrammarTableModel;
+import gui.tree.DefaultTreeDrawer;
+import gui.tree.LeafNodePlacer;
+import gui.tree.TreePanel;
 
 /**
  * The parse pane is an abstract class that defines the interface common between

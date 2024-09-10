@@ -19,13 +19,13 @@
 
 package automata.graph.layout;
 
+import java.awt.Dimension;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.Set;
-import java.awt.Dimension;
-import java.awt.geom.Point2D;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;

@@ -20,11 +20,12 @@
 
 package gui.environment;
 
+import java.io.Serializable;
+
 import grammar.lsystem.LSystem;
 import gui.lsystem.LSystemInputEvent;
 import gui.lsystem.LSystemInputListener;
 import gui.lsystem.LSystemInputPane;
-import java.io.Serializable;
 
 /**
  * The <CODE>LSystemEnvironment</CODE> is an environment for holding a

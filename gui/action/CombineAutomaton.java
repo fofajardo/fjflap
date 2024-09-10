@@ -20,17 +20,27 @@
 
 package gui.action;
 
-import automata.*;
-import automata.mealy.MooreMachine;
-import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
-import gui.environment.*;
-import gui.viewer.AutomatonDrawer;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.geom.Rectangle2D;
-import java.util.*;
-import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
+import automata.Automaton;
+import automata.State;
+import automata.Transition;
+import automata.mealy.MooreMachine;
+import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
+import gui.viewer.AutomatonDrawer;
 
 /**
  * This combines two automatons into a new automaton.

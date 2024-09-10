@@ -20,25 +20,22 @@
 
 package automata.turing;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Stack;
-import java.util.Comparator;
-import java.util.Arrays;
+
+import javax.swing.JOptionPane;
 
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
-import automata.State;
 import automata.Transition;
-import gui.environment.Universe;
-
 import debug.EDebug;
-
-import javax.swing.JOptionPane;
+import gui.environment.Universe;
 
 /**
  * The TM simulator progresses TM configurations on a possibly multitape Turing

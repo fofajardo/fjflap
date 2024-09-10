@@ -20,7 +20,7 @@
 
 package automata;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * The unreachable states detector object can be used to find all unreachable

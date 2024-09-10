@@ -20,9 +20,16 @@
 
 package grammar.parse;
 
-import grammar.*;
-import java.util.*;
-import javax.swing.tree.*;
+import java.util.Stack;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+
+import grammar.Grammar;
+import grammar.Production;
 
 /**
  * This class does LR parsing. It is a test class only.

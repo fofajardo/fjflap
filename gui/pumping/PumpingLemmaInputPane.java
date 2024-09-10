@@ -20,14 +20,27 @@
 
 package gui.pumping;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JEditorPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.text.JTextComponent;
 
-import pumping.*;
+import pumping.ContextFreePumpingLemma;
+import pumping.PumpingLemma;
 
 /**
  * A <code>PumpingLemmaInputPane</code> is a <code>JPanel</code> that 

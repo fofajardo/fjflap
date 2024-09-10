@@ -20,16 +20,14 @@
 
 package gui.action;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+
 import grammar.Grammar;
 import grammar.UnrestrictedGrammar;
 import gui.environment.EnvironmentFrame;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
-import gui.environment.tag.CriticalTag;
-import gui.grammar.parse.BruteParsePane;
-
-import java.awt.Component;
-import java.awt.event.ActionEvent;
 
 /**
  * This action creates a new brute force parser for the grammar.

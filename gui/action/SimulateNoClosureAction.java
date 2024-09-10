@@ -20,8 +20,6 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
@@ -32,6 +30,7 @@ import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.fsa.FiniteStateAutomaton;
 import automata.pda.PushdownAutomaton;
+import gui.environment.Environment;
 
 /**
  * This is the action used for the stepwise simulation of data without closure,

@@ -20,16 +20,14 @@
 
 package gui.environment;
 
-import gui.pumping.CFPumpingLemmaChooser;
-import gui.pumping.RegPumpingLemmaChooser;
-
-import java.io.Serializable;
 import java.awt.Dimension;
-
-import pumping.ContextFreePumpingLemma;
-import pumping.RegularPumpingLemma;
+import java.io.Serializable;
 
 import automata.Automaton;
+import gui.pumping.CFPumpingLemmaChooser;
+import gui.pumping.RegPumpingLemmaChooser;
+import pumping.ContextFreePumpingLemma;
+import pumping.RegularPumpingLemma;
 
 /**
  * The <CODE>FrameFactory</CODE> is a factory for creating environment frames.

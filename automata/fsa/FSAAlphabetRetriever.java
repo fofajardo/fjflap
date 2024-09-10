@@ -20,8 +20,11 @@
 
 package automata.fsa;
 
-import automata.*;
-import java.util.*;
+import java.util.ArrayList;
+
+import automata.AlphabetRetriever;
+import automata.Automaton;
+import automata.Transition;
 
 /**
  * The FSA alphabet retriever object can be used to find the alphabet for a

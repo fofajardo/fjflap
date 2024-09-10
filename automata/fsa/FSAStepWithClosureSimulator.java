@@ -21,9 +21,6 @@
 package automata.fsa;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-
-import debug.EDebug;
 
 import automata.Automaton;
 import automata.ClosureTaker;

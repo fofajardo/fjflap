@@ -20,7 +20,9 @@
 
 package grammar.cfg;
 
-import grammar.*;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.ProductionChecker;
 
 /**
  * The context free grammar object is a representation of a context free

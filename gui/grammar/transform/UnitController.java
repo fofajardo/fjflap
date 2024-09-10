@@ -20,14 +20,23 @@
 
 package gui.grammar.transform;
 
-import automata.*;
-import automata.vdg.*;
-import grammar.*;
-import gui.grammar.GrammarTableModel;
 import java.awt.event.MouseEvent;
-import java.util.*;
-import javax.swing.*;
-import automata.event.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
+
+import automata.State;
+import automata.Transition;
+import automata.event.AutomataTransitionEvent;
+import automata.event.AutomataTransitionListener;
+import automata.vdg.VariableDependencyGraph;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.ProductionChecker;
+import grammar.UnitProductionRemover;
+import gui.grammar.GrammarTableModel;
 
 /**
  * This is the controller for the unit panel. Bleh.

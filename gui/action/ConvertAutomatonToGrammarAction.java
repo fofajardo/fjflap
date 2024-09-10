@@ -20,14 +20,6 @@
 
 package gui.action;
 
-import gui.TooltipAction;
-import gui.environment.AutomatonEnvironment;
-import gui.environment.tag.CriticalTag;
-import gui.grammar.automata.ConvertController;
-import gui.grammar.automata.ConvertPane;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,6 +28,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
 import automata.Automaton;
+import gui.TooltipAction;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.tag.CriticalTag;
+import gui.grammar.automata.ConvertController;
+import gui.grammar.automata.ConvertPane;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This class exists as the base class for the conversion of an automaton to a

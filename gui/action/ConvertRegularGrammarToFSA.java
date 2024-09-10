@@ -20,9 +20,16 @@
 
 package gui.action;
 
-import automata.*;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.util.HashMap;
+
+import javax.swing.JOptionPane;
+
+import automata.Transition;
 import automata.fsa.FiniteStateAutomaton;
-import automata.graph.*;
+import automata.graph.AutomatonGraph;
+import automata.graph.LayoutAlgorithm;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import grammar.Production;
 import grammar.reg.RightLinearGrammar;
@@ -31,10 +38,6 @@ import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
 import gui.grammar.convert.ConvertPane;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.util.*;
-import javax.swing.JOptionPane;
 
 /**
  * This is the action that initiates the conversion of right linear grammar to

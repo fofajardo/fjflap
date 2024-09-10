@@ -20,11 +20,19 @@
 
 package gui.grammar.transform;
 
-import grammar.*;
-import gui.grammar.GrammarTableModel;
 import java.awt.event.MouseEvent;
-import java.util.*;
-import javax.swing.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.swing.JOptionPane;
+
+import grammar.Grammar;
+import grammar.LambdaProductionRemover;
+import grammar.Production;
+import gui.grammar.GrammarTableModel;
 
 /**
  * This is the controller for the lambda panel.

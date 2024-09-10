@@ -20,9 +20,12 @@
 
 package grammar.parse;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import grammar.Grammar;
 import grammar.Production;
-import java.util.*;
 
 /**
  * This class generates {@link grammar.parse.LLParseTable}s for grammars.

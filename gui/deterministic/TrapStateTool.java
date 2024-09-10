@@ -19,14 +19,12 @@
 
 package gui.deterministic;
 
-import gui.editor.StateTool;
-import gui.regular.FSAToREController;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import automata.State;
+import gui.editor.StateTool;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * Aids in creating new trap state 

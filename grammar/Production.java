@@ -20,13 +20,13 @@
 
 package grammar;
 
-import gui.environment.Universe;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import gui.environment.Universe;
 
 /**
  * A Production object is a simple abstract class that represents a production

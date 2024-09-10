@@ -20,10 +20,6 @@
 
 package automata.pda;
 
-import grammar.Production;
-import grammar.cfg.ContextFreeGrammar;
-import gui.grammar.GrammarTableModel;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,6 +29,9 @@ import java.util.Stack;
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
+import grammar.Production;
+import grammar.cfg.ContextFreeGrammar;
+import gui.grammar.GrammarTableModel;
 
 /**
  * The PDA to context free grammar converter can be used to convert a pushdown

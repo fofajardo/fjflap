@@ -20,7 +20,8 @@
 
 package gui.editor;
 
-import gui.viewer.*;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is a subclass of an <code>ArrowTool</code> for Mealy 

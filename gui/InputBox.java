@@ -19,24 +19,20 @@
 
 package gui;
 
-import gui.action.SimulateAction;
-
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
-import automata.turing.TMSimulator;
-import automata.turing.TuringMachine;
+import gui.action.SimulateAction;
 
 /**
  * Input GUI BOX

@@ -20,8 +20,6 @@
 
 package grammar;
 
-import grammar.cfg.ContextFreeGrammar;
-
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -30,6 +28,7 @@ import automata.Transition;
 import automata.UnreachableStatesDetector;
 import automata.vdg.VDGTransition;
 import automata.vdg.VariableDependencyGraph;
+import grammar.cfg.ContextFreeGrammar;
 
 /**
  * The Unit Production remover can be used to convert a grammar to an equivalent

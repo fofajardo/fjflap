@@ -20,14 +20,24 @@
 
 package gui.regular;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.lang.ref.*;
-import javax.swing.*;
-import javax.swing.event.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import gui.TextFieldSizeSlider;
-import regular.*;
+import regular.ExpressionChangeEvent;
+import regular.ExpressionChangeListener;
+import regular.RegularExpression;
 
 /**
  * The editor pane for a regular expression allows the user to change the

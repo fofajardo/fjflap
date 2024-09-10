@@ -20,22 +20,18 @@
 package gui.action;
 
 import java.awt.event.ActionEvent;
+import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
 
-import java.util.*;
-import gui.deterministic.AddTrapStatePane;
-import gui.environment.AutomatonEnvironment;
-import gui.environment.Environment;
-import gui.environment.Universe;
-import gui.environment.tag.CriticalTag;
-import gui.minimize.MinimizePane;
 import automata.Automaton;
 import automata.AutomatonChecker;
 import automata.State;
 import automata.Transition;
-import automata.fsa.FiniteStateAutomaton;
-import automata.fsa.Minimizer;
+import gui.deterministic.AddTrapStatePane;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.Universe;
+import gui.environment.tag.CriticalTag;
 
 /**
  * Add a trap state to existing DFA or NFA

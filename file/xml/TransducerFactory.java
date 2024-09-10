@@ -20,21 +20,19 @@
 
 package file.xml;
 
-import org.w3c.dom.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 import gui.action.OpenAction;
-
-import org.w3c.dom.Element;
 
 /**
  * Maps either a DOM or a object to the appropriate transducer.

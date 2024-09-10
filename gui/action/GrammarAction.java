@@ -20,10 +20,9 @@
 
 package gui.action;
 
-import grammar.ConvertedUnrestrictedGrammar;
-import grammar.Grammar;
-
 import javax.swing.Icon;
+
+import grammar.Grammar;
 
 /**
  * The <CODE>GrammarAction</CODE> is the general action that various

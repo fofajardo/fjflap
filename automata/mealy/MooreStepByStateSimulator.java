@@ -20,7 +20,8 @@
 
 package automata.mealy;
 
-import automata.*;
+import automata.Automaton;
+import automata.Configuration;
 
 /**
  * The Mealy machine step by state simulator simulates the behavior

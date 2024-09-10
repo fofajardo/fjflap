@@ -20,6 +20,13 @@
 
 package gui.environment;
 
+import java.io.Serializable;
+
+import javax.swing.JOptionPane;
+
+import automata.Automaton;
+import automata.mealy.MealyMachine;
+import automata.mealy.MooreMachine;
 import grammar.ConvertedUnrestrictedGrammar;
 import grammar.Grammar;
 import grammar.lsystem.LSystem;
@@ -32,23 +39,18 @@ import gui.environment.tag.PermanentTag;
 import gui.environment.tag.Tag;
 import gui.grammar.GrammarInputPane;
 import gui.lsystem.LSystemInputPane;
-import gui.pumping.*;
-
-import java.awt.Component;
-import java.io.Serializable;
-
-import javax.swing.JOptionPane;
-
+import gui.pumping.CFPumpingLemmaChooser;
+import gui.pumping.CompCFPumpingLemmaInputPane;
+import gui.pumping.CompRegPumpingLemmaInputPane;
+import gui.pumping.HumanCFPumpingLemmaInputPane;
+import gui.pumping.HumanRegPumpingLemmaInputPane;
+import gui.pumping.PumpingLemmaChooserPane;
+import gui.pumping.PumpingLemmaInputPane;
+import gui.pumping.RegPumpingLemmaChooser;
 import pumping.ContextFreePumpingLemma;
 import pumping.PumpingLemma;
 import pumping.RegularPumpingLemma;
-
 import regular.RegularExpression;
-import automata.Automaton;
-import automata.mealy.MealyMachine;
-import automata.mealy.MooreMachine;
-import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
 
 /**
  * The <CODE>EnvironmentFactory</CODE> creates environments for some

@@ -20,10 +20,10 @@
 
 package gui.sim;
 
-import java.awt.geom.GeneralPath;
-import java.awt.Graphics2D;
-import java.awt.FontMetrics;
 import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.geom.GeneralPath;
 
 /**
  * This is a rather silly factory class that returns shape objects that look

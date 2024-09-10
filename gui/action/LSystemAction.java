@@ -20,10 +20,10 @@
 
 package gui.action;
 
+import javax.swing.Icon;
+
 import grammar.lsystem.LSystem;
 import gui.environment.LSystemEnvironment;
-
-import javax.swing.Icon;
 
 /**
  * The <CODE>GrammarAction</CODE> is the general action that various

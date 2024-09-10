@@ -20,9 +20,6 @@
 
 package gui.minimize;
 
-import gui.TooltipAction;
-import gui.tree.SelectTreeDrawer;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
@@ -30,6 +27,8 @@ import javax.swing.JToolBar;
 import javax.swing.tree.TreeNode;
 
 import automata.fsa.MinimizeTreeNode;
+import gui.TooltipAction;
+import gui.tree.SelectTreeDrawer;
 
 /**
  * The <CODE>ControlPanel</CODE> contains buttons whose actions call methods

@@ -19,8 +19,8 @@
 
 package pumping.reg;
 
-import pumping.RegularPumpingLemma;
 import pumping.LemmaMath;
+import pumping.RegularPumpingLemma;
 
 /**
  * The regular pumping lemma for <i>L</i> = 

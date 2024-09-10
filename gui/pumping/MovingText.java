@@ -20,7 +20,7 @@
 
 package gui.pumping;
 
-import java.awt.geom.*;
+import java.awt.geom.Point2D;
 
 /**
  * A <code>MovingText</code> object is a <code>Text</code> object that allows movement

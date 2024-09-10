@@ -20,13 +20,13 @@
 
 package gui.action;
 
-import gui.environment.EnvironmentFrame;
-import gui.environment.Universe;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
+
+import gui.environment.EnvironmentFrame;
+import gui.environment.Universe;
 
 /**
  * This action handles quitting.

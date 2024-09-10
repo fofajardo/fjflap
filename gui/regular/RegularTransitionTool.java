@@ -20,13 +20,12 @@
 
 package gui.regular;
 
-import gui.editor.TransitionTool;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import automata.State;
+import gui.editor.TransitionTool;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * A tool that handles the creation of transitions for the FSA to regular

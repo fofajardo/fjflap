@@ -20,7 +20,9 @@
 
 package grammar.reg;
 
-import grammar.*;
+import grammar.Grammar;
+import grammar.Production;
+import grammar.ProductionChecker;
 
 /**
  * The regular grammar object is a representation of a regular grammar. This

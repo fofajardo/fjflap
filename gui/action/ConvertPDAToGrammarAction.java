@@ -20,15 +20,6 @@
 
 package gui.action;
 
-import gui.environment.AutomatonEnvironment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.Universe;
-import gui.grammar.automata.ConvertController;
-import gui.grammar.automata.ConvertPane;
-import gui.grammar.automata.PDAConvertController;
-import gui.viewer.SelectionDrawer;
-import gui.viewer.ZoomPane;
-
 import java.awt.BorderLayout;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -44,6 +35,14 @@ import automata.Transition;
 import automata.pda.PDAToCFGConverter;
 import automata.pda.PDATransition;
 import automata.pda.PushdownAutomaton;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.Universe;
+import gui.grammar.automata.ConvertController;
+import gui.grammar.automata.ConvertPane;
+import gui.grammar.automata.PDAConvertController;
+import gui.viewer.SelectionDrawer;
+import gui.viewer.ZoomPane;
 
 /**
  * This action handles the conversion of an PDA to a context free grammar.

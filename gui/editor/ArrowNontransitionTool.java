@@ -20,10 +20,10 @@
 
 package gui.editor;
 
+import java.awt.event.MouseEvent;
+
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
-
-import java.awt.event.MouseEvent;
 
 /**
  * This extension of the arrow tool does not allow the editing of an automaton

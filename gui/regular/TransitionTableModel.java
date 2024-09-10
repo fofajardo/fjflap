@@ -20,8 +20,9 @@
 
 package gui.regular;
 
-import automata.Transition;
 import javax.swing.table.AbstractTableModel;
+
+import automata.Transition;
 
 /**
  * The <CODE>TransitionTableModel</CODE> is a model for displaying a table of

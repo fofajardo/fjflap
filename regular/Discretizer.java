@@ -20,9 +20,9 @@
 
 package regular;
 
-import gui.environment.Universe;
+import java.util.ArrayList;
 
-import java.util.*;
+import gui.environment.Universe;
 
 /**
  * The discretizer contains method to split a regular expression string into

@@ -20,10 +20,15 @@
 
 package gui.grammar.parse;
 
+import java.util.SortedSet;
+
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+
 import grammar.parse.LRParseTable;
-import javax.swing.*;
-import java.util.*;
-import javax.swing.table.*;
 
 /**
  * This is a regular LR parse table pane, except with the added ability that it

@@ -20,16 +20,16 @@
 
 package gui.action;
 
-import grammar.lsystem.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
+import grammar.lsystem.LSystem;
 import gui.environment.LSystemEnvironment;
 import gui.environment.tag.CriticalTag;
 import gui.lsystem.DisplayPane;
-
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 /**
  * This action creates a new L-system renderer.

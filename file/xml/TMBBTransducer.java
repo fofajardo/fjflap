@@ -34,7 +34,6 @@ import automata.Automaton;
 import automata.State;
 import automata.Transition;
 import automata.turing.TMTransition;
-
 import automata.turing.TuringMachineBuildingBlocks;
 import file.DataException;
 

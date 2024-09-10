@@ -20,8 +20,9 @@
 
 package gui.editor;
 
+import java.awt.event.MouseEvent;
+
 import gui.SuperMouseAdapter;
-import java.awt.event.*;
 import gui.viewer.AutomatonPane;
 
 /**

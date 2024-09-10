@@ -20,10 +20,10 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonPane;
 import automata.State;
 import automata.Transition;
 import automata.vdg.VDGTransition;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is a transition creator for variable dependency graphs.

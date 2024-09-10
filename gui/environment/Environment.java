@@ -20,21 +20,26 @@
 
 package gui.environment;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import file.Encoder;
 import gui.action.MultipleSimulateAction.MultiplePane;
 import gui.environment.tag.EditorTag;
 import gui.environment.tag.Satisfier;
 import gui.environment.tag.Tag;
-import java.awt.*;
-import java.io.File;
-import java.io.Serializable;
-import java.util.*;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import debug.EDebug;
 
 //import sun.security.util.Debug;
 

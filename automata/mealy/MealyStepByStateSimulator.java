@@ -20,8 +20,15 @@
 
 package automata.mealy;
 
-import java.util.*;
-import automata.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
+import automata.Automaton;
+import automata.AutomatonSimulator;
+import automata.Configuration;
+import automata.State;
+import automata.Transition;
 
 /**
  * The Mealy machine step by state simulator simulates the behavior

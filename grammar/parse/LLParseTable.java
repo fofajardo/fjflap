@@ -20,10 +20,19 @@
 
 package grammar.parse;
 
-import grammar.*;
-import java.util.*;
-import javax.swing.table.AbstractTableModel;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.StringTokenizer;
+import java.util.TreeSet;
+
+import javax.swing.table.AbstractTableModel;
+
+import grammar.Grammar;
 
 /**
  * The <CODE>LLParseTable</CODE> is a parse table for LL grammars. It also has

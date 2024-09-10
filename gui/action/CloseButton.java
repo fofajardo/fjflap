@@ -31,7 +31,6 @@ import javax.swing.event.ChangeListener;
 import automata.Automaton;
 import automata.State;
 import automata.turing.TuringMachine;
-
 import gui.editor.EditBlockPane;
 import gui.editor.EditorPane;
 import gui.environment.Environment;

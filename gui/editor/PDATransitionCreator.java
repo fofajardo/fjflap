@@ -20,14 +20,13 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonPane;
-
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 import automata.State;
 import automata.Transition;
 import automata.pda.PDATransition;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is the creator of transitions in push down automata.

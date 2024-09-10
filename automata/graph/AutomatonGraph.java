@@ -20,11 +20,12 @@
 
 package automata.graph;
 
+import java.awt.Point;
+import java.awt.geom.Point2D;
+
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
-import java.awt.Point;
-import java.awt.geom.Point2D;
 
 /**
  * This extension of the graph makes it easier for a graph to be built from an

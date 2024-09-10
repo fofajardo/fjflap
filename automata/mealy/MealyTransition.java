@@ -20,9 +20,9 @@
 
 package automata.mealy;
 
-import gui.environment.Universe;
 import automata.State;
 import automata.Transition;
+import gui.environment.Universe;
 
 /**
  * A <code>MealyTransition</code> is a <code>Transition</code>

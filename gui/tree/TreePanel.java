@@ -26,9 +26,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
+
+import javax.swing.JComponent;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
-import javax.swing.JComponent;
 
 /**
  * The <CODE>TreePanel</CODE> is a graphical component that draws a tree using

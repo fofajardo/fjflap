@@ -19,27 +19,22 @@
 
 package gui.grammar.automata;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.JOptionPane;
 
+import automata.State;
+import automata.Transition;
+import automata.turing.TuringMachine;
+import automata.turing.TuringToGrammarConverter;
 import grammar.ConvertedUnrestrictedGrammar;
 import grammar.Grammar;
 import grammar.Production;
 import grammar.UnrestrictedGrammar;
-import grammar.UselessProductionRemover;
-import grammar.cfg.ContextFreeGrammar;
 import gui.environment.FrameFactory;
-import gui.environment.GrammarEnvironment;
-import gui.grammar.transform.UselessController;
-import gui.grammar.transform.UselessPane;
 import gui.viewer.SelectionDrawer;
-import automata.State;
-import automata.Transition;
-import automata.pda.PDAToCFGConverter;
-import automata.turing.TMTransition;
-import automata.turing.TuringMachine;
-import automata.turing.TuringToGrammarConverter;
 
 
 /**

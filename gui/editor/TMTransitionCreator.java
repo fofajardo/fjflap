@@ -20,8 +20,6 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonPane;
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 
@@ -41,8 +39,7 @@ import automata.State;
 import automata.Transition;
 import automata.turing.TMTransition;
 import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
-import debug.EDebug;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is the creator of transitions in turing machines.

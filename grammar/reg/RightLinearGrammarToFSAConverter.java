@@ -20,11 +20,6 @@
 
 package grammar.reg;
 
-import grammar.Grammar;
-import grammar.GrammarToAutomatonConverter;
-import grammar.Production;
-import grammar.ProductionChecker;
-
 import java.awt.Point;
 
 import automata.Automaton;
@@ -32,6 +27,10 @@ import automata.State;
 import automata.StatePlacer;
 import automata.Transition;
 import automata.fsa.FSATransition;
+import grammar.Grammar;
+import grammar.GrammarToAutomatonConverter;
+import grammar.Production;
+import grammar.ProductionChecker;
 
 /**
  * The right linear grammar converter can be used to convert regular grammars,

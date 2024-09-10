@@ -20,19 +20,33 @@
 
 package gui.grammar.parse;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+import javax.swing.Timer;
+import javax.swing.tree.TreeNode;
+
 import grammar.Grammar;
-import grammar.parse.*;
+import grammar.parse.BruteParser;
+import grammar.parse.BruteParserEvent;
+import grammar.parse.BruteParserListener;
+import gui.TextFieldSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.sim.multiple.InputTableModel;
-import gui.tree.*;
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.tree.*;
-
-import gui.PanelTextSizeSlider;
-import gui.TextFieldSizeSlider;
+import gui.tree.SelectNodeDrawer;
 /**
  * This is a brute force parse pane.
  * 

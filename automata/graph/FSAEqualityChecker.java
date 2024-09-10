@@ -20,9 +20,9 @@
 
 package automata.graph;
 
-import automata.fsa.NFAToDFA;
-import automata.fsa.Minimizer;
 import automata.fsa.FiniteStateAutomaton;
+import automata.fsa.Minimizer;
+import automata.fsa.NFAToDFA;
 
 /**
  * This determines if two FSAs accept the same language.

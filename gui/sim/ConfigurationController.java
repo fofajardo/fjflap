@@ -20,28 +20,24 @@
 
 package gui.sim;
 
-import gui.viewer.SelectionDrawer;
-
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Stack;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
-import automata.Automaton;
 import automata.AutomatonSimulator;
-import automata.Configuration; import automata.State;
-import automata.turing.TMSimulator;
+import automata.Configuration;
 import automata.turing.TMConfiguration;
+import automata.turing.TMSimulator;
 import automata.turing.TMState;
 import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
+import gui.viewer.SelectionDrawer;
 
 
 /**

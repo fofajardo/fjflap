@@ -20,22 +20,28 @@
 
 package gui.action;
 
-import gui.environment.*;
-import gui.menu.MenuBarCreator;
-import gui.pumping.CFPumpingLemmaChooser;
-import gui.pumping.RegPumpingLemmaChooser;
-
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.Serializable;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import automata.mealy.MealyMachine;
 import automata.mealy.MooreMachine;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
+import gui.menu.MenuBarCreator;
+import gui.pumping.CFPumpingLemmaChooser;
+import gui.pumping.RegPumpingLemmaChooser;
 
 /**
  * The <CODE>NewAction</CODE> handles when the user decides to create some new

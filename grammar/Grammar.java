@@ -20,10 +20,14 @@
 
 package grammar;
 
-import gui.environment.EnvironmentFrame;
-
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import gui.environment.EnvironmentFrame;
 
 /**
  * The grammar object is the root class for the representation of all forms of

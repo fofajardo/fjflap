@@ -20,15 +20,14 @@
 
 package automata.fsa;
 
-import gui.environment.Universe;
-
 import java.util.ArrayList;
 
-import regular.Discretizer;
 import automata.Automaton;
 import automata.State;
 import automata.StatePlacer;
 import automata.Transition;
+import gui.environment.Universe;
+import regular.Discretizer;
 /**
  * The fsa to regular expression converter can be used to convert a finite state
  * automaton to its equivalent regular expression. In order to perform this

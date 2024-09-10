@@ -20,9 +20,8 @@
 
 package automata.turing;
 
-import java.util.Stack;
-
-import automata.*;
+import automata.Configuration;
+import automata.State;
 
 /**
  * A <CODE>TMConfiguration</CODE> object is a <CODE>Configuration</CODE>

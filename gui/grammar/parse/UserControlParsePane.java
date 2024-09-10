@@ -20,34 +20,35 @@
 package gui.grammar.parse;
 
 import java.awt.BorderLayout;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+import javax.swing.ListSelectionModel;
 
 import grammar.Grammar;
-import grammar.parse.BruteParser;
-import grammar.parse.BruteParserEvent;
-import grammar.parse.BruteParserListener;
 import grammar.parse.ParseNode;
-import grammar.parse.Unrestricted;
 import grammar.parse.UserParser;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
 import gui.environment.GrammarEnvironment;
 import gui.grammar.GrammarTable;
-import gui.grammar.GrammarTableModel;
-import gui.sim.multiple.InputTableModel;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.tree.TreeNode;
 
 /**
  * This class created GUI pane for UserControl Parsing.

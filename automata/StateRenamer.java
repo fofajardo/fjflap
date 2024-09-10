@@ -20,7 +20,10 @@
 
 package automata;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * This class contains operations to contain that all states have numeric IDs

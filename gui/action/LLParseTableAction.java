@@ -20,6 +20,10 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
 import grammar.Grammar;
 import grammar.parse.Operations;
 import gui.environment.EnvironmentFrame;
@@ -27,10 +31,6 @@ import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
 import gui.grammar.parse.LLParseTableDerivationPane;
-
-import java.awt.event.ActionEvent;
-
-import javax.swing.JOptionPane;
 
 /**
  * This is an action to build an LL(1) parse table for a grammar.

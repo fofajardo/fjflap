@@ -20,16 +20,14 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
 import automata.State;
 import automata.mealy.MooreMachine;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is a special <code>StateTool</code> for Moore machines 

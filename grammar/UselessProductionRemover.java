@@ -20,8 +20,6 @@
 
 package grammar;
 
-import grammar.cfg.ContextFreeGrammar;
-
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +33,7 @@ import automata.Transition;
 import automata.UnreachableStatesDetector;
 import automata.vdg.VDGTransition;
 import automata.vdg.VariableDependencyGraph;
+import grammar.cfg.ContextFreeGrammar;
 
 /**
  * As it stands now, the code in here is almost completely useless. Through

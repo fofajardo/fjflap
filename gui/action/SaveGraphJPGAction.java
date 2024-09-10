@@ -19,36 +19,14 @@
 
 package gui.action;
 
-import gui.editor.EditorPane;
-import gui.environment.AutomatonEnvironment;
-import gui.environment.Environment;
-import gui.environment.Universe;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
-import gui.environment.Universe;
-
 import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
-import javax.swing.JOptionPane;
-import javax.swing.JComponent;
-import javax.swing.filechooser.FileFilter;
 
-import debug.EDebug;
+import gui.environment.Environment;
 
 /**
  * The <CODE>SaveGraphJPGAction</CODE> is an action to save the graph in window

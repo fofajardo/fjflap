@@ -20,18 +20,38 @@
 
 package gui.lsystem;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import grammar.Production;
 import grammar.UnboundGrammar;
-import grammar.lsystem.*;
+import grammar.lsystem.LSystem;
 import gui.HighlightTable;
 import gui.TableTextSizeSlider;
 import gui.TextFieldSizeSlider;
 import gui.grammar.GrammarInputPane;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.event.*;
 
 /**
  * The <CODE>LSystemInputPane</CODE> is a pane used to input and display the

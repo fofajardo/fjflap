@@ -19,7 +19,7 @@
 
 package pumping.reg;
 
-import pumping.*;
+import pumping.RegularPumpingLemma;
 
 /**
  * The regular pumping lemma for <i>L</i> = 

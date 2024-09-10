@@ -20,14 +20,22 @@
 
 package gui.grammar.convert;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 import grammar.Grammar;
 import grammar.Production;
 import gui.event.SelectionEvent;
 import gui.event.SelectionListener;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.table.*;
-import java.util.*;
 
 /**
  * The <CODE>GrammarViewer</CODE> is a class for the graphical non-editable

@@ -25,10 +25,6 @@
  */
 package gui.action;
 
-import gui.environment.Environment;
-import gui.environment.tag.CriticalTag;
-import gui.sim.SimulatorPane;
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -40,12 +36,15 @@ import javax.swing.KeyStroke;
 import automata.Automaton;
 import automata.AutomatonSimulator;
 import automata.Configuration;
-import automata.turing.TMSimulator;
-import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
 import automata.NondeterminismDetector;
 import automata.NondeterminismDetectorFactory;
 import automata.State;
+import automata.turing.TMSimulator;
+import automata.turing.TuringMachine;
+import automata.turing.TuringMachineBuildingBlocks;
+import gui.environment.Environment;
+import gui.environment.tag.CriticalTag;
+import gui.sim.SimulatorPane;
 /**
  * @author Andrew
  * 

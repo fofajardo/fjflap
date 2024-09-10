@@ -20,13 +20,14 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+
 import grammar.Grammar;
 import gui.environment.EnvironmentFrame;
 import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
-import gui.environment.tag.*;
-import gui.grammar.parse.*;
-import java.awt.event.ActionEvent;
+import gui.environment.tag.CriticalTag;
+import gui.grammar.parse.LRParseTableDerivationPane;
 
 /**
  * This is an action to build an LR(1) parse table for a grammar.

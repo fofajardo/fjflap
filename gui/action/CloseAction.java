@@ -20,12 +20,6 @@
 
 package gui.action;
 
-import gui.editor.EditBlockPane;
-import gui.editor.EditorPane;
-import gui.environment.Environment;
-import gui.environment.tag.PermanentTag;
-import gui.environment.tag.Tag;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -35,6 +29,10 @@ import javax.swing.event.ChangeListener;
 
 import automata.Automaton;
 import automata.State;
+import gui.editor.EditBlockPane;
+import gui.environment.Environment;
+import gui.environment.tag.PermanentTag;
+import gui.environment.tag.Tag;
 
 /**
  * The <CODE>CloseAction</CODE> is an action for removing tabs in an

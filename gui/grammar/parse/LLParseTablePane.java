@@ -20,14 +20,17 @@
 
 package gui.grammar.parse;
 
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+
 import grammar.parse.LLParseTable;
 import gui.LeftTable;
 import gui.environment.Universe;
-
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.*;
-import javax.swing.table.*;
 
 /**
  * This holds a LL parse table.

@@ -19,20 +19,17 @@
 
 package gui.grammar.parse;
 
-import grammar.Production;
-import grammar.parse.ParseNode;
-import gui.tree.DefaultNodeDrawer;
-
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.tree.TreeNode;
+
+import grammar.parse.ParseNode;
+import gui.tree.DefaultNodeDrawer;
 
 /**
  * This class allows user to select items in the tree Panel.

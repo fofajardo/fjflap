@@ -20,23 +20,34 @@
 
 package gui.viewer;
 
-import automata.Automaton;
-import automata.Note;
-import automata.State;
-import automata.event.*;
-import gui.JMultiLineToolTip;
-import gui.editor.EditorPane;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JToolTip;
+import javax.swing.Scrollable;
+import javax.swing.SwingConstants;
+
+import automata.Automaton;
+import automata.Note;
+import automata.State;
+import automata.event.AutomataStateEvent;
+import automata.event.AutomataStateListener;
+import automata.event.AutomataTransitionEvent;
+import automata.event.AutomataTransitionListener;
+import gui.JMultiLineToolTip;
+import gui.editor.EditorPane;
 
 /**
  * A simple view that draws an automaton.

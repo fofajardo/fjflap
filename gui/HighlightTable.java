@@ -21,7 +21,9 @@
 package gui;
 
 import java.awt.Color;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;

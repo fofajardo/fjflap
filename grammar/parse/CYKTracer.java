@@ -19,6 +19,11 @@
 
 package grammar.parse;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 import grammar.CNFConverter;
 import grammar.Grammar;
 import grammar.LambdaProductionRemover;
@@ -34,15 +39,6 @@ import gui.grammar.transform.UnitController;
 import gui.grammar.transform.UnitPane;
 import gui.grammar.transform.UselessController;
 import gui.grammar.transform.UselessPane;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.*;
-
-import javax.swing.JOptionPane;
 
 /**
  * Class for converting CNF-converted productions back to their original productions

@@ -20,10 +20,11 @@
 
 package gui.editor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
-
-import java.util.*;
 
 /**
  * This is a special <code>ToolBox</code> for Moore machines

@@ -20,7 +20,8 @@
 
 package pumping.reg;
 
-import pumping.*;
+import pumping.LemmaMath;
+import pumping.RegularPumpingLemma;
 
 /**
  * The regular pumping lemma for <i>L</i> = {<i>a<sup>n</sup></i> 

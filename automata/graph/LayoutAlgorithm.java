@@ -20,8 +20,8 @@
 
 package automata.graph;
 
-import java.awt.geom.Point2D;
 import java.awt.Dimension;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Set;
 

@@ -20,13 +20,12 @@
 
 package gui.regular;
 
-import gui.editor.StateTool;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import automata.State;
+import gui.editor.StateTool;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * A tool that handles the creation of the final state for the FSA to regular

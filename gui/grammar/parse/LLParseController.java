@@ -20,12 +20,20 @@
 
 package gui.grammar.parse;
 
-import javax.swing.tree.*;
-import grammar.parse.*;
-import grammar.*;
-import gui.environment.Universe;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Stack;
 
-import java.util.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
+
+import grammar.Grammar;
+import grammar.Production;
+import grammar.parse.LLParseTable;
+import gui.environment.Universe;
 
 /**
  * This is the parse controller for an LL parse pane.

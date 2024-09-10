@@ -20,7 +20,8 @@
 
 package automata;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The closure taker object can be used to take the closure of states in an

@@ -20,12 +20,13 @@
 
 package gui.viewer;
 
-import automata.State;
-import automata.Automaton;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+
+import automata.Automaton;
+import automata.State;
 
 
 /**

@@ -20,10 +20,14 @@
 
 package gui.pumping;
 
-import javax.swing.*;
-import java.util.*;
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  * A <code>Canvas</code> is an area where strings, {@link gui.pumping.Text},

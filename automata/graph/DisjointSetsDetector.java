@@ -20,8 +20,12 @@
 
 package automata.graph;
 
-import automata.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import automata.Automaton;
+import automata.State;
 
 /**
  * The disjoint sets detector can be used to determine the disjoint sets of

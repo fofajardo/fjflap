@@ -20,11 +20,17 @@
 
 package gui.grammar.parse;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.swing.table.AbstractTableModel;
+
 import grammar.Grammar;
 import gui.environment.Universe;
-
-import java.util.*;
-import javax.swing.table.*;
 
 /**
  * This is a table model for user definition of the first and follow sets for a

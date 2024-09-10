@@ -20,35 +20,6 @@
 
 package gui.action;
 
-import grammar.Grammar;
-import grammar.parse.BruteParser;
-import grammar.parse.BruteParserEvent;
-import grammar.parse.BruteParserListener;
-import automata.fsa.FSAStepByStateSimulator;
-import automata.mealy.*;
-import gui.JTableExtender;
-import gui.SplitPaneFactory;
-import gui.TableTextSizeSlider;
-import gui.editor.ArrowDisplayOnlyTool;
-import gui.editor.EditorPane;
-import gui.environment.AutomatonEnvironment;
-import gui.environment.Environment;
-import gui.environment.EnvironmentFactory;
-import gui.environment.EnvironmentFrame;
-import gui.environment.FrameFactory;
-import gui.environment.GrammarEnvironment;
-import gui.environment.Profile;
-import gui.environment.Universe;
-import gui.environment.EnvironmentFactory.EditorPermanentTag;
-import gui.environment.tag.CriticalTag;
-import gui.environment.tag.Tag;
-import gui.grammar.GrammarInputPane;
-import gui.grammar.parse.BruteParsePane;
-import gui.grammar.parse.UnrestrictedTreePanel;
-import gui.sim.TraceWindow;
-import gui.sim.multiple.InputTableModel;
-import gui.viewer.AutomatonPane;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -67,7 +38,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -81,10 +51,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
-import javax.swing.Timer;
 import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.tree.TreeNode;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
@@ -95,8 +62,27 @@ import automata.NondeterminismDetector;
 import automata.NondeterminismDetectorFactory;
 import automata.SimulatorFactory;
 import automata.State;
+import automata.mealy.MealyConfiguration;
+import automata.mealy.MealyMachine;
 import automata.turing.TMSimulator;
 import automata.turing.TuringMachine;
+import grammar.Grammar;
+import gui.JTableExtender;
+import gui.SplitPaneFactory;
+import gui.TableTextSizeSlider;
+import gui.editor.ArrowDisplayOnlyTool;
+import gui.editor.EditorPane;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.GrammarEnvironment;
+import gui.environment.Profile;
+import gui.environment.Universe;
+import gui.environment.tag.CriticalTag;
+import gui.grammar.GrammarInputPane;
+import gui.grammar.parse.BruteParsePane;
+import gui.sim.TraceWindow;
+import gui.sim.multiple.InputTableModel;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is the action used for the simulation of multiple inputs on an automaton

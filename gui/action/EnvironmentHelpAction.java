@@ -20,8 +20,9 @@
 
 package gui.action;
 
-import gui.environment.Environment;
 import java.awt.event.ActionEvent;
+
+import gui.environment.Environment;
 
 /**
  * The <CODE>EnvironmentHelpAction</CODE> is an extension of the <CODE>HelpAction</CODE>

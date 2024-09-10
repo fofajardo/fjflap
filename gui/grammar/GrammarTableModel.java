@@ -20,11 +20,13 @@
 
 package gui.grammar;
 
+import java.util.ArrayList;
+
+import javax.swing.Icon;
+
 import grammar.Grammar;
 import grammar.Production;
 import gui.GrowableTableModel;
-import java.util.ArrayList;
-import javax.swing.Icon;
 
 /**
  * The <CODE>GrammarTableModel</CODE> is used as a model for the input of a

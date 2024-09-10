@@ -20,16 +20,18 @@
 
 package gui.minimize;
 
-import automata.fsa.MinimizeTreeNode;
-import javax.swing.tree.TreeNode;
-import gui.tree.*;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import javax.swing.tree.TreeNode;
+
 import automata.State;
+import automata.fsa.MinimizeTreeNode;
+import gui.tree.DefaultNodeDrawer;
 
 /**
  * The <CODE>MinimizeNodeDrawer</CODE> is used to draw <CODE>MinimizeTreeNode</CODE>

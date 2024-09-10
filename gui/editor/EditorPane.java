@@ -20,9 +20,6 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -34,6 +31,8 @@ import javax.swing.border.BevelBorder;
 
 import automata.Automaton;
 import automata.Note;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is a view that holds a tool bar and the canvas where the automaton is

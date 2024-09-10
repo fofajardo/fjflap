@@ -20,8 +20,9 @@
 
 package pumping;
 
-import gui.environment.Universe;
 import java.io.Serializable;
+
+import gui.environment.Universe;
 
 /**
  * A <code>RegularPumpingLemma</code> is a <code>PumpingLemma</code> that 

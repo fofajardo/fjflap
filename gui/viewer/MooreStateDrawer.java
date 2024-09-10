@@ -26,7 +26,6 @@ import java.awt.geom.Rectangle2D;
 
 import automata.Automaton;
 import automata.State;
-import automata.event.AutomataStateEvent;
 import automata.mealy.MooreMachine;
 
 /**

@@ -20,16 +20,22 @@
 
 package gui.minimize;
 
-import automata.*;
-import automata.fsa.*;
-import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
 import java.awt.Component;
-import java.util.*;
-import automata.event.AutomataTransitionListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultTreeModel;
+
+import automata.State;
+import automata.Transition;
 import automata.event.AutomataTransitionEvent;
-import gui.viewer.SelectionDrawer;
+import automata.event.AutomataTransitionListener;
+import automata.fsa.FiniteStateAutomaton;
+import automata.fsa.Minimizer;
 import gui.environment.FrameFactory;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is the class for controlling the building of the minimized automaton,

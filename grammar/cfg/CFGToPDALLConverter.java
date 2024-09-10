@@ -20,14 +20,14 @@
 
 package grammar.cfg;
 
-import grammar.Grammar;
-import grammar.GrammarToAutomatonConverter;
-import grammar.Production;
 import automata.Automaton;
 import automata.State;
 import automata.StatePlacer;
 import automata.Transition;
 import automata.pda.PDATransition;
+import grammar.Grammar;
+import grammar.GrammarToAutomatonConverter;
+import grammar.Production;
 
 /**
  * The CFG to PDA (LL parsing) converter can be used to convert a context free

@@ -20,9 +20,6 @@
 
 package gui.action;
 
-import gui.environment.Environment;
-import gui.environment.Universe;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -30,6 +27,9 @@ import java.io.Serializable;
 
 import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
+
+import gui.environment.Environment;
+import gui.environment.Universe;
 
 /**
  * The <CODE>SaveAsAction</CODE> is an action to save a serializable object

@@ -20,15 +20,6 @@
 
 package gui.regular;
 
-import gui.editor.ArrowNontransitionTool;
-import gui.editor.Tool;
-import gui.editor.ToolBox;
-import gui.environment.RegularEnvironment;
-import gui.environment.Universe;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -41,10 +32,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import regular.Discretizer;
 import automata.State;
 import automata.fsa.FSATransition;
 import automata.fsa.FiniteStateAutomaton;
+import gui.editor.ArrowNontransitionTool;
+import gui.editor.Tool;
+import gui.editor.ToolBox;
+import gui.environment.RegularEnvironment;
+import gui.environment.Universe;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
+import regular.Discretizer;
 
 /**
  * This is the pane that holds the tools necessary for the conversion of a

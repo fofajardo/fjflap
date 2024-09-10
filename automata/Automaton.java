@@ -20,14 +20,9 @@
 
 package automata;
 
-import gui.action.OpenAction;
-import gui.environment.EnvironmentFrame;
-
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,25 +32,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-
-import debug.EDebug;
-
+import automata.event.AutomataNoteEvent;
+import automata.event.AutomataNoteListener;
 import automata.event.AutomataStateEvent;
 import automata.event.AutomataStateListener;
 import automata.event.AutomataTransitionEvent;
 import automata.event.AutomataTransitionListener;
-import automata.event.AutomataNoteEvent;
-import automata.event.AutomataNoteListener;
 import automata.mealy.MooreMachine;
-import automata.turing.TuringMachine;
-import automata.turing.TuringMachineBuildingBlocks;
-
+import gui.environment.EnvironmentFrame;
 import gui.viewer.AutomatonPane;
 
 

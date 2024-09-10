@@ -20,14 +20,6 @@
 
 package gui.action;
 
-import file.Codec;
-import file.DataException;
-import file.Decoder;
-import file.ParseException;
-import gui.environment.EnvironmentFrame;
-import gui.environment.FrameFactory;
-import gui.environment.Universe;
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -41,9 +33,14 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileFilter;
 
-import automata.Automaton;
-import automata.turing.TuringMachine;
 import automata.turing.TuringMachineBuildingBlocks;
+import file.Codec;
+import file.DataException;
+import file.Decoder;
+import file.ParseException;
+import gui.environment.EnvironmentFrame;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
 
 /**
  * The <CODE>OpenAction</CODE> is an action to load a structure from a file,

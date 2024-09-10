@@ -20,15 +20,6 @@
 
 package gui.action;
 
-import gui.environment.AutomatonEnvironment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.Universe;
-import gui.grammar.automata.ConvertController;
-import gui.grammar.automata.ConvertPane;
-import gui.grammar.automata.FSAConvertController;
-import gui.viewer.SelectionDrawer;
-import gui.viewer.ZoomPane;
-
 import java.awt.BorderLayout;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -43,6 +34,14 @@ import automata.Automaton;
 import automata.Transition;
 import automata.fsa.FSATransition;
 import automata.fsa.FiniteStateAutomaton;
+import gui.environment.AutomatonEnvironment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.Universe;
+import gui.grammar.automata.ConvertController;
+import gui.grammar.automata.ConvertPane;
+import gui.grammar.automata.FSAConvertController;
+import gui.viewer.SelectionDrawer;
+import gui.viewer.ZoomPane;
 
 /**
  * This action handles the conversion of an FSA to a regular grammar.

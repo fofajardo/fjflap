@@ -20,10 +20,12 @@
 
 package gui.action;
 
-import gui.WebFrame;
-import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
-import java.util.*;
+import java.util.WeakHashMap;
+
+import javax.swing.KeyStroke;
+
+import gui.WebFrame;
 
 /**
  * The <CODE>HelpAction</CODE> is an abstract action that is meant to bring up

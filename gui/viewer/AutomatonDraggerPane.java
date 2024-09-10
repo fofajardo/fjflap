@@ -20,8 +20,8 @@
 
 package gui.viewer;
 
-import gui.editor.ArrowNontransitionTool;
 import automata.Automaton;
+import gui.editor.ArrowNontransitionTool;
 
 /**
  * This is the same as an automaton pane, except that it allows the user to drag

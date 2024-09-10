@@ -20,14 +20,9 @@
 package gui.action;
 
 
-import gui.environment.Universe;
-
 import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.net.URL;
 
-
-import javax.swing.Action;
+import gui.environment.Universe;
 
 public class OpenURLAction extends RestrictedAction {
 	

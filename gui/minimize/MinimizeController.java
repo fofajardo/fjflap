@@ -20,12 +20,14 @@
 
 package gui.minimize;
 
-import gui.tree.SelectTreeDrawer;
-import gui.tree.Trees;
-import gui.viewer.SelectionDrawer;
-
 import java.awt.event.MouseEvent;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultTreeModel;
@@ -35,6 +37,9 @@ import automata.State;
 import automata.fsa.FiniteStateAutomaton;
 import automata.fsa.MinimizeTreeNode;
 import automata.fsa.Minimizer;
+import gui.tree.SelectTreeDrawer;
+import gui.tree.Trees;
+import gui.viewer.SelectionDrawer;
 
 /**
  * The <CODE>MinimizeController</CODE> serves as an intermediary between the

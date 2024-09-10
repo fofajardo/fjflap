@@ -20,9 +20,9 @@
 
 package automata.fsa;
 
-import gui.environment.Universe;
-import automata.Transition;
 import automata.State;
+import automata.Transition;
+import gui.environment.Universe;
 
 /**
  * An <CODE>FSATransition</CODE> is a <CODE>Transition</CODE> object with an

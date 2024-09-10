@@ -20,11 +20,13 @@
 
 package gui.viewer;
 
-import automata.State;
-import automata.Transition;
 import java.awt.Rectangle;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import automata.State;
+import automata.Transition;
 
 /**
  * This variant of automaton pane is meant to draw the automaton only with a

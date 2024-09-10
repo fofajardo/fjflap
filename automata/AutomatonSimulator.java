@@ -20,7 +20,9 @@
 
 package automata;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The automaton simulator object simulates the behavior of an automaton. It

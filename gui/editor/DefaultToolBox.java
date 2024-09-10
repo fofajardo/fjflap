@@ -20,13 +20,12 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.util.List;
 
 import automata.turing.TuringMachine;
 import automata.turing.TuringMachineBuildingBlocks;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * The <CODE>DefaultToolBox</CODE> has all the tools for general editing of an

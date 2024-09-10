@@ -20,8 +20,14 @@
 
 package gui.action;
 
+import java.awt.event.ActionEvent;
+import java.util.HashMap;
+
+import javax.swing.JOptionPane;
+
 import automata.Transition;
-import automata.graph.*;
+import automata.graph.AutomatonGraph;
+import automata.graph.LayoutAlgorithm;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import automata.pda.PushdownAutomaton;
 import grammar.Grammar;
@@ -31,9 +37,6 @@ import gui.environment.GrammarEnvironment;
 import gui.environment.Universe;
 import gui.environment.tag.CriticalTag;
 import gui.grammar.convert.ConvertPane;
-import java.awt.event.ActionEvent;
-import java.util.*;
-import javax.swing.JOptionPane;
 
 /**
  * This is the action that initiates the conversion of a context free grammar to

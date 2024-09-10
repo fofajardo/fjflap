@@ -20,18 +20,33 @@
 
 package gui.grammar.convert;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.util.LinkedList;
+import java.util.Map;
+
+import javax.swing.AbstractAction;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+
 import automata.Automaton;
 import automata.Transition;
-import grammar.*;
+import grammar.Grammar;
+import grammar.Production;
 import gui.SplitPaneFactory;
 import gui.TableTextSizeSlider;
-import gui.editor.*;
+import gui.editor.ArrowNontransitionTool;
+import gui.editor.EditorPane;
+import gui.editor.Tool;
+import gui.editor.ToolBox;
+import gui.editor.TransitionTool;
 import gui.environment.Environment;
-import gui.viewer.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is a graphical component to aid in the conversion of a context free

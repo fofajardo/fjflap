@@ -19,9 +19,6 @@
 
 package pumping;
 
-import pumping.reg.*;
-import pumping.cf.*;
-
 /**
  * This class is simply used to test Pumping Lemma languages and whether given strings are in them.
  * 

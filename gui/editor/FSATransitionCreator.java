@@ -20,16 +20,13 @@
 
 package gui.editor;
 
-import gui.viewer.AutomatonPane;
-
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-
-import debug.EDebug;
 
 import automata.State;
 import automata.Transition;
 import automata.fsa.FSATransition;
+import gui.viewer.AutomatonPane;
 
 /**
  * This is a transition creator for finite state automata.

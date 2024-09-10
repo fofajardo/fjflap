@@ -20,9 +20,18 @@
 
 package gui;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.net.URL;
-import javax.swing.*;
+
+import javax.swing.JComponent;
+import javax.swing.Scrollable;
+import javax.swing.SwingConstants;
 
 /**
  * The <CODE>ImageDisplayComponent</CODE> is a single component that displays

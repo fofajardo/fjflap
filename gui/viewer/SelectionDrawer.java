@@ -20,20 +20,20 @@
 
 package gui.viewer;
 
-import automata.event.AutomataStateEvent;
-import automata.Automaton;
-import automata.State;
-import automata.Transition;
-import gui.viewer.StateDrawer;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import automata.Automaton;
+import automata.State;
+import automata.Transition;
+import automata.event.AutomataStateEvent;
 
 /**
  * An extension of the <CODE>AutomatonDrawer</CODE> that allows the selection

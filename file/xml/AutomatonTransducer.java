@@ -20,7 +20,7 @@
 
 package file.xml;
 
-import java.io.Serializable;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -40,13 +40,10 @@ import automata.graph.AutomatonGraph;
 import automata.graph.LayoutAlgorithm;
 import automata.graph.layout.GEMLayoutAlgorithm;
 import automata.mealy.MooreMachine;
-import file.DataException;
 import automata.turing.TMState;
 import automata.turing.TuringMachine;
 import automata.turing.TuringMachineBuildingBlocks;
-import debug.EDebug;
-
-import java.awt.Point;
+import file.DataException;
 
 /**
  * This is an abstract implementation of a transducer that has methods common to

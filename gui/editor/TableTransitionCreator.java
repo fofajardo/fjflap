@@ -20,9 +20,6 @@
 
 package gui.editor;
 
-import gui.LambdaCellRenderer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -35,7 +32,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
@@ -43,7 +39,8 @@ import automata.State;
 import automata.Transition;
 import automata.turing.TMTransition;
 import automata.turing.Tape;
-import debug.EDebug;
+import gui.LambdaCellRenderer;
+import gui.viewer.AutomatonPane;
 /**
  * This allows the user to create transition creators that have tables directly
  * in the editing window with a minimum of effort.

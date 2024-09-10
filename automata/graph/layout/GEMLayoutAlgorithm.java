@@ -20,8 +20,8 @@
 
 package automata.graph.layout;
 
-import java.awt.geom.Point2D;
 import java.awt.Dimension;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,7 +31,6 @@ import java.util.Set;
 
 import automata.graph.Graph;
 import automata.graph.LayoutAlgorithm;
-import automata.graph.layout.GEMLayoutAlgorithm.Record;
 
 /**
  * Implements the GEM algorithm, by Arne Frick, Andreas Ludwig, and Heiko

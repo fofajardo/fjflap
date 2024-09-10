@@ -20,23 +20,31 @@
 
 package gui.grammar.automata;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import automata.Automaton;
 import automata.State;
 import automata.Transition;
 import grammar.Grammar;
 import grammar.Production;
 import gui.environment.FrameFactory;
-import gui.grammar.*;
+import gui.grammar.GrammarTable;
+import gui.grammar.GrammarTableModel;
 import gui.viewer.SelectionDrawer;
-
-import java.io.Serializable;
-import java.util.*;
-import java.util.Map.Entry;
-
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  * The <CODE>ConvertController</CODE> abstract class handles the operation to

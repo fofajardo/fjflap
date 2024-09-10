@@ -20,19 +20,7 @@
 
 package gui.action;
 
-import file.Codec;
-import file.DataException;
-import file.ParseException;
-import grammar.Grammar;
-import gui.environment.Environment;
-import gui.environment.EnvironmentFrame;
-import gui.environment.FrameFactory;
-import gui.environment.GrammarEnvironment;
-import gui.environment.Universe;
-
-import java.awt.AWTException;
 import java.awt.Component;
-import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
@@ -41,18 +29,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import javax.swing.filechooser.FileFilter;
 
 import automata.Automaton;
 import automata.fsa.FiniteStateAutomaton;
 import automata.pda.PushdownAutomaton;
 import automata.turing.TuringMachine;
+import file.Codec;
+import file.DataException;
+import file.ParseException;
+import grammar.Grammar;
+import gui.environment.Environment;
+import gui.environment.EnvironmentFrame;
+import gui.environment.FrameFactory;
+import gui.environment.Universe;
 
 /**
 * The <CODE>TestTuringAction</CODE> is an action to load a structure from a file,

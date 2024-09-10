@@ -20,13 +20,21 @@
 
 package grammar.parse;
 
-import grammar.*;
-import gui.TableTextSizeSlider;
-import automata.fsa.*;
-import java.util.*;
-import java.awt.BorderLayout;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.StringTokenizer;
+import java.util.TreeSet;
+
 import javax.swing.table.AbstractTableModel;
+
+import automata.fsa.FiniteStateAutomaton;
+import grammar.Grammar;
+import grammar.Production;
 
 /**
  * The <CODE>LRParseTable</CODE> is an LR(1) parse table. It also has the

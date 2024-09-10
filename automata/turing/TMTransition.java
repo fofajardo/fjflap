@@ -20,9 +20,11 @@
 
 package automata.turing;
 
-import automata.Transition;
+import java.util.ArrayList;
+import java.util.List;
+
 import automata.State;
-import java.util.*;
+import automata.Transition;
 
 /**
  * The <CODE>TMTransition</CODE> is a transition for a Turing machine.

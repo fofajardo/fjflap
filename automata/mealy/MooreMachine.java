@@ -20,11 +20,14 @@
 
 package automata.mealy;
 
-import gui.environment.Universe;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.*;
-
+import automata.Automaton;
 import automata.State;
+import gui.environment.Universe;
 
 /**
  * A <code>MooreMachine</code> is a special subclass of a

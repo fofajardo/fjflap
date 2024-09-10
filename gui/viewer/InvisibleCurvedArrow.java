@@ -22,8 +22,9 @@ package gui.viewer;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+
 import automata.Transition;
 
 /**

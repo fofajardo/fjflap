@@ -20,8 +20,8 @@
 
 package automata.vdg;
 
-import automata.Transition;
 import automata.State;
+import automata.Transition;
 
 /**
  * A <CODE>VDGTransition</CODE> is a <CODE>Transition</CODE> object used by

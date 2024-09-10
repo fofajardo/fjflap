@@ -20,12 +20,12 @@
 
 package gui.action;
 
-import gui.environment.EnvironmentFrame;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
+
+import gui.environment.EnvironmentFrame;
 
 /**
  * The <CODE>CloseWindowAction</CODE> invokes the close method on the <CODE>EnvironmentFrame</CODE>

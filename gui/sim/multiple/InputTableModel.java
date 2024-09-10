@@ -20,20 +20,21 @@
 
 package gui.sim.multiple;
 
-import grammar.Grammar;
-import gui.GrowableTableModel;
-import automata.Automaton;
-import automata.Configuration;
-import automata.turing.Tape;
-import automata.turing.TMConfiguration;
-import javax.swing.event.TableModelListener;
-import javax.swing.event.TableModelEvent;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
+import automata.Automaton;
+import automata.Configuration;
+import automata.turing.TMConfiguration;
+import automata.turing.Tape;
 import automata.turing.TuringMachine;
+import grammar.Grammar;
+import gui.GrowableTableModel;
 
 /**
  * The <CODE>InputTableModel</CODE> is a table specifically used for the input
@@ -207,7 +208,7 @@ public class InputTableModel extends GrowableTableModel {
 	 * @return a copy of the model that was last edited with the correct number
 	 *         of inputs for this automaton
 	 */
-	public static InputTableModel getModel(Automaton automaton, boolean multipleFile) {        
+	public static InputTableModel getModel(Automaton automaton, boolean multipleFile) {
 		InputTableModel model = (InputTableModel) INPUTS_TO_MODELS
 				.get(new Integer(inputsForMachine(automaton)));
 		if (model != null && (model.isMultiple == multipleFile)) {

@@ -19,8 +19,6 @@
 
 package gui.pumping;
 
-import javax.swing.JPanel;
-
 import pumping.RegularPumpingLemma;
 
 /**

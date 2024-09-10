@@ -20,12 +20,12 @@
 
 package grammar;
 
-import grammar.cfg.ContextFreeGrammar;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import grammar.cfg.ContextFreeGrammar;
 
 /**
  * The lambda production remover object can be used to convert a grammar to an

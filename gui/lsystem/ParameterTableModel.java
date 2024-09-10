@@ -20,9 +20,13 @@
 
 package gui.lsystem;
 
-import gui.GrowableTableModel;
-import java.util.*;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import gui.GrowableTableModel;
 
 /**
  * A mapping of parameters to values.

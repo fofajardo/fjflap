@@ -20,20 +20,45 @@
 
 package gui.grammar.transform;
 
-import automata.*;
-import grammar.*;
-import gui.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedList;
+
+import javax.swing.AbstractAction;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
+import automata.State;
+import grammar.Grammar;
+import grammar.Production;
+import gui.SplitPaneFactory;
 import gui.action.GrammarTransformAction;
-import gui.editor.*;
+import gui.editor.ArrowNontransitionTool;
+import gui.editor.EditorPane;
+import gui.editor.Tool;
+import gui.editor.ToolBox;
+import gui.editor.TransitionTool;
 import gui.environment.FrameFactory;
 import gui.environment.GrammarEnvironment;
-import gui.grammar.*;
-import gui.viewer.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.event.*;
+import gui.grammar.GrammarTable;
+import gui.grammar.GrammarTableModel;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
+import gui.viewer.SelectionDrawer;
 
 /**
  * This is the pane where the removal of unit productions takes place.

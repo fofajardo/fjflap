@@ -20,15 +20,20 @@
 
 package gui.grammar;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 import grammar.Grammar;
 import grammar.TuringChecker;
 import grammar.cfg.ContextFreeGrammar;
 import grammar.reg.RegularGrammar;
 import gui.TableTextSizeSlider;
-
-import javax.swing.table.*;
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * The <CODE>GrammarInputPane</CODE> is a pane that is used for the input and

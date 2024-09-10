@@ -20,9 +20,9 @@
 
 package automata.pda;
 
-import gui.environment.Universe;
-import automata.Transition;
 import automata.State;
+import automata.Transition;
+import gui.environment.Universe;
 
 /**
  * A <CODE>PDATransition</CODE> is a <CODE>Transition</CODE> object with

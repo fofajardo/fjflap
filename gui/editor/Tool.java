@@ -20,13 +20,15 @@
 
 package gui.editor;
 
+import java.awt.Graphics;
+
+import javax.swing.Icon;
+import javax.swing.KeyStroke;
+
 import automata.Automaton;
 import gui.SuperMouseAdapter;
 import gui.viewer.AutomatonDrawer;
 import gui.viewer.AutomatonPane;
-import java.awt.Graphics;
-import javax.swing.Icon;
-import javax.swing.KeyStroke;
 
 /**
  * The <CODE>Tool</CODE> abstract class is a type of input adapter for the

@@ -20,9 +20,9 @@
 
 package automata.mealy;
 
-import gui.environment.Universe;
 import automata.State;
 import automata.Transition;
+import gui.environment.Universe;
 
 /**
  * A <code>MooreTransition</code> is a special subclass of <code>

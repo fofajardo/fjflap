@@ -20,19 +20,34 @@
 
 package gui.grammar.parse;
 
-import grammar.*;
-import grammar.parse.*;
-import gui.SuperMouseAdapter;
-import gui.grammar.GrammarTable;
-import gui.grammar.GrammarTableModel;
-import gui.grammar.ImmutableGrammarTableModel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import javax.swing.AbstractAction;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
+
+import grammar.Grammar;
+import grammar.Production;
+import grammar.parse.Operations;
+import gui.SuperMouseAdapter;
+import gui.grammar.GrammarTable;
+import gui.grammar.GrammarTableModel;
+import gui.grammar.ImmutableGrammarTableModel;
 
 /**
  * This allows a user to specify sets of items.

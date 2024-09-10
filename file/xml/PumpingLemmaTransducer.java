@@ -20,10 +20,6 @@
 
 package file.xml;
 
-import java.io.Serializable;
-
-import org.w3c.dom.Document;
-
 /**
  * This is an abstract implementation of a transducer for
  * {@link pumping.PumpingLemma} objects.

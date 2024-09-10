@@ -22,9 +22,16 @@ package file.xml;
 
 import java.util.Iterator;
 import java.util.Map;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 /**
  * This is an abstract implementation of a transducer that implements very

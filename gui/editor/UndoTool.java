@@ -20,16 +20,14 @@
 
 package gui.editor;
 
-import gui.environment.AutomatonEnvironment;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.KeyStroke;
 
-import debug.EDebug;
+import gui.environment.AutomatonEnvironment;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * First, let's make it work, then we'll make the interface so you don't have to click undo and then click randomly.

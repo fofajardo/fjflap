@@ -20,8 +20,9 @@
 
 package gui.action;
 
-import gui.AboutBox;
 import java.awt.event.ActionEvent;
+
+import gui.AboutBox;
 
 /**
  * This action will display a small about box that lists the tool version

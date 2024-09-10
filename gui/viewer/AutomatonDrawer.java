@@ -28,14 +28,12 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
-import debug.EDebug;
 
 import automata.Automaton;
 import automata.Note;
@@ -45,7 +43,6 @@ import automata.event.AutomataStateEvent;
 import automata.event.AutomataStateListener;
 import automata.event.AutomataTransitionEvent;
 import automata.event.AutomataTransitionListener;
-import java.util.HashSet;
 
 /**
  * This is the very basic class of an Automaton drawer. It has facilities to

@@ -20,12 +20,12 @@
 
 package gui.minimize;
 
-import gui.TooltipAction;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JToolBar;
+
+import gui.TooltipAction;
 
 /**
  * This control panel is a set of GUI elements that, when invoked, call methods

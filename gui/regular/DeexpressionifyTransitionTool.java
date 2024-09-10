@@ -20,10 +20,6 @@
 
 package gui.regular;
 
-import gui.editor.Tool;
-import gui.viewer.AutomatonDrawer;
-import gui.viewer.AutomatonPane;
-
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
@@ -32,6 +28,9 @@ import javax.swing.KeyStroke;
 
 import automata.Transition;
 import automata.fsa.FSATransition;
+import gui.editor.Tool;
+import gui.viewer.AutomatonDrawer;
+import gui.viewer.AutomatonPane;
 
 /**
  * A tool that handles the conversion of multiple transitions to one transition

@@ -20,10 +20,11 @@
 
 package gui.grammar.parse;
 
-import gui.environment.GrammarEnvironment;
+import javax.swing.JTable;
+
 import grammar.Grammar;
-import grammar.parse.*;
-import javax.swing.*;
+import grammar.parse.LRParseTable;
+import gui.environment.GrammarEnvironment;
 
 /**
  * This is a parse pane for LR grammars.

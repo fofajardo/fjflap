@@ -20,12 +20,12 @@
 
 package gui.sim;
 
-import gui.TooltipAction;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JToolBar;
+
+import gui.TooltipAction;
 
 /**
  * This is a control panel with buttons for invoking methods on a configuration
