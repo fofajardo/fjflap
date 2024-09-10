@@ -57,6 +57,7 @@ import gui.action.ConvertFSAToREAction;
 import gui.action.ConvertPDAToGrammarAction;
 import gui.action.ConvertRegularGrammarToFSA;
 import gui.action.DFAEqualityAction;
+import gui.action.EnvironmentHelpAction;
 import gui.action.GrammarTransformAction;
 import gui.action.GrammarTypeTestAction;
 import gui.action.LLParseTableAction;
@@ -563,24 +564,8 @@ public class MenuBarCreator {
 	private static JMenu getHelpMenu(EnvironmentFrame frame) {
 		Environment environment = frame.getEnvironment();
 		JMenu menu = new JMenu("Help");
-		Serializable object = environment.getObject();
 
-		//Currently commented out, but can be restored if the help menus are fixed.
-		//addItem(menu, new EnvironmentHelpAction(environment));
-		
-		//Temporary help action.
-		addItem(menu, new AbstractAction("Help...") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public void actionPerformed(ActionEvent event) {
-				JOptionPane.showMessageDialog(null, "For help, feel free to access the JFLAP tutorial at\n" +
-						"                          www.jflap.org.", "Help", JOptionPane.PLAIN_MESSAGE);
-			}
-		});
-		
+		addItem(menu, new EnvironmentHelpAction(environment));
 		addItem(menu, new AboutAction());
 
 		return menu;
