@@ -739,7 +739,10 @@ public abstract class AutomatonTransducer extends AbstractTransducer {
 				se.appendChild(createComment(doc, COMMENT_AUTOMATA));
 			while (refer.hasNext()) {
 				String name = (String) refer.next();
-				if (!automatonMap.containsKey((Automaton) references.get(name))) {
+				// FIXME: The original check here calls .containsKey. However,
+				// that check will *never* be true since the key type of this map
+				// is a String, but the argument is an Automaton...
+				if (!automatonMap.containsValue((Automaton) references.get(name))) {
 					se.appendChild(createAutomatonElement(doc,
 							(Automaton) references.get(name), name));
 					automatonMap.put(name, auto);
