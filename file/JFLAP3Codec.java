@@ -120,12 +120,14 @@ public class JFLAP3Codec extends Codec {
 				String[] elems = line.split("\\s+");
 				int len = elems.length;
 				if (len > 3 || len < 2 || !elems[1].equals("->")) {
+					reader.close();
 					throw new ParseException("Line " + lineNum
 							+ " is not formatted properly!");
 				}
 				g.addProduction(new Production(elems[0], len == 3 ? elems[2]
 						: ""));
 			}
+			reader.close();
 		} catch (FileNotFoundException e) {
 			throw new ParseException("Could not find file " + file.getName()
 					+ "!");
