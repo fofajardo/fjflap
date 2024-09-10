@@ -189,11 +189,7 @@ public class Universe {
 	public static final CodecRegistry CODEC_REGISTRY = new CodecRegistry();
 
 	static {
-		try {
-			CHOOSER = new JFileChooser(System.getProperties().getProperty("user.dir"));
-		} catch (java.security.AccessControlException e) {
-			// Nothing to do.
-		}
+		CHOOSER = new JFileChooser(System.getProperties().getProperty("user.dir"));
 		// Create the codec registry.
 		XMLCodec xc = new XMLCodec();
 		CODEC_REGISTRY.add(xc);
