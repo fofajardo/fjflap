@@ -39,6 +39,8 @@ import gui.environment.Universe;
  */
 
 public class LLParseTablePane extends LeftTable {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Instantiates a new parse table pane for a parse table.
 	 * 
@@ -70,6 +72,8 @@ public class LLParseTablePane extends LeftTable {
 	 * The modified table cell renderer.
 	 */
 	private static class LambdaCellRenderer extends DefaultTableCellRenderer {
+		private static final long serialVersionUID = 1L;
+
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
