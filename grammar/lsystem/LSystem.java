@@ -113,7 +113,7 @@ public class LSystem implements Serializable {
 				currentReplacements = reps.get(replace);
 			List<String> currentSubstitution = tokenify(p[i].getRHS());
 			try {
-				List<String> lastSubstitution = (List<String>) currentReplacements
+				List<String> lastSubstitution = currentReplacements
 						.get(currentReplacements.size() - 1);
 				if (!currentSubstitution.equals(lastSubstitution))
 					nondeterministic = true;
@@ -124,11 +124,9 @@ public class LSystem implements Serializable {
 		}
 		Iterator<Entry<String, ArrayList<List<String>>>> it = reps.entrySet().iterator();
 		symbolToReplacements = new TreeMap<>();
-		List<String>[] emptyListArray = new List[0];
 		while (it.hasNext()) {
-			Map.Entry<String, ArrayList<List<String>>> entry = (Entry<String, ArrayList<List<String>>>) it.next();
-			List<List<String>> l = (List<List<String>>) entry.getValue();
-			List<String>[] replacementArray = (List<String>[]) l.toArray(emptyListArray);
+			Map.Entry<String, ArrayList<List<String>>> entry = it.next();
+			List<List<String>> replacementArray = entry.getValue();
 			symbolToReplacements.put(entry.getKey(), replacementArray);
 		}
 	}
@@ -150,8 +148,8 @@ public class LSystem implements Serializable {
 	 * @return an array of lists, where each list is a list of the strings; the
 	 *         array will be empty if there are no replacements
 	 */
-	public List<String>[] getReplacements(String symbol) {
-		List<String>[] toReturn = (List<String>[]) symbolToReplacements.get(symbol);
+	public List<List<String>> getReplacements(String symbol) {
+		List<List<String>> toReturn = symbolToReplacements.get(symbol);
 		return toReturn == null ? EMPTY_LIST : toReturn;
 	}
 
@@ -186,7 +184,7 @@ public class LSystem implements Serializable {
 	}
 
 	/** The grammar holding the replacement rules. */
-	private Map<String, List<String>[]> symbolToReplacements;
+	private Map<String, List<List<String>>> symbolToReplacements;
 
 	/** The mapping of keys to values. */
 	private Map<Object, Object> values;
@@ -198,5 +196,6 @@ public class LSystem implements Serializable {
 	private boolean nondeterministic = false;
 
 	/** An empty list array. */
-	private static final List<String>[] EMPTY_LIST = new List[0];
+	private static final List<List<String>> EMPTY_LIST =
+			new ArrayList<List<String>>(0);
 }

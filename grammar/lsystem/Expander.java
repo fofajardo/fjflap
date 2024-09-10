@@ -111,22 +111,22 @@ public class Expander {
 		List<String> ne = new ArrayList<>();
 		for (int i = 0; i < symbols.size(); i++) {
 			String s = (String) symbols.get(i);
-			List<String>[] replacements = lsystem.getReplacements(s);
+			List<List<String>> replacements = lsystem.getReplacements(s);
 			List<String> replacement = null;
-			switch (replacements.length) {
+			switch (replacements.size()) {
 			case 0:
 				// This cannot be replaced, so we skip to the next symbol.
 				ne.add(s);
 				continue;
 			case 1:
 				// There is only one replacement possibility.
-				replacement = replacements[0];
+				replacement = replacements.get(0);
 				break;
 			default:
 				// If there's more than one possibility, we choose one
 				// nearly at random.
-				replacement = replacements[stochiastic
-						.nextInt(replacements.length)];
+				replacement = replacements.get(stochiastic
+						.nextInt(replacements.size()));
 				break;
 			}
 			Iterator<String> it2 = replacement.iterator();
@@ -151,28 +151,27 @@ public class Expander {
 			String s = (String) symbols.get(i);
 			ArrayList<List<String>> replacementsList = new ArrayList<>();
 			for (int j = 0; j < contexts.length; j++) {
-				List<String>[] l = contexts[j].matches(symbols, i);
+				List<List<String>> l = contexts[j].matches(symbols, i);
 				contexts[j].matches(symbols, i);
-				for (int k = 0; k < l.length; k++)
-					replacementsList.add(l[k]);
+				for (int k = 0; k < l.size(); k++)
+					replacementsList.add(l.get(k));
 			}
-			List<String>[] replacements = (List<String>[]) replacementsList
-					.toArray(EMPTY_ARRAY);
+			List<List<String>> replacements = replacementsList;
 			List<String> replacement = null;
-			switch (replacements.length) {
+			switch (replacements.size()) {
 			case 0:
 				// This cannot be replaced, so we skip to the next symbol.
 				ne.add(s);
 				continue;
 			case 1:
 				// There is only one replacement possibility.
-				replacement = replacements[0];
+				replacement = replacements.get(0);
 				break;
 			default:
 				// If there's more than one possibility, we choose one
 				// nearly at random.
-				replacement = replacements[stochiastic
-						.nextInt(replacements.length)];
+				replacement = replacements.get(stochiastic
+						.nextInt(replacements.size()));
 				break;
 			}
 			Iterator<String> it2 = replacement.iterator();
@@ -195,7 +194,7 @@ public class Expander {
 		while (symbolIt.hasNext()) {
 			String symbol = (String) symbolIt.next();
 			List<String> tokens = LSystem.tokenify(symbol);
-			List<String>[] replacements = lsystem.getReplacements(symbol);
+			List<List<String>> replacements = lsystem.getReplacements(symbol);
 			int context = 0;
 			switch (tokens.size()) {
 			case 0:
@@ -238,7 +237,7 @@ public class Expander {
 		 * @param results
 		 *            the results of matching
 		 */
-		public Context(List<String> tokens, int center, List<String>[] results) {
+		public Context(List<String> tokens, int center, List<List<String>> results) {
 			this.tokens = tokens;
 			this.center = center;
 			this.results = results;
@@ -253,7 +252,7 @@ public class Expander {
 		 * @return the resulting replacement lists for the center token if there
 		 *         was a match, or an empty array otherwise
 		 */
-		public List<String>[] matches(List<String> list, int centerList) {
+		public List<List<String>> matches(List<String> list, int centerList) {
 			centerList -= center;
 			try {
 				List<String> sub = list.subList(centerList, centerList + tokens.size());
@@ -287,7 +286,7 @@ public class Expander {
 		protected int center;
 
 		/** The result of finding a matching. */
-		protected List<String>[] results;
+		protected List<List<String>> results;
 	}
 
 	/** The L-system we are expanding. */
@@ -306,5 +305,6 @@ public class Expander {
 	private Context[] contexts = null;
 
 	/** An empty list. */
-	protected static final List<String>[] EMPTY_ARRAY = new List[0];
+	protected static final List<List<String>> EMPTY_ARRAY =
+			new ArrayList<List<String>>(0);
 }

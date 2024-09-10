@@ -109,11 +109,11 @@ public class LSystemTransducer extends AbstractTransducer {
 			String left) {
 		Element re = createElement(document, RULE_NAME, null, null);
 		re.appendChild(createElement(document, RULE_LEFT_NAME, null, left));
-		List<String>[] replacements = lsystem.getReplacements(left);
+		List<List<String>> replacements = lsystem.getReplacements(left);
 		lsystem.getReplacements(left);
-		for (int i = 0; i < replacements.length; i++) {
+		for (int i = 0; i < replacements.size(); i++) {
 			re.appendChild(createElement(document, RULE_RIGHT_NAME, null,
-					listAsString(replacements[i])));
+					listAsString(replacements.get(i))));
 		}
 		return re;
 	}

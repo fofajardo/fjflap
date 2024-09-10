@@ -30,6 +30,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.JLabel;
@@ -101,9 +102,9 @@ public class LSystemInputPane extends JPanel {
 		UnboundGrammar g = new UnboundGrammar();
 		while (it.hasNext()) {
 			String symbol = (String) it.next();
-			java.util.List<String>[] r = lsystem.getReplacements(symbol);
-			for (int i = 0; i < r.length; i++) {
-				Production p = new Production(symbol, listAsString(r[i]));
+			List<List<String>> r = lsystem.getReplacements(symbol);
+			for (int i = 0; i < r.size(); i++) {
+				Production p = new Production(symbol, listAsString(r.get(i)));
 				g.addProduction(p);
 			}
 		}
